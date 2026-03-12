@@ -1,0 +1,50 @@
+---
+sidebar: sidebar 
+permalink: get-started/aide-components-storage-admin.html 
+keywords: aide, architecture, ontap, storage administrator, system manager, workspaces, guardrails 
+summary: Descubre cómo los administradores de almacenamiento interactúan con los componentes de AIDE para gestionar la infraestructura de clúster, aprovisionar espacios de trabajo y aplicar políticas de gobernanza. 
+---
+= Descubre cómo los administradores de almacenamiento de AI Data Engine trabajan con los componentes de AIDE
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Como administrador de almacenamiento, gestionas la infraestructura de AIDE a través de ONTAP y la AIDE Console, aprovisionando espacios de trabajo, adjuntando políticas de guardrail y supervisando el estado del sistema. Tu función se centra en garantizar un almacenamiento de datos fiable, seguro y conforme para las cargas de trabajo de IA.
+
+
+
+== Acceso del administrador de almacenamiento al componente
+
+[cols="2h,2,3"]
+|===
+| Componente | Nivel de acceso | Flujo de trabajo del administrador de almacenamiento 
+
+
+| ONTAP System Manager | Gestionar (crear, editar, eliminar) | Usas ONTAP System Manager como tu interfaz principal para la administración de clusters, el aprovisionamiento de espacios de trabajo, la gestión de políticas de guardrail y la supervisión del estado del sistema. 
+
+
+| AI Data Engine Console | Gestionar (crear, editar, eliminar) | Usas la AI Data Engine Console para monitorear los espacios de trabajo, ver el estado de la recopilación y supervisar la actividad del sistema en todo el entorno de AIDE. 
+
+
+| API de REST de ONTAP | Gestionar (crear, editar, eliminar) | Utilizas la API de REST para automatizar tareas de infraestructura, gestionar espacios de trabajo y políticas de barandilla mediante programación, e integrar la administración de AIDE con herramientas y flujos de trabajo externos. 
+
+
+| Espacios de trabajo | Gestionar (crear, editar, eliminar) | Tú creas y gestionas espacios de trabajo usando ONTAP System Manager. Tú seleccionas qué fuentes de datos se incluyen, asignas permisos a los ingenieros de datos y científicos de datos, y adjuntas políticas de guardarraíl para hacer cumplir la gobernanza y el cumplimiento. También monitoreas la salud y el acceso del espacio de trabajo. 
+
+
+| Colecciones de datos | Vista (solo lectura) | Ves el estado y la salud de las colecciones de datos dentro de cada espacio de trabajo usando System Manager. Te aseguras de que las fuentes de datos subyacentes estén disponibles y protegidas, pero no creas ni modificas colecciones. 
+
+
+| Barreras de protección | Gestionar (crear, editar, eliminar) | Tú defines y adjuntas políticas de barandilla a los espacios de trabajo usando System Manager. Tú supervisas el estado de la barandilla y los informes de cumplimiento. Tú te aseguras de que las políticas se apliquen y se actualicen según sea necesario. 
+
+
+| Catálogo de metadatos | Monitor (ver salud, estado, actividad) | Tú te aseguras de que el catálogo de metadatos esté completo y actualizado. Tú supervisas el estado del catálogo y apoyas el control de acceso. 
+
+
+| Base de datos vectorial | Aprovisionar/supervisar (desplegar, configurar, ver estado) | Tú aprovisionas y supervisas la infraestructura de la base de datos vectorial, asegurándote de que los nodos de cómputo de datos con recursos de GPU y las licencias adecuadas estén en su lugar. Tú das soporte al entorno, pero no gestionas embeddings ni consultas directamente. 
+
+
+| Clasificadores | Gestionar (crear, editar, eliminar) | Creas, configuras y gestionas clasificadores y sus categorías. Aplicas clasificadores a los espacios de trabajo y supervisas su eficacia. 
+|===

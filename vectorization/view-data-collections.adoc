@@ -1,0 +1,120 @@
+---
+sidebar: sidebar 
+permalink: vectorization/view-data-collections.html 
+keywords: aide, data collections, monitor collections, vector database, ai data engine, data engineer, data scientist, activity 
+summary: Usa las herramientas de AI Data Engine para ver colecciones de datos, hacer seguimiento de los trabajos de indexación y publicación, y entender la huella vectorial en los workspaces. 
+---
+= Ver colecciones de datos en AI Data Engine
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Después de que los ingenieros de datos o los científicos de datos creen y publiquen colecciones de datos desde los espacios de trabajo, necesitas visibilidad de su estado, tamaño e impacto en el clúster de AI Data Engine.
+
+Si eres administrador de almacenamiento, ingeniero de datos o científico de datos, puedes ver las colecciones de datos en ONTAP System Manager y AIDE Console.
+
+.Antes de empezar
+* Necesitas privilegios de _administrador de almacenamiento_ en ONTAP System Manager o privilegios de _ingeniero de datos_ o _científico de datos_ en AI Data Engine Console (`\https://<cluster_management_ip>/console` para ver las colecciones de datos.
+* Existe al menos un espacio de trabajo con metadatos extraídos correctamente.
+* Los ingenieros de datos o los científicos de datos han creado y publicado al menos una recopilación de datos desde AI Data Engine Console.
+* La licencia del software AI Data Engine está instalada y las funciones de inferencia están activadas, así que los endpoints de vectorización y recuperación están activos.
+
+
+
+
+== Ver colecciones de datos de todo el clúster
+
+Para los administradores de almacenamiento, ONTAP System Manager proporciona una vista a nivel de clúster de las colecciones de datos y su huella, pero no permite a los administradores crearlas o modificarlas.
+
+.Pasos
+. En System Manager, ve a *Data Engine > Data collections*.
+. Revisa el resumen del inventario en la parte superior de la página:
++
+** Número total de recopilaciones de datos por estado
+** Espacio total consumido por la base de datos de vectores en todas las colecciones
+** Espacio vectorial como porcentaje de la capacidad total del clúster
+
+
+. Selecciona una recopilación de datos individual y revísala:
++
+** Nombre y descripción de la colección
+** UUID
+** Espacio de trabajo asociado
+** Estado
+** Tamaño de la colección
+** Creador
+** Hora de la última actualización
+
+
+
+
+.Resultado
+Ahora tienes una vista a grandes rasgos de todas las recopilaciones de datos en el clúster y su impacto en el almacenamiento. Usa esta vista para identificar recopilaciones que sean grandes, obsoletas o que estén atascadas en un estado no listo.
+
+También puedes ver si una colección de datos individual se está actualizando activamente y si algún fallo está bloqueando el uso de RAG.
+
+
+
+== Supervisa los trabajos y eventos relacionados con la colección
+
+Como administrador de almacenamiento, puedes supervisar los trabajos que crean y actualizan colecciones desde la página *Actividad* de todo el clúster y desde los detalles del espacio de trabajo.
+
+.Pasos
+. En System Manager, ve a *Data Engine > Activity*.
+. En la pestaña *Eventos*:
++
+.. Filtra por tipo (por ejemplo, espacio de trabajo, recopilación de datos) o gravedad.
+.. Expande cualquier evento relacionado con las recopilaciones de datos (por ejemplo, "Falló la publicación de la recopilación de datos") para ver más detalles.
+
+
+. En la pestaña *Jobs*:
++
+.. Filtra para centrarte en los trabajos de indexación y publicación de recopilación de datos.
+.. Para cada trabajo, abre la vista peek para ver:
++
+*** Porcentaje de progreso.
+*** Horas de inicio y fin.
+*** Cualquier mensaje de error o advertencia reportado.
+
+
+
+
+. Opcionalmente, navega de vuelta al espacio de trabajo afectado (*Data Engine > Workspaces*) y abre su pestaña *Actividad* para ver los eventos y trabajos asignados solo a ese espacio de trabajo.
+
+
+.Resultado
+Puedes hacer un seguimiento del ciclo de vida de las recopilaciones de datos, identificar trabajos estancados o fallidos y recopilar información contextual para pasarla a los data engineers, data scientists o soporte.
+
+
+TIP: Cuando una recopilación de datos permanece en el estado `Publishing` durante un período prolongado, revisa si hay un trabajo de larga duración correspondiente en la página Activity antes de asumir un fallo.
+
+
+
+== Ver recopilaciones de datos desde AIDE Console
+
+Los ingenieros de datos y los científicos de datos suelen supervisar las colecciones de datos directamente desde AIDE Console, donde se crean y publican.
+
+.Pasos
+. Inicia sesión en la AI Data Engine Console como data engineer o data scientist.
+. Ve a *Data Collections* y selecciona la colección de datos que quieras.
+. Para cada colección:
++
+.. Revisa el estado (`Draft`, `Publishing`, `Ready` o `Failed`).
+.. Selecciona el nombre de la colección de datos para revisar los detalles de la definición (filtros, tipos de archivo incluidos, opciones del clasificador, ajustes de incrustación).
+.. Inspecciona las marcas de tiempo de la última publicación o actualización.
+
+
+. Si es necesario, abre los detalles del trabajo o los registros (si están disponibles) para entender los fallos o las ejecuciones incompletas.
+
+
+.Resultado
+Los ingenieros de datos y los científicos de datos pueden iterar sobre las definiciones de recopilación y publicarlas de nuevo mientras supervisan el estado y la salud, sin involucrar al administrador de almacenamiento.
+
+
+
+== ¿Qué sigue?
+
+* link:create-data-collections.html["Crear colecciones de datos para RAG en AIDE Console"]
+

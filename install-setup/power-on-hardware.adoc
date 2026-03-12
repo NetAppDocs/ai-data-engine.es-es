@@ -1,0 +1,60 @@
+---
+sidebar: sidebar 
+permalink: install-setup/power-on-hardware.html 
+keywords: aide, ai, data engine, ai data engine dcn, data compute node, afx, afx 1k, power on, 
+summary: Enciende cada estantería para asignar un ID de estantería único, enciende los nodos controladores AFX y asegura los cables de alimentación. 
+---
+= Enciende tus nodos de cómputo de datos para AI Data Engine
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Después de instalar el hardware del bastidor y cablear tus nodos de cálculo de datos, deberías encender tus DCN y tus nodos controladores para el sistema de almacenamiento AFX si aún no están encendidos.
+
+.Antes de empezar
+* Asegúrate de que tus estanterías están encendidas y que cada una tiene asignado un ID de estantería único. Para información sobre cómo asignar IDs de estantería para el sistema de almacenamiento AFX, consulta el link:https://docs.netapp.com/us-en/ontap-afx/install-setup/power-on-hardware.html#step-1-power-on-the-shelf-and-assign-shelf-id["Asigna identificadores de estantería únicos"^].
+
+
+.Pasos
+Después de que hayas encendido tus estanterías de almacenamiento y asignado los ID únicos, enciende tus DCN y los nodos controladores de almacenamiento si aún no están encendidos.
+
+. Conecta tu portátil al puerto de consola serie. Esto te permite monitorear la secuencia de arranque cuando los controladores están encendidos.
++
+.. Configura el puerto de la consola serie del portátil a 115,200 baudios con N-8-1.
++
+Consulta la ayuda en línea de tu portátil para ver instrucciones sobre cómo configurar el puerto de consola serie.
+
+.. Conecta el cable de la consola al laptop y conecta el puerto de consola serie en el controlador usando el cable de consola que vino con tu sistema de almacenamiento.
+.. Conecta el portátil al conmutador en la subred de gestión.
++
+image::../media/drw_afx_1k_console_connection_ieops-2708.svg[Conexiones de consola]
+
+
+
+
+
+. Asigna una dirección TCP/IP al portátil, usando una que esté en la subred de gestión.
+. Enchufa los cables de alimentación a las fuentes de alimentación de los controladores y luego conéctalos a fuentes de alimentación en circuitos diferentes.
++
+image::../media/drw_affa1k_power_source_icon_ieops-1700.svg[Un esquema de conexión eléctrica]
+
++
+** El sistema comienza a arrancar. El arranque inicial puede tardar hasta ocho minutos.
+** Los LED parpadean y los ventiladores se ponen en marcha, lo que indica que los controladores se están encendiendo.
+** Los ventiladores pueden ser ruidosos al arrancar, lo cual es normal.
+
+
+
+
+. Enchufa los cables de alimentación en las fuentes de alimentación de los nodos de cálculo de datos y luego conéctalos a fuentes de alimentación en circuitos diferentes.
+. Asegura los cables de alimentación usando el dispositivo de sujeción de cada fuente de alimentación.
+. Enciende los nodos de computación de datos.
++
+Es posible que tengas que quitar el frontal para acceder al interruptor de encendido; si es así, recuerda volver a instalarlo después.
+
+
+
+.¿Qué sigue?
+Después de que hayas encendido tus nodos de cálculo de datos, link:../install-setup/cluster-setup-afx.html["configura un clúster ONTAP AIDE"].

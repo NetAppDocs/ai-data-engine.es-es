@@ -1,0 +1,89 @@
+---
+sidebar: sidebar 
+permalink: workspaces/create-workspace.html 
+keywords: aide, workspaces, create workspace, ai data engine 
+summary: Después de crear un clúster, puedes crear espacios de trabajo que te permiten segmentar datos, controlar el acceso a los datos y excluir datos a los que AIDE no debería acceder. 
+---
+= Crea un espacio de trabajo en AI Data Engine
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Después de configurar un clúster, puedes crear un espacio de trabajo. Los espacios de trabajo te permiten segmentar los datos en el clúster, controlar el acceso a los datos de las personas y excluir los datos a los que AI Data Engine (AIDE) no debe acceder.
+
+Si administras el almacenamiento, vas a usar ONTAP System Manager para crear y gestionar espacios de trabajo.
+
+Las organizaciones crean espacios de trabajo en función de equipos, proyectos, niveles de sensibilidad de los datos u otros criterios relevantes. Por ejemplo, si trabajas en healthcare, podrías segmentar los datos clínicos en un espacio de trabajo pero dejar fuera los datos relacionados con IT, legal u otros departamentos.
+
+.Acerca de esta tarea
+Los límites de procesamiento del sistema afectan la creación de espacios de trabajo (normalmente hasta 15 GB por día por clúster). Si creas varios espacios de trabajo en paralelo o en rápida sucesión, cada espacio de trabajo podría tardar más en procesarse y podrías experimentar retrasos significativos.
+
+Supervisa el estado de la creación de espacios de trabajo desde la página de inventario de espacios de trabajo. Para obtener mejores resultados, evita crear muchos espacios de trabajo a la vez si necesitas acceso inmediato a estas funciones.
+
+.Antes de empezar
+* Necesitas privilegios de _administrador de almacenamiento_ para crear espacios de trabajo y asociar colecciones de datos.
+* Has determinado las fuentes de datos remotas (peered) y locales que piensas usar con el espacio de trabajo y con AI Data Engine.
+* Has link:prepare-data-for-aide.html["creado al menos un contenedor de datos"] que el espacio de trabajo puede usar, como un volumen local o un volumen de un clúster peered.
++
+
+IMPORTANT: Agrega un volumen a un espacio de trabajo que no vayas a eliminar durante la vida útil esperada de ese espacio de trabajo. Si eliminas un volumen después de añadirlo a un espacio de trabajo, el espacio de trabajo entrará en estado fallido. Confirma la viabilidad a largo plazo del volumen antes de crear un espacio de trabajo.
+
+
+
+* Asegúrate de que NFS está activado en el volumen, pero que CIFS no lo está. Los espacios de trabajo solo admiten volúmenes con NFS. Los volúmenes con CIFS (SMB) no son compatibles.
+
+
+
+
+== Crear un espacio de trabajo
+
+Crea un espacio de trabajo y asocia contenedores de datos que contengan los datos que quieres usar con AI Data Engine.
+
+.Pasos
+. En ONTAP System Manager, ve a *Data Engine > Workspaces*.
+. Selecciona *Add*.
+. En el cuadro de diálogo *Add Workspace*, selecciona al menos un contenedor de datos disponible para asociar con el espacio de trabajo.
+. Configura link:prepare-data-for-aide.html["clústeres emparejados"] para que se pueda acceder a los datos de esos clústeres dentro del espacio de trabajo
+. Si quieres configurar el acceso de los usuarios al espacio de trabajo, puedes hacerlo ahora o link:assign-users-to-workspace.html["espera hasta después de que se cree el espacio de trabajo"].
+. Configura un intervalo de actualización para que el espacio de trabajo se sincronice con los contenedores de datos asociados y capture datos nuevos o actualizados (por ejemplo, seis horas).
++
+
+TIP: Elige un intervalo que equilibre la frescura de los datos con el rendimiento del sistema. Si añades un contenedor de datos a varios espacios de trabajo, el sistema usa automáticamente el intervalo más agresivo (el más corto). Para saber más, consulta la documentación sobre <<Actualizaciones y versionado del espacio de trabajo,actualizaciones y versionado del espacio de trabajo>>.
+
+. Selecciona *Continuar*.
+. En el cuadro de diálogo *Finalizar espacio de trabajo*, ingresa un nombre y una descripción para el espacio de trabajo.
+. Selecciona *Add* para crear el espacio de trabajo.
+
+
+.Resultado
+El proceso de creación del espacio de trabajo tarda varios minutos o incluso horas en completarse, dependiendo del conjunto de datos asociado y de la cantidad de archivos, el tamaño de los archivos y otros factores.
+
+El sistema extrae automáticamente metadatos de todas las fuentes de datos y los almacena en un catálogo de metadatos que los usuarios pueden usar para localizar los archivos que necesitan para sus proyectos. Después de asignar usuarios al espacio de trabajo, los usuarios data engineer pueden configurar e interactuar con los componentes afiliados al espacio de trabajo desde AI Data Engine Console.
+
+El nuevo espacio de trabajo aparece en la página Espacios de trabajo en `Creating` estado hasta que el proceso finaliza y el estado cambia a `ready`.
+
+
+
+== Revisa los detalles del espacio de trabajo
+
+Después de crear el espacio de trabajo, revisa los detalles del espacio de trabajo.
+
+.Pasos
+. Revisa los detalles del espacio de trabajo, incluyendo el tamaño total, el porcentaje de capacidad del clúster usado y la fecha de la actualización más reciente del espacio de trabajo.
+. Selecciona el nombre del espacio de trabajo para abrir la página de detalles.
+. En la pestaña Visión general, puedes ver los detalles del espacio de trabajo que incluyen los contenedores de datos asociados, los usuarios y la actividad.
+
+
+
+
+== Actualizaciones y versionado del espacio de trabajo
+
+Cada actualización del espacio de trabajo crea una versión inmutable que captura el estado actual de todos los archivos y objetos en el espacio de trabajo. Las versiones incluyen metadatos completos, referencias a snapshots usadas durante la extracción y un job ID para la trazabilidad. Esto admite data lineage, reproducibilidad y auditoría.
+
+Las actualizaciones se producen según el programa que configures (como cada seis horas) o cuando las activas manualmente. El intervalo de actualización mínimo admitido es de una hora; el máximo es de un año. Si un contenedor de datos está incluido en varios espacios de trabajo, el sistema usa el intervalo de actualización más frecuente y de menor duración para programar la extracción de metadatos.
+
+Por defecto, el sistema conserva las versiones anterior, actual y siguiente (en curso). El sistema conserva las versiones anteriores de acuerdo con la política de tu organización y puede purgarlas según sea necesario.
+
+Puedes listar todas las versiones de un espacio de trabajo y ver las diferencias entre versiones para identificar qué archivos u objetos fueron añadidos, modificados o eliminados. Esto te permite hacer un seguimiento de los cambios a lo largo del tiempo y entender la evolución de los datos de tu espacio de trabajo.

@@ -1,0 +1,63 @@
+---
+sidebar: sidebar 
+permalink: install-setup/install-setup-requirements.html 
+keywords: aide, ai, data engine, ai data engine, dcn, data compute node, afx, afx 1k, install, setup, requirements, cautions, 
+summary: Revisa el equipo necesario y las precauciones de elevación para tus nodos de cómputo de datos para AI Data Engine. 
+---
+= Requisitos de instalación para los nodos de cómputo de datos para AI Data Engine
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Revisa el equipo necesario y las precauciones de elevación para tus nodos de cómputo de datos para AI Data Engine.
+
+
+
+== Prerrequisitos
+
+Antes de instalar los nodos de cálculo de datos para AIDE, asegúrate de que tienes:
+
+* Un sistema de almacenamiento AFX 1K.
++
+
+NOTE: Para obtener información sobre la instalación del sistema de almacenamiento AFX 1K, consulta la link:https://docs.netapp.com/us-en/ontap-afx/install-setup/install-setup-workflow.html["Instala tu sistema de almacenamiento AFX 1K"^].
+
+
+
+
+
+== Equipo necesario para instalar
+
+Para instalar los nodos de cálculo de datos para AIDE, necesitas el siguiente equipo y herramientas.
+
+* Acceso a un navegador web para configurar tus nodos de cálculo de datos
+* Correa de descarga electrostática (ESD)
+* Linterna
+* Portátil o consola con conexión USB/serie
+* Destornillador Phillips #2
+
+
+
+
+== Precauciones de elevación
+
+Los nodos de computación de datos son pesados. Ten cuidado al levantar y mover estos elementos.
+
+
+
+=== Pesos de los nodos de cómputo de datos
+
+Toma las precauciones necesarias al mover o levantar tu nodo de computación de datos.
+
+Un nodo de computación de datos puede pesar hasta 46,3 lbs (21Kg). Para levantar el nodo de computación de datos, usa a dos personas o un elevador hidráulico.
+
+image::../media/drw_compute_node_lifting_weight_ieops-2743.svg[Peso de elevación del nodo de data compute]
+
+.Información relacionada
+* https://library.netapp.com/ecm/ecm_download_file/ECMP12475945["Información de seguridad y avisos reglamentarios"^]
+
+
+.¿Qué sigue?
+Después de que hayas revisado los requisitos de hardware, link:prepare-hardware.html["prepárate para instalar tus nodos de cálculo de datos"].

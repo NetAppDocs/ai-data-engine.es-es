@@ -1,0 +1,52 @@
+---
+section: get-started
+title: Empezar
+entries:
+- title: Conoce tu sistema AI Data Engine
+  entries:
+  - title: Conoce AIDE
+    url: "/get-started/learn-about.html"
+  - title: Arquitectura de AIDE
+    url: "/get-started/aide-architecture.html"
+  - title: Componentes y responsabilidades de AIDE por rol
+    entries:
+    - title: Componentes y roles de AIDE
+      url: "/get-started/aide-components.html"
+    - title: Interfaces de AIDE
+      url: "/get-started/aide-interfaces.html"
+    - title: Administradores de almacenamiento y componentes
+      url: "/get-started/aide-components-storage-admin.html"
+    - title: Ingenieros de datos, científicos de datos y componentes
+      url: "/get-started/aide-components-data-users.html"
+- title: Inicio rápido
+  url: "/get-started/quick-start.html"
+- title: Instala AIDE
+  entries:
+  - title: Requisitos de instalación
+    url: "/install-setup/aide-hardware-requirements.html"
+  - title: Instala tu sistema de almacenamiento AFX
+    url: "/install-setup/aide-afx-install.html"
+  - title: Instala tus nodos de cálculo de datos
+    entries:
+    - title: Instala el flujo de trabajo
+      url: "/install-setup/install-workflow.html"
+    - title: Revisa los requisitos de hardware
+      url: "/install-setup/install-setup-requirements.html"
+    - title: Prepárate para instalar
+      url: "/install-setup/prepare-hardware.html"
+    - title: Instala nodos de cálculo de datos
+      url: "/install-setup/deploy-hardware.html"
+    - title: Revisa los requisitos de cableado
+      url: "/install-setup/cable-overview.html"
+    - title: Herrajes para cables
+      url: "/install-setup/cable-hardware.html"
+    - title: Encender el sistema
+      url: "/install-setup/power-on-hardware.html"
+- title: Configura tu sistema AIDE
+  entries:
+  - title: Configura AIDE con un clúster AFX
+    url: "/install-setup/cluster-setup-afx.html"
+  - title: Instala una licencia AIDE
+    url: "/install-setup/install-license-task.html"
+  - title: Configura la autenticación OIDC
+    url: "/install-setup/configure-oidc.html"

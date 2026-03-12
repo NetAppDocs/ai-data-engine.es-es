@@ -1,0 +1,24 @@
+---
+section: administer
+title: Administrar y monitorear
+entries:
+- title: Supervisa los procesos del clúster
+  entries:
+  - title: Ver el panel y el estado del clúster
+    url: "/administer/view-dashboard.html"
+  - title: Ver insights
+    url: "/administer/view-insights.html"
+  - title: Ver eventos, trabajos y registro de auditoría
+    url: "/administer/view-events-log.html"
+- title: Gestiona espacios de trabajo
+  url: "/administer/manage-workspace.html"
+- title: Actualiza y mantén tu sistema AIDE
+  entries:
+  - title: Actualizaciones del sistema AIDE y compatibilidad
+    url: "/administer/upgrades-aide-summary.html"
+  - title: Actualizar el software AIDE
+    url: "/administer/update-aide-firmware-software.html"
+  - title: Agrega nodos a tu clúster AIDE
+    url: "/administer/dcn-add-node.html"
+  - title: Sustituye un nodo AIDE
+    url: "/administer/aide-node-replace.html"

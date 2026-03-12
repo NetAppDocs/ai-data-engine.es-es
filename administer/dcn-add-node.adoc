@@ -1,0 +1,118 @@
+---
+sidebar: sidebar 
+permalink: administer/dcn-add-node.html 
+keywords: aide, ai data engine, data compute node, dcn, add dcn, expand dcn cluster 
+summary:  
+---
+= Agrega nodos de cómputo de datos a tu clúster de AIDE
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes agregar data compute nodes (DCNs) como parte de la creación de un nuevo clúster AI Data Engine (AIDE) o de la expansión de un clúster existente. El flujo de trabajo consiste en descubrir y configurar los nodos usando ONTAP System Manager.
+
+
+
+== Prepárate para añadir nodos
+
+Hay varias consideraciones a tener en cuenta al añadir nodos DCN.
+
+.Al crear un nuevo AIDE cluster
+Se requieren exactamente tres nodos DCN para un nuevo clúster AIDE.
+
+.Instalación de hardware y direccionabilidad
+Asegúrate de que se cumplen los siguientes requisitos previos:
+
+* El nuevo hardware DCN está en el rack, encendido y cableado a los switches del clúster.
+* Tienes un rango de espacio de direcciones IP disponible para la subred de backend de DCN a ONTAP.
+* El clúster ONTAP se ha inicializado y es accesible desde el LIF de gestión del clúster.
+
+
+.Credenciales de System Manager
+Necesitas privilegios de _administrador de almacenamiento_ para realizar tareas de creación o ampliación de clústeres de AIDE.
+
+.Compatibilidad del software
+Revisa la siguiente documentación para confirmar que las versiones de hardware y software de DCN son compatibles con tu clúster ONTAP:
+
+* link:../administer/upgrades-aide-summary.html["El software DCN es compatible con la versión ONTAP"].
+
+
+Durante la operación de adición de nodos, System Manager confirmará que los nuevos nodos ejecutan una versión de software compatible con:
+
+* La versión efectiva del clúster ONTAP (ECV) si esta es la primera unión a DCN.
+* La versión existente del clúster DCN si los DCNs ya están presentes.
+
+
+Si un nodo es incompatible:
+
+* Se muestra un error junto al DCN afectado en el cuadro de diálogo *Add*.
+* Primero tienes que actualizar el software DCN (u ONTAP, según corresponda) a una versión compatible.
+
+
+
+
+== Agrega los nodos de cálculo de datos
+
+Agregas nodos DCN como parte de crear un nuevo clúster AIDE o de expandir un clúster existente.
+
+.Pasos
+. En System Manager, selecciona *Dashboard* en el panel de navegación y luego la tarjeta *Health*.
+. Confirma que hay nodos para añadir y selecciona *Ver detalles* para mostrar la lista.
++
+La lista contiene nodos descubiertos que aún no forman parte del AIDE cluster
+
+. O también puedes seleccionar *Cluster* y *Overview* y la pestaña *Data compute* para ver la lista.
+. En la parte inferior de la página de cálculo de datos, selecciona *Add* encima de la lista de nodos.
+. En el cuadro de diálogo *Add data compute nodes*, selecciona los nodos DCN que quieres añadir.
++
+Opcionalmente, puedes renombrar nodos individuales antes de añadirlos.
+
+. Si es la primera vez que añades nodos y no existe ninguna subred de backend, selecciona *Add subnet* y proporciona:
++
+** Nombre de subred (para uso interno)
+** Dirección de subred y máscara
+** Rango de direcciones IP para los nodos DCN y ONTAP en esta red backend
++
+System Manager valida que el rango incluye suficientes direcciones IP libres para todas las DCN que se están añadiendo, todos los nodos ONTAP del clúster y direcciones IP flotantes adicionales a nivel de clúster usadas para la comunicación de DCN a ONTAP.
+
+
+
+. Si añadiste la subred de backend o si ya existe:
++
+.. Revisa las direcciones IP disponibles.
+.. Si es necesario, selecciona *Editar subred* y amplía el rango de direcciones IP.
++
+*** Sólo puedes aumentar el rango. No se admite reducir ni cambiar la subred.
+*** Cambiar la subred o el rango de IP puede requerir recrear el clúster de Kubernetes subyacente en DCNs y puede tomar varios minutos.
+
+
+
+
+. Opcionalmente configura la interfaz de servicio de Data Engine proporcionando:
++
+** Dirección IP del servicio
+** Máscara de red
+** Puerta de enlace (si es necesaria para tu entorno)
++
+La dirección IP única se equilibrará en carga entre las DCN y se usará como dirección de frontend para la AI Data Engine Console y las API relacionadas.
+
+
+
+. Revisa los nodos seleccionados, la subred del backend y la configuración de la interfaz de servicio de Data Engine.
+. Selecciona *Add* y espera a que se complete la operación. System Manager realizará las siguientes acciones:
++
+** Agrega los nodos seleccionados al clúster DCN
+** Aprovisiona la red backend y une los nodos al clúster DCN basado en Kubernetes
+** Actualiza los metadatos internos para el descubrimiento de DCN
+
+
+. Después de completar, selecciona *Cluster* y *Overview* y confirma:
++
+.. En *Data compute* las nuevas DCN aparecen como parte del clúster
+.. Todos los nodos están *Healthy*
+.. Verifica que la tarjeta *Salud* del panel de control muestre el recuento de nodos actualizado
+
+
+

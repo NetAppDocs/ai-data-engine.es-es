@@ -1,0 +1,103 @@
+---
+sidebar: sidebar 
+permalink: administer/upgrades-aide-summary.html 
+keywords: update, firmware, system files, automatic updates, ai data engine, aide 
+summary: Conoce los diferentes componentes de un sistema AI Data Engine que deben mantenerse actualizados. 
+---
+= Actualizaciones y compatibilidad del sistema AI Data Engine
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mantén actualizados los componentes del sistema AI Data Engine (AIDE) para mantener un rendimiento óptimo y acceso a nuevas funciones. Actualiza los componentes después de la implementación, cuando haya nuevo software o firmware disponible, cuando agregues o reemplaces nodos, o periódicamente para actualizaciones de funciones.
+
+
+
+== Componentes del sistema AIDE
+
+Hay dos componentes principales que requieren actualizaciones en un sistema AIDE: el software ONTAP y el software AIDE, que incluye el firmware DCN.
+
+
+
+=== Software ONTAP
+
+ONTAP es el sistema operativo que se ejecuta en los sistemas de almacenamiento NetApp, incluidos los que se usan en las implementaciones de AIDE. Mantén ONTAP actualizado para preservar la estabilidad, la seguridad y la compatibilidad del sistema con los componentes de AIDE. Los componentes de AIDE se actualizan por separado.
+
+
+
+=== Actualizaciones de AI Data Engine software
+
+Las actualizaciones del software de AIDE Console y del firmware de DCN se distribuyen juntas como un único paquete (.tgz) y no están integradas en las imágenes de ONTAP. Las actualizaciones garantizan el correcto funcionamiento de los componentes de hardware dentro del sistema AIDE y proporcionan nuevas funciones, mejoras de rendimiento y correcciones de errores.
+
+
+
+== Entiende el proceso de actualización
+
+Las actualizaciones del software AIDE se pueden gestionar a través de ONTAP System Manager.
+
+AIDE no soporta la funcionalidad de actualizaciones automáticas de software de ONTAP. Puedes registrarte para recibir notificaciones de link:https://mysupport.netapp.com/site/downloads["NetApp Support Site descargas"^], pero todas las actualizaciones del software de AIDE se hacen manualmente por el admin.
+
+Tipos de lanzamiento y alcance:
+
+* Las versiones principales de ONTAP (9.x.x) y las versiones principales de AIDE (9.x.x U0) introducen nuevas funciones, API o cambios que afectan la integración de ONTAP.
+* Las versiones de parches de ONTAP (9.x.x Px) y las versiones de actualización de AIDE (9.x.x Ux) contienen correcciones y actualizaciones que no afectan la integración de ONTAP.
+
+
+
+
+== Matriz de compatibilidad
+
+Asegúrate de la compatibilidad entre ONTAP y el software AIDE cuando planees actualizaciones.
+
+El software de AIDE se publica como lanzamientos "U". Un lanzamiento principal de AIDE es un lanzamiento "U0" y los lanzamientos menores posteriores serán "U1" y posteriores.
+
+
+
+=== Compatibilidad de ONTAP y AIDE
+
+[cols="1,1"]
+|===
+| Lanzamientos de AIDE | Versiones compatibles de ONTAP 
+
+
+| 9.18.1 U0 | 9.18.1 GA y todos los 9.18.1 Px 
+
+
+| 9.18.1 U1 y posteriores | 9.18.1 GA y todos los 9.18.1 Px 
+|===
+[NOTE]
+====
+"Px" indica todas las versiones de parches de ONTAP en la versión principal (por ejemplo, 9.18.1 P1, 9.18.2 y otras).
+
+====
+
+
+=== Vías de actualización de AIDE
+
+Los siguientes ejemplos usan versiones futuras hipotéticas para mostrar las rutas de actualización y mejora permitidas desde AIDE 9.18.1 U0 y 9.18.1 U1.
+
+[cols="25,25,50"]
+|===
+| Si tu versión actual de AIDE es… | Y tu versión objetivo de AIDE es… | Tu ruta de actualización es… 
+
+
+| 9.18.1 U0 | 9.18.1 U1 | Directo 
+
+
+| 9.18.1 U0 | 9.18.1 U3 | Directo (puedes actualizar desde cualquier Ux a cualquier Ux posterior en 9.18.1) 
+
+
+| 9.18.1 U1 | 9.18.1 U3 | Directo (puedes actualizar desde cualquier Ux a cualquier Ux posterior en 9.18.1) 
+|===
+
+
+== Limitaciones de reversión
+
+Los sistemas AIDE no admiten operaciones de reversión para DCN firmware, actualizaciones de software AIDE o ONTAP en sistemas de almacenamiento AFX. Después de instalar una actualización o una mejora, no puedes revertir a una versión anterior. Revisa <<Matriz de compatibilidad,requisitos de compatibilidad>> antes de actualizar o mejorar.
+
+.Información relacionada
+* https://docs.netapp.com/us-en/ontap-afx/administer/upgrade-ontap.html["Actualiza el software ONTAP para sistemas AFX"^]
+* link:update-aide-firmware-software.html["Actualizar el software AIDE"]
+

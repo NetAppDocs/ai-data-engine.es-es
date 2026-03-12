@@ -1,0 +1,86 @@
+---
+sidebar: sidebar 
+permalink: administer/aide-node-replace.html 
+keywords:  
+summary:  
+---
+= Reemplaza un nodo en tu clúster AIDE
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Necesitas reemplazar un nodo de cómputo de datos (DCN) en tu clúster de AI Data Engine (AIDE) si deja de funcionar o necesita ser cambiado por una falla de hardware, actualización o mantenimiento. Esto asegura que el clúster de AIDE se mantenga saludable y operativo. El procedimiento se puede realizar sin interrumpir los servicios en curso.
+
+
+
+== Prepárate para reemplazar un nodo
+
+Hay varias cosas que debes tener en cuenta antes de reemplazar un nodo en tu clúster AIDE.
+
+.Credenciales de System Manager
+Necesitas privilegios de _administrador de almacenamiento_ para realizar tareas de reemplazo de nodo del clúster de AIDE.
+
+
+
+=== Restricciones
+
+Debes tener en cuenta las siguientes restricciones cuando reemplaces un nodo en tu clúster de AIDE:
+
+* La sustitución de nodos solo se admite usando la CLI y, opcionalmente, la API de REST.
+* No puedes realizar la sustitución de nodos usando System Manager.
+* El nuevo nodo debe coincidir con la versión de software del clúster; ONTAP lo actualizará si es necesario.
+* El nodo que ha fallado no debe estar encendido mientras esté conectado a la red del clúster para evitar conflictos de dirección IP.
+
+
+
+
+=== Requisitos
+
+Vas a necesitar lo siguiente:
+
+* Número de serie del nuevo nodo de reemplazo
+
+
+
+
+== Reemplaza un nodo DCN en tu clúster AIDE
+
+Puedes reemplazar un nodo DCN en tu clúster AIDE usando el siguiente procedimiento.
+
+.Pasos
+. Retira físicamente el nodo averiado
++
+Apaga y desconecta el nodo de la red del clúster. Asegúrate de que el nodo no esté arrancado en la red durante el proceso de reemplazo.
+
+. Elimina el nodo que ha fallado del clúster usando el siguiente comando:
++
+`dcn cluster node delete -name <node_name> -force true`
+
++
+Indica el nombre real para el valor <node_name>.
+
+. Conecta físicamente el nuevo nodo al clúster
++
+Asegúrate de que el nodo está cableado, encendido y se puede detectar.
+
+. Visualiza los nodos detectables y no configurados para verificar que el nuevo nodo está en línea:
++
+`dcn cluster node show -membership available`
+
+. Agrega el nodo al clúster usando el siguiente comando:
++
+`dcn cluster node create -serial-number <new_node_serial>`
+
++
+ONTAP asignará una dirección IP para el nuevo nodo. Si la versión de software del nodo no coincide con la del clúster, ONTAP actualizará automáticamente el nodo.
+
+. Verifica la salud del clúster y la integración de nodos con cualquiera de los siguientes comandos:
++
+`dcn cluster node show`
+
++
+`dcn cluster node show -instance`
+
+

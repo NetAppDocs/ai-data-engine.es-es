@@ -1,0 +1,122 @@
+---
+sidebar: sidebar 
+permalink: install-setup/prepare-hardware.html 
+keywords: aide, ai, data engine, ai data engine, dcn, data compute node, prepare, hardware installation, afx, afx 1k, 
+summary: Prepárate para instalar los nodos de cómputo de datos para AI Data Engine en tu entorno ONTAP y registra el hardware para acceder a los beneficios de soporte. 
+---
+= Prepárate para instalar tus nodos de cómputo de datos para AI Data Engine
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prepárate para instalar tus nodos de cómputo de datos para AI Data Engine preparando el sitio, desempacando las cajas y comparando el contenido de las cajas con el albarán, y registrando el sistema para acceder a los beneficios de soporte.
+
+
+
+== Paso 1: preparar el sitio
+
+Para instalar tus nodos de cálculo de datos, asegúrate de que el sitio y el armario o bastidor que planeas usar cumplen las especificaciones para tu configuración.
+
+.Pasos
+. Usa https://hwu.netapp.com["NetApp Hardware Universe"^] para confirmar que tu sitio cumple los requisitos medioambientales y eléctricos para tus nodos de cómputo de datos.
+. Asegúrate de que tienes suficiente espacio de armario para tus nodos de computación de datos dentro de la instalación existente del sistema de almacenamiento AFX 1K.
++
+** 1U por cada nodo de computación de datos
+** 2U por cada nodo controlador AFX 1K
+** 2U por cada shelf NX224
+** 1U o 2U por switch, según el modelo de switch.
+
+
+
+
+
+
+== Paso 2: desembala las cajas
+
+Después de que te hayas asegurado de que el sitio y el armario o bastidor que planeas usar para tus nodos de computación de datos cumplen con las especificaciones requeridas, desembala todas las cajas y compara el contenido con los elementos del albarán.
+
+.Pasos
+. Abre con cuidado todas las cajas y coloca el contenido de manera organizada.
+. Compara los artículos desembalados con el albarán y anota cualquier discrepancia.
++
+Puedes obtener tu lista de empaquetado escaneando el código QR que está en el lateral de la caja de envío.
+
++
+Los siguientes artículos son algunos de los contenidos que puedes ver en las cajas.
+
++
+[cols="12,9,4"]
+|===
+
+
+| *Hardware* | *Cables* |  
+
+
+ a| 
+** Frontal
+** Kits de raíles con instrucciones
+** Nodo(s) de computación de datos
+
+ a| 
+** Cables de alimentación
+
+|  
+|===
+
+
+
+
+== Paso 3: registra tus nodos de cálculo de datos
+
+Después de asegurarte de que tu sitio cumple con los requisitos para las especificaciones de tu nodo de cálculo de datos y de haber verificado que tienes todas las piezas que pediste, deberías registrar tu sistema.
+
+.Pasos
+. Localiza los números de serie de tus nodos de computación de datos.
++
+Puedes encontrar los números de serie en los siguientes lugares:
+
++
+** En el albarán
+** En tu correo electrónico de confirmación
+** En cada nodo de cálculo de datos o, en algunos sistemas, en el módulo de administración de sistemas de cada nodo de cálculo de datos.
++
+image::../media/drw_ssn_label.svg[Ejemplo del número de serie del sistema]
+
+
+
+. Navega hasta la  http://mysupport.netapp.com/["Sitio de soporte de NetApp"^].
+. Determina si necesitas registrar tu sistema de almacenamiento:
++
+[cols="1a,2a"]
+|===
+| Si eres un... | Sigue estos pasos... 
+
+
+ a| 
+Cliente existente de NetApp
+ a| 
+.. Sign in con tu nombre de usuario y contraseña.
+.. Selecciona *Sistemas* > *Mis sistemas*.
+.. Confirma que aparece el nuevo número de serie.
+.. Si no aparece el número de serie, sigue las instrucciones para nuevos clientes de NetApp.
+
+
+
+
+ a| 
+Nuevo NetApp cliente
+ a| 
+.. Haz clic en *Register Now* para crear una cuenta.
+.. Selecciona *Systems* > *Register Systems*.
+.. Introduce el número de serie del sistema de almacenamiento y los datos solicitados.
+
+
+Una vez que NetApp apruebe tu registro, puedes descargar el software necesario. La aprobación tarda hasta 24 horas.
+
+|===
+
+
+.¿Qué sigue?
+Después de que hayas preparado la instalación de tus nodos de cálculo de datos, link:deploy-hardware.html["instala los Data Compute Node"].

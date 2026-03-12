@@ -1,0 +1,134 @@
+---
+sidebar: sidebar 
+permalink: vectorization/create-data-collections.html 
+keywords: aide, create data collection, rag, data engineer, data scientist, embeddings, ai data engine, indexing 
+summary: 'Crea y publica colecciones de datos a partir de los metadatos del espacio de trabajo en AI Data Engine Console para potenciar retrieval-augmented generation (RAG) y otras cargas de trabajo de IA.' 
+---
+= Crear colecciones de datos en AI Data Engine Console
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Las colecciones de datos son los principales bloques de construcción de RAG en AI Data Engine (AIDE). Como ingeniero de datos o científico de datos, tú defines qué archivos pertenecen a una colección, configuras las opciones de embedding e indexación y publicas la colección para que las aplicaciones puedan consultarla a través de un endpoint de recuperación.
+
+Realizarás todas las tareas de recopilación de datos en la AI Data Engine Console.
+
+.Antes de empezar
+* Necesitas privilegios de _data engineer_ o _data scientist_ en AI Data Engine Console (`\https://<cluster_management_ip>/console`).
+* Tienes acceso al menos a un espacio de trabajo con metadatos extraídos y en estado `Ready`.
+* Has explorado los metadatos del área de trabajo y has identificado consultas o filtros que definen subconjuntos de datos significativos.
+* La licencia del software AI Data Engine está instalada y las funciones de inferencia están habilitadas.
+
+
+
+
+== Crear una colección de datos a partir de los metadatos del espacio de trabajo
+
+.Pasos
+. Ve a *Data Curator > Workspaces* y selecciona el workspace que contiene tus datos de destino.
+. Selecciona *Añadir recogida de datos*.
+. En la página *Crear nueva colección de datos*, haz lo siguiente:
++
+.. Introduce un nombre y una descripción para la colección (por ejemplo, `Support_KB_RAG_EN`).
+.. Elige si la colección debe ser:
++
+*** *Dinámico*: Los archivos nuevos se identifican automáticamente y se añaden a la recopilación de datos según los criterios de filtrado que definas. Esto sucede durante las actualizaciones del espacio de trabajo.
+*** *Estática*: Tú eliges qué archivos se incluyen en la colección. Puedes editar los archivos si la colección de datos está en `draft` estado. Después de que la colección de datos pase a `Published` estado, no se puede editar.
+
+
+
+
+. Especifica el subconjunto de origen:
++
+.. Usa palabras clave y filtros (tipo de archivo, marcas de tiempo y otros atributos) para encontrar los archivos relevantes que quieres incluir.
++
+
+NOTE: Puedes seleccionar un nombre de archivo para abrir una ventana de previsualización del contenido.
+
+
+
+. Agrega estos archivos a la recopilación de datos.
+. Selecciona *Guardar* para finalizar la colección.
+
+
+.Resultado
+Has definido el ámbito de la colección de datos y le has añadido los archivos necesarios. AIDE genera incrustaciones y construye el índice vectorial cuando publicas la colección.
+
+
+TIP: Crea colecciones pequeñas y enfocadas (por ejemplo, por caso de uso o dominio) en lugar de una sola colección de "todo". Esto mejora la relevancia de la recuperación y la facilidad de gestión.
+
+
+
+== Publicar una recopilación de datos
+
+Publica la colección de datos para que pueda ser consultada por aplicaciones de IA a través de un endpoint de recuperación RAG. Publicar genera incrustaciones vectoriales a partir de tus archivos seleccionados y los indexa para búsqueda semántica. Después de que la colección alcanza el estado `Ready`, su endpoint está disponible para que los científicos de datos lo integren en notebooks, pipelines y aplicaciones de IA para retrieval-augmented generation (RAG) y búsqueda.
+
+
+TIP: Para colecciones grandes, considera programar la publicación inicial y las principales re-publicaciones durante las horas de menor actividad para minimizar la contención de recursos.
+
+.Pasos
+. Ve a *Data Curator > Data collections* y selecciona el menú de opciones (image:icon_kabob_horizontal.png["tres puntos azules horizontales"]) para tu colección de datos.
+. Selecciona *Publicar*.
+. Selecciona una configuración de optimización predeterminada o personalizada.
+. Selecciona *Publicar* para iniciar la transformación de datos.
+. En la AIDE Console, abre la vista de detalles de la colección (*Data Curator > Data collections*) para ver las actualizaciones de estado.
+
+
+.Resultado
+La recopilación alcanza el estado `Ready` y está disponible para usarla en aplicaciones posteriores y científicos de datos.
+
+Desde *Data Curator > Data collections*, puedes seleccionar *Copy URI* para obtener la información necesaria para acceder a la data collection usando una API.
+
+
+
+== Actualizar o eliminar una colección de datos
+
+Con el tiempo, puede que necesites perfeccionar o retirar colecciones de datos. Perfeccionar una colección puede implicar ajustar los filtros para agregar o quitar archivos, cambiar la configuración de incrustación o actualizar la descripción de la colección. Eliminar una colección la elimina de forma permanente y hace que su endpoint de recuperación no esté disponible.
+
+
+
+=== Actualizar una recopilación de datos
+
+Puedes actualizar una colección de datos cuando está en estado `draft`.
+
+.Pasos
+. Ve a *Data Curator > Data collections*.
+. Selecciona la colección que quieres modificar.
+. Elige *Editar*.
+. Ajusta cualquiera de los siguientes:
++
+** Nombre y descripción
+** Filtros (rutas, tipos de archivo, etiquetas de clasificación).
+** Ajustes de embedding y chunking.
+
+
+. Guarda tus cambios.
+. Vuelve a publicar la colección para que la nueva definición y los embeddings surtan efecto.
+
+
+.Resultado
+Se ejecuta un nuevo trabajo de indexación con la configuración actualizada, y la colección vuelve a un `Ready` estado cuando finaliza.
+
+
+
+=== Borrar una colección
+
+Eliminar una colección es permanente. Asegúrate de que ninguna aplicación de producción sigue dependiendo del endpoint de recuperación de la colección antes de eliminarla.
+
+.Pasos
+. Ve a *Data Curator > Data collections* y selecciona el menú de opciones (image:icon_kabob_horizontal.png["tres puntos azules horizontales"]) de la colección.
+. Elige *Borrar*.
+. Confirma la eliminación.
+
+
+.Resultado
+La definición de la colección y sus incrustaciones se eliminan de AI Data Engine. Las aplicaciones que intenten consultar el antiguo punto final de recuperación fallarán después de que se elimine la colección.
+
+
+
+== ¿Qué sigue?
+
+* link:view-data-collections.html["Ver colecciones de datos"]
+

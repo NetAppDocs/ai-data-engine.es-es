@@ -1,0 +1,106 @@
+---
+sidebar: sidebar 
+permalink: get-started/aide-components.html 
+keywords: aide, architecture, ontap, logical components, networking, security 
+summary: Cada componente de AIDE desempeña un papel específico en el descubrimiento de datos, la curación, la gobernanza y la integración con aplicaciones, con interacciones que varían según el rol del usuario. 
+---
+= Componentes de AI Data Engine e interacciones basadas en roles
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+AI Data Engine (AIDE) consta de muchos componentes básicos que trabajan juntos para proporcionar una plataforma integral de gestión y procesamiento de datos para cargas de trabajo de IA. Estos componentes incluyen espacios de trabajo, colecciones de datos, bases de datos vectoriales, guardrails, catálogos de metadatos, endpoints de recuperación y clasificadores. Cada componente desempeña un papel específico en permitir el descubrimiento, la curación, la gobernanza y la integración eficientes de los datos con las aplicaciones de IA/ML.
+
+Cada usuario de AIDE interactúa con los componentes de AIDE de forma diferente según su rol.
+
+
+
+== Funciones de usuario centradas en el almacenamiento y los datos
+
+AIDE introduce nuevos roles de usuario mientras sigue admitiendo los roles tradicionales de administración del sistema ONTAP:
+
+
+
+=== Usuarios de almacenamiento
+
+* *Administrador de almacenamiento*: gestiona la configuración del clúster AFX y AIDE, la red, el aprovisionamiento de almacenamiento y el acceso de usuarios.
+
+
+
+
+=== Usuarios de datos
+
+* *Ingeniero de datos*: construye y optimiza canalizaciones de IA/ML, gestiona recopilaciones de datos e integra modelos de IA.
+* *Científico de datos*: descubre, conserva y analiza conjuntos de datos, crea colecciones de datos y aprovecha los puntos finales de recuperación para aplicaciones GenAI.
+
+
+[cols="2h,3"]
+|===
+| Rol (nombre RBAC) | Descripción 
+
+
+| Administrador de almacenamiento (`admin`) | Gestiona la configuración de clústeres AFX y AIDE, redes, aprovisionamiento de almacenamiento y acceso de usuarios. Asigna roles RBAC a los usuarios que determinan el nivel de acceso a las interfaces y funciones de AIDE. Este rol de administrador tiene acceso completo a la gestión usando ONTAP System Manager y AI Data Engine Console. 
+
+
+| Ingeniero de datos (`data-engineer` | Crea y optimiza canalizaciones de IA/ML, gestiona colecciones de datos e integra modelos de IA. Este rol tiene acceso a la AI Data Engine Console para los flujos de trabajo de ingeniería de datos. 
+
+
+| Científico de datos (`data-scientist` | Descubre, conserva y analiza conjuntos de datos, crea colecciones de datos y aprovecha los puntos finales de recuperación para aplicaciones de GenAI. Esta función tiene acceso a la AI Data Engine Console para flujos de trabajo de ciencia de datos. 
+|===
+
+
+== Componentes del sistema AIDE
+
+Cada usuario de AIDE (administradores de almacenamiento, ingenieros de datos y científicos de datos) interactúa con los componentes de AIDE según su rol.
+
+
+
+=== Espacios de trabajo
+
+Un espacio de trabajo es un segmento lógico de datos dentro del clúster, que agrupa volúmenes para un proyecto, equipo o flujo de trabajo específico. Los espacios de trabajo definen el alcance de la visibilidad, acceso y gobernanza de los datos en AIDE.
+
+
+
+=== Catálogo de metadatos
+
+Una base de datos centralizada y escalable que almacena registros de metadatos de todos los archivos y objetos en el clúster local, incluidos los datos sincronizados desde clústeres ONTAP remotos usando ONTAP SnapMirror o cluster peering. Permite búsquedas y filtrado interactivos y enriquecidos.
+
+
+
+=== Clasificadores
+
+Los clasificadores son herramientas (integradas o personalizadas) que escanean y etiquetan archivos en busca de tipos específicos de datos sensibles (por ejemplo, PII, financieros, sanitarios) o categorizan documentos por tipo (por ejemplo, legales, de RRHH, de ventas).
+
+
+
+=== Colecciones de datos
+
+Una colección de datos es un grupo curado de archivos u objetos relacionados de un espacio de trabajo, definido por una consulta especificada por el usuario para su uso en flujos de trabajo de GenAI. El contenido de los archivos de la colección de datos, después de su publicación, está disponible para la búsqueda semántica mediante API de REST para aplicaciones de GenAI.
+
+
+
+=== Base de datos vectorial
+
+La base de datos vectorial almacena embeddings generados a partir de colecciones de datos, lo que permite una búsqueda y recuperación semántica de alto rendimiento para aplicaciones de IA y GenAI.
+
+
+
+=== Barreras de protección
+
+Los guardarraíles son mecanismos condicionados por políticas que aplican la gobernanza, la clasificación y la protección de los datos (como la redacción o las restricciones de acceso) durante todo el ciclo de vida de los datos de IA.
+
+
+
+=== Punto final de recuperación (RAG endpoint)
+
+Un endpoint de recuperación (a veces llamado Retrieval-Augmented Generation o "RAG" endpoint) es una API segura que permite a las aplicaciones de IA y GenAI acceder a datos relevantes, contexto o embeddings de colecciones curadas y de la base de datos de vectores.
+
+Los endpoints RAG están diseñados para soportar flujos de trabajo de IA avanzados, como la búsqueda semántica y las respuestas sensibles al contexto en modelos de IA generativa. Al conectar tus aplicaciones de IA a un endpoint de recuperación, puedes mejorar la precisión y relevancia del modelo proporcionando acceso en tiempo real a conjuntos de datos curados y listos para IA gestionados por AIDE.
+
+.Información relacionada
+* link:aide-components-storage-admin.html["Cómo trabajan los administradores de almacenamiento de AIDE con los componentes de AIDE"]
+* link:aide-components-data-users.html["Cómo los ingenieros de datos de AIDE trabajan con los componentes de AIDE"]
+* link:aide-components-data-users.html["Cómo trabajan los científicos de datos de AIDE con los componentes de AIDE"]
+

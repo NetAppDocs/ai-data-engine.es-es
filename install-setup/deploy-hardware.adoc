@@ -1,0 +1,37 @@
+---
+sidebar: sidebar 
+permalink: install-setup/deploy-hardware.html 
+keywords: aide, ai, data engine, ai data engine, dcn, data compute node, afx, afx 1k, install, setup, hardware, deploy, 
+summary: Aprende cómo instalar los kits de raíles y asegurar los nodos de computación de datos en el armario. 
+---
+= Instala tus nodos de cómputo de datos para AI Data Engine
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Instala y asegura tus nodos de computación de datos en el armario.
+
+.Antes de empezar
+* Asegúrate de tener las instrucciones que vienen con el kit de raíles.
+* Entiende las preocupaciones de seguridad relacionadas con el peso del nodo de computación de datos, el sistema de almacenamiento y la estantería de almacenamiento.
+* Entiende que el flujo de aire a través del sistema de almacenamiento entra por la parte frontal, donde están instalados el frontal o las tapas, y sale por la parte trasera, donde se encuentran los puertos.
+
+
+
+NOTE: En general, los switches deben instalarse en el centro del armario. Los estantes de almacenamiento deben instalarse debajo del switch y encima de un segundo switch instalado. Los nodos controladores pueden instalarse encima o debajo de los switches dentro del armario. Los nodos de computación de datos pueden instalarse encima o debajo de los nodos controladores dentro del armario.
+
+.Pasos
+. Instala los kits de raíles para tus nodos de cálculo de datos, según sea necesario, usando las instrucciones incluidas con los kits.
+. Instala y asegura tus nodos de computación de datos en el armario:
++
+.. Coloca el nodo de data compute en los raíles en el centro del armario y luego sujeta el appliance desde abajo y deslízalo hasta colocarlo en su sitio.
+.. Asegura el nodo de computación de datos al armario usando los tornillos de montaje incluidos.
+
+
+. Coloca el frontal en la parte delantera del nodo de cálculo de datos.
+
+
+.¿Qué sigue?
+Después de que hayas instalado los nodos de cálculo de datos, link:cable-hardware.html["cablea los nodos de cálculo de datos para AIDE"].

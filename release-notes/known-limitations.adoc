@@ -1,0 +1,84 @@
+---
+sidebar: sidebar 
+permalink: release-notes/known-limitations.html 
+keywords: limitations, known issues, AI Data Engine, AIDE, metadata engine, ONTAP 9.18.1 
+summary: Las limitaciones conocidas identifican plataformas, dispositivos o funciones que no son compatibles con esta versión del producto o que no interoperan correctamente con él. Revisa estas limitaciones cuidadosamente. 
+---
+= Limitaciones conocidas de AI Data Engine
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Las limitaciones conocidas identifican plataformas, dispositivos o funciones que no son compatibles con esta versión del producto o que no interoperan correctamente con él. Revisa estas limitaciones cuidadosamente.
+
+
+
+== Limitaciones conocidas para el lanzamiento inicial de AIDE 9.18.1
+
+Estas limitaciones se aplican a Metadata Engine, los nodos de computación de datos y los flujos de trabajo de administración en AIDE 9.18.1.
+
+
+
+=== Requisitos y gestión de los nodos de computación
+
+* **Requisito mínimo de nodo de computación de datos**
++
+Los clusters AIDE requieren un mínimo y un máximo de 3 nodos de computación de datos (DCNs) para la funcionalidad de Metadata Engine. Los clusters con menos de 3 DCNs no pueden habilitar las funciones de Metadata Engine.
+
+* **No hay soporte para añadir nodos DCN usando NetApp Console**
++
+Las actualizaciones y adiciones de nodos DCN deben realizarse usando ONTAP System Manager, no a través de NetApp Console.
+
+
+
+
+
+=== Fuentes de datos compatibles
+
+* **No se admiten los buckets S3 de ONTAP ni StorageGRID como fuentes de datos**
++
+Sólo se admiten volúmenes ONTAP (locales o remotos) como fuentes de datos para espacios de trabajo y catalogación de metadatos. Los buckets S3 de ONTAP y los objetos StorageGRID no se pueden añadir a espacios de trabajo y no están indexados por el Metadata Engine en esta versión.
+
+* **No se admite la creación de espacios de trabajo con volúmenes FlexCache**
++
+No se pueden añadir los volúmenes FlexCache como fuentes de datos a los espacios de trabajo.
+
+
+
+
+
+=== Limitaciones de actualización y reversión de software
+
+* **Actualizaciones manuales de software solo para nodos DCN**
++
+Las actualizaciones automáticas de software para los clústeres DCN no son compatibles en AIDE 9.18.1. El software de los nodos DCN solo se puede actualizar subiendo la imagen desde un cliente local. No se admite la descarga de imágenes desde servidores externos (HTTP/FTP).
+
+* **No revertir el software del clúster DCN**
++
+El software del clúster DCN no se puede revertir a una versión anterior. Solo se permiten las actualizaciones a versiones posteriores.
+
+* **No ONTAP revert de clústeres de almacenamiento AFX**
++
+Los clusters de almacenamiento AFX no pueden revertirse a versiones anteriores de ONTAP. Solo se permiten actualizaciones a versiones posteriores.
+
+
+
+
+
+=== Ciclo de vida del workspace y configuración del acceso
+
+* **No hay borrado suave ni restauración para espacios de trabajo**
++
+Eliminar un espacio de trabajo es permanente. No hay opción para restaurar los espacios de trabajo eliminados.
+
+* **No hay soporte para la configuración de OIDC durante la configuración inicial del clúster**
++
+La configuración de OIDC/OAuth debe realizarse después de la creación del clúster usando ONTAP System Manager.
+
+
+
+.Información relacionada
+* link:whats-new.html["Novedades en AI Data Engine"]
+
