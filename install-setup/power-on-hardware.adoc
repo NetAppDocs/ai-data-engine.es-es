@@ -14,7 +14,7 @@ summary: Enciende cada estantería para asignar un ID de estantería único, enc
 Después de instalar el hardware del bastidor y cablear tus nodos de cálculo de datos, deberías encender tus DCN y tus nodos controladores para el sistema de almacenamiento AFX si aún no están encendidos.
 
 .Antes de empezar
-* Asegúrate de que tus estanterías están encendidas y que cada una tiene asignado un ID de estantería único. Para información sobre cómo asignar IDs de estantería para el sistema de almacenamiento AFX, consulta el link:https://docs.netapp.com/us-en/ontap-afx/install-setup/power-on-hardware.html#step-1-power-on-the-shelf-and-assign-shelf-id["Asigna identificadores de estantería únicos"^].
+* Asegúrate de que tus estanterías están encendidas y que cada una tiene asignado un ID de estantería único. Para información sobre cómo asignar IDs de estantería para el sistema de almacenamiento AFX, consulta el link:https://docs.netapp.com/us-en/ontap-afx/install-setup/power-on-hardware.html#step-1-power-on-the-shelf-and-assign-shelf-id["documentación sobre la asignación de identificadores únicos de estantería"^].
 
 
 .Pasos

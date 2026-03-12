@@ -38,7 +38,7 @@ Si vas a añadir un clúster de nodos Data Compute Node a un sistema de almacena
 
 ==== Agrega los Data Compute Node al clúster
 
-ONTAP detecta dinámicamente los nuevos Data Compute Node conectados a tu red de clúster y los muestra en System Manager. También puedes link:../administer/dcn-add-node.html["Agrega nodos de cómputo de datos a tu clúster de AIDE"]. Ten en cuenta lo siguiente:
+ONTAP detecta dinámicamente los nuevos Data Compute Node conectados a tu red de clúster y los muestra en System Manager. También puedes link:../administer/dcn-add-node.html["agrega nodos de cómputo de datos a tu clúster de AIDE"]. Ten en cuenta lo siguiente:
 
 * Los Data Compute Node deben estar conectados físicamente a los switches del cluster. Se requieren exactamente tres DCN cuando creas un AIDE cluster.
 * Debes tener suficientes direcciones IP para la red DCN y otra información de configuración de red necesaria.
@@ -70,7 +70,7 @@ Puedes configurar los protocolos de red de la máquina virtual de almacenamiento
 
 . Selecciona *Actualizar software de Data Compute Node*.
 +
-Si hay una imagen de software de Data Compute disponible para actualización, esta opción estará habilitada. Selecciona esta opción para abrir la página de actualización del software de Data Compute. También consulta link:../administer/update-aide-firmware-software.html["Actualizar AI Data Engine software"].
+Si hay una imagen de software de Data Compute disponible para actualización, esta opción estará habilitada. Selecciona esta opción para abrir la página de actualización del software de Data Compute. Para más información, consulta link:../administer/update-aide-firmware-software.html["Actualizar AI Data Engine software"].
 
 . Selecciona *Configurar la red del motor de datos*.
 +

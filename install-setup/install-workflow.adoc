@@ -15,7 +15,7 @@ Para instalar y configurar tus nodos de computación de datos (DCN), revisa los 
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:install-setup-requirements.html["Revisa los requisitos de instalación del hardware"]
 [role="quick-margin-para"]
-Asegúrate de que ya tienes instalado un sistema de almacenamiento AFX 1K y luego revisa los requisitos de hardware para instalar los nodos de cómputo de datos para AIDE. Para información sobre la instalación del sistema de almacenamiento AFX 1K, consulta el link:https://docs.netapp.com/us-en/ontap-afx/install-setup/install-setup-workflow.html["Instala tu sistema de almacenamiento AFX 1K"^].
+Asegúrate de que ya tienes instalado un sistema de almacenamiento AFX 1K y luego revisa los requisitos de hardware para instalar los nodos de cómputo de datos para AIDE. Para información sobre cómo instalar el sistema de almacenamiento AFX 1K, consulta link:https://docs.netapp.com/us-en/ontap-afx/install-setup/install-setup-workflow.html["Documentación de instalación del sistema de almacenamiento AFX 1K"^].
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dos"]link:prepare-hardware.html["Prepárate para instalar tus nodos de cálculo de datos"]
 [role="quick-margin-para"]

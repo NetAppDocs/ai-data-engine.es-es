@@ -20,9 +20,9 @@ Estos procedimientos muestran configuraciones comunes. El cableado específico d
 NOTE: No necesitas apagar el sistema de almacenamiento AFX 1K cuando estés cableando los nodos de cálculo de datos. Puedes agregar los nodos de cálculo de datos a un sistema de almacenamiento AFX 1K existente que ya esté encendido y configurado.
 
 .Antes de empezar
-* Ya tienes instalado un sistema de almacenamiento AFX 1K. Para información sobre cómo instalar el sistema de almacenamiento AFX 1K, consulta link:https://docs.netapp.com/us-en/ontap-afx/install-setup/install-setup-workflow.html["instala tu sistema de almacenamiento AFX 1K"^].
+* Ya tienes instalado un sistema de almacenamiento AFX 1K. Para información sobre cómo instalar el sistema de almacenamiento AFX 1K, consulta link:https://docs.netapp.com/us-en/ontap-afx/install-setup/install-setup-workflow.html["Documentación de instalación del sistema de almacenamiento AFX 1K"^].
 * Tienes instalados y configurados los switches de red necesarios. Habla con tu administrador de red para saber cómo conectar el sistema a tus switches de red.
-* Has revisado la link:../install-setup/cable-overview.html["requisitos de cableado para los Data Compute Node"^].
+* Has revisado la link:../install-setup/cable-overview.html["requisitos de cableado para los Data Compute Node"].
 
 
 
