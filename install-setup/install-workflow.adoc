@@ -19,7 +19,7 @@ Asegúrate de que ya tienes instalado un sistema de almacenamiento AFX 1K y lueg
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dos"]link:prepare-hardware.html["Prepárate para instalar tus nodos de cálculo de datos"]
 [role="quick-margin-para"]
-Para preparar la instalación de tus nodos de cálculo de datos, necesitas preparar el sitio, comprobar los requisitos ambientales y eléctricos, y asegurarte de que hay suficiente espacio en el armario. Luego, desempaqueta el equipo, compara su contenido con el albarán y registra el hardware para acceder a los beneficios de soporte.
+Para preparar la instalación de tus nodos de cálculo de datos, necesitas dejar listo el sitio, revisar los requisitos ambientales y eléctricos, y asegurarte de que haya suficiente espacio en el armario. Luego, desempaqueta el equipo, compara su contenido con el albarán de embalaje y registra el hardware para acceder a los beneficios de soporte. Se requiere un mínimo de tres nodos de cálculo de datos para desplegar el AI Data Engine.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Tres"]link:deploy-hardware.html["Instala el hardware para tus nodos de cálculo de datos"]
 [role="quick-margin-para"]
@@ -27,7 +27,7 @@ Instala los kits de raíles para tus nodos de cálculo de datos. Asegura tus nod
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Cuatro"]link:cable-hardware.html["Conecta tus nodos de computación de datos"]
 [role="quick-margin-para"]
-Para cablear el hardware, primero conecta los nodos de cálculo de datos a tu red de datos y clúster, luego conecta los nodos de cálculo de datos a los switches de clúster.
+Para cablear el hardware, primero conecta los nodos de cálculo de datos a tu red de datos y luego conecta los nodos de cálculo de datos a los switches del clúster.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Cinco"]link:power-on-hardware.html["Enciende tus nodos de cálculo de datos"]
 [role="quick-margin-para"]
