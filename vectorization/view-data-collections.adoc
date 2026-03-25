@@ -11,15 +11,15 @@ summary: Usa las herramientas de AI Data Engine para ver colecciones de datos, h
 
 
 [role="lead"]
-Después de que los ingenieros de datos o los científicos de datos creen y publiquen colecciones de datos desde los espacios de trabajo, necesitas visibilidad de su estado, tamaño e impacto en el clúster de AI Data Engine.
+Después de que los ingenieros de datos o los científicos de datos crean y publican colecciones de datos desde los espacios de trabajo, necesitas visibilidad de su estado, tamaño e impacto en el clúster de AI Data Engine (AIDE).
 
 Si eres administrador de almacenamiento, ingeniero de datos o científico de datos, puedes ver las colecciones de datos en ONTAP System Manager y AIDE Console.
 
 .Antes de empezar
-* Necesitas privilegios de _administrador de almacenamiento_ en ONTAP System Manager o privilegios de _ingeniero de datos_ o _científico de datos_ en AI Data Engine Console (`\https://<cluster_management_ip>/console` para ver las colecciones de datos.
+* Necesitas privilegios de _administrador de almacenamiento_ en ONTAP System Manager o privilegios de _ingeniero de datos_ o _científico de datos_ en AIDE Console (`\https://<cluster_management_ip>/console` para ver colecciones de datos.
 * Existe al menos un espacio de trabajo con metadatos extraídos correctamente.
-* Los ingenieros de datos o los científicos de datos han creado y publicado al menos una recopilación de datos desde AI Data Engine Console.
-* La licencia del software AI Data Engine está instalada y las funciones de inferencia están activadas, así que los endpoints de vectorización y recuperación están activos.
+* Los ingenieros de datos o los científicos de datos han creado y publicado al menos una colección de datos desde AIDE Console.
+* La licencia del software AIDE está instalada y las funciones de inferenciación están habilitadas, así que los endpoints de vectorización y recuperación están activos.
 
 
 

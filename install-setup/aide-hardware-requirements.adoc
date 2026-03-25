@@ -11,13 +11,13 @@ summary: Revisa los requisitos para instalar AI Data Engine, incluido el sistema
 
 
 [role="lead"]
-Revisa los requisitos para instalar el AI Data Engine. AIDE requiere un sistema de almacenamiento AFX, un mínimo de tres Data Compute Node, switch de red y cables.
+Revisa los requisitos para instalar AI Data Engine (AIDE). AIDE requiere un sistema de almacenamiento AFX, un mínimo de tres nodos de cómputo de datos, switches de red y cables.
 
 
 
 == Requisitos de hardware
 
-AI Data Engine requiere un sistema de almacenamiento AFX y un mínimo de tres Data Compute Node. El sistema AFX proporciona la infraestructura de almacenamiento, mientras que los Data Compute Node alojan los componentes de software AIDE que permiten la gestión de datos, la curación y las capacidades de IA.
+AIDE requiere un sistema de almacenamiento AFX y un mínimo de tres nodos de computación de datos. El sistema AFX proporciona la infraestructura de almacenamiento, mientras que los nodos de computación de datos alojan los componentes de software de AIDE que permiten la gestión de datos, la curación y las capacidades de AI.
 
 * *Sistema de almacenamiento AFX*: Incluye un controlador AFX, una estantería de discos y un switch de red. El sistema de almacenamiento AFX es necesario para la implementación de AIDE.
 * *Nodos de cálculo de datos*: se requiere un mínimo de tres nodos de cálculo de datos. Los nodos de cálculo de datos son nodos de hardware proporcionados por NetApp que alojan el software AIDE, incluyendo el Metadata Engine, Data Sync, Data Curator y Data Guardrails.
@@ -33,7 +33,7 @@ AI Data Engine requiere un sistema de almacenamiento AFX y un mínimo de tres Da
 
 == Requisitos del switch de red
 
-AI Data Engine requiere switches de red para permitir la conectividad de red de los hosts y la comunicación entre nodos para los data compute nodes.
+AIDE requiere conmutadores de red para habilitar la conectividad de red del host y la comunicación entre nodos para los nodos de cómputo de datos.
 
 * Conmutadores cliente para conectividad de red de host (Cisco Nexus 9332D-GX2B o Cisco Nexus 9364D-GX2A)
 * Conmutadores de clúster para comunicación entre nodos (Cisco Nexus 9332D-GX2B o Cisco Nexus 9364D-GX2A)

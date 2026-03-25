@@ -11,7 +11,7 @@ summary: Revisa el equipo necesario y las precauciones de elevación para tus no
 
 
 [role="lead"]
-Revisa el equipo necesario y las precauciones de elevación para tus nodos de cómputo de datos para AI Data Engine.
+Revisa el equipo necesario y las precauciones de elevación para tus nodos de computación de datos para AI Data Engine (AIDE).
 
 
 

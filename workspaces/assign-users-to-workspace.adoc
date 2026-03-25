@@ -11,9 +11,9 @@ summary: Después de crear un espacio de trabajo, puedes asignar usuarios a ese 
 
 
 [role="lead"]
-Como administrador de almacenamiento, tú asignas usuarios a un espacio de trabajo según sus roles: ingenieros de datos, científicos de datos u otros roles dependiendo de la estructura y las necesidades de tu organización. Los usuarios inician sesión en la AI Data Engine Console (AIDE) con sus credenciales y acceden a los recursos del contenedor de datos dentro del espacio de trabajo asignado.
+Como administrador de almacenamiento, tú asignas usuarios a un espacio de trabajo según sus roles: ingenieros de datos, científicos de datos u otros roles dependiendo de la estructura y necesidades de tu organización. Los usuarios inician sesión en AI Data Engine (AIDE) Console usando sus credenciales y acceden a los recursos del contenedor de datos dentro del espacio de trabajo asignado.
 
-ONTAP System Manager te permite gestionar qué usuarios tienen acceso a los workspaces de AI Data Engine. Puedes añadir o eliminar usuarios para controlar quién puede ver, modificar e interactuar con los datos y las actividades del workspace.
+ONTAP System Manager te permite gestionar qué usuarios tienen acceso a los espacios de trabajo de AIDE. Puedes añadir o eliminar usuarios para controlar quién puede ver, modificar e interactuar con los datos y actividades del espacio de trabajo.
 
 .Antes de empezar
 * Necesitas privilegios de _administrador de almacenamiento_ para gestionar el acceso de los usuarios a los espacios de trabajo.

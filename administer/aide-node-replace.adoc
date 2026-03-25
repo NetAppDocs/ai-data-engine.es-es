@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: administer/aide-node-replace.html 
-keywords:  
-summary:  
+keywords: aide, node replacement, DCN, cluster 
+summary: 'Reemplaza un nodo de cómputo de datos (DCN) en tu clúster de AI Data Engine (AIDE).' 
 ---
-= Reemplaza un nodo en tu clúster AIDE
+= Reemplaza un nodo en tu clúster AI Data Engine
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

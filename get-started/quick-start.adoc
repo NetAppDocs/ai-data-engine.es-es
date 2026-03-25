@@ -11,7 +11,7 @@ summary: Para empezar con un sistema AI Data Engine, instala el hardware, config
 
 
 [role="lead"]
-Para poner en marcha tu sistema AI Data Engine, necesitas instalar tus componentes de hardware, configurar tu clúster, configurar el acceso a los datos desde tus hosts al sistema de almacenamiento y aprovisionar tu almacenamiento.
+Para poner en marcha tu sistema AI Data Engine (AIDE), necesitas instalar tus componentes de hardware, configurar tu clúster, configurar el acceso a los datos desde tus hosts al sistema de almacenamiento y aprovisionar tu almacenamiento.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"] ¿Se instalará AIDE con un nuevo o existente cluster AFX?
 [role="quick-margin-para"]
@@ -27,7 +27,7 @@ Usa ONTAP System Manager para guiarte en un proceso rápido y sencillo para link
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Cuatro"] Configura los espacios de trabajo y el acceso a los datos
 [role="quick-margin-para"]
-link:../workspaces/create-workspace.html["Configura un espacio de trabajo y usuarios para ese espacio de trabajo que puedan acceder a los datos de AI Data Engine"].
+link:../workspaces/create-workspace.html["Configura un espacio de trabajo y usuarios para ese espacio de trabajo que puedan acceder a los datos de AIDE"].
 
 .¿Qué sigue?
-Ahora puedes usar ONTAP System Manager para gestionar tu AI Data Engine y ayudar a que tus ingenieros de datos y científicos de datos comiencen con sus espacios de trabajo y configuraciones.
+Ahora puedes usar ONTAP System Manager para gestionar tu AIDE y hacer que tus ingenieros de datos y científicos de datos empiecen con sus espacios de trabajo y configuraciones.

@@ -11,7 +11,7 @@ summary: Prepárate para instalar los nodos de cómputo de datos para AI Data En
 
 
 [role="lead"]
-Prepárate para instalar tus nodos de cómputo de datos para AI Data Engine preparando el sitio, desempacando las cajas y comparando el contenido de las cajas con el albarán, y registrando el sistema para acceder a los beneficios de soporte.
+Prepárate para instalar tus nodos de cómputo de datos para AI Data Engine (AIDE) preparando el sitio, desempaquetando las cajas y comparando el contenido de las cajas con el albarán de empaque, y registrando el sistema para acceder a los beneficios de soporte.
 
 
 

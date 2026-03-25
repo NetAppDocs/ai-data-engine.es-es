@@ -41,13 +41,13 @@ AIDE introduce nuevos roles de usuario mientras sigue admitiendo los roles tradi
 | Rol (nombre RBAC) | Descripción 
 
 
-| Administrador de almacenamiento (`admin`) | Gestiona la configuración de clústeres AFX y AIDE, redes, aprovisionamiento de almacenamiento y acceso de usuarios. Asigna roles RBAC a los usuarios que determinan el nivel de acceso a las interfaces y funciones de AIDE. Este rol de administrador tiene acceso completo a la gestión usando ONTAP System Manager y AI Data Engine Console. 
+| Administrador de almacenamiento (`admin`) | Gestiona la configuración de clústeres AFX y AIDE, redes, aprovisionamiento de almacenamiento y acceso de usuarios. Asigna roles RBAC a los usuarios que determinan el nivel de acceso a las interfaces y funciones de AIDE. Este rol de administración tiene acceso completo a la gestión usando ONTAP System Manager y AIDE Console. 
 
 
-| Ingeniero de datos (`data-engineer` | Crea y optimiza canalizaciones de IA/ML, gestiona colecciones de datos e integra modelos de IA. Este rol tiene acceso a la AI Data Engine Console para los flujos de trabajo de ingeniería de datos. 
+| Ingeniero de datos (`data-engineer` | Crea y optimiza canalizaciones de IA/ML, gestiona colecciones de datos e integra modelos de IA. Este rol tiene acceso a AIDE Console para flujos de trabajo de ingeniería de datos. 
 
 
-| Científico de datos (`data-scientist` | Descubre, conserva y analiza conjuntos de datos, crea colecciones de datos y aprovecha los puntos finales de recuperación para aplicaciones de GenAI. Esta función tiene acceso a la AI Data Engine Console para flujos de trabajo de ciencia de datos. 
+| Científico de datos (`data-scientist` | Descubre, conserva y analiza conjuntos de datos, crea colecciones de datos y aprovecha los puntos finales de recuperación para aplicaciones GenAI. Esta función tiene acceso a AIDE Console para flujos de trabajo de ciencia de datos. 
 |===
 
 

@@ -11,7 +11,7 @@ summary: Descubre cómo los administradores de almacenamiento interactúan con l
 
 
 [role="lead"]
-Como administrador de almacenamiento, gestionas la infraestructura de AIDE a través de ONTAP y la AIDE Console, aprovisionando espacios de trabajo, adjuntando políticas de guardrail y supervisando el estado del sistema. Tu función se centra en garantizar un almacenamiento de datos fiable, seguro y conforme para las cargas de trabajo de IA.
+Como administrador de almacenamiento, gestionas la infraestructura de AIDE a través de ONTAP y AI Data Engine Console, aprovisionando espacios de trabajo, adjuntando políticas de Data Guardrails y supervisando la salud del sistema. Tu función se centra en garantizar un almacenamiento de datos fiable, seguro y conforme para las cargas de trabajo de IA.
 
 
 
@@ -25,7 +25,7 @@ Como administrador de almacenamiento, gestionas la infraestructura de AIDE a tra
 | ONTAP System Manager | Gestionar (crear, editar, eliminar) | Usas ONTAP System Manager como tu interfaz principal para la administración de clusters, el aprovisionamiento de espacios de trabajo, la gestión de políticas de guardrail y la supervisión del estado del sistema. 
 
 
-| AI Data Engine Console | Gestionar (crear, editar, eliminar) | Usas la AI Data Engine Console para monitorear los espacios de trabajo, ver el estado de la recopilación y supervisar la actividad del sistema en todo el entorno de AIDE. 
+| AIDE Console | Gestionar (crear, editar, eliminar) | Usas la AI Data Engine Console para monitorear los espacios de trabajo, ver el estado de las colecciones y supervisar la actividad del sistema en todo el entorno de AIDE. 
 
 
 | API de REST de ONTAP | Gestionar (crear, editar, eliminar) | Utilizas la API de REST para automatizar tareas de infraestructura, gestionar espacios de trabajo y políticas de barandilla mediante programación, e integrar la administración de AIDE con herramientas y flujos de trabajo externos. 

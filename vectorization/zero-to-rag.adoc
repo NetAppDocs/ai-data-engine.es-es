@@ -16,7 +16,7 @@ Pasa de un sistema AI Data Engine (AIDE) recién desplegado a un endpoint de ret
 
 .Antes de empezar
 * Has instalado y añadido nodos de Data compute (DCNs) al clúster de ONTAP.
-* Has instalado y licenciado el software AI Data Engine para vectorización y guardrails.
+* Has instalado y licenciado el software AIDE para vectorización y guardrails.
 * Has configurado link:../install-setup/configure-oidc.html["OpenID Connect (OIDC)"] y has asignado roles para admin, data engineer y data scientist.
 
 
@@ -48,7 +48,7 @@ Como ingeniero de datos o científico de datos, quieres convertir el subconjunto
 
 
 .¿Qué sigue?
-* link:../guardrails/define-data-policies.html["Define tu patrimonio de datos y las políticas de protección en AI Data Engine"]
-* link:explore-workspace-metadata.html["Explora los metadatos del espacio de trabajo en AI Data Engine Console"]
-* link:create-data-collections.html["Crear colecciones de datos en AI Data Engine Console"]
+* link:../guardrails/define-data-policies.html["Define tu patrimonio de datos y las políticas de Data Guardrails en AIDE"]
+* link:explore-workspace-metadata.html["Explora los metadatos del espacio de trabajo en la AIDE Console"]
+* link:create-data-collections.html["Crear colecciones de datos en AIDE Console"]
 

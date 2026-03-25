@@ -4,14 +4,14 @@ permalink: administer/view-insights.html
 keywords: aide, aide system, insights, view insights 
 summary: Puedes usar la función Insights de ONTAP System Manager para mostrar las actualizaciones de configuración sugeridas que se alinean con las mejores prácticas de NetApp. Estos cambios pueden optimizar la seguridad y el rendimiento, así como otras áreas de tu clúster AIDE. 
 ---
-= Ver información para optimizar tu sistema AIDE
+= Ver Insights para optimizar tu sistema AI Data Engine
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Como administrador de almacenamiento, puedes usar la función _Insights_ de ONTAP System Manager para mostrar las actualizaciones de configuración sugeridas que se alinean con las mejores prácticas de NetApp. Estos cambios pueden optimizar la seguridad y el rendimiento de tu clúster AIDE.
+Como administrador de almacenamiento, puedes usar la función _Insights_ de ONTAP System Manager para mostrar las actualizaciones de configuración sugeridas que se alinean con las mejores prácticas de NetApp. Estos cambios pueden optimizar la seguridad y el rendimiento de tu clúster de AI Data Engine (AIDE).
 
 .Acerca de esta tarea
 Cada una de las insights se presenta como una tarjeta o mosaico independiente en la página que puedes elegir implementar o descartar. También puedes seleccionar el enlace de documentación asociado para aprender más sobre una tecnología específica.

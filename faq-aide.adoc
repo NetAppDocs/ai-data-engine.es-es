@@ -17,7 +17,7 @@ Este FAQ cubre preguntas comunes sobre NetApp AI Data Engine (AIDE), incluyendo 
 
 == Conceptos básicos de AIDE
 
-.¿Qué es NetApp AI Data Engine (AIDE)?
+.¿Qué es NetApp AI Data Engine?
 NetApp AI Data Engine (AIDE) es un servicio de datos de IA integrado en el almacenamiento que abarca todo el ciclo de vida de la IA, desde el descubrimiento y la preparación de datos sin procesar hasta el suministro de puntos finales de recuperación para potenciar la IA generativa (GenAI), Retrieval-Augmented Generation (RAG), agentic AI y fábricas de IA. AIDE automatiza la sincronización y la detección de cambios, proporcionando una vista unificada y actualizada de los datos seleccionados para el descubrimiento y la curación de datos.
 
 .¿Cómo funciona AIDE?
@@ -27,7 +27,7 @@ AIDE se integra directamente con los sistemas de almacenamiento NetApp ONTAP par
 
 == Usuarios y roles
 
-.¿Quién utiliza el AI Data Engine?
+.¿Quién usa AI Data Engine?
 Los usuarios principales de AIDE incluyen:
 
 . *Administradores de almacenamiento ONTAP*: gestionan la infraestructura, las necesidades de almacenamiento específicas de la IA, la seguridad y el cumplimiento.
@@ -45,7 +45,7 @@ AIDE requiere sistemas AFX para el despliegue (incluyendo un controlador AFX, un
 AIDE se ejecuta en un nodo de computación de datos NetApp (DCN). Se requieren tres DCN. El DCN aloja el software AIDE, que incluye el Metadata Engine, Data Sync, Data Curator y Data Guardrails.
 
 .¿Puedo usar mi propio DCN?
-No. La DCN es un nodo de hardware de cálculo de datos proporcionado por NetApp y es el único mecanismo de despliegue para el AI Data Engine.
+No. El DCN es un nodo de hardware de computación de datos proporcionado por NetApp y es el único mecanismo de despliegue para AIDE.
 
 .¿Cuál es el número mínimo de DCN requeridos?
 Se necesitan exactamente tres DCN.
@@ -60,8 +60,8 @@ No. AIDE requiere AFX para el despliegue. AIDE usa Trident para consumir los vol
 
 == Gestión e interfaces
 
-.¿La AIDE Console es parte de NetApp Console o una interfaz separada?
-La AIDE Console es una interfaz de gestión independiente que se ejecuta en los DCN. Usas la AIDE Console para gestionar servicios de AIDE, como Data Guardrails y Data Curator. También puedes usar ONTAP System Manager para monitorear el clúster de AIDE.
+.¿AIDE Console es parte de NetApp Console o una interfaz separada?
+AIDE Console es una interfaz de gestión independiente que se ejecuta en los DCN. Tú usas AIDE Console para gestionar los servicios de AIDE, como Data Guardrails y Data Curator. También puedes usar ONTAP System Manager para monitorear el clúster de AIDE.
 
 
 
@@ -85,7 +85,7 @@ Hay cuatro funciones clave de AIDE:
 
 
 .Data Guardrails
-* Identifica y protege automáticamente los datos confidenciales durante todo el ciclo de vida de la IA. Está disponible a través de AI Data Engine Console.
+* Identifica y protege automáticamente los datos confidenciales durante todo el ciclo de vida de la IA. Es accesible a través de AIDE Console.
 * Escanea, clasifica y categoriza datos de forma continua.
 * Identifica datos sensibles (como PII) y riesgos.
 * Facilita la creación de políticas para el manejo automático de datos sensibles en línea con los estándares de la empresa y las normativas regulatorias.
@@ -111,7 +111,7 @@ AIDE puede conectarse a múltiples clústeres ONTAP usando SnapMirror y cluster 
 AIDE almacena metadatos en el AFX cluster conectado usando un volumen persistente proporcionado por AFX. Las DCNs usan almacenamiento local para operaciones internas.
 
 .¿El Metadata Engine de AIDE clasifica los datos?
-No. El Metadata Engine cataloga los metadatos del sistema de archivos y proporciona API para consultar estos metadatos catalogados.
+No. AIDE Metadata Engine cataloga los metadatos del sistema de archivos y proporciona APIs para consultar estos metadatos catalogados.
 
 .¿Qué fuentes de datos son compatibles?
 AIDE soporta volúmenes ONTAP (locales o remotos) como fuentes de datos. Los clústeres ONTAP remotos deben ejecutar ONTAP 9 y estar conectados mediante cluster peering y SnapMirror.

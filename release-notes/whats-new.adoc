@@ -66,23 +66,23 @@ La versión inicial incluye los siguientes flujos de trabajo:
 
 
 .link:../vectorization/zero-to-rag.html["Capacidades avanzadas de curación y gobierno de datos"]
-Las siguientes funciones están disponibles para los clientes que tengan las licencias adecuadas de AI Data Engine:
+Las siguientes funciones están disponibles para los clientes que tengan las licencias de AIDE adecuadas:
 
-* *Vectorización y RAG*: Creación de colecciones de datos, embeddings y endpoints de recuperación en la AI Data Engine Console, usando metadatos de los workspaces de AIDE.
-* *Gobernanza basada en guardrail*: definición de políticas de guardrail en la AI Data Engine Console y asociación de esas políticas con espacios de trabajo en ONTAP System Manager.
+* *Vectorización y RAG*: creación de colecciones de datos, incrustaciones y puntos finales de recuperación en AI Data Engine Console, utilizando metadatos de los espacios de trabajo de AIDE.
+* *Gobernanza basada en guardrail*: definición de políticas de guardrail en AI Data Engine Console y asociación de esas políticas con espacios de trabajo en ONTAP System Manager.
 
 
 
 
 === Hardware y plataformas compatibles
 
-AI Data Engine 9.18.1 se ejecuta en clústeres de la plataforma de datos ONTAP AI que combinan:
+AIDE 9.18.1 se ejecuta en clústeres de la plataforma de datos ONTAP AI que combinan:
 
 * Nodos de almacenamiento AFX 1K
 * NetApp nodos de computación de datos
 
 
 .Información relacionada
-* link:known-limitations.html["Limitaciones conocidas de AI Data Engine"]
-* link:../get-started/learn-about.html["Conoce la arquitectura y los componentes de AI Data Engine"]
+* link:known-limitations.html["Limitaciones conocidas de AIDE"]
+* link:../get-started/learn-about.html["Conoce la arquitectura y los componentes de AIDE"]
 

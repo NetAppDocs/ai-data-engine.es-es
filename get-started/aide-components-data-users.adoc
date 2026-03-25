@@ -11,7 +11,7 @@ summary: Aprende cómo los ingenieros de datos y los científicos de datos inter
 
 
 [role="lead"]
-Como ingeniero de datos o científico de datos, usas la AI Data Engine Console para explorar los espacios de trabajo a los que te han dado acceso, crear y gestionar colecciones de datos, realizar búsquedas semánticas e integrar endpoints de recuperación en flujos de trabajo de IA/ML.
+Como ingeniero de datos o científico de datos, usas AI Data Engine Console para explorar los espacios de trabajo a los que tienes acceso, crear y gestionar colecciones de datos, realizar búsquedas semánticas e integrar puntos finales de recuperación en flujos de trabajo de AI/ML.
 
 Los ingenieros de datos se centran en transformar los datos brutos en conjuntos de datos listos para la IA creando colecciones, configurando canalizaciones de incrustación y controlando qué usuarios pueden acceder a las colecciones publicadas. Los científicos de datos se centran en aprovechar los conjuntos de datos curados para el análisis, el entrenamiento de modelos y las aplicaciones GenAI, sin gestionar el control de acceso ni la infraestructura.
 
@@ -24,7 +24,7 @@ Los ingenieros de datos se centran en transformar los datos brutos en conjuntos 
 | Componente | Nivel de acceso | Flujo de trabajo del data engineer | Flujo de trabajo del científico de datos 
 
 
-| AI Data Engine Console | Gestionar (crear, editar, eliminar) | La AI Data Engine Console es tu interfaz principal para las tareas cotidianas, incluyendo el descubrimiento de datos, la gestión de colecciones, la configuración de canalizaciones y la publicación de RAG o endpoints de recuperación, para los workspaces a los que tienes autorización para acceder. | AI Data Engine Console es tu interfaz principal para la exploración de datos, el refinamiento y la gestión de versiones de colecciones dentro de los espacios de trabajo a los que puedes acceder, y para conectar conjuntos de datos curados y puntos finales de recuperación con flujos de trabajo de análisis, modelado y GenAI. 
+| AIDE Console | Gestionar (crear, editar, eliminar) | La AI Data Engine Console es tu interfaz principal para las tareas diarias, incluyendo el descubrimiento de datos, la gestión de colecciones, la configuración de canalizaciones y la publicación de RAG o endpoints de recuperación, para los espacios de trabajo a los que tienes autorización para acceder. | AIDE Console es tu interfaz principal para la exploración de datos, el refinamiento y la gestión de versiones de colecciones dentro de los espacios de trabajo a los que puedes acceder, y para conectar conjuntos de datos curados y endpoints de recuperación con flujos de trabajo de análisis, modelado y GenAI. 
 
 
 | API de REST de ONTAP | Gestionar (crear, editar, eliminar) | Usas la API de REST para automatizar las operaciones del ciclo de vida de las colecciones, activar y supervisar las canalizaciones de incrustación e integrar de forma programática los flujos de trabajo de datos con herramientas externas. | Utilizas la API de REST para acceder mediante programación a colecciones de datos, ejecutar consultas de búsqueda vectorial e integrar puntos finales de recuperación en aplicaciones AI/ML y marcos agénticos. 

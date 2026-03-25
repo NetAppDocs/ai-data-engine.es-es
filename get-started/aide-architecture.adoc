@@ -11,7 +11,7 @@ summary: AIDE se basa en una arquitectura escalable y tolerante a fallos que sep
 
 
 [role="lead"]
-AIDE se basa en una arquitectura escalable y tolerante a fallos que separa el almacenamiento y el cómputo, lo que permite un alto rendimiento y flexibilidad para las cargas de trabajo de IA.
+AI Data Engine (AIDE) se basa en una arquitectura escalable y tolerante a fallos que separa el almacenamiento y el cómputo, lo que permite un alto rendimiento y flexibilidad para las cargas de trabajo de IA.
 
 
 
@@ -59,7 +59,7 @@ La conexión de red entre las DCN y los nodos ONTAP se aísla usando VLAN dedica
 
 == Funciones principales de AI Data Engine
 
-Las funciones principales de AI Data Engine (AIDE) trabajan juntas para automatizar, proteger y acelerar el ciclo de vida de los datos de IA. Cada función se implementa como un conjunto de microservicios que se ejecutan en DCNs, integrados con el almacenamiento ONTAP y expuestos a través de API de REST e interfaces de gestión.
+Las funciones principales de AI Data Engine (AIDE) trabajan juntas para automatizar, proteger y acelerar el ciclo de vida de los datos de IA. Cada función se implementa como un conjunto de microservicios que se ejecutan en DCN, integrados con ONTAP storage y expuestos a través de REST APIs e interfaces de gestión.
 
 
 
@@ -107,7 +107,7 @@ El servicio Data Guardrails proporciona gobernanza y protección continuas y aut
 .Licencia y acceso
 La funcionalidad de Data Guardrails no está incluida con la licencia base de ONTAP One y requiere una licencia de AIDE por separado.
 
-Puedes acceder a la funcionalidad de Data Guardrails desde la AI Data Engine Console.
+Puedes acceder a la funcionalidad de Data Guardrails desde la AIDE Console.
 
 .Capacidades
 * Escanea, clasifica y categoriza datos de forma continua.
@@ -127,7 +127,7 @@ El servicio Data Curator permite el descubrimiento, la búsqueda, la vectorizaci
 .Licencia y acceso
 La funcionalidad de Data Curator no está incluida con la licencia base de ONTAP One y requiere una licencia de AIDE por separado.
 
-Puedes acceder a Data Curator a través de la AI Data Engine Console.
+Puedes acceder a Data Curator a través de AIDE Console.
 
 .Capacidades
 * Busca en el almacenamiento datos relevantes usando el catálogo de metadatos centralizado.

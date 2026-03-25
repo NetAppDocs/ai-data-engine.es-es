@@ -70,7 +70,7 @@ Puedes configurar los protocolos de red de la máquina virtual de almacenamiento
 
 . Selecciona *Actualizar software de Data Compute Node*.
 +
-Si hay una imagen de software de Data Compute disponible para actualización, esta opción estará habilitada. Selecciona esta opción para abrir la página de actualización del software de Data Compute. Para más información, consulta link:../administer/update-aide-firmware-software.html["Actualizar AI Data Engine software"].
+Si hay una imagen de software de Data Compute disponible para actualización, esta opción estará habilitada. Selecciona esta opción para abrir la página de actualización del software de Data Compute. Para más información, consulta link:../administer/update-aide-firmware-software.html["Actualizar el software AIDE"].
 
 . Selecciona *Configurar la red del motor de datos*.
 +
@@ -94,7 +94,7 @@ Esto abre la página de espacios de trabajo de Data Engine donde puedes link:../
 
 . Selecciona *Configurar OpenID Connect*.
 +
-Necesitarás link:../install-setup/configure-oidc.html["configura la autenticación OpenID"] para habilitar el acceso a la consola de AIDE.
+Necesitarás link:../install-setup/configure-oidc.html["configura la autenticación OpenID"] para habilitar el acceso a AIDE Console.
 
 
 
@@ -110,10 +110,10 @@ Después de que tu clúster AIDE esté configurado e integrado con el sistema de
 .Pasos
 . link:../install-setup/install-license-task.html["Agrega las licencias necesarias de AIDE"].
 +
-Hay una licencia de AI Data Engine que debes instalar para tener la funcionalidad completa de AIDE, incluidas las capacidades de vectorización y guardrails.
+Existe una licencia de AIDE que debes instalar para disponer de todas las funciones de AIDE, incluidas la vectorización y las capacidades de guardrails.
 
 . link:../install-setup/configure-oidc.html["Configura la autenticación OIDC"].
 +
-Asegúrate de configurar OIDC para todas las implementaciones. Debes configurar OIDC para acceder a la AI Data Engine Console.
+Asegúrate de configurar OIDC para todos los despliegues. Debes configurar OIDC para acceder a AIDE Console.
 
 

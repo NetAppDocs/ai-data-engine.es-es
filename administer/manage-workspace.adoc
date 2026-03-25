@@ -11,7 +11,7 @@ summary: Administra el ciclo de vida de los espacios de trabajo de AI Data Engin
 
 
 [role="lead"]
-Un espacio de trabajo es un conjunto de fuentes de datos (volúmenes) que AI Data Engine (AIDE) usa para crear y actualizar un catálogo de metadatos para un proyecto o caso de uso concreto. Como administrador de almacenamiento, puedes usar ONTAP System Manager para supervisar el estado del espacio de trabajo, ajustar la configuración, controlar las fuentes de datos, gestionar usuarios y eliminar espacios de trabajo cuando ya no los necesites.
+Un espacio de trabajo es un conjunto de fuentes de datos (volúmenes) que AI Data Engine (AIDE) utiliza para crear y actualizar un catálogo de metadatos para un proyecto o caso de uso concreto. Como administrador de almacenamiento, puedes usar ONTAP System Manager para supervisar la salud del espacio de trabajo, ajustar la configuración, controlar las fuentes de datos, gestionar usuarios y eliminar espacios de trabajo cuando ya no los necesites.
 
 .Antes de empezar
 * Necesitas privilegios de _administrador de almacenamiento_ para gestionar los espacios de trabajo.
@@ -44,7 +44,7 @@ NOTE: Si un espacio de trabajo o una colección de datos muestra un estado de er
 ** Estado (como `Published` o `Error`), tamaño y la última hora de actualización.
 +
 
-NOTE: System Manager es de solo lectura para las colecciones de datos. Los ingenieros de datos pueden crear y gestionar colecciones de datos en AI Data Engine Console.
+NOTE: System Manager es de solo lectura para las colecciones de datos. Los ingenieros de datos pueden crear y gestionar colecciones de datos en AIDE Console.
 
 
 
@@ -125,7 +125,7 @@ IMPORTANT: No elimines un volumen de origen de ONTAP que se haya añadido a un e
 
 
 
-NOTE: Eliminar un contenedor de datos de un espacio de trabajo no elimina el volumen ONTAP subyacente ni su relación SnapMirror. Solo afecta el uso de metadatos dentro de AI Data Engine.
+NOTE: Eliminar un contenedor de datos de un espacio de trabajo no elimina el volumen ONTAP subyacente ni su relación SnapMirror. Solo afecta el uso de metadatos dentro de AIDE.
 
 
 

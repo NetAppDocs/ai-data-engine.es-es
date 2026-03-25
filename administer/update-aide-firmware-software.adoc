@@ -16,16 +16,16 @@ Como administrador de almacenamiento, puedes actualizar el software de AI Data E
 AIDE no soporta la funcionalidad de actualizaciones automáticas de software de ONTAP. Puedes registrarte para recibir notificaciones de link:https://mysupport.netapp.com/site/downloads["NetApp Support Site descargas"^], pero todas las actualizaciones del software de AIDE se hacen manualmente por el admin.
 
 .Acerca de esta tarea
-El paquete de software AI Data Engine combinado es significativamente más grande que un paquete de actualización típico de ONTAP (el paquete AIDE es de aproximadamente 40GB). Planea tiempos de carga e instalación más largos cuando actualices el software AIDE.
+El paquete de software AIDE combinado es significativamente más grande que un paquete de actualización típico de ONTAP (el paquete AIDE es de aproximadamente 40GB). Planifica tiempos de carga e instalación más largos cuando actualices el software AIDE.
 
 .Antes de empezar
-* Necesitas privilegios de _administrador de almacenamiento_ para actualizar el firmware de DCN y el software AI Data Engine.
+* Necesitas privilegios de _administrador de almacenamiento_ para actualizar el firmware de DCN y el software AIDE.
 * Necesitas tus credenciales de NetApp Support Site para tu cuenta activa.
-* link:upgrades-aide-summary.html#compatibility-matrix["Asegúrate de la compatibilidad entre ONTAP, el firmware de DCN y el software AI Data Engine al planificar actualizaciones"].
+* link:upgrades-aide-summary.html#compatibility-matrix["Asegúrate de la compatibilidad entre ONTAP, el firmware de DCN y el software AIDE al planificar actualizaciones"].
 
 
 
-IMPORTANT: La función de reversión no es compatible con las actualizaciones de firmware DCN o AI Data Engine software. Después de instalar una actualización, no puedes volver a una versión anterior.
+IMPORTANT: La funcionalidad de revertir no es compatible con el firmware DCN ni con las actualizaciones de software AIDE. Después de instalar una actualización, no puedes volver a una versión anterior.
 
 .Pasos
 . https://mysupport.netapp.com/site/products/all/details/aide/downloads-tab["Descarga el archivo combinado de actualización del firmware DCN y del software AIDE en un cliente local"^].
@@ -40,7 +40,7 @@ NOTE: AI Data Engine Console no está disponible o accesible cuando la actualiza
 
 
 .Resultado
-Los DCN se actualizan con AI Data Engine software y la versión actualizada se muestra para cada nodo.
+Los DCN se actualizan con el software AIDE y la versión actualizada se muestra para cada nodo.
 
 .Información relacionada
 * https://docs.netapp.com/us-en/ontap-afx/administer/upgrade-ontap.html["Actualiza el software ONTAP para sistemas AFX"^]

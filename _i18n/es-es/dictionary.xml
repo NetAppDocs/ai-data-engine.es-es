@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <blocks>
   <block id="d41d8cd98f00b204e9800998ecf8427e" category="summary"></block>
-  <block id="66de116688c3e1a5886489d429240312" category="doc">Reemplaza un nodo en tu clúster AIDE</block>
   <block id="1439116cd7455e9bacd1edb4c494f0f8" category="paragraph">Necesitas reemplazar un nodo de cómputo de datos (DCN) en tu clúster de AI Data Engine (AIDE) si deja de funcionar o necesita ser cambiado por una falla de hardware, actualización o mantenimiento. Esto asegura que el clúster de AIDE se mantenga saludable y operativo. El procedimiento se puede realizar sin interrumpir los servicios en curso.</block>
   <block id="0f6902c11864c7f6ea3e7e97543390ff" category="section-title">Prepárate para reemplazar un nodo</block>
   <block id="192d4730c4474133e43ad79a17bc2b0a" category="paragraph">Hay varias cosas que debes tener en cuenta antes de reemplazar un nodo en tu clúster AIDE.</block>
@@ -34,7 +33,6 @@
   <block id="0d1db780259414ed416bb18d8f2884c5" category="list-text">Verifica la salud del clúster y la integración de nodos con cualquiera de los siguientes comandos:</block>
   <block id="2c29fc530cfe763279549f3c96d6bfd9" category="paragraph"><block ref="c4d9420c1ffa71a3d1ac744ad11bdc73" prefix="" category="inline-code"></block></block>
   <block id="4f68658a4be5c609c26250482ca46289" category="paragraph"><block ref="375993d1728d7a4bd8582b55beade244" prefix="" category="inline-code"></block></block>
-  <block id="321b71f6e14d9658b968c06d0b6a2eb2" category="doc">Agrega nodos de cómputo de datos a tu clúster de AIDE</block>
   <block id="92b7cb4f44e975db2b9fd5f99307b795" category="paragraph">Puedes agregar data compute nodes (DCNs) como parte de la creación de un nuevo clúster AI Data Engine (AIDE) o de la expansión de un clúster existente. El flujo de trabajo consiste en descubrir y configurar los nodos usando ONTAP System Manager.</block>
   <block id="6ae5d153533cfb0dc185a63226f04b91" category="section-title">Prepárate para añadir nodos</block>
   <block id="e401074e3e0e16c1f24faa361673e348" category="paragraph">Hay varias consideraciones a tener en cuenta al añadir nodos DCN.</block>
@@ -79,7 +77,6 @@
   <block id="837f44885a47130344e89624ea338e1a" category="list-text">Dirección IP del servicio</block>
   <block id="a85b22fe65b9e8fef1530964d6b1e3ab" category="list-text">Máscara de red</block>
   <block id="a6118317a5b3ec929893d5eded2cacb6" category="list-text">Puerta de enlace (si es necesaria para tu entorno)</block>
-  <block id="a878feba8dfd8e4f3ad21fd1f740ef28" category="paragraph">La dirección IP única se equilibrará en carga entre las DCN y se usará como dirección de frontend para la AI Data Engine Console y las API relacionadas.</block>
   <block id="dd47cfdba73ab730de540e76dbeb177b" category="list-text">Revisa los nodos seleccionados, la subred del backend y la configuración de la interfaz de servicio de Data Engine.</block>
   <block id="d28484c7289d42ee404b01f02091316b" category="list-text">Selecciona *Add* y espera a que se complete la operación. System Manager realizará las siguientes acciones:</block>
   <block id="fa6cf81e3f469bf40c927fab14258d6b" category="list-text">Agrega los nodos seleccionados al clúster DCN</block>
@@ -91,7 +88,6 @@
   <block id="222392401b4fd309c1218418c8a55370" category="list-text">Verifica que la tarjeta *Salud* del panel de control muestre el recuento de nodos actualizado</block>
   <block id="85bea57a59849a61aeccd3f447b77d5a" category="summary">Administra el ciclo de vida de los espacios de trabajo de AI Data Engine, incluyendo ver, editar, agregar contenedores de datos, gestionar usuarios y eliminar espacios de trabajo.</block>
   <block id="d0c387849275d5d33176e5d0f9afb259" category="doc">Administra los espacios de trabajo de AI Data Engine</block>
-  <block id="f58aae2af8703740ba0c3eef159c8bf6" category="paragraph">Un espacio de trabajo es un conjunto de fuentes de datos (volúmenes) que AI Data Engine (AIDE) usa para crear y actualizar un catálogo de metadatos para un proyecto o caso de uso concreto. Como administrador de almacenamiento, puedes usar ONTAP System Manager para supervisar el estado del espacio de trabajo, ajustar la configuración, controlar las fuentes de datos, gestionar usuarios y eliminar espacios de trabajo cuando ya no los necesites.</block>
   <block id="135b308ed83c53f1516b7c754566d1c4" category="list-title">Antes de empezar</block>
   <block id="c1ee2e6caa96cd3d4e152cd8196e9746" category="list-text">Necesitas privilegios de _administrador de almacenamiento_ para gestionar los espacios de trabajo.</block>
   <block id="4810f2b966117468fcefe3f2465157f2" category="section-title">Revisa el estado del espacio de trabajo</block>
@@ -107,7 +103,6 @@
   <block id="b61c40a9f2b948351bca715f35727413" category="list-text">Selecciona la pestaña *Colecciones de datos* para ver:</block>
   <block id="01552a8604f6068b1ed86262146da505" category="list-text">Todas las colecciones de datos asociadas con este espacio de trabajo.</block>
   <block id="1d0f9d53a74f5287c0514289e185cecd" category="list-text">Estado (como<block ref="9b9d8a976b42e0bd66381797644943d5" prefix=" " category="inline-code"></block> o<block ref="902b0d55fddef6f8d651fe1035b7d4bd" prefix=" " category="inline-code"></block>), tamaño y la última hora de actualización.</block>
-  <block id="09ea2582f0f7302dc861f3c644f22768" category="admonition">System Manager es de solo lectura para las colecciones de datos. Los ingenieros de datos pueden crear y gestionar colecciones de datos en AI Data Engine Console.</block>
   <block id="41a3a834f86a0d8dab268860e350a773" category="list-text">Selecciona la pestaña *Usuarios* para ver:</block>
   <block id="48ab7bd750155f2572309045aa1f6cdc" category="list-text">La lista de usuarios con acceso a este workspace.</block>
   <block id="2c6c0132c25980e77217833c848a6ba9" category="list-text">Selecciona la pestaña *Actividad* para ver solo los eventos y trabajos relacionados con este espacio de trabajo.</block>
@@ -141,7 +136,6 @@
   <block id="6a0ae6e7f660af08b587359f8c6c3ff9" category="list-text">En la pestaña *Overview*, localiza el contenedor de datos que quieres eliminar.</block>
   <block id="5d876f21c6d12c852f8116ea86f0a224" category="list-text">Selecciona *Eliminar* junto al contenedor de datos.</block>
   <block id="f95a238ccea08a2d64656e6ef9e5ed80" category="list-text">Revisa el cuadro de diálogo de confirmación y selecciona *Eliminar*.</block>
-  <block id="6f060bcc072c7dbb3049d5f0b13417cf" category="admonition">Eliminar un contenedor de datos de un espacio de trabajo no elimina el volumen ONTAP subyacente ni su relación SnapMirror. Solo afecta el uso de metadatos dentro de AI Data Engine.</block>
   <block id="14faf70c1b68ce938a210fbd4e2c738e" category="section-title">Gestiona los usuarios del espacio de trabajo</block>
   <block id="14d0d5a96ba30d0b87f6bdf294484d0f" category="inline-link-macro">asignar usuarios a espacios de trabajo</block>
   <block id="c24097182891c0e056f8a14e62944908" category="paragraph">Puedes conceder o revocar el acceso a los usuarios data engineer y data scientist a un espacio de trabajo. Estos usuarios se definen en tu proveedor de identidades (OIDC) y se asignan a roles de ONTAP. Consulta la documentación de <block ref="2236764a3167e38854fb33a58c0dabb2" category="inline-link-macro-rx"></block> para aprender cómo gestionar el acceso de los usuarios.</block>
@@ -165,12 +159,7 @@
   <block id="e9acce0d3652d40c91f9bd7e814291c0" category="inline-link-macro">NetApp Support Site descargas</block>
   <block id="8323648b6d3775590504c93c231333eb" category="paragraph">AIDE no soporta la funcionalidad de actualizaciones automáticas de software de ONTAP. Puedes registrarte para recibir notificaciones de <block ref="f21f81fb3deef75901e58c9bf62616f0" category="inline-link-macro-rx"></block>, pero todas las actualizaciones del software de AIDE se hacen manualmente por el admin.</block>
   <block id="bbe48fb854ea022537208eeeff822f91" category="paragraph-title">Acerca de esta tarea</block>
-  <block id="60fcb915f1faf7d11e161d9ddd250f22" category="paragraph">El paquete de software AI Data Engine combinado es significativamente más grande que un paquete de actualización típico de ONTAP (el paquete AIDE es de aproximadamente 40GB). Planea tiempos de carga e instalación más largos cuando actualices el software AIDE.</block>
-  <block id="a9d24a721373c7790bee0d698ddef622" category="list-text">Necesitas privilegios de _administrador de almacenamiento_ para actualizar el firmware de DCN y el software AI Data Engine.</block>
   <block id="c001b433a80d333fcd0cde041a28631f" category="list-text">Necesitas tus credenciales de NetApp Support Site para tu cuenta activa.</block>
-  <block id="eb781a58d0a8ebeb1438df7a8ba313fb" category="inline-link-macro">Asegúrate de la compatibilidad entre ONTAP, el firmware de DCN y el software AI Data Engine al planificar actualizaciones</block>
-  <block id="7fb108e498bb250319232917b900eb83" category="list-text"><block ref="08a78e3589e18787ea92134d43eacfa7" category="inline-link-macro-rx"></block>.</block>
-  <block id="083257501c6eb702cda5481ff811e4ca" category="admonition">La función de reversión no es compatible con las actualizaciones de firmware DCN o AI Data Engine software. Después de instalar una actualización, no puedes volver a una versión anterior.</block>
   <block id="cec2da15f3d3c855dc2581cd97146a9e" category="inline-link">Descarga el archivo combinado de actualización del firmware DCN y del software AIDE en un cliente local</block>
   <block id="345d81ca03430362a62b4e2b463fec81" category="list-text"><block ref="20ff115eedebdbc3e04b1e122cd57516" category="inline-link-rx"></block>.</block>
   <block id="ed04f321bbf710ec2bd85b4777efa273" category="list-text">En System Manager, selecciona *Cluster &gt; Configuración &gt; Actualizaciones de software*.</block>
@@ -180,7 +169,6 @@
   <block id="0355bd96356570e558ac582e112965f8" category="list-text">Después de que se complete la carga del paquete, selecciona *Update* para empezar a instalar las actualizaciones en los nodos DCN.</block>
   <block id="09425222bdb4168ecc88c7df766d606e" category="admonition">AI Data Engine Console no está disponible o accesible cuando la actualización del nodo DCN está en curso.</block>
   <block id="8eea62084ca7e541d918e823422bd82e" category="paragraph-title">Resultado</block>
-  <block id="13ecc32f0ed2f0cff3724782ab1ede96" category="paragraph">Los DCN se actualizan con AI Data Engine software y la versión actualizada se muestra para cada nodo.</block>
   <block id="b559f60d492e5e3df9cd432ae3e16ecf" category="inline-link">Actualiza el software ONTAP para sistemas AFX</block>
   <block id="251c32e5b12aa520d318e816bc861f23" category="list-text"><block ref="251c32e5b12aa520d318e816bc861f23" category="inline-link-rx"></block></block>
   <block id="05b3d516937d982224c25f96c66ccc1c" category="summary">Conoce los diferentes componentes de un sistema AI Data Engine que deben mantenerse actualizados.</block>
@@ -222,8 +210,6 @@
   <block id="8d3cdbc9554ed2ac4cee54442c842426" category="inline-link-macro">Actualizar el software AIDE</block>
   <block id="f7c945632f485907e1eae694807bb6a3" category="list-text"><block ref="f7c945632f485907e1eae694807bb6a3" category="inline-link-macro-rx"></block></block>
   <block id="298aa9a54140aa713f5b95a86823f269" category="summary">Accede a ONTAP System Manager como primer paso antes de comenzar tus tareas administrativas de AIDE.</block>
-  <block id="4f757f61aaf059e31343194e28707e89" category="doc">Ver el estado del sistema AIDE y del clúster</block>
-  <block id="166e638923bfc550bd17e3fb3063d431" category="paragraph">Como administrador de almacenamiento, puedes usar ONTAP System Manager para acceder al dashboard y mostrar el estado del clúster. Este es un buen primer paso antes de empezar tus tareas administrativas de AIDE o si sospechas de algún problema operativo.</block>
   <block id="b86f92dca61741af8ebb8cd2d325a014" category="list-text">Necesitas privilegios de _administrador de almacenamiento_ para realizar tareas administrativas relacionadas con AIDE ONTAP.</block>
   <block id="7a5940318f16599afaf7c2ea7c9bb949" category="section-title">Supervisa la salud y la capacidad de AIDE desde el panel de control</block>
   <block id="24d572186819f698393ea84d96f7ab54" category="list-text">Conéctate a ONTAP System Manager usando la dirección de administración de clúster:</block>
@@ -274,7 +260,6 @@
   <block id="5b73bc950545a2dc50cbed3d3ebca8e4" category="list-text">En la pestaña *Colecciones de datos*, confirma:</block>
   <block id="5be3b48462144d25526abe168001774c" category="list-text">Qué recopilaciones de datos existen para ese espacio de trabajo (las recopilaciones de datos son de solo lectura en System Manager)</block>
   <block id="b52425ad07c4dc694993f56c0fc982b3" category="list-text">Su estado, tamaño y la última vez que se actualizaron</block>
-  <block id="a8588aa6fff7a3a917476845f3260829" category="list-text">En la pestaña *Usuarios*, revisa qué usuarios de AI Data Engine Console tienen acceso.</block>
   <block id="111bf23d5b405cee6248a8c40f3d1e73" category="section-title">Supervisa los metadatos de Storage VM y la protección gestionada por AIDE</block>
   <block id="7e2815d215d7d11b890778314a313eb0" category="list-text">En el panel de navegación, selecciona *Cluster* y luego *Storage VMs*.</block>
   <block id="73449cb613e41e191b1dde226ee694a0" category="list-text">Ubica la Storage VM con el subtipo<block ref="d38635dc6a45447e1425453f8461347e" prefix=" " category="inline-code"></block> (la metadata SVM):</block>
@@ -300,8 +285,6 @@
   <block id="982e02e3abfea4e77a8d9e6cb357ccc0" category="inline-link">Prepárate para administrar tu sistema de almacenamiento AFX</block>
   <block id="0863e72ae4714133fd65e2e727594725" category="paragraph"><block ref="0863e72ae4714133fd65e2e727594725" category="inline-link-rx"></block></block>
   <block id="a2af55f46cd91d904b6e8851e4a1217f" category="summary">Puedes revisar los eventos, trabajos y mensajes del registro de auditoría generados por AIDE para hacer un seguimiento del procesamiento interno y diagnosticar posibles problemas. El sistema AIDE puede configurarse para reenviar esta información, junto con otros datos relacionados, para procesamiento y archivo adicionales.</block>
-  <block id="0d8fc6982765664d9ae1cc586e632fce" category="doc">Ver eventos del sistema AIDE, trabajos y registro de auditoría</block>
-  <block id="575db79b89a25c166696c9523125939c" category="paragraph">Como administrador de almacenamiento, puedes revisar los eventos, trabajos y mensajes de registro de auditoría generados por AIDE para hacer un seguimiento del procesamiento interno y diagnosticar posibles problemas. El sistema AIDE puede configurarse para reenviar esta información, junto con otros datos relacionados, para procesamiento y archivo adicionales.</block>
   <block id="c75e6d3d5c6c5f35bd6faed0c998f49a" category="section-title">Supervisa las actividades, eventos y trabajos de AIDE</block>
   <block id="f1cd563afa2422a59c94157e51dfc33e" category="paragraph">Puedes usar la vista centralizada *Actividad* para monitorear los eventos y trabajos específicos de AIDE en todos los espacios de trabajo, o revisar la actividad limitada a espacios de trabajo individuales.</block>
   <block id="0da75942b87520c0c7da80c2512947d3" category="section-title">Ver la actividad de AIDE en todo el clúster</block>
@@ -357,8 +340,6 @@
   <block id="8505fbdc75289c59744757d2ea89ede9" category="inline-link">Supervisión de eventos, rendimiento y estado de ONTAP</block>
   <block id="68d58707832c3c8d5f78484ef0d75df7" category="list-text"><block ref="68d58707832c3c8d5f78484ef0d75df7" category="inline-link-rx"></block></block>
   <block id="33e4ff6ec88929a3f06195fae73ca7bc" category="summary">Puedes usar la función Insights de ONTAP System Manager para mostrar las actualizaciones de configuración sugeridas que se alinean con las mejores prácticas de NetApp. Estos cambios pueden optimizar la seguridad y el rendimiento, así como otras áreas de tu clúster AIDE.</block>
-  <block id="ce2615d6b8a9eb359bb525ffe964efe4" category="doc">Ver información para optimizar tu sistema AIDE</block>
-  <block id="ea6ebc5626c6ce3b772f8fbdfafd1428" category="paragraph">Como administrador de almacenamiento, puedes usar la función _Insights_ de ONTAP System Manager para mostrar las actualizaciones de configuración sugeridas que se alinean con las mejores prácticas de NetApp. Estos cambios pueden optimizar la seguridad y el rendimiento de tu clúster AIDE.</block>
   <block id="c74364673a60e8775445f2b1199452c4" category="paragraph">Cada una de las insights se presenta como una tarjeta o mosaico independiente en la página que puedes elegir implementar o descartar. También puedes seleccionar el enlace de documentación asociado para aprender más sobre una tecnología específica.</block>
   <block id="80d816cf7d322b17e77a91ebe5beb590" category="list-text">En System Manager, selecciona *Analysis* y luego *Insights*.</block>
   <block id="b667ea0097f8bd52ff6309e232fb3500" category="list-text">Revisa las recomendaciones disponibles.</block>
@@ -368,12 +349,10 @@
   <block id="dcaec67f8b6685884b28ce763c3b6b20" category="doc">FAQ para NetApp AI Data Engine</block>
   <block id="23548737dde1ab00d6b9ff297b8940ba" category="paragraph">Este FAQ cubre preguntas comunes sobre NetApp AI Data Engine (AIDE), incluyendo su arquitectura, implementación, tipos de usuario, funciones técnicas, integración y licencias.</block>
   <block id="e16af38cdf36612fd89004df1147f502" category="section-title">Conceptos básicos de AIDE</block>
-  <block id="b469546f6a34c31fb70829332043de9c" category="paragraph-title">¿Qué es NetApp AI Data Engine (AIDE)?</block>
   <block id="6d5473a972bb78c57dd823b2d13b5959" category="paragraph">NetApp AI Data Engine (AIDE) es un servicio de datos de IA integrado en el almacenamiento que abarca todo el ciclo de vida de la IA, desde el descubrimiento y la preparación de datos sin procesar hasta el suministro de puntos finales de recuperación para potenciar la IA generativa (GenAI), Retrieval-Augmented Generation (RAG), agentic AI y fábricas de IA. AIDE automatiza la sincronización y la detección de cambios, proporcionando una vista unificada y actualizada de los datos seleccionados para el descubrimiento y la curación de datos.</block>
   <block id="bcbd42901b0d1709412b09e60cb311d2" category="paragraph-title">¿Cómo funciona AIDE?</block>
   <block id="ab7358a97294499b31048a4c19749a4e" category="paragraph">AIDE se integra directamente con los sistemas de almacenamiento NetApp ONTAP para crear una vista global y estructurada de toda la propiedad de datos de NetApp con detección de cambios y sincronización automatizadas. AIDE proporciona vectorización en tiempo real con compresión y deduplicación, Data Guardrails condicionados por políticas e integración con herramientas de IA.</block>
   <block id="a683e08316b5058f64b39c3493b125b8" category="section-title">Usuarios y roles</block>
-  <block id="ca984887811699744a64ad07859951a3" category="paragraph-title">¿Quién utiliza el AI Data Engine?</block>
   <block id="d7c04ae4d435507faa4e97e4df14a224" category="paragraph">Los usuarios principales de AIDE incluyen:</block>
   <block id="b72c88ed5981c8fd8cc65c9fe7927c4a" category="list-text">*Administradores de almacenamiento ONTAP*: gestionan la infraestructura, las necesidades de almacenamiento específicas de la IA, la seguridad y el cumplimiento.</block>
   <block id="5c2ae98ad1e40a74b12fd94e84c9e813" category="list-text">*Ingenieros de datos*: gestionan el movimiento, la preparación y la integración de datos en distintos entornos.</block>
@@ -383,7 +362,6 @@
   <block id="549cb6224af75ddcdb7ce94e86158b88" category="paragraph">AIDE requiere sistemas AFX para el despliegue (incluyendo un controlador AFX, una bandeja de discos y un switch de red), pero puede usar datos de clústeres que ejecutan ONTAP 9 usando SnapMirror y cluster peering. Se requieren al menos cuatro nodos de controlador AFX para los despliegues de AIDE para asegurar alta disponibilidad y rendimiento.</block>
   <block id="cbd7fa21f4c2d41c66443b81f3876515" category="paragraph">AIDE se ejecuta en un nodo de computación de datos NetApp (DCN). Se requieren tres DCN. El DCN aloja el software AIDE, que incluye el Metadata Engine, Data Sync, Data Curator y Data Guardrails.</block>
   <block id="9be98320959b7992a0b060a4c32d659a" category="paragraph-title">¿Puedo usar mi propio DCN?</block>
-  <block id="ddfbc20c7693841db1d63372ecab8fb2" category="paragraph">No. La DCN es un nodo de hardware de cálculo de datos proporcionado por NetApp y es el único mecanismo de despliegue para el AI Data Engine.</block>
   <block id="3490cc73a81bcba770b3c5a4c211dcf2" category="paragraph-title">¿Cuál es el número mínimo de DCN requeridos?</block>
   <block id="80fc50e599be70cac540cd391fb7b257" category="paragraph">Se necesitan exactamente tres DCN.</block>
   <block id="1f19d2ae87e7c1d00cc63bba40607278" category="paragraph-title">¿Qué sistema operativo se ejecuta en los DCN?</block>
@@ -391,8 +369,6 @@
   <block id="88f88720912d4b4065c19daa0af7276e" category="paragraph-title">¿Se puede desplegar AIDE sin AFX?</block>
   <block id="f9d52ed75bab8e621bf8f63844cc6de6" category="paragraph">No. AIDE requiere AFX para el despliegue. AIDE usa Trident para consumir los volúmenes de AFX para almacenamiento interno (volúmenes persistentes). El clúster AFX que proporciona almacenamiento para AIDE puede estar emparejado con un sistema o clúster ONTAP 9. Usa cluster peering y SnapMirror para sincronizar datos desde el clúster ONTAP remoto al sistema AFX.</block>
   <block id="e338ec0e615b20182a66174dd990eca8" category="section-title">Gestión e interfaces</block>
-  <block id="c75720461417e1189af4ce1795375317" category="paragraph-title">¿La AIDE Console es parte de NetApp Console o una interfaz separada?</block>
-  <block id="9fad911c798d8ab6bedc33e9ef2f6f2d" category="paragraph">La AIDE Console es una interfaz de gestión independiente que se ejecuta en los DCN. Usas la AIDE Console para gestionar servicios de AIDE, como Data Guardrails y Data Curator. También puedes usar ONTAP System Manager para monitorear el clúster de AIDE.</block>
   <block id="4db209ccc03e09b2b9a0a108532ff7a4" category="section-title">Funciones y capacidades</block>
   <block id="c9ebed9dc1d01da2c6c8a7a30b386da3" category="paragraph-title">¿Cuáles son las funciones clave de AIDE?</block>
   <block id="6a9256caea45c1710a871c37b969b749" category="paragraph">Hay cuatro funciones clave de AIDE:</block>
@@ -407,7 +383,6 @@
   <block id="f9d4d049753eebb261c6ab7bf7617f64" category="list-text">Los administradores definen el intervalo de actualización de los datos en días o horas.</block>
   <block id="2a923e6bac7ca1d440133599ab34b95c" category="list-text">Proporciona movilidad de datos incremental y sincronización entre los datos para eliminar copias redundantes de los datos de IA.</block>
   <block id="2c9da0732e9cbf11870234e5126b8bea" category="list-title">Data Guardrails</block>
-  <block id="a257f2a57cd54a9ca3e39810b124d202" category="list-text">Identifica y protege automáticamente los datos confidenciales durante todo el ciclo de vida de la IA. Está disponible a través de AI Data Engine Console.</block>
   <block id="2bb98fadbdeba299b62ea0addc88d8c5" category="list-text">Escanea, clasifica y categoriza datos de forma continua.</block>
   <block id="5d5a3e7178c950777361e06d70f360f9" category="list-text">Identifica datos sensibles (como PII) y riesgos.</block>
   <block id="7c9c543326d0111f7808537be3ef562e" category="list-text">Facilita la creación de políticas para el manejo automático de datos sensibles en línea con los estándares de la empresa y las normativas regulatorias.</block>
@@ -423,8 +398,6 @@
   <block id="c924f7a5d190ea5b353a55e71850d3c3" category="paragraph">AIDE puede conectarse a múltiples clústeres ONTAP usando SnapMirror y cluster peering, permitiendo la visibilidad centralizada de metadatos.</block>
   <block id="76fdbe0b4075b518e26fc96f0d364ddd" category="paragraph-title">¿Dónde se almacenan los metadatos?</block>
   <block id="9e6bd225293ed21da0ceb7ed29c84477" category="paragraph">AIDE almacena metadatos en el AFX cluster conectado usando un volumen persistente proporcionado por AFX. Las DCNs usan almacenamiento local para operaciones internas.</block>
-  <block id="422b6e863fd5cfc83df63ff28cc2d8d6" category="paragraph-title">¿El Metadata Engine de AIDE clasifica los datos?</block>
-  <block id="c914a17bc294f7d544aa6382452e633c" category="paragraph">No. El Metadata Engine cataloga los metadatos del sistema de archivos y proporciona API para consultar estos metadatos catalogados.</block>
   <block id="541a1691ca1907ab37bccbce44aad1c9" category="paragraph-title">¿Qué fuentes de datos son compatibles?</block>
   <block id="ab9707100f7fd9d7d60ca073386e4418" category="paragraph">AIDE soporta volúmenes ONTAP (locales o remotos) como fuentes de datos. Los clústeres ONTAP remotos deben ejecutar ONTAP 9 y estar conectados mediante cluster peering y SnapMirror.</block>
   <block id="55fc056e2d90d856ddc50c727f7ec280" category="paragraph">Los buckets S3 de ONTAP y los objetos StorageGRID no son compatibles como fuentes de datos en AIDE 9.18.1.</block>
@@ -462,7 +435,6 @@
   <block id="852b632addafc43771825b32d39c9a92" category="paragraph">Todas las DCN y los nodos de almacenamiento ONTAP están conectados a través de switches de clúster redundantes de alta velocidad (mínimo 100GbE). Esta arquitectura separa los recursos de computación y almacenamiento, permitiendo que cada uno escale de forma independiente y optimizando tanto el rendimiento como la utilización de recursos.</block>
   <block id="d88d8fd5a9d604d8b355a4a5b02370aa" category="paragraph">La conexión de red entre las DCN y los nodos ONTAP se aísla usando VLAN dedicadas y IPspaces en los switches del clúster. Esto asegura que todas las comunicaciones, como el acceso a datos, las API de gestión y el tráfico de servicios internos, se mantengan seguras, eficientes y no interfieran con otras operaciones de red.</block>
   <block id="8abff22eba3e39b89f049a833383dee5" category="section-title">Funciones principales de AI Data Engine</block>
-  <block id="6eabe76d65811072c729acaa48eba920" category="paragraph">Las funciones principales de AI Data Engine (AIDE) trabajan juntas para automatizar, proteger y acelerar el ciclo de vida de los datos de IA. Cada función se implementa como un conjunto de microservicios que se ejecutan en DCNs, integrados con el almacenamiento ONTAP y expuestos a través de API de REST e interfaces de gestión.</block>
   <block id="4f4565f2c049e00d65b85af1bd9fc4ba" category="paragraph">El motor de metadatos genera automáticamente una vista estructurada, actualizada e interactiva de tu patrimonio de datos NetApp.</block>
   <block id="463f26057429e774d47a01a180e59a71" category="paragraph-title">Licencia y acceso</block>
   <block id="3b4ab3516568157269aefcf09a73786f" category="paragraph">El Metadata Engine está incluido con la licencia base de ONTAP One y está disponible tras la instalación de AIDE.</block>
@@ -482,7 +454,6 @@
   <block id="76eea453b7f75468e3a6149c2769727d" category="list-text">Se integra con los flujos de trabajo de creación de espacios de trabajo para extraer y actualizar metadatos a medida que se añaden nuevas fuentes de datos.</block>
   <block id="8e7615d569d074531956049f91b04690" category="paragraph">El servicio Data Guardrails proporciona gobernanza y protección continuas y automatizadas para los datos confidenciales durante todo el ciclo de vida de la IA.</block>
   <block id="c9a04221a55c51fae95c9b10c875fc8c" category="paragraph">La funcionalidad de Data Guardrails no está incluida con la licencia base de ONTAP One y requiere una licencia de AIDE por separado.</block>
-  <block id="de32a96ba4f40ae38975cbb41e2a3e9b" category="paragraph">Puedes acceder a la funcionalidad de Data Guardrails desde la AI Data Engine Console.</block>
   <block id="1631f5d9ce5be6bc7bcc5cc112f096b6" category="list-text">Identifica datos confidenciales y riesgos usando clasificadores integrados y personalizables para tareas como la detección de PII.</block>
   <block id="03b3189094241459509bb733a12fa25d" category="list-text">Automatiza la gestión de datos confidenciales mediante la redacción condicionada por políticas, el enmascaramiento y las restricciones de acceso.</block>
   <block id="16131f767c6c5275a096052213205893" category="list-text">Hace cumplir las normas de la empresa y las reglamentarias mediante políticas de Data Guardrails adjuntas a los espacios de trabajo.</block>
@@ -490,7 +461,6 @@
   <block id="f7cb2a318b856b9845c2cccdde49ddd4" category="list-text">Se integra con la gestión del espacio de trabajo y la recopilación de datos para aplicar Data Guardrails de forma coherente en todos los flujos de trabajo de datos de IA.</block>
   <block id="ab49fb652cf19cc12cd345e260bd8d27" category="paragraph">El servicio Data Curator permite el descubrimiento, la búsqueda, la vectorización y la recuperación rápida de datos para aplicaciones de AI y GenAI.</block>
   <block id="81fb0cdac45e76d8dfad14787926905b" category="paragraph">La funcionalidad de Data Curator no está incluida con la licencia base de ONTAP One y requiere una licencia de AIDE por separado.</block>
-  <block id="1a774c5cc38ac40c98a08371bcbb439c" category="paragraph">Puedes acceder a Data Curator a través de la AI Data Engine Console.</block>
   <block id="a4ce778e1ff84389939b5b8e050b361d" category="list-text">Busca en el almacenamiento datos relevantes usando el catálogo de metadatos centralizado.</block>
   <block id="7f85623d82d570d34564f1271c656c7b" category="list-text">Proporciona herramientas para que los científicos de datos creen colecciones de datos seleccionadas.</block>
   <block id="82ecc3ba942db0febbb8ef2114348ea6" category="list-text">Genera automáticamente incrustaciones vectoriales en la capa de almacenamiento.</block>
@@ -505,7 +475,6 @@
   <block id="312f9d8b5d1c2091030c75e2de9bd561" category="list-text"><block ref="312f9d8b5d1c2091030c75e2de9bd561" category="inline-link-macro-rx"></block></block>
   <block id="a5331cf7e0eccce3818bb788c6878950" category="summary">Aprende cómo los ingenieros de datos y los científicos de datos interactúan con los componentes de AIDE para descubrir datos, crear y curar colecciones, gestionar pipelines, realizar búsquedas semánticas e integrar flujos de trabajo de IA.</block>
   <block id="2aa41e6838c06055744a9742d4dcd7d6" category="doc">Descubre cómo los ingenieros y científicos de datos de AI Data Engine trabajan con los componentes de AIDE</block>
-  <block id="1ebca5b6d013aa2dc20c248c4bb51570" category="paragraph">Como ingeniero de datos o científico de datos, usas la AI Data Engine Console para explorar los espacios de trabajo a los que te han dado acceso, crear y gestionar colecciones de datos, realizar búsquedas semánticas e integrar endpoints de recuperación en flujos de trabajo de IA/ML.</block>
   <block id="b451491131fd64b884ee29804c2553ce" category="paragraph">Los ingenieros de datos se centran en transformar los datos brutos en conjuntos de datos listos para la IA creando colecciones, configurando canalizaciones de incrustación y controlando qué usuarios pueden acceder a las colecciones publicadas. Los científicos de datos se centran en aprovechar los conjuntos de datos curados para el análisis, el entrenamiento de modelos y las aplicaciones GenAI, sin gestionar el control de acceso ni la infraestructura.</block>
   <block id="b279fbd1772161cc28a51994439102b8" category="section-title">Acceso de usuario a componentes de datos</block>
   <block id="2cb05e4bb7830be982f0922fed86b4cd" category="cell">Componente</block>
@@ -514,8 +483,6 @@
   <block id="8dd47aacde012aa178c532bfc92f1bae" category="cell">Flujo de trabajo del científico de datos</block>
   <block id="3414f51a48336655c098985505fb5bc0" category="cell">AI Data Engine Console</block>
   <block id="d739bb2b21afc6ff38b12b3cdc69e589" category="cell">Gestionar (crear, editar, eliminar)</block>
-  <block id="ef0c6d1aab10044747a99d53454eb68a" category="cell">La AI Data Engine Console es tu interfaz principal para las tareas cotidianas, incluyendo el descubrimiento de datos, la gestión de colecciones, la configuración de canalizaciones y la publicación de RAG o endpoints de recuperación, para los workspaces a los que tienes autorización para acceder.</block>
-  <block id="1606bdf6afc0770ed5391034d8ef8204" category="cell">AI Data Engine Console es tu interfaz principal para la exploración de datos, el refinamiento y la gestión de versiones de colecciones dentro de los espacios de trabajo a los que puedes acceder, y para conectar conjuntos de datos curados y puntos finales de recuperación con flujos de trabajo de análisis, modelado y GenAI.</block>
   <block id="0ec641cfacd36c8e22a334135e2abdac" category="cell">API de REST de ONTAP</block>
   <block id="8c98cfb455f75e40a0a77179bab37395" category="cell">Usas la API de REST para automatizar las operaciones del ciclo de vida de las colecciones, activar y supervisar las canalizaciones de incrustación e integrar de forma programática los flujos de trabajo de datos con herramientas externas.</block>
   <block id="173bd63eccf9d3c03c63d74c122f0129" category="cell">Utilizas la API de REST para acceder mediante programación a colecciones de datos, ejecutar consultas de búsqueda vectorial e integrar puntos finales de recuperación en aplicaciones AI/ML y marcos agénticos.</block>
@@ -541,12 +508,10 @@
   <block id="2ad5eead848064e7b67c541f418f15cd" category="cell">Tú consumes datos preclasificados para asegurarte de que solo se utiliza contenido conforme y relevante en tu análisis y modelado.</block>
   <block id="ded8168a2ad23809b9c9a8a3700e90b6" category="summary">Descubre cómo los administradores de almacenamiento interactúan con los componentes de AIDE para gestionar la infraestructura de clúster, aprovisionar espacios de trabajo y aplicar políticas de gobernanza.</block>
   <block id="346166e9288555be10551eaab2ee1316" category="doc">Descubre cómo los administradores de almacenamiento de AI Data Engine trabajan con los componentes de AIDE</block>
-  <block id="7a971b7e5b0be0947015b9bb337d4648" category="paragraph">Como administrador de almacenamiento, gestionas la infraestructura de AIDE a través de ONTAP y la AIDE Console, aprovisionando espacios de trabajo, adjuntando políticas de guardrail y supervisando el estado del sistema. Tu función se centra en garantizar un almacenamiento de datos fiable, seguro y conforme para las cargas de trabajo de IA.</block>
   <block id="7c190ed89ce3aadf9c053bd8e33c4a4e" category="section-title">Acceso del administrador de almacenamiento al componente</block>
   <block id="ccd2e19c410fd1e18390aee052481d6b" category="cell">Flujo de trabajo del administrador de almacenamiento</block>
   <block id="6ad5e0a20f49ad6a370454bb3afc9a9e" category="cell">ONTAP System Manager</block>
   <block id="2db9b9314d1fe8ee34f404e12ac8a49d" category="cell">Usas ONTAP System Manager como tu interfaz principal para la administración de clusters, el aprovisionamiento de espacios de trabajo, la gestión de políticas de guardrail y la supervisión del estado del sistema.</block>
-  <block id="cf2df20fe1e23781d302c7ab220e5c81" category="cell">Usas la AI Data Engine Console para monitorear los espacios de trabajo, ver el estado de la recopilación y supervisar la actividad del sistema en todo el entorno de AIDE.</block>
   <block id="43fe0ced384149c84e10c7253a4d04fd" category="cell">Utilizas la API de REST para automatizar tareas de infraestructura, gestionar espacios de trabajo y políticas de barandilla mediante programación, e integrar la administración de AIDE con herramientas y flujos de trabajo externos.</block>
   <block id="de2e6680522dffaf998d8e5a6eb42135" category="cell">Tú creas y gestionas espacios de trabajo usando ONTAP System Manager. Tú seleccionas qué fuentes de datos se incluyen, asignas permisos a los ingenieros de datos y científicos de datos, y adjuntas políticas de guardarraíl para hacer cumplir la gobernanza y el cumplimiento. También monitoreas la salud y el acceso del espacio de trabajo.</block>
   <block id="ee551a1dcc93f0cc3e1b797bdc212f8c" category="cell">Vista (solo lectura)</block>
@@ -572,11 +537,8 @@
   <block id="d51dbd33faf723673b5dcc805746e7d6" category="cell">Rol (nombre RBAC)</block>
   <block id="b5a7adde1af5c87d7fd797b6245c2a39" category="cell">Descripción</block>
   <block id="b94b9173d4df6fb4524c191921b3875b" category="cell">Administrador de almacenamiento <block ref="21232f297a57a5a743894a0e4a801fc3" prefix="(" category="inline-code"></block>)</block>
-  <block id="40e262f3c9a56f372c72a3806856f097" category="cell">Gestiona la configuración de clústeres AFX y AIDE, redes, aprovisionamiento de almacenamiento y acceso de usuarios. Asigna roles RBAC a los usuarios que determinan el nivel de acceso a las interfaces y funciones de AIDE. Este rol de administrador tiene acceso completo a la gestión usando ONTAP System Manager y AI Data Engine Console.</block>
   <block id="9611217ec1acaf786fac509784e8b7ee" category="cell">Ingeniero de datos <block ref="1870f298c6f688b7a7b0648dd1fea76d" prefix="(" category="inline-code"></block></block>
-  <block id="6ef1b15e897520ff26a15ed3f66d09da" category="cell">Crea y optimiza canalizaciones de IA/ML, gestiona colecciones de datos e integra modelos de IA. Este rol tiene acceso a la AI Data Engine Console para los flujos de trabajo de ingeniería de datos.</block>
   <block id="62bff939f115e0bb794deaa5c6729d9c" category="cell">Científico de datos <block ref="39c1868b2bbb2d4cba562bfb0b031ef2" prefix="(" category="inline-code"></block></block>
-  <block id="44df33b9ea82d7d4cb0c0f89fd41119a" category="cell">Descubre, conserva y analiza conjuntos de datos, crea colecciones de datos y aprovecha los puntos finales de recuperación para aplicaciones de GenAI. Esta función tiene acceso a la AI Data Engine Console para flujos de trabajo de ciencia de datos.</block>
   <block id="0de6a1f895df1c36a63bd2a36ef90008" category="paragraph">Cada usuario de AIDE (administradores de almacenamiento, ingenieros de datos y científicos de datos) interactúa con los componentes de AIDE según su rol.</block>
   <block id="5040991ca25df57796d359a33ae849ca" category="paragraph">Un espacio de trabajo es un segmento lógico de datos dentro del clúster, que agrupa volúmenes para un proyecto, equipo o flujo de trabajo específico. Los espacios de trabajo definen el alcance de la visibilidad, acceso y gobernanza de los datos en AIDE.</block>
   <block id="37a14c7350a1fc766e78dc512db08936" category="paragraph">Una base de datos centralizada y escalable que almacena registros de metadatos de todos los archivos y objetos en el clúster local, incluidos los datos sincronizados desde clústeres ONTAP remotos usando ONTAP SnapMirror o cluster peering. Permite búsquedas y filtrado interactivos y enriquecidos.</block>
@@ -597,12 +559,10 @@
   <block id="2c88b8544cd3bf5e75e603711f69d03a" category="doc">Interfaces de AI Data Engine</block>
   <block id="b88eed9d02e6b5ffdafbd9fc2ef1adfe" category="paragraph">AI Data Engine (AIDE) proporciona tres interfaces principales para la interacción y automatización del usuario. Cada rol, como administrador de almacenamiento, ingeniero de datos y científico de datos, utiliza estas interfaces según sus tareas y responsabilidades específicas.</block>
   <block id="9b8327c0023e73e443412da47a2042bd" category="paragraph">ONTAP System Manager es una interfaz basada en web diseñada para administradores de almacenamiento. Proporciona flujos de trabajo para la configuración de clústeres, la gestión de espacios de trabajo, la supervisión de DCN y la asignación de políticas de guardrail.</block>
-  <block id="870d28012bdcf37e9d22c818acee498f" category="paragraph">La AI Data Engine Console es una interfaz dedicada para ingenieros de datos y científicos de datos. Permite a los usuarios explorar fuentes de datos, crear y gestionar colecciones de datos, configurar canalizaciones de datos, aplicar clasificadores e interactuar con guardrails y funciones de búsqueda vectorial. La consola proporciona herramientas avanzadas para el descubrimiento, la curación y la integración de datos con flujos de trabajo de IA/ML.</block>
   <block id="aba3d4b49c454e1974970e7b5514b001" category="section-title">API de REST</block>
   <block id="fb301efb571d9d3c4c66ab5859d67fee" category="paragraph">AIDE expone la API de REST de ONTAP para automatización, integración y acceso programático. La API admite la configuración de clústeres, la gestión de espacios de trabajo y colecciones, consultas de metadatos, búsqueda de vectores y puntos finales de recuperación.</block>
   <block id="34b7cc10a6d47a183fe27b9338d3ab60" category="summary">Conoce la arquitectura y los componentes del sistema AI Data Engine, incluyendo la arquitectura, los roles comunes y las definiciones.</block>
   <block id="75d38d77f71f859f0e6bfa05a8868b12" category="searchtitle">Conoce AI Data Engine</block>
-  <block id="15fb76f58febe5931e440d6a9b9a4a08" category="paragraph">El NetApp AI Data Engine (AIDE) es una plataforma de clase empresarial diseñada para acelerar y simplificar el procesamiento de datos, la gestión y la gobernanza impulsados por IA. AIDE puede ayudarte a transformar grandes cantidades de datos no estructurados en conjuntos de datos estructurados y listos para IA. Está diseñada para satisfacer las demandas de las cargas de trabajo modernas de machine learning (ML) e IA generativa (GenAI), apoyando tanto las operaciones de TI tradicionales como los nuevos roles centrados en IA.</block>
   <block id="2002d6b377e19f50928f6a0d204164fd" category="section-title">AIDE aborda los retos de la IA</block>
   <block id="cc4eb4711f0f98a7a6994b06a1367b83" category="paragraph">AIDE está diseñado para ayudar a las organizaciones a gestionar datos para cargas de trabajo de IA y proporciona las siguientes capacidades clave:</block>
   <block id="4fffd4cdbcb48f384bdbf205079c3338" category="list-text">*Gestión centralizada de metadatos*: AIDE recopila y cataloga metadatos de los volúmenes ONTAP, lo que permite buscar, clasificar y aplicar políticas de gobernanza a los conjuntos de datos.</block>
@@ -610,7 +570,6 @@
   <block id="815c934fadc12577eadd000b34bd678d" category="list-text">*Aislamiento de datos y control de acceso*: AIDE aplica controles de acceso y aislamiento básico de datos para varios equipos o proyectos.</block>
   <block id="95a3a87cc9904d5dea78a483efb2a93f" category="list-text">*Integración con herramientas de NetApp*: AIDE funciona con ONTAP System Manager para la administración de almacenamiento y proporciona una interfaz dedicada (AI Data Engine Console) para que los ingenieros de datos y los científicos gestionen colecciones de datos y flujos de trabajo.</block>
   <block id="f61fa8b740258aab0e790f50c050390f" category="section-title">Características de diseño a alto nivel</block>
-  <block id="dd79bd79e4722058007be2109b152201" category="paragraph">Las siguientes características de diseño definen cómo se construye AI Data Engine para satisfacer las necesidades de las cargas de trabajo de IA:</block>
   <block id="b21d54251dfd9c093e2be511de6efa23" category="list-text">*Servicios basados en microservicios*: utiliza Kubernetes para orquestar servicios modulares y resilientes para la catalogación de metadatos, búsqueda vectorial y gestión de infraestructura.</block>
   <block id="3ab9372f71b296ba2a5cc0f54972e1f8" category="list-text">*Seguridad de clase empresarial*: implementa cifrado, control de acceso basado en roles (RBAC) y auditoría en todos los datos y metadatos.</block>
   <block id="a0f9b2d19def8ae12e303a186bb9ca16" category="list-text">*Acceso a datos multiprotocolo*: admite NFS y SMB para una ingestión y recuperación de datos flexible.</block>
@@ -622,7 +581,6 @@
   <block id="18cacad08e1f00d7b8716f09526802e0" category="list-text">**Creación de espacios de trabajo**: los administradores de almacenamiento definen espacios de trabajo en ONTAP System Manager, agrupando volúmenes ONTAP relacionados para proyectos, equipos o flujos de trabajo específicos. Los permisos de acceso y las políticas de gobierno se asignan a nivel de espacio de trabajo.</block>
   <block id="664b67502178345cd005efa8b9562df5" category="list-text">**Extracción de metadatos**: AIDE escanea automáticamente archivos y objetos en los espacios de trabajo, extrayendo metadatos (tipo de archivo, tamaño, marcas de tiempo, atributos personalizados) y almacenándolos en un catálogo centralizado. Esto ocurre continuamente a medida que los datos cambian.</block>
   <block id="6d0fb2d02b025f08276ad4a10d7191a7" category="list-text">**Clasificación y gobernanza**: Los clasificadores escanean los datos en busca de información sensible (PII, datos financieros) o tipos de documentos (legal, HR). Las políticas de Data Guardrails aplican redacción o restricciones de acceso automáticamente.</block>
-  <block id="712ab3c465e2de54b48b96be7b842586" category="list-text">**Creación de colecciones de datos**: Los ingenieros de datos y los científicos de datos usan la AI Data Engine Console para consultar el catálogo de metadatos, filtrar resultados y armar colecciones de datos seleccionadas para tareas específicas de IA.</block>
   <block id="2fba95aedeeec0c3b74c4dbe27e39a70" category="list-text">**Vectorización**: para las colecciones que requieren búsqueda semántica, AIDE genera embeddings usando modelos de IA seleccionados. Los vectores se almacenan en la base de datos de vectores para una recuperación de alto rendimiento.</block>
   <block id="c5363f1ca3626499ac0ce73c01d1c406" category="list-text">**Consumo de AI/ML**: Las aplicaciones acceden a los datos a través de múltiples rutas:</block>
   <block id="bcfc7ea2d8d4bc0e20c49d0ebb3e6142" category="list-text">Acceso directo a archivos/objetos usando NFS o SMB</block>
@@ -632,7 +590,6 @@
   <block id="b91921f1c9373f5121bc456727402cd5" category="paragraph">Este flujo de trabajo automatizado y condicionado por políticas reduce el tiempo y el esfuerzo manual necesarios para preparar datos para la IA, permitiendo que los equipos se enfoquen en el desarrollo de modelos y en los insights en vez de en la gestión de datos.</block>
   <block id="92df0d347921e055f717318c9989cdd3" category="summary">Para empezar con un sistema AI Data Engine, instala el hardware, configura el clúster, configura el acceso a los datos y aprovisiona almacenamiento para los espacios de trabajo que se usarán con cargas de trabajo de IA.</block>
   <block id="0faf8679fa64c37768334eb399f37dcc" category="doc">Inicio rápido para AI Data Engine</block>
-  <block id="852d0bb4914d5c1ca3dc338e8c10571e" category="paragraph">Para poner en marcha tu sistema AI Data Engine, necesitas instalar tus componentes de hardware, configurar tu clúster, configurar el acceso a los datos desde tus hosts al sistema de almacenamiento y aprovisionar tu almacenamiento.</block>
   <block id="06c2cea18679d64399783748fa367bdd" category="inline-image-macro">1</block>
   <block id="68f29c3aa9815c01fd795e77ad631bb6" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block> ¿Se instalará AIDE con un nuevo o existente cluster AFX?</block>
   <block id="e6c77343bdce14f53a105701f6f43c47" category="paragraph">Tienes que decidir si AIDE y AFX se instalarán juntos al mismo tiempo o si AIDE se integrará con un clúster AFX existente.</block>
@@ -647,19 +604,14 @@
   <block id="a874f89537b7b883012b5efd105edb1c" category="paragraph">Usa ONTAP System Manager para guiarte en un proceso rápido y sencillo para <block ref="675ef519a4ec2a9bf76c5629db308684" category="inline-link-macro-rx"></block>.</block>
   <block id="981b8fcee42e1e726a67a2b9a98ea6e9" category="inline-image-macro">Cuatro</block>
   <block id="6dbaaad4b361bfb2fb0c31979367304b" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block> Configura los espacios de trabajo y el acceso a los datos</block>
-  <block id="e18aaeb7e243e2bd2a45e5ee88146021" category="inline-link-macro">Configura un espacio de trabajo y usuarios para ese espacio de trabajo que puedan acceder a los datos de AI Data Engine</block>
-  <block id="8ce1e27faff5504e7185aa4c79d7bd27" category="paragraph"><block ref="5b0cb7b54a06c58b1df6d72f6bbfed30" category="inline-link-macro-rx"></block>.</block>
   <block id="58eaebf972358f1cf03d386a4ade1a0f" category="paragraph-title">¿Qué sigue?</block>
-  <block id="7923adc0c682d858fce4bcbdbfa05225" category="paragraph">Ahora puedes usar ONTAP System Manager para gestionar tu AI Data Engine y ayudar a que tus ingenieros de datos y científicos de datos comiencen con sus espacios de trabajo y configuraciones.</block>
   <block id="9f2e8bc6e66a2035e778a5d85e8d67f4" category="summary">Define políticas de datos globales en AI Data Engine Console para controlar qué datos pueden usarse para IA, cómo se clasifican y cómo se aplican los guardrails durante las consultas.</block>
   <block id="eba372850f2a36bf98f5b67f093546c2" category="doc">Define tus políticas de Data Guardrails en AI Data Engine para tu conjunto de datos</block>
   <block id="e1f6c527ae23dde4ffaba71ebdf608c7" category="paragraph">Como propietario de datos o de la plataforma, usas AI Data Engine (AIDE) Console para definir qué datos están dentro del alcance para IA, cuáles datos siempre están fuera de los límites y qué reglas de seguridad se aplican cuando esos datos se usan para clasificación y retrieval-augmented generation (RAG).</block>
   <block id="111797bd83edd8d440933ae2333e68ca" category="paragraph">Usa estos procedimientos para definir esas políticas en AI Data Engine Console para que ONTAP System Manager pueda aplicarlas a todos los datos en los workspaces.</block>
-  <block id="23fa3f02fe4ac6a2257d2292a2efa41d" category="list-text">Necesitas privilegios de _administrador de almacenamiento_ en AI Data Engine Console <block ref="3f74607a99bfe93e31e227e163b1bde6" prefix="(" category="inline-code"></block> para crear y gestionar políticas globales.</block>
   <block id="a6b9740b8fe5799e278b0abdf4503723" category="list-text">Tienes un clúster AIDE con nodos de cómputo de datos desplegados y en buen estado.</block>
   <block id="ec6d0296cf1fa2f18795a99eb33cb3af" category="inline-link-macro">OpenID Connect (OIDC)</block>
   <block id="77b33c618b557861ebb10e6a48d76a0a" category="list-text"><block ref="e938ac9c1a94c86cb3848bf92ab91463" category="inline-link-macro-rx"></block> está configurado, y tu rol de IdP está asignado a un rol de admin de AIDE que permite la gestión de políticas de datos.</block>
-  <block id="e7f11e2bc726152c5dd7d2cd109c347d" category="list-text">La licencia del software AI Data Engine se instala para que las funciones de Data Guardrails e inferencia estén habilitadas.</block>
   <block id="208a630dcaa4c46cbc11fc34416aa57d" category="list-text">Existe al menos un espacio de trabajo, o has coordinado con el administrador para entender qué fuentes de datos (volúmenes) se usarán en los espacios de trabajo.</block>
   <block id="8f0a4f8d5bccc1226ef499c1044e68c7" category="section-title">Entiende los tipos de políticas</block>
   <block id="5aa2d966ba2f9556d7ddbfee44569595" category="paragraph">AI Data Engine Console expone estos tipos de políticas que dan forma a tu patrimonio de datos:</block>
@@ -728,28 +680,21 @@
   <block id="f95b08085941366f2e2030f613783d56" category="list-text">Los metadatos que consultas (por ejemplo, las etiquetas PII) dependen de los clasificadores que están activados.</block>
   <block id="872345cb64299a4f06509e70dc4c1a82" category="list-text">Las respuestas que reciben tus canalizaciones RAG están limitadas por los guardrails configurados a nivel del espacio de trabajo.</block>
   <block id="dcd62fd337dd43e14bf409ae1d1c5b83" category="inline-link-macro">Ver colecciones de datos en AI Data Engine</block>
-  <block id="630f8d5b87ad8e6e04d840656d2ec87d" category="list-text"><block ref="630f8d5b87ad8e6e04d840656d2ec87d" category="inline-link-macro-rx"></block></block>
   <block id="0ea6a9977c1dbb583e0caf928e2509ed" category="inline-link-macro">Inicio rápido de Data-to-RAG para AI Data Engine</block>
-  <block id="469aff1bc9dff9a0cf69310965c57b26" category="list-text"><block ref="469aff1bc9dff9a0cf69310965c57b26" category="inline-link-macro-rx"></block></block>
-  <block id="abc4b3a5812f026cfd91b7f141bf173b" category="summary">Instala el sistema de almacenamiento AFX como el primer paso para desplegar el AI Data Engine. El sistema AFX proporciona la base de infraestructura de almacenamiento necesaria para desplegar AIDE.</block>
   <block id="89c0b4739d3df91343c36f2c8d821680" category="doc">Instala el sistema de almacenamiento AFX para AI Data Engine</block>
-  <block id="753773c499e6d00c36d9ab4ac4b1f30d" category="paragraph">Instala el sistema de almacenamiento AFX como el primer paso para desplegar el AI Data Engine. El sistema de almacenamiento AFX proporciona la infraestructura de almacenamiento y es necesario antes de instalar los Data Compute Node.</block>
   <block id="85ab5efebf9bc9af8d5e909689d4a93b" category="inline-link-macro">Documentación de instalación de AFX 1K</block>
   <block id="96ce8ddf3fb114b4cedca2ea0892fe68" category="paragraph">Sigue el <block ref="4f517b3f46b2d5ca6da88f4b9b8f2b3a" category="inline-link-macro-rx"></block> para instalar el sistema de almacenamiento AFX.</block>
   <block id="03fe8cddc2c4cb43a341e639c5992693" category="inline-link-macro">instala los Data Compute Node</block>
   <block id="eae7516085e0e2eef255bc6ea494a69d" category="paragraph">Después de completar la instalación del sistema de almacenamiento AFX, <block ref="088b939de9069977d312607a8f16152e" category="inline-link-macro-rx"></block>.</block>
   <block id="f8424f6a097028fc6e148a76a5bbb1b5" category="summary">Revisa los requisitos para instalar AI Data Engine, incluido el sistema de almacenamiento AFX y los nodos de Data Compute Node.</block>
   <block id="0f993a084026733f48bb95835a9b81ce" category="doc">Requisitos para instalar AI Data Engine</block>
-  <block id="b7d8c9e8bfd24163d634e0e4ac3e70d4" category="paragraph">Revisa los requisitos para instalar el AI Data Engine. AIDE requiere un sistema de almacenamiento AFX, un mínimo de tres Data Compute Node, switch de red y cables.</block>
   <block id="47dee50ad0138b8f5ca70e40e86e6c04" category="section-title">Requisitos de hardware</block>
-  <block id="38ef9bf86b5297da1d7cfe1e5626a93c" category="paragraph">AI Data Engine requiere un sistema de almacenamiento AFX y un mínimo de tres Data Compute Node. El sistema AFX proporciona la infraestructura de almacenamiento, mientras que los Data Compute Node alojan los componentes de software AIDE que permiten la gestión de datos, la curación y las capacidades de IA.</block>
   <block id="180f97e4101a981a589ed7b4acd8a5f4" category="list-text">*Sistema de almacenamiento AFX*: Incluye un controlador AFX, una estantería de discos y un switch de red. El sistema de almacenamiento AFX es necesario para la implementación de AIDE.</block>
   <block id="b89cf6d0d0cfbce221c32768c38b8d86" category="list-text">*Nodos de cálculo de datos*: se requiere un mínimo de tres nodos de cálculo de datos. Los nodos de cálculo de datos son nodos de hardware proporcionados por NetApp que alojan el software AIDE, incluyendo el Metadata Engine, Data Sync, Data Curator y Data Guardrails.</block>
   <block id="e47ae0c6ccb8d1ffcb23bfb3da909e24" category="list-text">Cada Data Compute Node tiene ranuras de E/S 4 y 5 disponibles para conectividad. La ranura 3 está reservada para la GPU. Las ranuras 1 y 2 no están pobladas ni accesibles.</block>
   <block id="dc846b7b46dccdc8d3ef485283eaf8e2" category="list-text">Los puertos e4a y e5a se utilizan para las conexiones del clúster.</block>
   <block id="4beb9d403896b1f2778dc59145f4ff04" category="list-text">Los puertos e4b y e5b se usan para conexiones de red de host.</block>
   <block id="76b766e26edfb35b1eb6b837149be61a" category="section-title">Requisitos del switch de red</block>
-  <block id="281780476a0f1ae0634dbbfd23de4acc" category="paragraph">AI Data Engine requiere switches de red para permitir la conectividad de red de los hosts y la comunicación entre nodos para los data compute nodes.</block>
   <block id="4716f8ab3df54331b763c915df4a8ffa" category="list-text">Conmutadores cliente para conectividad de red de host (Cisco Nexus 9332D-GX2B o Cisco Nexus 9364D-GX2A)</block>
   <block id="6d3d6be8357596e8198e6110601a3ac9" category="list-text">Conmutadores de clúster para comunicación entre nodos (Cisco Nexus 9332D-GX2B o Cisco Nexus 9364D-GX2A)</block>
   <block id="a5ba574ce7b5734d40fafbd23d231b25" category="list-text">Switches de gestión opcionales para la gestión de red</block>
@@ -877,26 +822,21 @@
   <block id="5e652160fbab4adde8eea47620894fb6" category="paragraph">Esto abre la página de espacios de trabajo de Data Engine donde puedes <block ref="8b1d7cd3b6a3be01862493d306ab7fe2" category="inline-link-macro-rx"></block>.</block>
   <block id="4d856612f048d237095b3bd39e4f5820" category="list-text">Selecciona *Configurar OpenID Connect*.</block>
   <block id="7da1482c9fbbd7e1e3e31e3444c87840" category="inline-link-macro">configura la autenticación OpenID</block>
-  <block id="985ee6683c62552ef5f5c8f4cdddf54e" category="paragraph">Necesitarás <block ref="86c7393005e03dbceb6e0aaaec374b21" category="inline-link-macro-rx"></block> para habilitar el acceso a la consola de AIDE.</block>
   <block id="bd965e38a0c9cf27aa1bde099308e23f" category="paragraph-title">Después de que termines</block>
   <block id="2292a40442f971be38d6c6a5ba3b251e" category="paragraph">Después de que se completan todas las acciones, la ventana de orientación se oculta. Puedes cerrarla manualmente y volver a abrirla cuando lo necesites.</block>
   <block id="6c402339040938e4262187ccb58d2596" category="section-title">2. Completa la configuración de AIDE</block>
   <block id="a8bf58c3bd5a893c2faa0c740693cd19" category="paragraph">Después de que tu clúster AIDE esté configurado e integrado con el sistema de almacenamiento AFX, necesitas completar la configuración de AIDE.</block>
   <block id="00a9e768fb32e46166e15f27fd821f8f" category="inline-link-macro">Agrega las licencias necesarias de AIDE</block>
   <block id="c7e55a22f807e4b6863008d43e3065dc" category="list-text"><block ref="a4b5aca81183c3364fb160c5947d34ce" category="inline-link-macro-rx"></block>.</block>
-  <block id="fae51d818b673224f961f12cb9b26848" category="paragraph">Hay una licencia de AI Data Engine que debes instalar para tener la funcionalidad completa de AIDE, incluidas las capacidades de vectorización y guardrails.</block>
   <block id="ef735218764b700f4a68fad8ccc996de" category="inline-link-macro">Configura la autenticación OIDC</block>
   <block id="b21d218266c197112b3532dfd0b37cc2" category="list-text"><block ref="ab24e4777833114d74f1cdbc6bdf8298" category="inline-link-macro-rx"></block>.</block>
-  <block id="d79f1b26c8f1b50a20e791da039dd9e5" category="paragraph">Asegúrate de configurar OIDC para todas las implementaciones. Debes configurar OIDC para acceder a la AI Data Engine Console.</block>
   <block id="5fd52d4a1119f3f751bc8f7eee151dea" category="summary">Como administrador de un clúster ONTAP, puedes usar ONTAP System Manager para configurar la autenticación OpenID Connect (OIDC) para un clúster AI Data Engine (AIDE). Esto te da un inicio de sesión seguro y centralizado a través de un proveedor de identidades externo (IdP).</block>
   <block id="761a07459db4e883522af85323e1b22c" category="doc">Configura OpenID Connect para AIDE en ONTAP</block>
-  <block id="a2a098831c03bffbc313ec2474276d2e" category="admonition">Debes configurar OIDC para acceder a la AI Data Engine Console. Cuando está configurado, toda la autenticación pasa por OIDC. Si OIDC no está configurado, la consola no estará disponible para los administradores, los data engineers y los data scientists. En este caso, iniciar sesión en System Manager vuelve a la autenticación local.</block>
   <block id="6112c7f78022f4225fc58547cb610ae0" category="paragraph">Ten en cuenta también lo siguiente sobre la configuración de OIDC para el acceso a AIDE:</block>
   <block id="0acbf56bccad7ca57f0b867761598354" category="list-text">No puedes modificar una configuración OIDC existente. Si necesitas hacer un cambio, primero elimina la configuración y crea una nueva con los ajustes que quieras.</block>
   <block id="e54ec3f21d2147b58dcf92a8986b97a2" category="list-text">Si desactivas o eliminas OIDC, System Manager volverá a la autenticación local de usuarios de ONTAP.</block>
   <block id="92e8b005d3c68652b3f2dfecdfc8f9eb" category="section-title">Descripción general de OIDC</block>
   <block id="d5a279827aa633f50299d1537a1b2c30" category="paragraph">OpenID Connect (OIDC) es un protocolo de autenticación construido sobre el marco OAuth 2.0. Extiende OAuth 2.0, que se usa principalmente para autorización, añadiendo una capa de identidad. OIDC introduce el concepto de un ID token, que es un JSON Web Token (JWT) que contiene claims sobre el evento de autenticación y la identidad del usuario.</block>
-  <block id="2fea10b5c95e1bdee68a2dc952a48d3f" category="paragraph">Necesitas seleccionar y configurar un proveedor de identidad externo (IdP) compatible con AFX con AIDE. El IdP autentica a los usuarios y emite tokens que AFX, a través de System Manager, puede usar para dar acceso a la AIDE Console.</block>
   <block id="cc850bc17018f52309657b388345e0c3" category="section-title">Configura proveedores de identidad de terceros</block>
   <block id="b5fd4801ddea199d53e38d34e0c16f45" category="paragraph">Para autenticarte usando OIDC, primero necesitas configurar un IdP externo. La implementación de ONTAP de OIDC usa reclamos de rol en los tokens para aplicar RBAC. Cuando configures un IdP, asegúrate de que esté configurado para devolver reclamos de rol en el id token y el access token. ONTAP admite dos IdPs para la autenticación OIDC: Entra ID y Active Directory Federation Services (AD FS).</block>
   <block id="0248eceb183034c82899c7bc91d5d37c" category="section-title">Entra ID</block>
@@ -914,7 +854,6 @@
   <block id="b8b0dcdc556f3afbf66a1ac2ff89ee74" category="inline-link">Agrega AD FS como proveedor de identidad de OpenID Connect</block>
   <block id="1577a4cb6500155ce9eca4f7bf8f0c2d" category="paragraph">Consulta<block ref="fd3aa054da399a46f69886b8147873da" category="inline-link-rx"></block> para más información.</block>
   <block id="d5c4d31f414df6582798f376550fecde" category="section-title">Configura OIDC en System Manager</block>
-  <block id="35f276c071333edb2500e224b892009d" category="paragraph">Después de configurar tu IdP, puedes configurar la autenticación OIDC en System Manager para habilitar el acceso seguro a la AI Data Engine Console.</block>
   <block id="e53733d9219b65b42186e45b2be4559e" category="list-text">Necesitas tener acceso de administrador a System Manager.</block>
   <block id="331cadb0301be62408df65c40b625aa8" category="list-text">Tu proveedor de identidad OIDC debe estar configurado y accesible.</block>
   <block id="6ed0ae84648b71189c7f641cea702c81" category="list-text">En System Manager, selecciona *Cluster* y luego *Settings*; localiza la tarjeta OpenID Connect.</block>
@@ -955,16 +894,13 @@
   <block id="a6d899f314cdd20df8f4d59aca478ae8" category="list-text">Asegura el nodo de computación de datos al armario usando los tornillos de montaje incluidos.</block>
   <block id="353ccbfd0ab9b9e503d824a6bc057226" category="list-text">Coloca el frontal en la parte delantera del nodo de cálculo de datos.</block>
   <block id="e30a01f520c71c74d7ceed0e849ca30b" category="inline-link-macro">cablea los nodos de cálculo de datos para AIDE</block>
-  <block id="082b4c909289f25bf292fbd1efc1725f" category="summary">Necesitas instalar una licencia de NetApp para acceder a todas las funciones de AI Data Engine (AIDE). Como administrador de clúster ONTAP, puedes gestionar las licencias usando ONTAP System Manager.</block>
   <block id="eda5245c7aa76877b2f41c80a9fe821c" category="doc">Instala una licencia AIDE en tu sistema AFX</block>
-  <block id="bf59b5fa52e090d739b08baa38ea1640" category="section-title">Prepárate para licenciar el AI Data Engine</block>
   <block id="2494571377e00102d0d328681f5ff6d0" category="paragraph">Una licencia es un registro de uno o más derechos de software. Todas las licencias AFX se entregan como un archivo de licencia NetApp (NLF), que es un solo archivo que habilita varias funciones. Hay varias cosas que debes considerar antes de instalar una licencia en tu sistema de almacenamiento AFX para usar AIDE.</block>
   <block id="f2da3a9e513c23c7dcfe6d6228ef0609" category="section-title">Tipos de licencias</block>
   <block id="c0db7d329995c565adb385de138512e9" category="paragraph">Hay dos tipos principales de licencias necesarias para empezar a usar AIDE a través de tu sistema de almacenamiento AFX.</block>
   <block id="ad09d4f074e5e7f7524d8960ed675311" category="paragraph-title">Licencia ONTAP One</block>
   <block id="51e9cd3df14c6a6c5e7c1aef94a02023" category="paragraph">La licencia Metadata Engine Basic normalmente se instala de fábrica como parte de la licencia ONTAP One. Permite acceder a la funcionalidad Metadata Engine, que proporciona la base esencial para las operaciones de AIDE. También se incluyen todas las capacidades básicas necesarias para administrar tu sistema ONTAP.</block>
   <block id="424a10335c5c90e5b96111de1934acec" category="paragraph-title">AI Data Engine</block>
-  <block id="a8f70600ac4cb58293cfb988f3bd7e77" category="paragraph">Necesitas comprar e instalar la licencia de AI Data Engine para acceder a los servicios premium necesarios para activar todas las capacidades de AIDE. La licencia desbloquea tus nodos de cómputo de datos, permitiendo funciones de IA como vectorización, guardarraíles de gobernanza, inferencia y una experiencia de interfaz de usuario integrada. La licencia incluye una cantidad de GPU y una fecha de vencimiento.</block>
   <block id="d7f55af6d9c0662de3e0e91e473d18be" category="section-title">Requisitos de instalación de la licencia</block>
   <block id="aafb7d4fc0910dd58dea4e8009f15a67" category="paragraph">Necesitas comprar la licencia de AIDE y descargar el archivo NLF asociado en tu sistema local. Luego puedes subir el archivo a tu sistema de almacenamiento AFX usando System Manager. También asegúrate de tener lo siguiente:</block>
   <block id="69f1f7cad7c6e3c043894b607caa7682" category="list-text">Credenciales de administrador para iniciar sesión en ONTAP System Manager</block>
@@ -1006,7 +942,6 @@
   <block id="d4719451e76be2b63cbc4379574f8af8" category="inline-link-macro">prepárate para instalar tus nodos de cálculo de datos</block>
   <block id="c5c899a1a675cf6171f1b0bd26cf38ad" category="summary">Empieza con la instalación y configuración de tus nodos de computación de datos y despliega todo en tu entorno ONTAP.</block>
   <block id="b44e203a59265141b15d79992f218135" category="doc">Flujo de trabajo de instalación y configuración para nodos de cómputo de datos para AI Data Engine</block>
-  <block id="a3a99d6030b7bfab3e66259156e15dbd" category="paragraph">Para instalar y configurar tus nodos de computación de datos (DCN), revisa los requisitos de hardware, prepara tu sitio, instala y conecta los componentes de hardware, enciende el sistema y configura tu clúster ONTAP.</block>
   <block id="7ccd978bf0dbca0a0746f98d09b99f7f" category="inline-link-macro">Revisa los requisitos de instalación del hardware</block>
   <block id="6889512d643df7fa8ccfb7e52dd1181c" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="90572de4b12061d10d3adbe91dd02ace" category="inline-link-macro-rx"></block></block>
   <block id="2ef02acbcac74a2bf527975726a47ddc" category="inline-link-macro">Prepárate para instalar tus nodos de cálculo de datos</block>
@@ -1042,7 +977,6 @@
   <block id="33ce156e9858d918c1b56d969811ebbc" category="inline-link-macro">configura un clúster ONTAP AIDE</block>
   <block id="27c51e0dda139dd95822cad0516f7b35" category="summary">Prepárate para instalar los nodos de cómputo de datos para AI Data Engine en tu entorno ONTAP y registra el hardware para acceder a los beneficios de soporte.</block>
   <block id="8d89efe9b46db5b5f9ec296c31e95ee1" category="doc">Prepárate para instalar tus nodos de cómputo de datos para AI Data Engine</block>
-  <block id="091ec47f94f2994330da94cd9f2af30c" category="paragraph">Prepárate para instalar tus nodos de cómputo de datos para AI Data Engine preparando el sitio, desempacando las cajas y comparando el contenido de las cajas con el albarán, y registrando el sistema para acceder a los beneficios de soporte.</block>
   <block id="92c8397408f55d9526d554c55cde3d22" category="section-title">Paso 1: preparar el sitio</block>
   <block id="597ca1608c1f2106a1897b3b3180200e" category="paragraph">Para instalar tus nodos de cálculo de datos, asegúrate de que el sitio y el armario o bastidor que planeas usar cumplen las especificaciones para tu configuración.</block>
   <block id="00b577734e42e4525e2674cf2a01cee4" category="list-text">Usa<block ref="f73c85a53b5d65cc9c35da0b9e0d2f09" category="inline-link-rx"></block> para confirmar que tu sitio cumple los requisitos medioambientales y eléctricos para tus nodos de cómputo de datos.</block>
@@ -1137,7 +1071,6 @@
   <block id="5f2444c9a398135bfe3cdb686e5d7b63" category="summary">Conoce las nuevas capacidades disponibles en AI Data Engine (AIDE).</block>
   <block id="44b91c30c9b87c702f04abec51577e90" category="doc">Novedades en AI Data Engine</block>
   <block id="50218dcae6c81faa9a7834b2da37a2e3" category="paragraph">AI Data Engine (AIDE) 9.18.1 es la versión inicial de la plataforma de NetApp para la gestión de datos de IA. Esta versión introduce un motor de metadatos y flujos de trabajo de gestión que permiten a las organizaciones catalogar y organizar datos no estructurados para cargas de trabajo de IA, proporcionando la base para funciones avanzadas de gobernanza y vectorización. La gobernanza avanzada (guardrails) y la vectorización están disponibles para los clientes que tengan las licencias adecuadas de AI Data Engine.</block>
-  <block id="7b0d984e6577869e42002f516bae0c23" category="section-title">Novedades en el lanzamiento inicial de AIDE 9.18.1</block>
   <block id="1b136ee99ae21fd1b05e374b68f4c181" category="paragraph">AIDE 9.18.1 introduce las siguientes capacidades fundamentales:</block>
   <block id="d49835367e1df4d8c56a9f296b32f370" category="inline-link-macro">Metadata Engine para la catalogación de datos de IA</block>
   <block id="642d48c986ef92c98d317d856ecc6b1c" category="paragraph-title"><block ref="642d48c986ef92c98d317d856ecc6b1c" category="inline-link-macro-rx"></block></block>
@@ -1174,24 +1107,14 @@
   <block id="ff4ccfb6d662760365a14ab7b530dab9" category="list-text">Controles de acceso basados en roles para la gestión de workspace y metadata.</block>
   <block id="56f5784c38334b4ee3fe2e9254b87693" category="inline-link-macro">Capacidades avanzadas de curación y gobierno de datos</block>
   <block id="59ae4de3c766ce135e4cc8163946f980" category="paragraph-title"><block ref="59ae4de3c766ce135e4cc8163946f980" category="inline-link-macro-rx"></block></block>
-  <block id="5c377fbdfac12e4bbd71cecfea57a7c8" category="paragraph">Las siguientes funciones están disponibles para los clientes que tengan las licencias adecuadas de AI Data Engine:</block>
-  <block id="ae3cd29b3f7b9f6b2ec98653eae2e943" category="list-text">*Vectorización y RAG*: Creación de colecciones de datos, embeddings y endpoints de recuperación en la AI Data Engine Console, usando metadatos de los workspaces de AIDE.</block>
-  <block id="0af3ab204663a2b4318c4dd1913349c1" category="list-text">*Gobernanza basada en guardrail*: definición de políticas de guardrail en la AI Data Engine Console y asociación de esas políticas con espacios de trabajo en ONTAP System Manager.</block>
   <block id="5b9a826190ba39acfd52ccbb7a3162df" category="section-title">Hardware y plataformas compatibles</block>
-  <block id="4bdc0244aeb278cac543268351727442" category="paragraph">AI Data Engine 9.18.1 se ejecuta en clústeres de la plataforma de datos ONTAP AI que combinan:</block>
   <block id="445f34644993f0180d664d04552ca545" category="list-text">Nodos de almacenamiento AFX 1K</block>
   <block id="3fe6e9c496db6b206c30a94d78a8072b" category="list-text">NetApp nodos de computación de datos</block>
-  <block id="2148fe5b31430b0b037dd91499d63ee8" category="list-text"><block ref="2148fe5b31430b0b037dd91499d63ee8" category="inline-link-macro-rx"></block></block>
-  <block id="d17713455596872594052610b30bfeb7" category="inline-link-macro">Conoce la arquitectura y los componentes de AI Data Engine</block>
-  <block id="ac2e635323f0f40c80f3a0cec98a978c" category="list-text"><block ref="ac2e635323f0f40c80f3a0cec98a978c" category="inline-link-macro-rx"></block></block>
   <block id="cd23e339d73c59679bb72ae5595246d0" category="summary">Crea y publica colecciones de datos a partir de los metadatos del espacio de trabajo en AI Data Engine Console para potenciar retrieval-augmented generation (RAG) y otras cargas de trabajo de IA.</block>
   <block id="edba5efaaea6535b7d536d358b738c3e" category="doc">Crear colecciones de datos en AI Data Engine Console</block>
   <block id="ee1608fa113321125cd2b76a5e926106" category="paragraph">Las colecciones de datos son los principales bloques de construcción de RAG en AI Data Engine (AIDE). Como ingeniero de datos o científico de datos, tú defines qué archivos pertenecen a una colección, configuras las opciones de embedding e indexación y publicas la colección para que las aplicaciones puedan consultarla a través de un endpoint de recuperación.</block>
-  <block id="0a064ca69e20faaba8d35507624f3864" category="paragraph">Realizarás todas las tareas de recopilación de datos en la AI Data Engine Console.</block>
-  <block id="053d34a45abc9edd96cd7f87a41f098c" category="list-text">Necesitas privilegios de _data engineer_ o _data scientist_ en AI Data Engine Console <block ref="3f74607a99bfe93e31e227e163b1bde6" prefix="(" category="inline-code"></block>).</block>
   <block id="37972b715441dbcf43bb2d125ba3928b" category="list-text">Tienes acceso al menos a un espacio de trabajo con metadatos extraídos y en estado<block ref="e7d31fc0602fb2ede144d18cdffd816b" prefix=" " category="inline-code"></block>.</block>
   <block id="b0bd699bf6ff4346b01596a8b712bdca" category="list-text">Has explorado los metadatos del área de trabajo y has identificado consultas o filtros que definen subconjuntos de datos significativos.</block>
-  <block id="e58ebaacb5359c398561f5667364d403" category="list-text">La licencia del software AI Data Engine está instalada y las funciones de inferencia están habilitadas.</block>
   <block id="cf3cd113ea18035cd105bd313067ca3b" category="section-title">Crear una colección de datos a partir de los metadatos del espacio de trabajo</block>
   <block id="05decc0de6de8d8dc249cfa7d66bd869" category="list-text">Ve a *Data Curator &gt; Workspaces* y selecciona el workspace que contiene tus datos de destino.</block>
   <block id="ebc78922c30cecf5434662ea5758f1cc" category="list-text">Selecciona *Añadir recogida de datos*.</block>
@@ -1236,13 +1159,11 @@
   <block id="8483d9fa57a207d9f2854ec8bccbad22" category="list-text">Ve a *Data Curator &gt; Data collections* y selecciona el menú de opciones (<block ref="abe63474400e5ff8a952d935ca1d25f5" category="inline-image-macro-rx" type="image"></block>) de la colección.</block>
   <block id="9f2c81cac7b9efe5ee470b76e9a4870a" category="list-text">Elige *Borrar*.</block>
   <block id="b26a5fa549c938ffb56d20623c3f69c0" category="list-text">Confirma la eliminación.</block>
-  <block id="123cf1df56988f0d9791d6e4d91ab01e" category="paragraph">La definición de la colección y sus incrustaciones se eliminan de AI Data Engine. Las aplicaciones que intenten consultar el antiguo punto final de recuperación fallarán después de que se elimine la colección.</block>
   <block id="145a99a8c940e067ddcf1f7958d66df2" category="inline-link-macro">Ver colecciones de datos</block>
   <block id="f8d6e68cb13ef718cb3a39228ee255f6" category="list-text"><block ref="f8d6e68cb13ef718cb3a39228ee255f6" category="inline-link-macro-rx"></block></block>
   <block id="c29972897aeec205c060de4c63a9af6c" category="summary">Como ingeniero de datos o científico de datos, usa AI Data Engine Console para explorar los metadatos del espacio de trabajo, descubrir archivos y objetos relevantes y preparar subconjuntos candidatos para las colecciones de datos.</block>
   <block id="a2ea3609f5c747024a1aeb07386bb8d4" category="doc">Explora los metadatos del espacio de trabajo en AI Data Engine Console</block>
   <block id="ad339f2ecb4415d76984c4d75c97becd" category="paragraph">Como ingeniero de datos o científico de datos, tu primera tarea en AI Data Engine (AIDE) es entender qué datos están disponibles en tus espacios de trabajo. Usas AIDE Console para consultar el catálogo de metadatos, buscar archivos relevantes e identificar subconjuntos de datos para convertirlos en colecciones de datos.</block>
-  <block id="468a43e363892633386b7e7ae8296cf8" category="list-text">Necesitas privilegios de _data engineer_ o _data scientist_ en AI Data Engine Console y acceso a al menos un espacio de trabajo.</block>
   <block id="bc130bd4e36ffdc114c746dca94de011" category="list-text">Un administrador de almacenamiento tiene:</block>
   <block id="5ad57630596c5e7da1009bc17badda76" category="list-text">Creaste uno o más espacios de trabajo en ONTAP System Manager.</block>
   <block id="2fe352bdf361e854bd1f92f4896566bb" category="list-text">Asigna a tu usuario o grupo acceso a los workspaces correspondientes.</block>
@@ -1263,12 +1184,8 @@
   <block id="58a8b08d90cd2cacaaf1c7513104cd18" category="inline-link-macro">Crear colecciones de datos para RAG desde un espacio de trabajo</block>
   <block id="e7daf9716afb29396ab1cac9310601c9" category="list-text"><block ref="e7daf9716afb29396ab1cac9310601c9" category="inline-link-macro-rx"></block></block>
   <block id="0125b899427d1ef717130d3af4d4ae6f" category="summary">Usa las herramientas de AI Data Engine para ver colecciones de datos, hacer seguimiento de los trabajos de indexación y publicación, y entender la huella vectorial en los workspaces.</block>
-  <block id="bc898078a781b0cd764d495575088cd7" category="paragraph">Después de que los ingenieros de datos o los científicos de datos creen y publiquen colecciones de datos desde los espacios de trabajo, necesitas visibilidad de su estado, tamaño e impacto en el clúster de AI Data Engine.</block>
   <block id="4b52ec759003a125291c9d7c9b79215e" category="paragraph">Si eres administrador de almacenamiento, ingeniero de datos o científico de datos, puedes ver las colecciones de datos en ONTAP System Manager y AIDE Console.</block>
-  <block id="a37a154002992f155e6e874c034932ad" category="list-text">Necesitas privilegios de _administrador de almacenamiento_ en ONTAP System Manager o privilegios de _ingeniero de datos_ o _científico de datos_ en AI Data Engine Console <block ref="3f74607a99bfe93e31e227e163b1bde6" prefix="(" category="inline-code"></block> para ver las colecciones de datos.</block>
   <block id="b3ceb827e5487b7a67441a437dcb870e" category="list-text">Existe al menos un espacio de trabajo con metadatos extraídos correctamente.</block>
-  <block id="d81564ab25fad5b63d50353db740e475" category="list-text">Los ingenieros de datos o los científicos de datos han creado y publicado al menos una recopilación de datos desde AI Data Engine Console.</block>
-  <block id="dc8f8b66a6049b8dd7d11c4363fc3837" category="list-text">La licencia del software AI Data Engine está instalada y las funciones de inferencia están activadas, así que los endpoints de vectorización y recuperación están activos.</block>
   <block id="aea1ff4b73c6164a18ef6f5d045bbb42" category="section-title">Ver colecciones de datos de todo el clúster</block>
   <block id="1c2b91adda7aba90ff89d1f0a07fd722" category="paragraph">Para los administradores de almacenamiento, ONTAP System Manager proporciona una vista a nivel de clúster de las colecciones de datos y su huella, pero no permite a los administradores crearlas o modificarlas.</block>
   <block id="462a349c31259052b1c779848b053483" category="list-text">En System Manager, ve a *Data Engine &gt; Data collections*.</block>
@@ -1316,7 +1233,6 @@
   <block id="17a053961a9dc00ecc771150782992df" category="summary">Pasa de un sistema AI Data Engine (AIDE) recién desplegado a un endpoint de retrieval-augmented generation (RAG) funcional usando workspaces, data collections y guardrails.</block>
   <block id="cc32ef27001e395f127a4c7d7240f386" category="paragraph">Pasa de un sistema AI Data Engine (AIDE) recién desplegado a un endpoint de retrieval-augmented generation (RAG) que funcione usando este flujo de trabajo. Entiende cómo colaboran los storage administrators, data engineers y data scientists usando ONTAP System Manager y AIDE Console.</block>
   <block id="d3b58f715cdf9f9f42defc18e1f25ed1" category="list-text">Has instalado y añadido nodos de Data compute (DCNs) al clúster de ONTAP.</block>
-  <block id="5b94d3efbe45fb2538ff293bf0952b3f" category="list-text">Has instalado y licenciado el software AI Data Engine para vectorización y guardrails.</block>
   <block id="8b6283f24f9cde4fdee5069d4592e968" category="list-text">Has configurado <block ref="e938ac9c1a94c86cb3848bf92ab91463" category="inline-link-macro-rx"></block> y has asignado roles para admin, data engineer y data scientist.</block>
   <block id="e059973a35d0ae23790e270711ba1de9" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block> Definir el alcance y la gobernanza de los datos</block>
   <block id="d80e0ebbd1e5b1040ba42456e701d54d" category="paragraph">Como administrador de almacenamiento o administrador de seguridad, quieres preparar el entorno en AI Data Engine Console y ONTAP System Manager:</block>
@@ -1340,14 +1256,8 @@
   <block id="5acef888ac0c7b0033778b9f8c0daea2" category="list-text">Copia el URI del endpoint de recuperación de la colección elegida y dáselo a los data scientists o a los application developers.</block>
   <block id="c64ee509bf9935bb154bfd93ca4a9f10" category="inline-link-macro">Ver el estado de la recopilación de datos y la huella vectorial</block>
   <block id="e283c422843a5d0e9d69a0937d58c2da" category="list-text"><block ref="81e822d364e16588d62814ff67859a25" category="inline-link-macro-rx"></block> según sea necesario.</block>
-  <block id="63bead6cf67cd27c10ad4dacb4ad52b9" category="inline-link-macro">Define tu patrimonio de datos y las políticas de protección en AI Data Engine</block>
-  <block id="a743ab5238c29d3d6acb44f8575ab000" category="list-text"><block ref="a743ab5238c29d3d6acb44f8575ab000" category="inline-link-macro-rx"></block></block>
-  <block id="4c8440d1cb94a74446521b8bd8077a49" category="list-text"><block ref="4c8440d1cb94a74446521b8bd8077a49" category="inline-link-macro-rx"></block></block>
-  <block id="ab56ff48b10e2f612e7962a84ddef316" category="list-text"><block ref="ab56ff48b10e2f612e7962a84ddef316" category="inline-link-macro-rx"></block></block>
   <block id="e99d734caecfe9571f1ce868b5e22c73" category="summary">Después de crear un espacio de trabajo, puedes asignar usuarios a ese espacio para que trabajen con los recursos de AI dentro de ese espacio de trabajo.</block>
   <block id="14013ce6f4537aa5a445c323f302506e" category="doc">Asigna acceso de usuario a los workspaces de AI Data Engine</block>
-  <block id="3a4483e5a6724f6b9d50ea43b182fece" category="paragraph">Como administrador de almacenamiento, tú asignas usuarios a un espacio de trabajo según sus roles: ingenieros de datos, científicos de datos u otros roles dependiendo de la estructura y las necesidades de tu organización. Los usuarios inician sesión en la AI Data Engine Console (AIDE) con sus credenciales y acceden a los recursos del contenedor de datos dentro del espacio de trabajo asignado.</block>
-  <block id="b341184ff013665174bd331965ce38f2" category="paragraph">ONTAP System Manager te permite gestionar qué usuarios tienen acceso a los workspaces de AI Data Engine. Puedes añadir o eliminar usuarios para controlar quién puede ver, modificar e interactuar con los datos y las actividades del workspace.</block>
   <block id="1b9b47e99ecd4d9750a86d34285be3ec" category="list-text">Necesitas privilegios de _administrador de almacenamiento_ para gestionar el acceso de los usuarios a los espacios de trabajo.</block>
   <block id="68b1c247a0648b2200b74e0129c73a00" category="list-text">Confirma que creaste el espacio de trabajo y que está activo en el inventario de Workspaces.</block>
   <block id="fbf889d7861d8cb458cd817f23df47db" category="list-text">Confirma que todos los contenedores de datos pertinentes se han añadido al área de trabajo y son accesibles.</block>
@@ -1374,13 +1284,11 @@
   <block id="b62c0a523395eeaf2777a20ef74c2c45" category="paragraph">Los límites de procesamiento del sistema afectan la creación de espacios de trabajo (normalmente hasta 15 GB por día por clúster). Si creas varios espacios de trabajo en paralelo o en rápida sucesión, cada espacio de trabajo podría tardar más en procesarse y podrías experimentar retrasos significativos.</block>
   <block id="768761b677efadbcd8142dc87c0267ef" category="paragraph">Supervisa el estado de la creación de espacios de trabajo desde la página de inventario de espacios de trabajo. Para obtener mejores resultados, evita crear muchos espacios de trabajo a la vez si necesitas acceso inmediato a estas funciones.</block>
   <block id="ac45c7bb27b13d4aaf43dc3800c6324f" category="list-text">Necesitas privilegios de _administrador de almacenamiento_ para crear espacios de trabajo y asociar colecciones de datos.</block>
-  <block id="e7e7aae5d93a6fea219dfe34b6a6c64e" category="list-text">Has determinado las fuentes de datos remotas (peered) y locales que piensas usar con el espacio de trabajo y con AI Data Engine.</block>
   <block id="37974cff381b4867f1825110afc8a5c4" category="inline-link-macro">creado al menos un contenedor de datos</block>
   <block id="c8c1b96537524ee8470a66cd37185635" category="list-text">Has <block ref="833a56fedb0f774ff4089fb732e7cba4" category="inline-link-macro-rx"></block> que el espacio de trabajo puede usar, como un volumen local o un volumen de un clúster peered.</block>
   <block id="a4bddb04a6bc00deb35b625e767e4e21" category="admonition">Agrega un volumen a un espacio de trabajo que no vayas a eliminar durante la vida útil esperada de ese espacio de trabajo. Si eliminas un volumen después de añadirlo a un espacio de trabajo, el espacio de trabajo entrará en estado fallido. Confirma la viabilidad a largo plazo del volumen antes de crear un espacio de trabajo.</block>
   <block id="b86bdc6e36a35f548a358dfa98192033" category="list-text">Asegúrate de que NFS está activado en el volumen, pero que CIFS no lo está. Los espacios de trabajo solo admiten volúmenes con NFS. Los volúmenes con CIFS (SMB) no son compatibles.</block>
   <block id="5638176be5dd4e400efc77338868cf55" category="section-title">Crear un espacio de trabajo</block>
-  <block id="68e216414aefa4f66a171d3813e424bd" category="paragraph">Crea un espacio de trabajo y asocia contenedores de datos que contengan los datos que quieres usar con AI Data Engine.</block>
   <block id="b9730cee08c3890576f25ac697f09b9c" category="list-text">En el cuadro de diálogo *Add Workspace*, selecciona al menos un contenedor de datos disponible para asociar con el espacio de trabajo.</block>
   <block id="15a141d848dfc5571d0778f26ad9fff2" category="inline-link-macro">clústeres emparejados</block>
   <block id="3d4a2712f979b46716e603377deace91" category="list-text">Configura <block ref="fd9437ba0db2c68faa6cd8b49749fb27" category="inline-link-macro-rx"></block> para que se pueda acceder a los datos de esos clústeres dentro del espacio de trabajo</block>
@@ -1393,7 +1301,6 @@
   <block id="51d6f71fc8a2c754cfb065d7ea2fef55" category="list-text">En el cuadro de diálogo *Finalizar espacio de trabajo*, ingresa un nombre y una descripción para el espacio de trabajo.</block>
   <block id="04e6e06bc3d169d1969fdb4e6da511c3" category="list-text">Selecciona *Add* para crear el espacio de trabajo.</block>
   <block id="0c794a6aa90aec9d1900bac6a2dca457" category="paragraph">El proceso de creación del espacio de trabajo tarda varios minutos o incluso horas en completarse, dependiendo del conjunto de datos asociado y de la cantidad de archivos, el tamaño de los archivos y otros factores.</block>
-  <block id="639b42163a0ffa46d2acfafb18a02601" category="paragraph">El sistema extrae automáticamente metadatos de todas las fuentes de datos y los almacena en un catálogo de metadatos que los usuarios pueden usar para localizar los archivos que necesitan para sus proyectos. Después de asignar usuarios al espacio de trabajo, los usuarios data engineer pueden configurar e interactuar con los componentes afiliados al espacio de trabajo desde AI Data Engine Console.</block>
   <block id="3322e5dae3a67b6e0ea384bac656dfc8" category="paragraph">El nuevo espacio de trabajo aparece en la página Espacios de trabajo en<block ref="a6fff580feaafda7ffe5c5d61e0ab6a7" prefix=" " category="inline-code"></block> estado hasta que el proceso finaliza y el estado cambia a<block ref="b2fdab230a2c39f3595a947861863cb7" prefix=" " category="inline-code"></block>.</block>
   <block id="14a721aa0619dc5307dddb896c238130" category="section-title">Revisa los detalles del espacio de trabajo</block>
   <block id="32c65af852e3b19f9f2c7f6de1bf92a8" category="paragraph">Después de crear el espacio de trabajo, revisa los detalles del espacio de trabajo.</block>
@@ -1409,20 +1316,14 @@
   <block id="ce583827f6effcce01f524f25f674151" category="doc">Prepara los datos para AI Data Engine</block>
   <block id="d0a89e04da5d5186a44c05bbccaf74e5" category="paragraph">Después de crear un clúster, establece un contenedor de datos que contenga los datos que quieres usar con AI Data Engine (AIDE). Este contenedor de datos debe ser un volumen ONTAP, ya sea un volumen local o un volumen de un clúster ONTAP peered que ejecute ONTAP 9.</block>
   <block id="7b8a6b443616665fcd12dd63cc58fe00" category="paragraph">En lugar de cargar manualmente los datos del clúster ONTAP en AIDE, tendrás que asociar los clústeres y SVMs que quieras con el clúster de AIDE y luego decidir qué volúmenes NFS quieres usar con el catálogo de metadatos de AIDE. Después de crear el contenedor de datos, puedes crear un espacio de trabajo y asociar el contenedor de datos con ese espacio de trabajo. Los usuarios de ese espacio de trabajo pueden acceder e interactuar con las colecciones de datos y recursos afiliados al espacio de trabajo para sus cargas de trabajo de IA.</block>
-  <block id="e1da28ee9e72581274d163c66a9f237c" category="paragraph">Debes asociar cada SVM que contenga datos que quieras usar con AI Data Engine. Asociar solo el clúster no es suficiente. Esto asegura que AI Data Engine pueda acceder, incorporar e indexar tus datos como se espera.</block>
   <block id="e1c1fe17b3d1cc074a2108ff534348fc" category="paragraph">Deberías parear el SVM en el clúster AIDE que actuará como el destino de SnapMirror.</block>
   <block id="5602141b0e1e9a2e9aa8fe82e4dd3352" category="paragraph">No necesitas crear relaciones SnapMirror entre los clusters ONTAP y el cluster AIDE. Estas relaciones se crearán automáticamente durante la creación del espacio de trabajo.</block>
   <block id="94d61fa44223aecec9e025256f9f9c16" category="list-text">Necesitas privilegios de _administrador de almacenamiento_ para parear clusters y SVMs y seleccionar contenedores de datos.</block>
-  <block id="465d9d69549a6a5004bd402ff8e22682" category="list-text">Has identificado los clústeres ONTAP y SVM que contienen los datos que quieres usar con AI Data Engine.</block>
   <block id="6f8e89466e0611aa14b484aef144ea16" category="list-text">Has confirmado que los volúmenes de datos de origen cumplen los siguientes requisitos:</block>
   <block id="a2629a85b15ac8e9d0a05002add88915" category="list-text">Los volúmenes están en línea y accesibles.</block>
-  <block id="800e06ad9d4a2b886867f4a6b02b4ccf" category="list-text">El protocolo NFS está activado. Solo los volúmenes habilitados para NFS son compatibles como contenedores de datos para AI Data Engine. Los volúmenes SMB y CIFS no son compatibles.</block>
   <block id="cf648c526b8b93644541296f50d251f9" category="list-text">Los volúmenes no son volúmenes FlexCache.</block>
   <block id="5aee44088c387ab8707a8213477d84d6" category="list-text">Las fuentes de datos son volúmenes de lectura y escritura. Los volúmenes de protección de datos no son compatibles.</block>
   <block id="ac98c81652db0d6d72c89cfcdc07bd58" category="inline-link">Empareja cada clúster ONTAP y SVM</block>
-  <block id="1216f26ccd4b19e78dc1d945c720fd3d" category="list-text"><block ref="8ceb652f32f46e0c9a1975fc579b542f" category="inline-link-rx"></block> que contiene los datos que quieres usar con AI Data Engine.</block>
-  <block id="8d257d5a233fcdd000fa9e3f9a577fd9" category="inline-link-macro">Selecciona los volúmenes que quieres usar con AI Data Engine</block>
-  <block id="a6387615edc32ad4b22669a60843dd98" category="list-text"><block ref="f0ab6dd984351327f62cc6bf43082797" category="inline-link-macro-rx"></block>.</block>
   <block id="2fd8593df204c213e7a054e0e4f6056e" category="paragraph">Para cada volumen, ten en cuenta la siguiente información:</block>
   <block id="7ffce295d6c61cb38fd76a4e505cdb33" category="list-text">Nombre de volumen</block>
   <block id="2a5e126e0e7398b401fa86c3fcdff107" category="list-text">Nombre de SVM y UUID</block>
@@ -1503,7 +1404,6 @@
   <block id="9aa72e2af70f149b5322b3f74fef31d3" category="paragraph">Después de que hayas cableado el hardware, <block ref="4a47b4628664a0cf522188fbb092ba40" category="inline-link-macro-rx"></block>.</block>
   <block id="29fc22820f59383beae9b78e0f00c89d" category="inline-link-macro">agrega nodos de cómputo de datos a tu clúster de AIDE</block>
   <block id="6680ddbdb7b3311772658d225390c9f5" category="paragraph">ONTAP detecta dinámicamente los nuevos Data Compute Node conectados a tu red de clúster y los muestra en System Manager. También puedes <block ref="92fd190eb6b33aabd845185d06fdf268" category="inline-link-macro-rx"></block>. Ten en cuenta lo siguiente:</block>
-  <block id="5a3b3f244ac6d468c9f9e9f1e563d414" category="paragraph">Si hay una imagen de software de Data Compute disponible para actualización, esta opción estará habilitada. Selecciona esta opción para abrir la página de actualización del software de Data Compute. Para más información, consulta <block ref="e966f8a237d0e9b99b99d834f5fe2ecd" category="inline-link-macro-rx"></block>.</block>
   <block id="1e52a91c8fc5152ade09d7e1b035671b" category="paragraph">Después de que hayas instalado los nodos de cálculo de datos, <block ref="3980b3517830ec2d777c7d0167886e44" category="inline-link-macro-rx"></block>.</block>
   <block id="5d0e4d9b7c9c24fb2e2354166df7e64f" category="admonition">Para información sobre cómo instalar el sistema de almacenamiento AFX 1K, consulta <block ref="91d16f8c743942a64a4fe44197be45ff" category="inline-link-macro-rx"></block>.</block>
   <block id="51196acef57fa4702b2c79616a51c70f" category="paragraph">Un nodo de computación de datos puede pesar hasta 46,3 lbs (21 kg). Para levantar el nodo de computación de datos, usa a dos personas o un elevador hidráulico.</block>
@@ -1514,9 +1414,117 @@
   <block id="72b11f47a4c462a17235bf830cef5f4d" category="paragraph">Después de que hayas encendido tus nodos de cálculo de datos, <block ref="c209b4c41b8b8a46751e6876a5bec129" category="inline-link-macro-rx"></block>.</block>
   <block id="69333c3b16c70d734803d338560b5f4b" category="paragraph">Después de que hayas preparado la instalación de tus nodos de cálculo de datos, <block ref="8d80699d6ea91999991c5841195fdaf6" category="inline-link-macro-rx"></block>.</block>
   <block id="9f1b1c09e19edba239dde10c234e2b7d" category="paragraph">La funcionalidad Data Sync está incluida con la licencia base de ONTAP One y está disponible tras la instalación de AIDE.</block>
-  <block id="792b46ef5bfc70b9c772c4a7f3b55acc" category="admonition">Se necesita un mínimo de tres nodos de cómputo de datos para desplegar el AI Data Engine.</block>
   <block id="b001ec8ec4133b6f8e6b8db16e7850ff" category="paragraph">Para los nodos de cómputo de datos, usa cables breakout 4x100GbE para conectar los puertos e4a/e5a para las conexiones del clúster.</block>
   <block id="788899ea47f1311b79403513bff040e9" category="paragraph">*4x100GbE cables multiconector*</block>
-  <block id="8fbd8a2f645ce1628bb418252fd4e150" category="paragraph">Para preparar la instalación de tus nodos de cálculo de datos, necesitas dejar listo el sitio, revisar los requisitos ambientales y eléctricos, y asegurarte de que haya suficiente espacio en el armario. Luego, desempaqueta el equipo, compara su contenido con el albarán de embalaje y registra el hardware para acceder a los beneficios de soporte. Se requiere un mínimo de tres nodos de cálculo de datos para desplegar el AI Data Engine.</block>
   <block id="ba1f39989ab5fafce1803b42f3c54d45" category="paragraph">Para cablear el hardware, primero conecta los nodos de cálculo de datos a tu red de datos y luego conecta los nodos de cálculo de datos a los switches del clúster.</block>
+  <block id="e6f8cfd22de27cfd8ccde79f61a46bd1" category="summary">Reemplaza un nodo de cómputo de datos (DCN) en tu clúster de AI Data Engine (AIDE).</block>
+  <block id="32f794268679c746fb213c9e0c2c7e31" category="doc">Reemplaza un nodo en tu clúster AI Data Engine</block>
+  <block id="d1293847699b10ee9673528d7b2c04bd" category="doc">Añade nodos de cálculo de datos a tu clúster AI Data Engine</block>
+  <block id="e224a7cdea2fcc18f05199345c841386" category="paragraph">La IP única se equilibrará en carga en todas las DCN y se utilizará como dirección de frontend para AIDE Console y las API relacionadas.</block>
+  <block id="4e949ea3d8f582682fb8318c98a827c7" category="paragraph">Un espacio de trabajo es un conjunto de fuentes de datos (volúmenes) que AI Data Engine (AIDE) utiliza para crear y actualizar un catálogo de metadatos para un proyecto o caso de uso concreto. Como administrador de almacenamiento, puedes usar ONTAP System Manager para supervisar la salud del espacio de trabajo, ajustar la configuración, controlar las fuentes de datos, gestionar usuarios y eliminar espacios de trabajo cuando ya no los necesites.</block>
+  <block id="b18f291bc6c90871a1cd75d947166355" category="admonition">System Manager es de solo lectura para las colecciones de datos. Los ingenieros de datos pueden crear y gestionar colecciones de datos en AIDE Console.</block>
+  <block id="a6e37a678dc0214e7adef032eb694332" category="admonition">Eliminar un contenedor de datos de un espacio de trabajo no elimina el volumen ONTAP subyacente ni su relación SnapMirror. Solo afecta el uso de metadatos dentro de AIDE.</block>
+  <block id="cbeae340bc1b21098a0b7e100e63128c" category="paragraph">El paquete de software AIDE combinado es significativamente más grande que un paquete de actualización típico de ONTAP (el paquete AIDE es de aproximadamente 40GB). Planifica tiempos de carga e instalación más largos cuando actualices el software AIDE.</block>
+  <block id="0af2d94e516a7674d31d61bb8310c790" category="list-text">Necesitas privilegios de _administrador de almacenamiento_ para actualizar el firmware de DCN y el software AIDE.</block>
+  <block id="b3baaf2c693af965abc9767470d250db" category="inline-link-macro">Asegúrate de la compatibilidad entre ONTAP, el firmware de DCN y el software AIDE al planificar actualizaciones</block>
+  <block id="0d73d98d986a81a3549f4c44a6f39f36" category="list-text"><block ref="7f0fbc353260440593ed7b34ebba193d" category="inline-link-macro-rx"></block>.</block>
+  <block id="907070b99e5a1cf62e9a56bed7282923" category="admonition">La funcionalidad de revertir no es compatible con el firmware DCN ni con las actualizaciones de software AIDE. Después de instalar una actualización, no puedes volver a una versión anterior.</block>
+  <block id="c41cec3c272b8adedc06a8c71d125f67" category="paragraph">Los DCN se actualizan con el software AIDE y la versión actualizada se muestra para cada nodo.</block>
+  <block id="e60e8abe64198eff0aa5aacfa894a813" category="doc">Ver el estado del sistema y del clúster de AI Data Engine</block>
+  <block id="42596749c4cb12e42ab8ea38030808b8" category="paragraph">Como administrador de almacenamiento, puedes usar ONTAP System Manager para acceder al panel y mostrar el estado del clúster. Este es un buen primer paso antes de comenzar tus tareas administrativas de AI Data Engine (AIDE) o si sospechas de un problema operativo.</block>
+  <block id="8513b3b7e02f870e4911015ba1bffed1" category="list-text">En la pestaña *Usuarios*, revisa qué usuarios de la AIDE Console tienen acceso.</block>
+  <block id="927edc80eda623ef0483678fe7418a36" category="doc">Ver eventos del sistema AI Data Engine, trabajos y registro de auditoría</block>
+  <block id="08b6451a618713077471a6092e8ba040" category="paragraph">Como administrador de almacenamiento, puedes revisar los eventos, trabajos y mensajes del registro de auditoría generados por AI Data Engine (AIDE) para hacer un seguimiento del procesamiento interno y diagnosticar posibles problemas. El sistema AIDE puede configurarse para reenviar esta información, junto con otros datos relacionados, para procesamiento y archivo adicionales.</block>
+  <block id="a9fe55f4d59d24f8e868be9979449d4e" category="doc">Ver Insights para optimizar tu sistema AI Data Engine</block>
+  <block id="6a4b7c2a0db02ab0e8475378c938be57" category="paragraph">Como administrador de almacenamiento, puedes usar la función _Insights_ de ONTAP System Manager para mostrar las actualizaciones de configuración sugeridas que se alinean con las mejores prácticas de NetApp. Estos cambios pueden optimizar la seguridad y el rendimiento de tu clúster de AI Data Engine (AIDE).</block>
+  <block id="14194182d583b181cbbb3f1a33b3c7ec" category="paragraph-title">¿Qué es NetApp AI Data Engine?</block>
+  <block id="e3a537d249083e58c76746b0c8dd63cd" category="paragraph-title">¿Quién usa AI Data Engine?</block>
+  <block id="a3a2e5de0ad6dbbf80448af8abb5911e" category="paragraph">No. El DCN es un nodo de hardware de computación de datos proporcionado por NetApp y es el único mecanismo de despliegue para AIDE.</block>
+  <block id="a5083e0e1a8b5dd31841672f35116a0f" category="paragraph-title">¿AIDE Console es parte de NetApp Console o una interfaz separada?</block>
+  <block id="b0e59eaf79bf491e1ac421fd6f3d45f7" category="paragraph">AIDE Console es una interfaz de gestión independiente que se ejecuta en los DCN. Tú usas AIDE Console para gestionar los servicios de AIDE, como Data Guardrails y Data Curator. También puedes usar ONTAP System Manager para monitorear el clúster de AIDE.</block>
+  <block id="75879f5576dab7a4f6ca13b4be61ef18" category="list-text">Identifica y protege automáticamente los datos confidenciales durante todo el ciclo de vida de la IA. Es accesible a través de AIDE Console.</block>
+  <block id="1bf744dee1efe6f3fdba4769d497c149" category="paragraph-title">¿El Metadata Engine de AIDE clasifica los datos?</block>
+  <block id="b447105e273087165aeacf6c4cccce3d" category="paragraph">No. AIDE Metadata Engine cataloga los metadatos del sistema de archivos y proporciona APIs para consultar estos metadatos catalogados.</block>
+  <block id="0191742b189d2ab52a72d806104439c2" category="paragraph">AI Data Engine (AIDE) se basa en una arquitectura escalable y tolerante a fallos que separa el almacenamiento y el cómputo, lo que permite un alto rendimiento y flexibilidad para las cargas de trabajo de IA.</block>
+  <block id="29832f110ba752c66081806175dd2805" category="paragraph">Las funciones principales de AI Data Engine (AIDE) trabajan juntas para automatizar, proteger y acelerar el ciclo de vida de los datos de IA. Cada función se implementa como un conjunto de microservicios que se ejecutan en DCN, integrados con ONTAP storage y expuestos a través de REST APIs e interfaces de gestión.</block>
+  <block id="e0c7b0b67001a35ed671f747b4e8f262" category="paragraph">Puedes acceder a la funcionalidad de Data Guardrails desde la AIDE Console.</block>
+  <block id="900df1b51bb941c99580e6f0369ffaea" category="paragraph">Puedes acceder a Data Curator a través de AIDE Console.</block>
+  <block id="17b4908495cf9b1df976d38bff33908a" category="paragraph">Como ingeniero de datos o científico de datos, usas AI Data Engine Console para explorar los espacios de trabajo a los que tienes acceso, crear y gestionar colecciones de datos, realizar búsquedas semánticas e integrar puntos finales de recuperación en flujos de trabajo de AI/ML.</block>
+  <block id="1edab5d784877662b2b36b8f733b0ea6" category="cell">AIDE Console</block>
+  <block id="9c162212cd714f8cfb4420cc169eecaf" category="cell">La AI Data Engine Console es tu interfaz principal para las tareas diarias, incluyendo el descubrimiento de datos, la gestión de colecciones, la configuración de canalizaciones y la publicación de RAG o endpoints de recuperación, para los espacios de trabajo a los que tienes autorización para acceder.</block>
+  <block id="fd5f6b7d59ecb7323c6b29563fbf4f53" category="cell">AIDE Console es tu interfaz principal para la exploración de datos, el refinamiento y la gestión de versiones de colecciones dentro de los espacios de trabajo a los que puedes acceder, y para conectar conjuntos de datos curados y endpoints de recuperación con flujos de trabajo de análisis, modelado y GenAI.</block>
+  <block id="0ae350262b8bec9b1b652d2adea164d6" category="paragraph">Como administrador de almacenamiento, gestionas la infraestructura de AIDE a través de ONTAP y AI Data Engine Console, aprovisionando espacios de trabajo, adjuntando políticas de Data Guardrails y supervisando la salud del sistema. Tu función se centra en garantizar un almacenamiento de datos fiable, seguro y conforme para las cargas de trabajo de IA.</block>
+  <block id="db8b0bb12a61a3bda906de20f315ae49" category="cell">Usas la AI Data Engine Console para monitorear los espacios de trabajo, ver el estado de las colecciones y supervisar la actividad del sistema en todo el entorno de AIDE.</block>
+  <block id="2c9abdb750efee8d2cf8d09f5df00d6b" category="cell">Gestiona la configuración de clústeres AFX y AIDE, redes, aprovisionamiento de almacenamiento y acceso de usuarios. Asigna roles RBAC a los usuarios que determinan el nivel de acceso a las interfaces y funciones de AIDE. Este rol de administración tiene acceso completo a la gestión usando ONTAP System Manager y AIDE Console.</block>
+  <block id="b29e1232847c15524ef8270f8454df28" category="cell">Crea y optimiza canalizaciones de IA/ML, gestiona colecciones de datos e integra modelos de IA. Este rol tiene acceso a AIDE Console para flujos de trabajo de ingeniería de datos.</block>
+  <block id="795ad54adefc592aef343053d091092b" category="cell">Descubre, conserva y analiza conjuntos de datos, crea colecciones de datos y aprovecha los puntos finales de recuperación para aplicaciones GenAI. Esta función tiene acceso a AIDE Console para flujos de trabajo de ciencia de datos.</block>
+  <block id="bad6144bee2ffcbaa166d29c57de7092" category="paragraph">AIDE Console es una interfaz dedicada para ingenieros de datos y científicos de datos. Permite a los usuarios explorar fuentes de datos, crear y gestionar colecciones de datos, configurar canalizaciones de datos, aplicar clasificadores e interactuar con Data Guardrails y funciones de búsqueda vectorial. La consola proporciona herramientas avanzadas para el descubrimiento, la curación y la integración de datos con flujos de trabajo de AI/ML.</block>
+  <block id="db243e3578405c28e6e074dc2d06e88e" category="paragraph">NetApp AI Data Engine (AIDE) es una plataforma de clase empresarial diseñada para acelerar y simplificar el procesamiento de datos, la gestión y la gobernanza impulsados por IA. AIDE puede ayudarte a transformar grandes cantidades de datos no estructurados en conjuntos de datos estructurados y listos para IA. Está diseñada para satisfacer las demandas de las cargas de trabajo modernas de machine learning (ML) e IA generativa (GenAI), apoyando tanto las operaciones de TI tradicionales como los nuevos roles centrados en IA.</block>
+  <block id="82fa7ac9772637e16a5b351cf2b779cf" category="paragraph">Las siguientes características de diseño definen cómo se construye AIDE para satisfacer las necesidades de las cargas de trabajo de AI:</block>
+  <block id="977bc8d772f52d2e6d40b4f352309913" category="list-text">**Creación de colecciones de datos**: Los ingenieros de datos y los científicos de datos usan AIDE Console para consultar el catálogo de metadatos, filtrar resultados y armar colecciones de datos seleccionadas para tareas específicas de IA.</block>
+  <block id="7ddfd18f9a4fd7e29c82e32cfd1f5694" category="paragraph">Para poner en marcha tu sistema AI Data Engine (AIDE), necesitas instalar tus componentes de hardware, configurar tu clúster, configurar el acceso a los datos desde tus hosts al sistema de almacenamiento y aprovisionar tu almacenamiento.</block>
+  <block id="abfec2fab999cf56be1d2276c82c8a54" category="inline-link-macro">Configura un espacio de trabajo y usuarios para ese espacio de trabajo que puedan acceder a los datos de AIDE</block>
+  <block id="6c4a1239e4644015c527028fe7e91624" category="paragraph"><block ref="2b5fceec6d47e77a8390430a712a6716" category="inline-link-macro-rx"></block>.</block>
+  <block id="14baeaa0b346ae241dc321a9e3e3c8c8" category="paragraph">Ahora puedes usar ONTAP System Manager para gestionar tu AIDE y hacer que tus ingenieros de datos y científicos de datos empiecen con sus espacios de trabajo y configuraciones.</block>
+  <block id="ea2d777004c15ef1005bf9bff372cf23" category="list-text">Necesitas privilegios de _administrador de almacenamiento_ en AIDE Console <block ref="3f74607a99bfe93e31e227e163b1bde6" prefix="(" category="inline-code"></block>) para crear y gestionar políticas globales.</block>
+  <block id="9c0d36b6d1d1eb9ebe273e462d8b73ec" category="list-text">La licencia de software para AIDE se instala para que las funciones de Data Guardrails e inferencia estén habilitadas.</block>
+  <block id="a41c6ace6569d7bb8256f1849dffb86b" category="inline-link-macro">Ver colecciones de datos en AIDE</block>
+  <block id="285a16ca14d916d20634d688054f9304" category="list-text"><block ref="285a16ca14d916d20634d688054f9304" category="inline-link-macro-rx"></block></block>
+  <block id="2a41d2e4b9681abd3732c13f4d54c2ae" category="inline-link-macro">Inicio rápido de Data-to-RAG para AIDE</block>
+  <block id="d84bef3a2d15248984ee9c27eba363fe" category="list-text"><block ref="d84bef3a2d15248984ee9c27eba363fe" category="inline-link-macro-rx"></block></block>
+  <block id="d00c3298541a7ea55ab140f0b74cf269" category="summary">Instala el sistema de almacenamiento AFX como primer paso en el despliegue de AI Data Engine. El sistema AFX proporciona la base de infraestructura de almacenamiento necesaria para el despliegue de AI Data Engine.</block>
+  <block id="c189c648935d7360675f610f5af1f665" category="paragraph">Instala el sistema de almacenamiento AFX como primer paso en el despliegue de AI Data Engine (AIDE). El sistema de almacenamiento AFX proporciona la infraestructura de almacenamiento y es necesario antes de instalar los nodos de cómputo de datos.</block>
+  <block id="3400f2b47696f54911f16f3055d01e84" category="paragraph">Revisa los requisitos para instalar AI Data Engine (AIDE). AIDE requiere un sistema de almacenamiento AFX, un mínimo de tres nodos de cómputo de datos, switches de red y cables.</block>
+  <block id="0ae55a188ce4f4feca59a5ac081c312e" category="paragraph">AIDE requiere un sistema de almacenamiento AFX y un mínimo de tres nodos de computación de datos. El sistema AFX proporciona la infraestructura de almacenamiento, mientras que los nodos de computación de datos alojan los componentes de software de AIDE que permiten la gestión de datos, la curación y las capacidades de AI.</block>
+  <block id="8d71811b28c64ed257e16daca2aad49b" category="paragraph">AIDE requiere conmutadores de red para habilitar la conectividad de red del host y la comunicación entre nodos para los nodos de cómputo de datos.</block>
+  <block id="002291f9e5b5683833b876d4862d73a3" category="admonition">Se necesita un mínimo de tres nodos de cómputo de datos para desplegar AI Data Engine.</block>
+  <block id="d1b801d387894294c4732373fa7dd7f5" category="paragraph">Si hay una imagen de software de Data Compute disponible para actualización, esta opción estará habilitada. Selecciona esta opción para abrir la página de actualización del software de Data Compute. Para más información, consulta <block ref="124cecabe3d76fc9f4d9d38f8acc814f" category="inline-link-macro-rx"></block>.</block>
+  <block id="090cbd51a7aee76955fc92fb768be1dd" category="paragraph">Necesitarás <block ref="86c7393005e03dbceb6e0aaaec374b21" category="inline-link-macro-rx"></block> para habilitar el acceso a AIDE Console.</block>
+  <block id="aeadcd95bcbc7b4885a2aefefea4dad8" category="paragraph">Existe una licencia de AIDE que debes instalar para disponer de todas las funciones de AIDE, incluidas la vectorización y las capacidades de guardrails.</block>
+  <block id="7ee590aece6c60510b1d0e3747db7646" category="paragraph">Asegúrate de configurar OIDC para todos los despliegues. Debes configurar OIDC para acceder a AIDE Console.</block>
+  <block id="29865faddf98e9621aac0dd2f0ffd13a" category="admonition">Debes configurar OIDC para acceder a AIDE Console. Cuando está configurado, toda la autenticación pasa por OIDC. Si OIDC no está configurado, la consola no estará disponible para los administradores, los ingenieros de datos ni los científicos de datos. En este caso, iniciar sesión en System Manager vuelve a la autenticación local.</block>
+  <block id="84658f16184c1adc1e7a61106cce321b" category="paragraph">Necesitas seleccionar y configurar un proveedor de identidad externo (IdP) compatible con AFX con AIDE. El IdP autentica a los usuarios y emite tokens que AFX, a través de System Manager, puede usar para otorgar acceso a AIDE Console.</block>
+  <block id="200739f54c080ff4b29a9e1d03769858" category="paragraph">Después de configurar tu IdP, puedes configurar la autenticación OIDC en System Manager para permitir el acceso seguro a AIDE Console.</block>
+  <block id="e6d1916870a63b7b22ae3a35bb9516f1" category="summary">Necesitarás instalar una licencia de NetApp para acceder a todas las funciones de AI Data Engine (AIDE). Como administrador de clúster ONTAP, puedes gestionar las licencias usando ONTAP System Manager.</block>
+  <block id="b1ca2ea72df8bf387ea1c8d3c06d2a24" category="section-title">Prepárate para licenciar AI Data Engine</block>
+  <block id="32acc73835cb6211b1a4dbcc93a01e3c" category="paragraph">Necesitas comprar e instalar la licencia de AIDE para acceder a los servicios premium necesarios para activar todas las capacidades de AIDE. La licencia desbloquea tus nodos de cómputo de datos, permitiendo funciones de IA como vectorización, Data Guardrails, inferencia y una experiencia de interfaz de usuario integrada. La licencia incluye un recuento de GPU y una fecha de vencimiento.</block>
+  <block id="4f501b3f7719ec0bc63b9dd009bd4c6a" category="paragraph">Revisa el equipo necesario y las precauciones de elevación para tus nodos de computación de datos para AI Data Engine (AIDE).</block>
+  <block id="c694e8cb605ffd42bb64c336bd1f0d1a" category="paragraph">Para instalar y configurar tus nodos de computación de datos (DCN), revisa los requisitos de hardware, prepara tu sitio, instala y conecta los componentes de hardware, enciende el sistema y configura tu clúster ONTAP.</block>
+  <block id="730f4ea217a45b4cf020df7843ab37eb" category="paragraph">Para preparar la instalación de tus nodos de cálculo de datos, necesitas preparar el sitio, revisar los requisitos ambientales y eléctricos, y asegurarte de que haya suficiente espacio en el armario. Luego, desempaqueta el equipo, compara su contenido con el albarán y registra el hardware para acceder a los beneficios de soporte. Se requieren al menos tres nodos de cálculo de datos para desplegar AIDE.</block>
+  <block id="cea7cd64fdeff7d654a0e5bda7f8d3ef" category="paragraph">Prepárate para instalar tus nodos de cómputo de datos para AI Data Engine (AIDE) preparando el sitio, desempaquetando las cajas y comparando el contenido de las cajas con el albarán de empaque, y registrando el sistema para acceder a los beneficios de soporte.</block>
+  <block id="d03546b8a64f435d98e5a43aac420b57" category="section-title">Novedades en el lanzamiento inicial de AIDE 9.18.1</block>
+  <block id="bd56a132953b68d98a6e100a3865e489" category="paragraph">Las siguientes funciones están disponibles para los clientes que tengan las licencias de AIDE adecuadas:</block>
+  <block id="d15cb2f5ab3c569d2ed58c14be0ff5c5" category="list-text">*Vectorización y RAG*: creación de colecciones de datos, incrustaciones y puntos finales de recuperación en AI Data Engine Console, utilizando metadatos de los espacios de trabajo de AIDE.</block>
+  <block id="fe930e21a45c2270387395a650df93dd" category="list-text">*Gobernanza basada en guardrail*: definición de políticas de guardrail en AI Data Engine Console y asociación de esas políticas con espacios de trabajo en ONTAP System Manager.</block>
+  <block id="3f0bb68bad9f856aca9202690d585844" category="paragraph">AIDE 9.18.1 se ejecuta en clústeres de la plataforma de datos ONTAP AI que combinan:</block>
+  <block id="f6167e11558d8c41cb775c6cea0b4f19" category="inline-link-macro">Limitaciones conocidas de AIDE</block>
+  <block id="8a421c6ef75c30a2b6aeb586ef267ffd" category="list-text"><block ref="8a421c6ef75c30a2b6aeb586ef267ffd" category="inline-link-macro-rx"></block></block>
+  <block id="c323b411ea469cd8b4370d5950bffc7d" category="list-text"><block ref="c323b411ea469cd8b4370d5950bffc7d" category="inline-link-macro-rx"></block></block>
+  <block id="9f5f8c705287725a39a956c70b3427d2" category="paragraph">Realizarás todas las tareas de recogida de datos en AIDE Console.</block>
+  <block id="def428accf4b92eb92616d2e0434a9c4" category="list-text">Necesitas privilegios de _data engineer_ o _data scientist_ en AIDE Console <block ref="3f74607a99bfe93e31e227e163b1bde6" prefix="(" category="inline-code"></block>).</block>
+  <block id="d34cca1dd4edf1dd36dddc75876670e9" category="list-text">La licencia del software AIDE está instalada y las funciones de inferencia están habilitadas.</block>
+  <block id="ae90ef141a9012f2c452b5579a31f1f8" category="paragraph">La definición de la colección y sus embeddings se eliminan de AIDE. Las aplicaciones que intenten consultar el antiguo endpoint de recuperación fallarán después de que se elimine la colección.</block>
+  <block id="3260a7f1121d7e881acf4af2dd7d183b" category="list-text">Necesitas privilegios de _data engineer_ o _data scientist_ en AIDE Console y acceso a al menos un espacio de trabajo.</block>
+  <block id="bc15a687aa596c0c619b2ef81c766662" category="paragraph">Después de que los ingenieros de datos o los científicos de datos crean y publican colecciones de datos desde los espacios de trabajo, necesitas visibilidad de su estado, tamaño e impacto en el clúster de AI Data Engine (AIDE).</block>
+  <block id="e4325770e3d4b6e2105b7ab52e1d0a22" category="list-text">Necesitas privilegios de _administrador de almacenamiento_ en ONTAP System Manager o privilegios de _ingeniero de datos_ o _científico de datos_ en AIDE Console <block ref="3f74607a99bfe93e31e227e163b1bde6" prefix="(" category="inline-code"></block> para ver colecciones de datos.</block>
+  <block id="7950006ee9630b308290fc3bdd45fcbc" category="list-text">Los ingenieros de datos o los científicos de datos han creado y publicado al menos una colección de datos desde AIDE Console.</block>
+  <block id="f61f9e7d7a6790cd3074c78b37536aeb" category="list-text">La licencia del software AIDE está instalada y las funciones de inferenciación están habilitadas, así que los endpoints de vectorización y recuperación están activos.</block>
+  <block id="a80a52e2fbe386619eaafa826e6df528" category="list-text">Has instalado y licenciado el software AIDE para vectorización y guardrails.</block>
+  <block id="d22e263d33aca0b457b8fea628811f25" category="inline-link-macro">Define tu patrimonio de datos y las políticas de Data Guardrails en AIDE</block>
+  <block id="2f0bdc1a9f637089990429e4207f9fbc" category="list-text"><block ref="2f0bdc1a9f637089990429e4207f9fbc" category="inline-link-macro-rx"></block></block>
+  <block id="16df1ff6ec1d16e7b77a466333596b5a" category="inline-link-macro">Explora los metadatos del espacio de trabajo en la AIDE Console</block>
+  <block id="ef32207a9f24a1dc2cf54bfbf5880a21" category="list-text"><block ref="ef32207a9f24a1dc2cf54bfbf5880a21" category="inline-link-macro-rx"></block></block>
+  <block id="902025a2e877edf6a0c60665d49bd9fe" category="inline-link-macro">Crear colecciones de datos en AIDE Console</block>
+  <block id="8facdc3f14eaacdf4838dc61bc3cbfec" category="list-text"><block ref="8facdc3f14eaacdf4838dc61bc3cbfec" category="inline-link-macro-rx"></block></block>
+  <block id="643923fb96953babec821e70d6304372" category="paragraph">Como administrador de almacenamiento, tú asignas usuarios a un espacio de trabajo según sus roles: ingenieros de datos, científicos de datos u otros roles dependiendo de la estructura y necesidades de tu organización. Los usuarios inician sesión en AI Data Engine (AIDE) Console usando sus credenciales y acceden a los recursos del contenedor de datos dentro del espacio de trabajo asignado.</block>
+  <block id="b4d627e8e5e39f4cb88c3dcfe268fbd7" category="paragraph">ONTAP System Manager te permite gestionar qué usuarios tienen acceso a los espacios de trabajo de AIDE. Puedes añadir o eliminar usuarios para controlar quién puede ver, modificar e interactuar con los datos y actividades del espacio de trabajo.</block>
+  <block id="8165af06fbef80f6bd8dc51cc5753c58" category="list-text">Has determinado las fuentes de datos remotas (peered) y locales que piensas usar con el espacio de trabajo y con AIDE.</block>
+  <block id="94abfd988123e98bad0212006be092ab" category="paragraph">Crea un espacio de trabajo y asocia contenedores de datos que contengan los datos que quieres usar con AIDE.</block>
+  <block id="28ecc1e82a8a6d293b4cee3f98a52d54" category="paragraph">El sistema extrae automáticamente metadatos de todas las fuentes de datos y los almacena en un catálogo de metadatos que los usuarios pueden usar para localizar los archivos que necesitan para sus proyectos. Después de asignar usuarios al espacio de trabajo, los usuarios ingenieros de datos pueden configurar e interactuar con los componentes afiliados al espacio de trabajo desde AIDE Console.</block>
+  <block id="16df229dfd604271f3fab7aafb6a7a33" category="paragraph">Debes hacer peer de cada SVM que contenga los datos que quieres usar con AIDE. Hacer peer solo del clúster no es suficiente. Esto asegura que AIDE pueda acceder, incorporar e indexar tus datos como se espera.</block>
+  <block id="e01934124b3f3ce3b812b728f1c7ef65" category="list-text">Has identificado los clusters ONTAP y SVM que contienen los datos que quieres usar con AIDE.</block>
+  <block id="400a7f4dca7d02b7509f6c129946b79e" category="list-text">El protocolo NFS está habilitado. Solo los volúmenes habilitados para NFS son compatibles como contenedores de datos para AIDE. Los volúmenes SMB y CIFS no son compatibles.</block>
+  <block id="3f5ac75246d8594dc42a3814252da7ce" category="list-text"><block ref="8ceb652f32f46e0c9a1975fc579b542f" category="inline-link-rx"></block> que contiene los datos que quieres usar con AIDE.</block>
+  <block id="119a03c8a8d1576eafb9b8f6ac04c12f" category="inline-link-macro">Selecciona los volúmenes que quieres usar con AIDE</block>
+  <block id="0d5f62005a0ac8e87f1aaffb995ce7de" category="list-text"><block ref="3ddf7be728c954623bdc7abbf7625bd2" category="inline-link-macro-rx"></block>.</block>
 </blocks>

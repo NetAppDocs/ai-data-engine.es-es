@@ -19,7 +19,7 @@ Asegúrate de que ya tienes instalado un sistema de almacenamiento AFX 1K y lueg
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dos"]link:prepare-hardware.html["Prepárate para instalar tus nodos de cálculo de datos"]
 [role="quick-margin-para"]
-Para preparar la instalación de tus nodos de cálculo de datos, necesitas dejar listo el sitio, revisar los requisitos ambientales y eléctricos, y asegurarte de que haya suficiente espacio en el armario. Luego, desempaqueta el equipo, compara su contenido con el albarán de embalaje y registra el hardware para acceder a los beneficios de soporte. Se requiere un mínimo de tres nodos de cálculo de datos para desplegar el AI Data Engine.
+Para preparar la instalación de tus nodos de cálculo de datos, necesitas preparar el sitio, revisar los requisitos ambientales y eléctricos, y asegurarte de que haya suficiente espacio en el armario. Luego, desempaqueta el equipo, compara su contenido con el albarán y registra el hardware para acceder a los beneficios de soporte. Se requieren al menos tres nodos de cálculo de datos para desplegar AIDE.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Tres"]link:deploy-hardware.html["Instala el hardware para tus nodos de cálculo de datos"]
 [role="quick-margin-para"]
