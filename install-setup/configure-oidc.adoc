@@ -18,6 +18,7 @@ CAUTION: Debes configurar OIDC para acceder a AIDE Console. Cuando está configu
 
 Ten en cuenta también lo siguiente sobre la configuración de OIDC para el acceso a AIDE:
 
+* A grandes rasgos, la configuración de OIDC consta de dos pasos principales. Primero necesitas realizar la configuración básica de OIDC usando System Manager. Luego puedes completar la configuración asignando roles externos con la CLI de ONTAP.
 * No puedes modificar una configuración OIDC existente. Si necesitas hacer un cambio, primero elimina la configuración y crea una nueva con los ajustes que quieras.
 * Si desactivas o eliminas OIDC, System Manager volverá a la autenticación local de usuarios de ONTAP.
 
@@ -69,6 +70,9 @@ Consulta https://learn.microsoft.com/en-us/azure/active-directory-b2c/identity-p
 
 Después de configurar tu IdP, puedes configurar la autenticación OIDC en System Manager para permitir el acceso seguro a AIDE Console.
 
+
+TIP: Puedes proporcionar el URI de metadatos para rellenar automáticamente los campos de configuración de OIDC en System Manager. Revisa la documentación de tu IdP para obtener el formato exacto del URI.
+
 .Antes de empezar
 * Necesitas tener acceso de administrador a System Manager.
 * Tu proveedor de identidad OIDC debe estar configurado y accesible.
@@ -106,10 +110,38 @@ Después de configurar tu IdP, puedes configurar la autenticación OIDC en Syste
 . Inicia sesión con tus credenciales de IdP; después de autenticarte correctamente, volverás a System Manager.
 
 
+.Después de que termines
+Completa la configuración de OIDC configurando la asignación de roles externos.
+
+
+
+== Configura la asignación de roles externos usando la CLI
+
+La asignación de roles externos es una función de ONTAP que te permite asignar los roles de IdP externos a los roles de ONTAP correspondientes. Necesitas configurar esta asignación para asegurarte de que los usuarios que se autentican a través de OIDC reciban los permisos RBAC apropiados en ONTAP.
+
+.Acerca de esta tarea
+Esta tarea asigna el ingeniero de datos y el científico de datos a los roles de ONTAP correspondientes. Necesitas actualizar los ejemplos de comandos con los nombres de rol adecuados según tu entorno. Ten en cuenta que ya deberías haber asignado el rol de administrador de almacenamiento al rol de ONTAP `admin` durante la configuración básica de OIDC en System Manager.
+
+.Pasos
+. Usando SSH, inicia sesión en el CLI de ONTAP con una cuenta que tenga privilegios administrativos.
+. Configura la asignación de roles para el rol de data engineer; por ejemplo:
++
+[source, bash]
+----
+security login external-role-mapping create -external-role dataEngineer -provider entra -ontap-role data-engineer
+----
+. Configura la asignación de roles para el rol de científico de datos; por ejemplo:
++
+[source, bash]
+----
+security login external-role-mapping create -external-role dataScientist -provider entra -ontap-role data-scientist
+----
+
+
 
 
 == Información relacionada
 
+* https://docs.netapp.com/us-en/ontap/authentication/oauth2-external-roles.html["Asignación externa de roles OAuth 2.0 en ONTAP"^]
 * https://openid.net/["OpenID Foundation"^]
-* https://docs.netapp.com/us-en/ontap/authentication/overview-oauth2.html["Implementación de OAuth 2.0 de ONTAP"^]
 

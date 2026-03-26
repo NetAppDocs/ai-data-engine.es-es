@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: administer/aide-node-replace.html 
-keywords: aide, node replacement, DCN, cluster 
-summary: 'Reemplaza un nodo de cómputo de datos (DCN) en tu clúster de AI Data Engine (AIDE).' 
+keywords: ai data engine, aide, data compute node, dcn, replace node, node replacement, cluster maintenance 
+summary: 'Necesitas reemplazar un nodo de cómputo de datos (DCN) en tu clúster de AI Data Engine (AIDE) si deja de funcionar o necesita ser cambiado por una falla de hardware, actualización o mantenimiento. Esto asegura que el clúster de AIDE se mantenga saludable y operativo. El procedimiento se puede realizar sin interrumpir los servicios en curso.' 
 ---
 = Reemplaza un nodo en tu clúster AI Data Engine
 :allow-uri-read: 
@@ -19,8 +19,15 @@ Necesitas reemplazar un nodo de cómputo de datos (DCN) en tu clúster de AI Dat
 
 Hay varias cosas que debes tener en cuenta antes de reemplazar un nodo en tu clúster AIDE.
 
-.Credenciales de System Manager
-Necesitas privilegios de _administrador de almacenamiento_ para realizar tareas de reemplazo de nodo del clúster de AIDE.
+
+
+=== Requisitos
+
+Vas a necesitar lo siguiente:
+
+* Credenciales de usuario con privilegios de _administrador de almacenamiento_
+* Número de serie del nuevo nodo de reemplazo
+
 
 
 
@@ -32,15 +39,6 @@ Debes tener en cuenta las siguientes restricciones cuando reemplaces un nodo en 
 * No puedes realizar la sustitución de nodos usando System Manager.
 * El nuevo nodo debe coincidir con la versión de software del clúster; ONTAP lo actualizará si es necesario.
 * El nodo que ha fallado no debe estar encendido mientras esté conectado a la red del clúster para evitar conflictos de dirección IP.
-
-
-
-
-=== Requisitos
-
-Vas a necesitar lo siguiente:
-
-* Número de serie del nuevo nodo de reemplazo
 
 
 

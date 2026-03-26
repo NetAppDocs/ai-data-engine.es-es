@@ -5,7 +5,6 @@
   <block id="0f6902c11864c7f6ea3e7e97543390ff" category="section-title">Prepárate para reemplazar un nodo</block>
   <block id="192d4730c4474133e43ad79a17bc2b0a" category="paragraph">Hay varias cosas que debes tener en cuenta antes de reemplazar un nodo en tu clúster AIDE.</block>
   <block id="3d0290aecf6f3d97cfe6bc8642514dfb" category="paragraph-title">Credenciales de System Manager</block>
-  <block id="214815a740557c20d025260617d488f6" category="paragraph">Necesitas privilegios de _administrador de almacenamiento_ para realizar tareas de reemplazo de nodo del clúster de AIDE.</block>
   <block id="e3e16bb73c0250a6a229fb457b4f957e" category="section-title">Restricciones</block>
   <block id="c236764b0a821599642d7a5689c7dec8" category="paragraph">Debes tener en cuenta las siguientes restricciones cuando reemplaces un nodo en tu clúster de AIDE:</block>
   <block id="3bc43fb96432ecb013dfd886119f4664" category="list-text">La sustitución de nodos solo se admite usando la CLI y, opcionalmente, la API de REST.</block>
@@ -879,8 +878,6 @@
   <block id="b3eac18ae7c204c556f62dd66a01d35d" category="list-text">Inicia sesión con tus credenciales de IdP; después de autenticarte correctamente, volverás a System Manager.</block>
   <block id="83ae1104f2752dedd3f734e862e77079" category="inline-link">OpenID Foundation</block>
   <block id="d6dc3de1eee9ae466c18b32abc3802b3" category="list-text"><block ref="d6dc3de1eee9ae466c18b32abc3802b3" category="inline-link-rx"></block></block>
-  <block id="79ae1a530fac5c3d3243825c084b579d" category="inline-link">Implementación de OAuth 2.0 de ONTAP</block>
-  <block id="f3bab0602006a91da3ab07cad24e13f8" category="list-text"><block ref="f3bab0602006a91da3ab07cad24e13f8" category="inline-link-rx"></block></block>
   <block id="00f45165b3cfbcdf086cee49c25c82c9" category="summary">Aprende cómo instalar los kits de raíles y asegurar los nodos de computación de datos en el armario.</block>
   <block id="d08f231bff757ee25df913223bf39e35" category="doc">Instala tus nodos de cómputo de datos para AI Data Engine</block>
   <block id="69e42da6d542e4665008dcc83755451b" category="paragraph">Instala y asegura tus nodos de computación de datos en el armario.</block>
@@ -1417,7 +1414,6 @@
   <block id="b001ec8ec4133b6f8e6b8db16e7850ff" category="paragraph">Para los nodos de cómputo de datos, usa cables breakout 4x100GbE para conectar los puertos e4a/e5a para las conexiones del clúster.</block>
   <block id="788899ea47f1311b79403513bff040e9" category="paragraph">*4x100GbE cables multiconector*</block>
   <block id="ba1f39989ab5fafce1803b42f3c54d45" category="paragraph">Para cablear el hardware, primero conecta los nodos de cálculo de datos a tu red de datos y luego conecta los nodos de cálculo de datos a los switches del clúster.</block>
-  <block id="e6f8cfd22de27cfd8ccde79f61a46bd1" category="summary">Reemplaza un nodo de cómputo de datos (DCN) en tu clúster de AI Data Engine (AIDE).</block>
   <block id="32f794268679c746fb213c9e0c2c7e31" category="doc">Reemplaza un nodo en tu clúster AI Data Engine</block>
   <block id="d1293847699b10ee9673528d7b2c04bd" category="doc">Añade nodos de cálculo de datos a tu clúster AI Data Engine</block>
   <block id="e224a7cdea2fcc18f05199345c841386" category="paragraph">La IP única se equilibrará en carga en todas las DCN y se utilizará como dirección de frontend para AIDE Console y las API relacionadas.</block>
@@ -1527,4 +1523,16 @@
   <block id="3f5ac75246d8594dc42a3814252da7ce" category="list-text"><block ref="8ceb652f32f46e0c9a1975fc579b542f" category="inline-link-rx"></block> que contiene los datos que quieres usar con AIDE.</block>
   <block id="119a03c8a8d1576eafb9b8f6ac04c12f" category="inline-link-macro">Selecciona los volúmenes que quieres usar con AIDE</block>
   <block id="0d5f62005a0ac8e87f1aaffb995ce7de" category="list-text"><block ref="3ddf7be728c954623bdc7abbf7625bd2" category="inline-link-macro-rx"></block>.</block>
+  <block id="4664a9ced36cba14050a4fcbf1450a27" category="list-text">Credenciales de usuario con privilegios de _administrador de almacenamiento_</block>
+  <block id="eadf44f76dffdd84c31f1c9d356c0868" category="list-text">A grandes rasgos, la configuración de OIDC consta de dos pasos principales. Primero necesitas realizar la configuración básica de OIDC usando System Manager. Luego puedes completar la configuración asignando roles externos con la CLI de ONTAP.</block>
+  <block id="5ac833147e752f92ac0c80b33430fb9f" category="admonition">Puedes proporcionar el URI de metadatos para rellenar automáticamente los campos de configuración de OIDC en System Manager. Revisa la documentación de tu IdP para obtener el formato exacto del URI.</block>
+  <block id="624871063b499c9a41dbf91f4f294d7c" category="paragraph">Completa la configuración de OIDC configurando la asignación de roles externos.</block>
+  <block id="3c0b11b1d3509faa0a7bbac825211a4a" category="section-title">Configura la asignación de roles externos usando la CLI</block>
+  <block id="4ae4bdbad8969579acc1dc1db436776d" category="paragraph">La asignación de roles externos es una función de ONTAP que te permite asignar los roles de IdP externos a los roles de ONTAP correspondientes. Necesitas configurar esta asignación para asegurarte de que los usuarios que se autentican a través de OIDC reciban los permisos RBAC apropiados en ONTAP.</block>
+  <block id="4cf903122d76266e6c91111b522b6d5f" category="paragraph">Esta tarea asigna el ingeniero de datos y el científico de datos a los roles de ONTAP correspondientes. Necesitas actualizar los ejemplos de comandos con los nombres de rol adecuados según tu entorno. Ten en cuenta que ya deberías haber asignado el rol de administrador de almacenamiento al rol de ONTAP<block ref="21232f297a57a5a743894a0e4a801fc3" prefix=" " category="inline-code"></block> durante la configuración básica de OIDC en System Manager.</block>
+  <block id="7c05dc11a263c8c571a6a666a4c4d4b3" category="list-text">Usando SSH, inicia sesión en el CLI de ONTAP con una cuenta que tenga privilegios administrativos.</block>
+  <block id="258b991bef7bf176457c18935f6166d8" category="list-text">Configura la asignación de roles para el rol de data engineer; por ejemplo:</block>
+  <block id="cd5dcea2498cb30a3d7de0f356155044" category="list-text">Configura la asignación de roles para el rol de científico de datos; por ejemplo:</block>
+  <block id="4b527243ee5adebf301c5c9ab3aa1e5a" category="inline-link">Asignación externa de roles OAuth 2.0 en ONTAP</block>
+  <block id="7d8d22eff571b389da4ee3b87fac44f2" category="list-text"><block ref="7d8d22eff571b389da4ee3b87fac44f2" category="inline-link-rx"></block></block>
 </blocks>
