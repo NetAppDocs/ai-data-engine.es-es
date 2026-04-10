@@ -1,0 +1,106 @@
+---
+sidebar: sidebar 
+permalink: rest/resources.html 
+keywords: aide, rest api, resources, dcn, data engine, governance, audit, policies, jobs 
+summary: 'La API de REST de ONTAP incluye nuevos endpoints para dar soporte a las funciones y capacidades de AI Data Engine (AIDE).' 
+---
+= Recursos de la API de REST de AIDE
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+La API de REST de ONTAP incluye nuevos endpoints para dar soporte a las funciones y capacidades de AI Data Engine (AIDE).
+
+
+
+== Nuevas categorías de recursos en la API de REST de ONTAP para AFX
+
+Se han añadido dos nuevas categorías de recursos a la API de REST de ONTAP para dar soporte a la funcionalidad y características de AIDE.
+
+
+
+=== DCN
+
+Los recursos de DCN soportan principalmente la infraestructura de nodos de computación de datos y la gestión del ciclo de vida. Estos endpoints se utilizan para gestionar y observar el propio clúster de DCN, incluida la gestión de nodos y clústeres, telemetría y estado, y tareas de plataforma similares. ONTAP actúa como cliente de DCN, construyendo solicitudes REST a servicios que se ejecutan en los DCN, en lugar de funcionar como un proxy de paso en bruto. Las capacidades típicas incluyen:
+
+* Clúster DCN, así como el inventario y el estado de los nodos.
+* Operaciones del ciclo de vida del clúster DCN, incluida la capacidad de crear, expandir, reemplazar y eliminar nodos.
+* Telemetría y comprobaciones operativas necesarias para que ONTAP se coordine con el clúster de DCN.
+
+
+Todas estas funciones suelen aparecer en el subárbol de la API de REST de ONTAP `/api/dcn` y están disponibles cuando ONTAP se ejecuta en un entorno con DCNs conectadas y activas.
+
+ONTAP también expone dos prefijos de ruta HTTP que se proxy directamente a las DCN:
+
+* Consola o proxy UI sin autenticación ONTAP: `/console/...`
+* DCN proxy que requiere autenticación ONTAP y se utiliza para la monitorización: `/dcn/...`
+
+
+
+
+=== Data Engine
+
+Los recursos de Data Engine soportan el plano de datos de AIDE y la gestión de gobernanza/metadatos. Los endpoints se centran en gestionar los objetos sobre los que opera AIDE. Las capacidades pueden organizarse a grandes rasgos en subcategorías.
+
+
+
+==== Modelo de objetos principales y CRUD
+
+Existen varios endpoints que proporcionan acceso a los objetos principales de AIDE, entre los que se incluyen:
+
+* Espacios de trabajo y versiones de espacios de trabajo
+* Entidades
+* Listas de control de acceso (ACLs)
+* Consultas
+* Fuentes de datos
+* Colecciones de datos
+
+
+
+
+==== Gobernanza, auditoría y servicios de apoyo
+
+Hay varios puntos finales que proporcionan acceso a la gobernanza y a diversos servicios de apoyo, entre ellos:
+
+* Políticas y gestión de políticas
+* Eventos y registros de auditoría relacionados con las operaciones de AIDE
+* Configuración de AutoSupport
+* Aplicación y funciones de AIDE para capacidades de AIDE
+* Áreas de gobernanza utilizadas normalmente por los roles
+
+
+Ten en cuenta lo siguiente:
+
+* Muchas de las operaciones de larga duración (crear, modificar, eliminar) se ejecutan de forma asíncrona y devuelven una referencia de trabajo que los clientes pueden consultar para conocer su estado.
+* En muchos casos ONTAP no proxy las peticiones, sino que las reconstruye para los endpoints del Data Engine y traduce las respuestas como parte de su comportamiento de cliente DCN.
+
+
+
+
+== Actualizaciones de los recursos existentes de la API de REST de ONTAP
+
+Además de las nuevas categorías de recursos, existen actualizaciones de los recursos existentes de la API de REST de ONTAP.
+
+
+
+=== Seguridad
+
+Se han añadido varios puntos finales y funciones nuevos a la sección de seguridad de la API de REST de ONTAP para dar soporte a AIDE, entre los que se incluyen:
+
+* Certificados y gestión de certificados
+* Configuración de autenticación OIDC
+* Identidad del usuario, incluida la función y los permisos
+
+
+
+
+== Información relacionada
+
+* link:../rest/learn-rest-api.html["Conoce la API de REST de AIDE"]
+* https://docs.netapp.com/us-en/ontap-automation/resources/overview_categories.html["Categorías de recursos en la API de REST de ONTAP"^]
+

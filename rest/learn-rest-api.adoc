@@ -1,0 +1,77 @@
+---
+sidebar: sidebar 
+permalink: rest/learn-rest-api.html 
+keywords: aide, rest api, architecture, access, rbac, reference documentation 
+summary: 'Cuando AI Data Engine (AIDE) se integra con un sistema de almacenamiento ONTAP como AFX, la API de REST de ONTAP existente se mejora mediante puntos finales adicionales para admitir las nuevas funciones centradas en la IA. Si planeas usar la API de REST para administrar AIDE, primero deberías conocer sus características y funcionamiento básico.' 
+---
+= Conoce la API de REST de AIDE
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cuando AI Data Engine (AIDE) se integra con un sistema de almacenamiento ONTAP como AFX, la API de REST de ONTAP existente se mejora mediante puntos finales adicionales para admitir las nuevas funciones centradas en la IA. Si planeas usar la API de REST para administrar AIDE, primero deberías conocer sus características y funcionamiento básico.
+
+
+
+== Características de la API de REST ampliada
+
+AIDE amplía la API de REST de ONTAP en un sistema de almacenamiento AFX con capacidades adicionales. Esto proporciona a los clientes un punto de entrada de gestión único y familiar, mientras permite que ONTAP coordine el trabajo necesario realizado en los Data Compute Nodes (DCN). A grandes rasgos, las características relevantes de la API de REST mejorada incluyen:
+
+* ONTAP sigue siendo la principal vía de acceso para la API de REST. Los clientes siguen utilizando el conocido marco de la API de REST de ONTAP, los métodos de autenticación y el modelo RBAC.
+* AIDE añade nuevos recursos REST, principalmente en los subárboles `/api/data-engine` y `/api/dcn` para gestionar el espacio de trabajo, las fuentes de datos y las colecciones de datos, así como los componentes internos de AIDE en el pipeline de IA.
+* ONTAP actúa como una capa de orquestación para procesar las peticiones de los clientes de las siguientes formas:
++
+** Las solicitudes son procesadas por ONTAP, que se comunica y coordina con los servicios que se ejecutan en los nodos de computación de datos según sea necesario.
+** ONTAP crea peticiones REST descendentes independientes y las envía a los servicios basados en DCN, devolviendo al cliente original una respuesta normalizada al estilo ONTAP.
+
+
+* La autorización está estratificada para los flujos AIDE:
++
+** ONTAP aplica la autorización de primer nivel basada en RBAC.
+** Los servicios basados en DCN pueden aplicar opcionalmente un segundo nivel de autorización, incluyendo comprobaciones de ACL para los espacios de trabajo y las colecciones de datos.
+
+
+
+
+Este diseño híbrido permite que el conjunto de funciones de AIDE funcione como una extensión natural de la API de REST de ONTAP mientras aprovecha el entorno de DCN para la funcionalidad específica de IA y de uso intensivo de cómputo.
+
+
+
+== Acceso y arquitectura
+
+Es importante comprender cómo acceden los clientes a la API de REST de AIDE y cómo la arquitectura subyacente admite las solicitudes.
+
+Cliente a clúster ONTAP:: Los clientes REST envían solicitudes a ONTAP, normalmente a través de la dirección IP de gestión del clúster, para operaciones de gestión de AIDE. Por ejemplo, las acciones solicitadas pueden incluir crear y gestionar espacios de trabajo y colecciones de datos. ONTAP autentica y autoriza la solicitud, emitiendo llamadas REST adicionales al clúster DCN según sea necesario.
+Punto final RAG separado:: Una llamada a la API de estilo Retrieval-Augmented Generation (RAG) debe emitirse directamente a una DCN. En este caso, la DCN extrae el token de identidad del usuario de la solicitud y vuelve a llamar a ONTAP para tomar una decisión de autorización. ONTAP valida el token y realiza comprobaciones RBAC y devuelve el resultado de la autorización. Las DCN pueden almacenar en caché estos resultados para mejorar el rendimiento con llamadas de autorización repetidas; también realizan cualquier comprobación ACL adicional a nivel de recursos antes de ejecutar la solicitud.
+Puntos finales proxy expuestos por ONTAP:: ONTAP también admite rutas de estilo proxy para enrutar las solicitudes HTTP al entorno DCN de la siguiente forma:
++
+--
+* Las peticiones con rutas que empiezan por `/console` son proxyadas a DCNs y utilizadas por la consola AIDE. Están diseñadas para ser accesibles sin la autenticación de ONTAP actuando como capa proxy.
+* Las solicitudes con rutas que comienzan por `/dcn` también se envían a las DCN mediante proxy, pero requieren autenticación por parte de ONTAP. Se suelen utilizar para supervisar integraciones.
+* Las solicitudes que admiten la comunicación de servicios ONTAP a DCN también se pueden enrutar a través de un proxy. Con una llamada de cliente a un endpoint REST de ONTAP, ONTAP puede traducirla en una o más llamadas REST internas a los endpoints de DCN. Muchos de los detalles, como el sondeo de trabajos para operaciones asíncronas y la aplicación de lógica de página, se gestionan antes de devolver la respuesta final.
+
+
+--
+
+
+En resumen, la funcionalidad de la API de REST de AIDE se consume como una API de REST de estilo ONTAP desde la perspectiva del cliente, mientras permite que el procesamiento subyacente abarque tanto ONTAP como los servicios alojados en DCN junto con un punto de entrada RAG dedicado.
+
+
+
+== Documentación de referencia
+
+Cada sistema de almacenamiento AFX incluye documentación de referencia Swagger (OpenAPI) local. La documentación describe endpoints, métodos HTTP, parámetros y esquemas de solicitud/respuesta, con ejemplos cuando corresponde. Este es un recurso valioso para que los desarrolladores y administradores entiendan en detalle las capacidades de la API de REST de AIDE. Para más información sobre cómo acceder a la documentación Swagger, consulta https://docs.netapp.com/us-en/ontap-afx/rest/api-reference.html["Referencia de la API de REST para el sistema de almacenamiento AFX"^].
+
+
+
+== Información relacionada
+
+* https://docs.netapp.com/us-en/ontap-automation/["Automatización de ONTAP"^]
+* https://docs.netapp.com/us-en/ontap-afx/rest/learn-rest-api.html["ONTAP AFX API de REST"^]
+* https://docs.netapp.com/us-en/ontap-automation/rest/rbac_overview.html["Seguridad RBAC con la API de REST de ONTAP"^]
+

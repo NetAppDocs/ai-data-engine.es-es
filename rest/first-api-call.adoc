@@ -1,0 +1,65 @@
+---
+sidebar: sidebar 
+permalink: rest/first-api-call.html 
+keywords: afx rest api, aide rest api, first api call, curl command, access token, verify permissions 
+summary: Puedes ejecutar un simple comando curl para empezar a utilizar las extensiones AIDE de la API de REST de ONTAP. 
+---
+= Tu primera llamada a la API de REST de AIDE
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes ejecutar un simple comando curl para empezar a utilizar las extensiones AIDE de la API de REST de ONTAP.
+
+.Acerca de esta tarea
+El ejemplo de llamada a la API de REST devuelve el nombre de usuario, el rol y los privilegios del usuario asociado con el token de acceso proporcionado con la llamada. Esta es una forma sencilla de verificar tu token de acceso con los permisos necesarios. Se utilizan variables de estilo Bash por simplicidad.
+
+.Antes de empezar
+Además de disponer de la utilidad curl en tu estación de trabajo local, necesitarás lo siguiente:
+
+* Dirección IP o FQDN del LIF de gestión del clúster ONTAP
+* Un token de acceso emitido por tu proveedor de identidad para el rol _administrador de almacenamiento_
+
+
+.Pasos
+. Emite el siguiente comando en la CLI de tu estación de trabajo local:
++
+[source, curl]
+----
+curl --request GET "https://$FQDN_IP/api/security/login/whoami" \
+--include --header "Accept: */*" \
+--header "Authorization: Bearer $TOKEN_ADMIN"
+----
+. Revisa la respuesta; por ejemplo:
++
+[listing]
+----
+{
+  "username": "storageAdmin@examplecompany.onmicrosoft.com",
+  "role": [
+    "admin"
+  ],
+  "privileges": [
+    {
+      "path": "/api",
+      "access": "all"
+    }
+  ],
+  "_links": {
+    "self": {
+      "href": "/api/security/login/whoami"
+    }
+  }
+}
+----
+
+
+.Información relacionada
+* link:../rest/authentication-authorization.html["Autenticación y autorización para la API de REST de AIDE"]
+* https://docs.netapp.com/us-en/ontap-afx/rest/first-call.html["Tu primera llamada a la API de REST del sistema de almacenamiento AFX"^]
+
