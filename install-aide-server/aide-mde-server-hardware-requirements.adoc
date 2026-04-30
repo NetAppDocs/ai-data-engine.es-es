@@ -91,7 +91,8 @@ Por cada servidor de terceros, se utilizan seis puertos en total para el softwar
 | *Velocidad de la red*  a| 
 Las siguientes velocidades de red son compatibles para ejecutar el software AIDE en servidores de terceros:
 
-*** *Clúster y puertos de datos* - se recomienda 100 GbE o superior
+*** *Puertos de clúster* - 100 GbE
+*** *Puertos de datos* - 100 GbE o superior
 *** *Puerto de gestión* - 1 GbE o superior
 
 
@@ -99,6 +100,9 @@ Las siguientes velocidades de red son compatibles para ejecutar el software AIDE
 
 | *Espacio en disco*  a| 
 512GB o superior
+
+
+NOTE: Debe haber 70GB de espacio libre en el directorio `/var` para el particionamiento del subsistema de disco.
 
 |===
 
