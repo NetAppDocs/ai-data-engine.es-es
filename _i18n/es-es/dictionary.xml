@@ -888,8 +888,6 @@
   <block id="2352c4e1f4d0024ade0869e00e6243f4" category="paragraph"><block ref="2352c4e1f4d0024ade0869e00e6243f4" category="inline-link-macro-rx"></block></block>
   <block id="c0227cef6f07a8cd2ac72f2945b031aa" category="section-title">Código abierto</block>
   <block id="9b73989307c1975dfa4d5e1581e4afe8" category="paragraph">Los archivos de aviso proporcionan información sobre los derechos de autor y las licencias de terceros utilizadas en el software NetApp.</block>
-  <block id="d17272cc21008c2cb20ddf9f14fe1bb7" category="inline-link">Aviso para AIDE 9.18.1</block>
-  <block id="03839fd3ed9fb12d82d1e900e1308be1" category="paragraph"><block ref="03839fd3ed9fb12d82d1e900e1308be1" category="inline-link-rx"></block></block>
   <block id="1eba71d64e6c5e410e558530711e835b" category="summary">Las limitaciones conocidas identifican plataformas, dispositivos o funciones que no son compatibles con esta versión del producto o que no interoperan correctamente con él. Revisa estas limitaciones cuidadosamente.</block>
   <block id="1f831132233d03e2eedec937521da75c" category="doc">Limitaciones conocidas de AI Data Engine</block>
   <block id="d7ab5d7f9fbdcd633e9e9c86e950af63" category="section-title">Requisitos y gestión de los nodos de computación</block>
@@ -1533,7 +1531,6 @@
   <block id="700eacd105ff7773e4ee5b4fcd7f5b2d" category="inline-link-macro">Para obtener especificaciones adicionales, obtén más información sobre los requisitos de hardware de servidores de terceros</block>
   <block id="c66d14f95d3d53680ba0f08c92a1620c" category="paragraph"><block ref="1460df11f031d507a5a270185c71896c" category="inline-link-macro-rx"></block>.</block>
   <block id="430b3c2457900c368de18a3b3526b730" category="paragraph-title">¿Puedo utilizar mis propios servidores para AIDE completo con funciones de GPU?</block>
-  <block id="2f03a335a2e9e4e23cd915ee8e40ec1e" category="paragraph">La versión AIDE v1.0.0 es compatible con el motor de metadatos básico en servidores de terceros en hardware proporcionado por el cliente. Las capacidades completas de AIDE con funciones de GPU requieren hardware NetApp DCN.</block>
   <block id="64c015fdf4d89231c21f779f907dcb3c" category="paragraph-title">¿Cuál es el número mínimo de NetApp DCN necesario?</block>
   <block id="928ddff4443ce22fdd59b233e7105dfd" category="paragraph">Se necesitan exactamente tres NetApp DCN.</block>
   <block id="4196fdaf34084ef79405adaf484227d4" category="paragraph-title">¿Qué sistema operativo se ejecuta en los nodos AIDE?</block>
@@ -2010,4 +2007,9 @@
   <block id="bbe576f3e13b9190eefaf93715f8bda5" category="sidebar">Instala nodos de cómputo de datos proporcionados por NetApp</block>
   <block id="2ab9c364bb7a3ce49d0f54c50f1dda7b" category="sidebar">Instala el software AIDE en servidores de terceros</block>
   <block id="dec55e7e5cec1db77094dc40868988cf" category="sidebar">Explorar metadatos</block>
+  <block id="4e6aa06325f6c39760764a1a94ba05e8" category="paragraph">La versión 1.0.0 de AIDE es compatible con el motor de metadatos básico en servidores de terceros en hardware proporcionado por el cliente. Las capacidades completas de AIDE con funciones de GPU requieren hardware NetApp DCN.</block>
+  <block id="5e86c10c9eaa071ed60fb9fc3bf10724" category="inline-link">Aviso para AIDE 1.0.0</block>
+  <block id="8f22fb35d5382da461659034aa6039bf" category="paragraph"><block ref="8f22fb35d5382da461659034aa6039bf" category="inline-link-rx"></block></block>
+  <block id="8ab556ff062f8c224e9495f1da8b7b94" category="inline-link">Aviso para AIDE 9.18.1U0/U1</block>
+  <block id="14a3a534854cc17b1e553ccbcab67fc6" category="paragraph"><block ref="14a3a534854cc17b1e553ccbcab67fc6" category="inline-link-rx"></block></block>
 </blocks>

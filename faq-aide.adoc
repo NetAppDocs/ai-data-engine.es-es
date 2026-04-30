@@ -60,7 +60,7 @@ El software AIDE con funcionalidades básicas de Metadata Engine desplegado en s
 link:./install-aide-server/aide-mde-server-hardware-requirements.html["Para obtener especificaciones adicionales, obtén más información sobre los requisitos de hardware de servidores de terceros"].
 
 .¿Puedo utilizar mis propios servidores para AIDE completo con funciones de GPU?
-La versión AIDE v1.0.0 es compatible con el motor de metadatos básico en servidores de terceros en hardware proporcionado por el cliente. Las capacidades completas de AIDE con funciones de GPU requieren hardware NetApp DCN.
+La versión 1.0.0 de AIDE es compatible con el motor de metadatos básico en servidores de terceros en hardware proporcionado por el cliente. Las capacidades completas de AIDE con funciones de GPU requieren hardware NetApp DCN.
 
 .¿Cuál es el número mínimo de NetApp DCN necesario?
 Se necesitan exactamente tres NetApp DCN.
