@@ -2,7 +2,7 @@
 section: release-notes
 title: Notas de publicación
 entries:
-- title: Novedades en AIDE 9.18.1
+- title: Novedades de AIDE
   url: "/release-notes/whats-new.html"
 - title: Limitaciones conocidas de AIDE
   url: "/release-notes/known-limitations.html"

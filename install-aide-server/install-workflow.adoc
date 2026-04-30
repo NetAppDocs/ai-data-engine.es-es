@@ -1,0 +1,30 @@
+---
+sidebar: sidebar 
+permalink: install-aide-server/install-workflow.html 
+keywords: aide, ai, data engine, ai data engine, afx, afx 1k, install, setup, workflow, metadata engine, mde, third-party servers, hardware installation, cabling, power on, ontap cluster 
+summary: Empieza con la instalación y configuración de tu AI Data Engine en servidores de terceros y despliega todo en tu entorno ONTAP. 
+---
+= Flujo de trabajo de instalación y configuración de AI Data Engine en servidores de terceros
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para instalar y configurar tu software AIDE en servidores de terceros, instala y conecta los componentes de hardware, enciende el sistema y configura tu clúster ONTAP.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:aide-mde-server-hardware-requirements.html["Revisa los requisitos de instalación del hardware"]
+[role="quick-margin-para"]
+Asegúrate de que tienes instalado un sistema de almacenamiento AFX 1K y luego revisa los requisitos de hardware para instalar servidores de terceros o nodos de cómputo de datos proporcionados por NetApp. Para obtener información sobre la instalación del sistema de almacenamiento AFX 1K, consulta link:https://docs.netapp.com/us-en/ontap-afx/install-setup/install-setup-workflow.html["Documentación de instalación del sistema de almacenamiento AFX 1K"^].
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dos"]link:deploy-hardware.html["Instala los servidores de terceros"]
+[role="quick-margin-para"]
+Los servidores de terceros deben instalarse de acuerdo con las instrucciones proporcionadas por el fabricante para tu modelo de servidor específico.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Tres"]link:cable-hardware.html["Conecta tus servidores de terceros"]
+[role="quick-margin-para"]
+Para cablear el hardware, primero conecta los servidores de terceros a tu red de datos y luego conecta los servidores de terceros a los switches de clúster.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Cuatro"]link:power-on-hardware.html["Enciende tus servidores de terceros"]
+[role="quick-margin-para"]
+Después de instalar el rack y cablear tu hardware, deberías encender tus servidores de terceros y los nodos controladores del sistema de almacenamiento AFX si aún no están encendidos.

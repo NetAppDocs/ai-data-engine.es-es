@@ -17,26 +17,27 @@ indexpage:
     links:
     - title: Conoce AI Data Engine
       url: "/get-started/learn-about.html"
-    - title: Arquitectura de AIDE
-      url: "/get-started/aide-architecture.html"
     - title: Novedades
       url: "/release-notes/whats-new.html"
     - title: Limitaciones conocidas
       url: "/release-notes/known-limitations.html"
-    - title: Inicio rápido de AIDE
+    - title: Inicio rápido del software AIDE en servidores de terceros
+      url: "/get-started/quick-start-mde-only.html"
+    - title: Inicio rápido para la implementación de NetApp DCN
       url: "/get-started/quick-start.html"
     - title: FAQ para AIDE
       url: "/faq-aide.html"
-  - title: Instala y configura
+  - title: Instala hardware compatible con AIDE
     links:
-    - title: Instalar el flujo de trabajo de los nodos de data compute
-      url: "/install-setup/install-workflow.html"
-    - title: Requisitos de instalación
-      url: "/install-setup/install-setup-requirements.html"
-    - title: Herrajes para cables
-      url: "/install-setup/cable-hardware.html"
-    - title: Encender el sistema
-      url: "/install-setup/power-on-hardware.html"
+    - title: Instalar flujo de trabajo de servidor de terceros
+      url: "/install-aide-server/install-workflow.html"
+    - title: Instala el flujo de trabajo del nodo de cómputo de datos proporcionado
+        por NetApp
+      url: "/install-dcn/install-workflow.html"
+  - title: Instalar y configurar el software AIDE
+    links:
+    - title: Instalar AIDE como software
+      url: "/install-setup/install-aide-as-software.html"
     - title: Configura el clúster AIDE
       url: "/install-setup/cluster-setup-afx.html"
     - title: Configura la autenticación OIDC
@@ -51,6 +52,8 @@ indexpage:
       url: "/workspaces/assign-users-to-workspace.html"
     - title: Gestiona espacios de trabajo
       url: "/administer/manage-workspace.html"
+    - title: Explorar y exportar metadatos de archivos
+      url: "/metadata-search/explore-metadata.html"
   - title: Administrar y monitorear
     links:
     - title: Ver el panel y el estado del clúster

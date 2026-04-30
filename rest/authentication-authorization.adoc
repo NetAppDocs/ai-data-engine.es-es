@@ -30,7 +30,7 @@ Autenticación OAuth 2.0:: A partir de 9.14.1, ONTAP también es compatible con 
 
 == AI Data Engine y OpenID Connect
 
-OpenID Connect (OIDC) se basa en OAuth 2.0 y proporciona una opción segura y estandarizada a la hora de autenticar usuarios y aplicaciones. Se requiere OIDC para acceder a la funcionalidad de DCN y AIDE. Después de link:../install-setup/configure-oidc.html["Configura OpenID Connect para AIDE en ONTAP"], el acceso a ONTAP System Manager y a la página Swagger on-box están protegidos por la autenticación OIDC.
+OpenID Connect (OIDC) se basa en OAuth 2.0 y proporciona una opción segura y estandarizada a la hora de autenticar usuarios y aplicaciones. OIDC es necesario para acceder a la funcionalidad de AIDE y a los servicios relacionados del nodo de computación de datos. Después de que link:../install-setup/configure-oidc.html["Configura OpenID Connect para AIDE en ONTAP"], el acceso a ONTAP System Manager y a la página Swagger on-box están protegidos por la autenticación OIDC.
 
 Como parte de la configuración de OIDC en ONTAP System Manager, OAuth 2.0 se habilita automáticamente y se crea un cliente OAuth 2.0. Luego puedes adquirir un token de acceso a través del *token_endpoint* de tu IdP, que normalmente se puede determinar a partir del URI de metadatos del IdP. Los tokens de acceso deben incluirse en la cabecera Authorization de tus llamadas a la API para autenticar y autorizar el acceso a los recursos de AIDE.
 
@@ -45,7 +45,7 @@ Existen dos roles adicionales de ONTAP compatibles con AIDE. Los roles externos 
 
 NOTE: Además de los dos nuevos roles de ONTAP, también necesitas asignar el rol de administrador de almacenamiento externo al rol existente de ONTAP `admin`. Consulta link:../get-started/aide-components.html["Componentes de AI Data Engine e interacciones basadas en roles"] y link:../install-setup/configure-oidc.html["Configura OpenID Connect para AIDE en ONTAP"] para más información.
 
-ingeniero de datos:: Se trata de un rol administrativo ONTAP predefinido para el AIDE Data Engineer. Restringe el acceso únicamente a los endpoints, así como a los directorios de comandos CLI correspondientes, necesarios para realizar tareas de ingeniería de datos de AIDE. Las tareas incluyen trabajar con workspaces y data collections, ver jobs y usar la vista previa de archivos cuando esté permitido.
+ingeniero de datos:: Se trata de un rol administrativo ONTAP predefinido para el AIDE Data Engineer. Restringe el acceso únicamente a los endpoints, así como a los directorios de comandos CLI correspondientes, necesarios para realizar tareas de ingeniería de datos de AIDE, incluyendo trabajar con workspaces y data collections, ver jobs y usar la vista previa de archivos cuando esté permitido.
 científico de datos:: Se trata de un segundo rol administrativo predefinido de ONTAP para el data scientist de AIDE. Del mismo modo, restringe el acceso únicamente a las API de REST y a los directorios de comandos CLI correspondientes necesarios para los flujos de trabajo del data scientist de AIDE.
 
 

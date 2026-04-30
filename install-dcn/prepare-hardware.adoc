@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar 
-permalink: install-setup/prepare-hardware.html 
+permalink: install-dcn/prepare-hardware.html 
 keywords: aide, ai, data engine, ai data engine, dcn, data compute node, prepare, hardware installation, afx, afx 1k, 
 summary: Prepárate para instalar los nodos de cómputo de datos para AI Data Engine en tu entorno ONTAP y registra el hardware para acceder a los beneficios de soporte. 
 ---
@@ -11,13 +11,13 @@ summary: Prepárate para instalar los nodos de cómputo de datos para AI Data En
 
 
 [role="lead"]
-Prepárate para instalar tus nodos de cómputo de datos para AI Data Engine (AIDE) preparando el sitio, desempaquetando las cajas y comparando el contenido de las cajas con el albarán de empaque, y registrando el sistema para acceder a los beneficios de soporte.
+Prepárate para instalar tus nodos de cálculo de datos proporcionados por NetApp para AI Data Engine (AIDE) preparando el sitio, desempaquetando las cajas y comparando el contenido de las cajas con el albarán, y registrando el sistema para acceder a los beneficios del soporte.
 
 
 
 == Paso 1: preparar el sitio
 
-Para instalar tus nodos de cálculo de datos, asegúrate de que el sitio y el armario o bastidor que planeas usar cumplen las especificaciones para tu configuración.
+Para instalar los nodos de cálculo de datos proporcionados por NetApp, asegúrate de que el sitio y el armario o rack que planeas usar cumplen las especificaciones para tu configuración.
 
 .Pasos
 . Usa https://hwu.netapp.com["NetApp Hardware Universe"^] para confirmar que tu sitio cumple los requisitos medioambientales y eléctricos para tus nodos de cómputo de datos.

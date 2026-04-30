@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
-permalink: install-setup/deploy-hardware.html 
-keywords: aide, ai, data engine, ai data engine, dcn, data compute node, afx, afx 1k, install, setup, hardware, deploy, 
+permalink: install-dcn/deploy-hardware.html 
+keywords: aide, ai, data engine, ai data engine, dcn, data compute node, afx, afx 1k, install, setup, hardware, deploy, mde, third-party servers, netapp data compute nodes, cabinet, rail kit, bezel, cable management 
 summary: Aprende cómo instalar los kits de raíles y asegurar los nodos de computación de datos en el armario. 
 ---
 = Instala tus nodos de cómputo de datos para AI Data Engine
@@ -11,7 +11,9 @@ summary: Aprende cómo instalar los kits de raíles y asegurar los nodos de comp
 
 
 [role="lead"]
-Instala y asegura tus nodos de computación de datos en el armario.
+Instala y asegura tus servidores de terceros o los nodos de cálculo de datos proporcionados por NetApp en el armario.
+
+Para instalar tus nodos de computación de datos proporcionados por NetApp, necesitas instalar los kits de raíles para los nodos de computación de datos, asegurar los nodos de computación de datos en el armario y colocar los dispositivos de gestión de cables en la parte trasera del sistema para organizar el tendido de cables.
 
 .Antes de empezar
 * Asegúrate de tener las instrucciones que vienen con el kit de raíles.
@@ -34,4 +36,4 @@ NOTE: En general, los switches deben instalarse en el centro del armario. Los es
 
 
 .¿Qué sigue?
-Después de que hayas instalado los nodos de cálculo de datos, link:cable-hardware.html["cablea los nodos de cálculo de datos para AIDE"].
+Después de que hayas instalado los nodos de cálculo de datos, link:cable-overview.html["revisar los requisitos de cableado de los nodos de cálculo de datos para AIDE"].

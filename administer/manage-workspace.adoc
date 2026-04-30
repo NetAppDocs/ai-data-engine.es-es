@@ -68,7 +68,7 @@ Puedes ajustar el nombre, la descripción, el intervalo de actualización y (si 
 +
 ** Actualiza *Nombre* y *Descripción* según sea necesario.
 ** Ajusta el *intervalo de actualización* (frecuencia de actualización de metadatos) dentro del rango permitido (horas y días).
-** Si tienes instalada una licencia AIDE, puedes seleccionar *Guardrail policy*.
+** Si tienes instalada una licencia de servicios premium de AIDE, puedes seleccionar *Guardrail policy*.
 
 
 . Selecciona *Guardar*.

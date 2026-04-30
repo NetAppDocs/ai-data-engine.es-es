@@ -15,21 +15,109 @@ Las limitaciones conocidas identifican plataformas, dispositivos o funciones que
 
 
 
-== Limitaciones conocidas para el lanzamiento inicial de AIDE 9.18.1
+== Limitaciones conocidas del software AIDE en implementaciones de servidores de terceros
 
-Estas limitaciones se aplican a Metadata Engine, los nodos de computación de datos y los flujos de trabajo de administración en AIDE 9.18.1.
+Estas limitaciones se aplican específicamente a las implementaciones del software AIDE en servidores de terceros usando hardware gestionado por el cliente.
+
+
+
+=== Limitaciones del modelo de implementación
+
+* **Solo clústeres de tres nodos**
++
+Los despliegues del software AIDE en servidores de terceros requieren exactamente tres nodos. No puedes desplegar con menos nodos ni escalar más allá de tres nodos.
+
+* **Se requiere hardware homogéneo**
++
+Todos los nodos de un clúster de software AIDE en servidores de terceros deben tener especificaciones de hardware idénticas (mismo modelo de CPU, memoria, configuración de red y modelo de servidor). No se admiten configuraciones de hardware mixtas.
+
+* **Solo RHEL 9.7**
++
+Las implementaciones del software AIDE en servidores de terceros solo son compatibles con Red Hat Enterprise Linux (RHEL) 9.7 LTS. Otras distribuciones de Linux no son compatibles.
+
+* **Solo para implementaciones en un único sitio**
++
+El software AIDE en servidores de terceros solo admite implementaciones de clúster en un solo sitio. No se admiten las topologías de clúster de varios sitios, de clúster ampliado ni distribuidas geográficamente. Los tres nodos de un clúster de software AIDE en servidores de terceros deben residir en el mismo sitio físico con interconexiones de baja latencia.
+
++
+
+NOTE: Para catalogar metadatos de datos almacenados en sitios remotos, utiliza ONTAP cluster peering para conectar clusters ONTAP remotos a tu cluster AIDE.
+
+
+
+
+
+=== Limitaciones del alcance de las funciones
+
+* **Sin servicios dependientes de la GPU**
++
+Esta versión del software AIDE en servidores de terceros no es compatible con los servicios basados en GPU, incluidas las funciones de vectorización, OCR (reconocimiento óptico de caracteres) y enriquecimiento.
+
+* **Sin recopilación de datos**
++
+La creación de colecciones de datos requiere el despliegue completo de AIDE con recursos de GPU. El software AIDE en servidores de terceros proporciona solo catalogado de metadatos.
+
+* **Sin puntos finales RAG**
++
+Los endpoints de Retrieval-Augmented Generation (RAG) para búsqueda semántica requieren una implementación completa de AIDE. El software AIDE en servidores de terceros no admite vector embeddings ni capacidades de búsqueda semántica.
+
+* **No se aplica la política de barandillas en el momento de la recuperación**
++
+Las políticas de barrera para la redacción en tiempo de recuperación y el control de acceso requieren un AIDE completo con capacidades de vectorización.
+
+
+
+
+
+=== Vías de actualización
+
+* **El comportamiento de recuperación es específico de cada versión**
++
+La reversión a una versión del paquete de software AIDE previamente instalada está permitida cuando es compatible con la guía de la versión de destino. Sigue el procedimiento de reversión documentado para tu versión.
+
+
+
+
+
+=== Gestión de sistemas operativos y software
+
+* **Software adicional no soportado**
++
+No se admite la ejecución de aplicaciones o servicios distintos del software AIDE en nodos de servidor de terceros.
+
+
+
+
+
+=== ONTAP y requisitos de almacenamiento
+
+* **Se requiere ONTAP 9.18.1 o posterior**
++
+El software AIDE en servidores de terceros requiere ONTAP 9.18.1 o posterior. Las versiones anteriores de ONTAP no son compatibles.
+
+* **Almacenamiento AFX requerido**
++
+El software AIDE en servidores de terceros debe conectarse a los sistemas de almacenamiento NetApp AFX. El soporte para otras plataformas ONTAP no está disponible.
+
+
+
+
+
+== Limitaciones conocidas de la versión inicial de AIDE 9.18.1U0/U1
+
+Estas limitaciones se aplican a Metadata Engine, a los nodos de cómputo de datos y a los flujos de trabajo de gestión en AIDE 9.18.1U0/U1.
 
 
 
 === Requisitos y gestión de los nodos de computación
 
-* **Requisito mínimo de nodo de computación de datos**
+* **Requisito mínimo NetApp DCN**
 +
-Los clusters AIDE requieren un mínimo y un máximo de 3 nodos de computación de datos (DCNs) para la funcionalidad de Metadata Engine. Los clusters con menos de 3 DCNs no pueden habilitar las funciones de Metadata Engine.
+Los clústeres AIDE requieren exactamente tres nodos NetApp DCN para la funcionalidad de Metadata Engine. Los clústeres con menos de tres nodos NetApp DCN no pueden habilitar las funciones de Metadata Engine.
 
-* **No hay soporte para añadir nodos DCN usando NetApp Console**
+* **No es posible añadir nodos DCN de NetApp usando NetApp Console**
 +
-Las actualizaciones y adiciones de nodos DCN deben realizarse usando ONTAP System Manager, no a través de NetApp Console.
+NetApp Las actualizaciones y adiciones de nodos DCN deben realizarse mediante ONTAP System Manager, no a través de NetApp Console.
 
 
 
@@ -51,13 +139,13 @@ No se pueden añadir los volúmenes FlexCache como fuentes de datos a los espaci
 
 === Limitaciones de actualización y reversión de software
 
-* **Actualizaciones manuales de software solo para nodos DCN**
+* **Actualizaciones manuales de software solo para los nodos DCN de NetApp**
 +
-Las actualizaciones automáticas de software para los clústeres DCN no son compatibles en AIDE 9.18.1. El software de los nodos DCN solo se puede actualizar subiendo la imagen desde un cliente local. No se admite la descarga de imágenes desde servidores externos (HTTP/FTP).
+Las actualizaciones automáticas de software para los clústeres NetApp DCN no son compatibles en AIDE 9.18.1. El software NetApp DCN solo se puede actualizar subiendo la imagen desde un cliente local. No se admite la descarga de imágenes desde servidores externos (HTTP/FTP).
 
-* **No revertir el software del clúster DCN**
+* **No revertir el software de cluster DCN de NetApp**
 +
-El software del clúster DCN no se puede revertir a una versión anterior. Solo se permiten las actualizaciones a versiones posteriores.
+NetApp El software del clúster DCN no se puede revertir a una versión anterior. Solo se permiten las actualizaciones a versiones posteriores.
 
 * **No ONTAP revert de clústeres de almacenamiento AFX**
 +

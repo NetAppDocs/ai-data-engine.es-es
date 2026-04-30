@@ -13,6 +13,9 @@ summary: Como ingeniero de datos o científico de datos, usa AI Data Engine Cons
 [role="lead"]
 Como ingeniero de datos o científico de datos, tu primera tarea en AI Data Engine (AIDE) es entender qué datos están disponibles en tus espacios de trabajo. Usas AIDE Console para consultar el catálogo de metadatos, buscar archivos relevantes e identificar subconjuntos de datos para convertirlos en colecciones de datos.
 
+
+NOTE: Las siguientes instrucciones asumen un despliegue de AIDE basado en NetApp DCN. Si tu despliegue utiliza un servidor de terceros y solo tienes el Metadata Engine (sin una licencia completa de AIDE), link:../metadata-search/explore-metadata.html["explorar metadatos usando el Data Explorer"] en lugar de las opciones descritas aquí.
+
 .Antes de empezar
 * Necesitas privilegios de _data engineer_ o _data scientist_ en AIDE Console y acceso a al menos un espacio de trabajo.
 * Un administrador de almacenamiento tiene:

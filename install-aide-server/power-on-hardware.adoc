@@ -1,0 +1,19 @@
+---
+sidebar: sidebar 
+permalink: install-aide-server/power-on-hardware.html 
+keywords: aide, ai, data engine, ai data engine, third-party server, afx, afx 1k, power on, 
+summary: Enciende cada estantería para asignar un ID de estantería único, enciende los nodos controladores AFX y asegura los cables de alimentación. 
+---
+= Enciende tus servidores de terceros para AI Data Engine
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Después de instalar el rack y cablear tu hardware, deberías encender tus servidores de terceros y los nodos controladores del sistema de almacenamiento AFX si aún no están encendidos.
+
+Para servidores de otros fabricantes, consulta la documentación de instalación de tu modelo de servidor específico para obtener instrucciones de encendido.
+
+.¿Qué sigue?
+Una vez que hayas encendido tus servidores de terceros, link:../install-setup/install-aide-as-software.html["instalar el software AIDE"].

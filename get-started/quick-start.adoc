@@ -1,33 +1,40 @@
 ---
 sidebar: sidebar 
 permalink: get-started/quick-start.html 
-keywords: ai, data engine, get started, getting started, quick start, install, set up 
-summary: Para empezar con un sistema AI Data Engine, instala el hardware, configura el clúster, configura el acceso a los datos y aprovisiona almacenamiento para los espacios de trabajo que se usarán con cargas de trabajo de IA. 
+keywords: ai, data engine, get started, getting started, quick start, dcn, dx50, data compute nodes, install, set up 
+summary: Para empezar con una implantación de AI Data Engine NetApp DCN, instala tu AFX y el hardware de computación de datos, configura tu clúster y crea espacios de trabajo para las cargas de trabajo de IA. 
 ---
-= Inicio rápido para AI Data Engine
+= Inicio rápido del software AIDE en las implementaciones de DCN de NetApp
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Para poner en marcha tu sistema AI Data Engine (AIDE), necesitas instalar tus componentes de hardware, configurar tu clúster, configurar el acceso a los datos desde tus hosts al sistema de almacenamiento y aprovisionar tu almacenamiento.
+Para empezar a trabajar con AI Data Engine (AIDE) en una implementación de NetApp DCN, instala tu hardware AFX y NetApp DCN, configura tu clúster y crea espacios de trabajo.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"] ¿Se instalará AIDE con un nuevo o existente cluster AFX?
 [role="quick-margin-para"]
 Tienes que decidir si AIDE y AFX se instalarán juntos al mismo tiempo o si AIDE se integrará con un clúster AFX existente.
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dos"] Instala y configura tu hardware
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dos"] Revisa los requisitos para la implementación de NetApp DCN
 [role="quick-margin-para"]
-link:../install-setup/aide-hardware-requirements.html["Instala y configura"] tus nodos de computación del cluster AIDE. Dependiendo del entorno de instalación, también asegúrate de https://docs.netapp.com/us-en/ontap-afx/install-setup/install-setup-workflow.html["instalar"^] el hardware AFX.
+Revisa los requisitos de hardware y software antes de empezar. link:../install-dcn/aide-dcn-hardware-requirements.html["Conoce los requisitos de NetApp DCN"].
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Tres"] Configura tu clúster
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Tres"] Instala y configura tu hardware AFX y NetApp DCN
+[role="quick-margin-para"]
+Si aún no has instalado tu sistema de almacenamiento AFX, https://docs.netapp.com/us-en/ontap-afx/install-setup/install-setup-workflow.html["instalar"^] el hardware AFX.
+
+[role="quick-margin-para"]
+Instala y configura tus nodos NetApp DCN. link:../install-dcn/install-workflow.html["Instala y configura tus nodos DCN de NetApp"].
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Cuatro"] Configura tu clúster
 [role="quick-margin-para"]
 Usa ONTAP System Manager para guiarte en un proceso rápido y sencillo para link:../install-setup/cluster-setup-afx.html["Configura AIDE con un clúster AFX"].
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Cuatro"] Configura los espacios de trabajo y el acceso a los datos
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Cinco"] Configura los espacios de trabajo y el acceso a los datos
 [role="quick-margin-para"]
 link:../workspaces/create-workspace.html["Configura un espacio de trabajo y usuarios para ese espacio de trabajo que puedan acceder a los datos de AIDE"].
 
 .¿Qué sigue?
-Ahora puedes usar ONTAP System Manager para gestionar tu AIDE y hacer que tus ingenieros de datos y científicos de datos empiecen con sus espacios de trabajo y configuraciones.
+Ahora puedes usar ONTAP System Manager para gestionar tu AIDE y hacer que tus ingenieros de datos y científicos de datos empiecen con sus espacios de trabajo y configuraciones. Los usuarios con permisos de espacio de trabajo pueden realizar link:../vectorization/zero-to-rag.html["configuraciones avanzadas de AIDE"] dependiendo de la licencia de AIDE y los niveles de permiso.

@@ -1,0 +1,34 @@
+---
+sidebar: sidebar 
+permalink: install-dcn/install-workflow.html 
+keywords: aide, ai, data engine, ai data engine, dcn, data compute node, afx, afx 1k, install, setup, workflow, metadata engine, mde, third-party servers, netapp data compute nodes, hardware installation, cabling, power on, ontap cluster 
+summary: Empieza con la instalación y configuración de tus nodos de computación de datos y despliega todo en tu entorno ONTAP. 
+---
+= Flujo de trabajo de instalación y configuración para los nodos de cálculo de datos proporcionados por NetApp
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para instalar y configurar tus nodos de cálculo de datos proporcionados por NetApp, revisa los requisitos de hardware, prepara tu sitio, instala y conecta los componentes de hardware, enciende el sistema y configura tu clúster ONTAP.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]link:install-setup-requirements.html["Revisar los requisitos para instalar hardware"]
+[role="quick-margin-para"]
+Asegúrate de que tienes instalado un sistema de almacenamiento AFX 1K y luego revisa los requisitos de hardware para instalar nodos de cómputo de datos proporcionados por NetApp en tu entorno. Para información sobre la instalación del sistema de almacenamiento AFX 1K, consulta link:https://docs.netapp.com/us-en/ontap-afx/install-setup/install-setup-workflow.html["Documentación de instalación del sistema de almacenamiento AFX 1K"^].
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dos"]link:prepare-hardware.html["Prepárate para instalar tus nodos de cálculo de datos"]
+[role="quick-margin-para"]
+Para preparar la instalación de tus nodos de cálculo de datos de NetApp, necesitas preparar el sitio, comprobar los requisitos ambientales y eléctricos, y asegurarte de que hay suficiente espacio en el armario. Luego, desempaqueta el equipo, compara su contenido con el albarán y registra el hardware para acceder a los beneficios del soporte.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Tres"]link:deploy-hardware.html["Instala el hardware para tus nodos de cálculo"]
+[role="quick-margin-para"]
+Instala los kits de raíles para tus nodos de cálculo de datos. Asegura tus nodos de cálculo de datos proporcionados por NetApp dentro del armario. Por último, coloca los dispositivos de gestión de cables en la parte trasera del sistema para organizar el tendido de cables.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Cuatro"]link:cable-hardware.html["Conecta tus nodos de cómputo"]
+[role="quick-margin-para"]
+Para cablear el hardware, primero conecta los nodos de cálculo de datos proporcionados por NetApp a tu red de datos y luego conecta los nodos de cálculo de datos de NetApp a los switches del clúster.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Cinco"]link:power-on-hardware.html["Enciende tus nodos de cómputo"]
+[role="quick-margin-para"]
+Después de instalar el rack y cablear tu hardware, deberías encender tus nodos de cómputo y tus nodos controladores para el sistema de almacenamiento AFX si aún no están encendidos.

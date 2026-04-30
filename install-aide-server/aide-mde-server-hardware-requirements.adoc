@@ -1,0 +1,130 @@
+---
+sidebar: sidebar 
+permalink: install-aide-server/aide-mde-server-hardware-requirements.html 
+keywords: ai data engine, aide, hardware, requirements, afx, mde, metadata engine, third-party servers, compute nodes 
+summary: Revisa los requisitos para instalar AI Data Engine en servidores de terceros, incluido el sistema de almacenamiento AFX. 
+---
+= Requisitos para instalar AI Data Engine en servidores de terceros
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Revisa los requisitos para instalar AI Data Engine (AIDE) en servidores de terceros. AIDE requiere un sistema de almacenamiento AFX, exactamente tres servidores de terceros designados como nodos de cómputo de datos, switches de red y cables.
+
+
+
+== Requisitos de hardware
+
+Para el software AIDE en servidores de terceros, se requiere un sistema de almacenamiento AFX y el AI Data Engine (AIDE) ejecutándose exactamente en tres servidores de terceros compatibles. En esta configuración, los servidores de terceros son los nodos de cómputo de datos cuando se añaden al clúster AIDE. El sistema AFX proporciona la infraestructura de almacenamiento, mientras que el software AIDE en servidores de terceros aloja los componentes de software AIDE que permiten la gestión de datos, la curación y las capacidades de IA.
+
+* *Sistema de almacenamiento AFX*: Incluye un controlador AFX, una estantería de discos y un switch de red. El sistema de almacenamiento AFX es necesario para la implementación de AIDE.
+* *Software AIDE en servidores de terceros*: El software AIDE en servidores de terceros requiere exactamente tres nodos. No se puede desplegar con menos nodos ni escalar más allá de tres nodos.
++
+** Los tres nodos deben tener especificaciones de hardware idénticas, incluyendo el mismo modelo de CPU, capacidad de memoria, configuración de red y modelo de servidor. No se admiten configuraciones mixtas de hardware.
++
+
+NOTE: No se pueden mezclar nodos de cálculo de datos proporcionados por NetApp con servidores de terceros en el mismo clúster de AIDE.
+
+** Los siguientes servidores de terceros son compatibles para ejecutar el software AIDE:
++
+*** *Supermicro SYS-222C-TN*
++
+Para obtener más información sobre la instalación del Supermicro SYS-222C-TN, consulta la link:https://www.supermicro.com/en/support/manuals/product/system/sys-222c-tn/Content/introduction/introduction.htm["Guía de instalación del Supermicro SYS-222C-TN"^].
+
+*** *Supermicro SYS-222H-TN*
++
+Para obtener más información sobre la instalación del Supermicro SYS-222H-TN, consulta la link:https://www.supermicro.com/en/support/manuals/product/system/sys-222h-tn/Content/introduction/introduction.htm["Guía de instalación del Supermicro SYS-222H-TN"^].
+
+*** *Cisco C240 M8 (CPU Intel)*
++
+Para obtener más información sobre la instalación del Cisco C240 M8, consulta la link:https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/c/hw/c240m8/install/b-cisco-ucs-c240-m8-install/m-overview.html["Guía de instalación de Cisco C240 M8"^].
+
+*** *Cisco C245 M8 (CPU AMD)*
++
+Para obtener más información sobre la instalación del Cisco C245 M8, consulta la link:https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/c/hw/c245m8/install/b-cisco-ucs-c245-m8/m-overview.html["Guía de instalación de Cisco C245 M8"^].
+
+
+
+** Los servidores de terceros deben cumplir las siguientes especificaciones mínimas de hardware:
++
+[cols="2*"]
+|===
+| Componente | Requisito mínimo 
+
+
+| *Sistema operativo soportado*  a| 
+Los siguientes sistemas operativos son compatibles para ejecutar el software AIDE en servidores de terceros:
+
+*** Red Hat Enterprise Linux (RHEL) 9.7
+
+
+
+
+| *CPU*  a| 
+Los siguientes modelos de CPU son compatibles para ejecutar el software AIDE en servidores de terceros:
+
+*** Intel Granite Rapids o superior
+*** AMD Turin o superior
+*** 64 núcleos o superior
+
+
+
+
+| *Memoria*  a| 
+128 GB de RAM
+
+
+
+| *Interfaces de red*  a| 
+Por cada servidor de terceros, se utilizan seis puertos en total para el software AIDE en servidores de terceros:
+
+*** 2 para red de datos (obligatorio)
+*** 2 para red de clúster (obligatorio)
+*** 1 para red de gestión (opcional)
+*** 1 para la red de gestión si se necesita alta disponibilidad (opcional)
+
+
+
+
+| *Velocidad de la red*  a| 
+Las siguientes velocidades de red son compatibles para ejecutar el software AIDE en servidores de terceros:
+
+*** *Clúster y puertos de datos* - se recomienda 100 GbE o superior
+*** *Puerto de gestión* - 1 GbE o superior
+
+
+
+
+| *Espacio en disco*  a| 
+512GB o superior
+
+|===
+
+
+
+
+
+
+== Requisitos del switch de red
+
+AIDE requiere conmutadores de red para habilitar la conectividad de red del host y la comunicación entre nodos para los nodos de cómputo de datos.
+
+* Conmutadores cliente para conectividad de red de host (Cisco Nexus 9332D-GX2B o Cisco Nexus 9364D-GX2A)
+* Conmutadores de clúster para comunicación entre nodos (Cisco Nexus 9332D-GX2B o Cisco Nexus 9364D-GX2A)
+* Switches de gestión opcionales para la gestión de red
++
+
+NOTE: Para más información sobre los switches AFX, consulta link:https://docs.netapp.com/us-en/ontap-systems-switches/afx/index.html["Conmutadores del sistema AFX"^].
+
+
+
+
+
+== Soporte multiclúster
+
+Después de que AIDE se despliega con AFX, puede conectarse y gestionar datos de otros clusters ONTAP 9.18.1 y posteriores usando SnapMirror y cluster peering.
+
+.Qué sigue
+Tras revisar los requisitos de hardware, link:aide-afx-install.html["instalar el sistema de almacenamiento AFX"].

@@ -28,6 +28,18 @@ AIDE está diseñado para ayudar a las organizaciones a gestionar datos para car
 
 
 
+== Opciones de implementación
+
+AIDE ofrece opciones de implementación flexibles para satisfacer las distintas necesidades y plazos de las organizaciones:
+
+* *NetApp DCN deployment*: AIDE se ejecuta en Data Compute Nodes (DCNs) proporcionados por NetApp con recursos de GPU integrados, ofreciendo todas las capacidades de AIDE, incluyendo catalogación de metadatos, vectorización, embeddings y endpoints RAG. Esta opción es ideal para cargas de trabajo de IA que requieren mucha GPU y aplicaciones de búsqueda semántica.
+* *Software AIDE en servidores de terceros*: El software AIDE se ejecuta en servidores RHEL 9.7 proporcionados por el cliente. En la versión actual, el software AIDE tiene un enfoque en link:aide-architecture.html#metadata-engine["Metadata Engine"] y proporciona catalogación y descubrimiento de metadatos. Esta funcionalidad _Metadata Engine basic_ para AIDE en servidores de terceros proporciona paridad con la funcionalidad Metadata Engine basada en NetApp DCN, pero no incluye servicios AIDE completos dependientes de GPU. link:../install-aide-server/aide-mde-server-hardware-requirements.html["Conoce los requisitos para Metadata Engine en servidores de terceros"].
+
+
+Ambas opciones de implementación se integran con el almacenamiento ONTAP y comparten la misma arquitectura subyacente para la gestión del espacio de trabajo y la catalogación de metadatos.
+
+
+
 == Características de diseño a alto nivel
 
 Las siguientes características de diseño definen cómo se construye AIDE para satisfacer las necesidades de las cargas de trabajo de AI:
@@ -45,17 +57,16 @@ Las siguientes características de diseño definen cómo se construye AIDE para 
 Comprender cómo fluyen los datos a través de AIDE ayuda a ilustrar el valor de la plataforma para los equipos de AI/ML:
 
 . **Ingesta de datos**: Los archivos se almacenan en volúmenes ONTAP utilizando protocolos estándar (NFS y SMB). Los datos pueden residir en el almacenamiento local de AIDE (el clúster AFX dentro de tu despliegue de AIDE) o en clústeres ONTAP remotos. Los datos de los clústeres remotos se sincronizan con el clúster AFX local usando ONTAP SnapMirror, así que todos los datos procesados por AIDE se almacenan y se accede a ellos localmente al final.
-
-
++
 
 NOTE: Los buckets de S3 no son compatibles como fuentes de datos para workspaces o colecciones de datos.
 
 . **Creación de espacios de trabajo**: los administradores de almacenamiento definen espacios de trabajo en ONTAP System Manager, agrupando volúmenes ONTAP relacionados para proyectos, equipos o flujos de trabajo específicos. Los permisos de acceso y las políticas de gobierno se asignan a nivel de espacio de trabajo.
 . **Extracción de metadatos**: AIDE escanea automáticamente archivos y objetos en los espacios de trabajo, extrayendo metadatos (tipo de archivo, tamaño, marcas de tiempo, atributos personalizados) y almacenándolos en un catálogo centralizado. Esto ocurre continuamente a medida que los datos cambian.
-. **Clasificación y gobernanza**: Los clasificadores escanean los datos en busca de información sensible (PII, datos financieros) o tipos de documentos (legal, HR). Las políticas de Data Guardrails aplican redacción o restricciones de acceso automáticamente.
-. **Creación de colecciones de datos**: Los ingenieros de datos y los científicos de datos usan AIDE Console para consultar el catálogo de metadatos, filtrar resultados y armar colecciones de datos seleccionadas para tareas específicas de IA.
-. **Vectorización**: para las colecciones que requieren búsqueda semántica, AIDE genera embeddings usando modelos de IA seleccionados. Los vectores se almacenan en la base de datos de vectores para una recuperación de alto rendimiento.
-. **Consumo de AI/ML**: Las aplicaciones acceden a los datos a través de múltiples rutas:
+. **Clasificación y gobernanza** (requiere licencia AIDE premium): Los clasificadores escanean los datos en busca de información sensible (PII, datos financieros) o tipos de documentos (jurídicos, RRHH). Las políticas de Data Guardrails aplican redacción o restricciones de acceso automáticamente.
+. **Creación de colecciones de datos** (requiere licencia AIDE premium): Los ingenieros de datos y los científicos de datos usan AIDE Console para consultar el catálogo de metadatos, filtrar resultados y armar colecciones de datos curados para tareas específicas de IA.
+. **Vectorización** (requiere licencia premium de AIDE): Para las colecciones que requieren búsqueda semántica, AIDE genera incrustaciones utilizando modelos de IA seleccionados. Los vectores se almacenan en la base de datos de vectores para una recuperación de alto rendimiento.
+. **Consumo de AI/ML** (requiere licencia premium de AIDE): las aplicaciones acceden a los datos a través de múltiples rutas:
 +
 ** Acceso directo a archivos/objetos usando NFS o SMB
 ** Consultas de búsqueda semántica en la base de datos vectorial

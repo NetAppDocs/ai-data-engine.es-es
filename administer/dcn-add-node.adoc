@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: administer/dcn-add-node.html 
 keywords: aide, ai data engine, data compute node, dcn, add dcn, expand dcn cluster 
-summary:  
+summary: 'Puedes añadir nodos de cómputo de datos como parte de la creación de un nuevo clúster AI Data Engine (AIDE) o al expandir un clúster existente.' 
 ---
 = Añade nodos de cálculo de datos a tu clúster AI Data Engine
 :allow-uri-read: 
@@ -11,81 +11,78 @@ summary:
 
 
 [role="lead"]
-Puedes agregar data compute nodes (DCNs) como parte de la creación de un nuevo clúster AI Data Engine (AIDE) o de la expansión de un clúster existente. El flujo de trabajo consiste en descubrir y configurar los nodos usando ONTAP System Manager.
+Puedes agregar nodos de cómputo de datos como parte de la creación de un nuevo clúster AI Data Engine (AIDE) o de la expansión de un clúster existente. El flujo de trabajo consiste en descubrir y configurar los nodos usando ONTAP System Manager.
 
 
 
 == Prepárate para añadir nodos
 
-Hay varias consideraciones a tener en cuenta al añadir nodos DCN.
+Ten en cuenta lo siguiente cuando añadas nodos de computación de datos.
 
-.Al crear un nuevo AIDE cluster
-Se requieren exactamente tres nodos DCN para un nuevo clúster AIDE.
+.Número mínimo de nodos de cómputo de datos
+Se necesitan exactamente tres nodos de cómputo de datos disponibles para un nuevo clúster AIDE.
 
 .Instalación de hardware y direccionabilidad
 Asegúrate de que se cumplen los siguientes requisitos previos:
 
-* El nuevo hardware DCN está en el rack, encendido y cableado a los switches del clúster.
-* Tienes un rango de espacio de direcciones IP disponible para la subred de backend de DCN a ONTAP.
+* El nuevo hardware de cálculo de datos se instala en bastidores, se enciende y se conecta a los switches del clúster.
+* Tienes un rango de espacio de direcciones IP disponible para que los nodos de cómputo de datos se conecten a la subred de backend de ONTAP.
 * El clúster ONTAP se ha inicializado y es accesible desde el LIF de gestión del clúster.
 
 
 .Credenciales de System Manager
-Necesitas privilegios de _administrador de almacenamiento_ para realizar tareas de creación o ampliación de clústeres de AIDE.
+Necesitas privilegios de _administrador de almacenamiento_ para realizar tareas de creación o ampliación de clusters de AIDE.
 
 .Compatibilidad del software
-Revisa la siguiente documentación para confirmar que las versiones de hardware y software de DCN son compatibles con tu clúster ONTAP:
+Revisa la siguiente documentación para confirmar que las versiones de hardware y software de tu entorno de cómputo de datos son compatibles con tu clúster ONTAP:
 
-* link:../administer/upgrades-aide-summary.html["El software DCN es compatible con la versión ONTAP"].
+* link:../administer/upgrades-aide-summary.html["El software AIDE es compatible con la versión ONTAP"].
 
 
 Durante la operación de adición de nodos, System Manager confirmará que los nuevos nodos ejecutan una versión de software compatible con:
 
-* La versión efectiva del clúster ONTAP (ECV) si esta es la primera unión a DCN.
-* La versión existente del clúster DCN si los DCNs ya están presentes.
+* La versión efectiva del clúster ONTAP si este es el primer nodo de computación de datos añadido.
+* La versión del clúster de computación de datos existente si ya hay nodos de computación de datos.
 
 
 Si un nodo es incompatible:
 
-* Se muestra un error junto al DCN afectado en el cuadro de diálogo *Add*.
-* Primero tienes que actualizar el software DCN (u ONTAP, según corresponda) a una versión compatible.
+* Se muestra un error junto al nodo de cálculo de datos afectado en el cuadro de diálogo *Add*.
+* Primero, debes actualizar el software del nodo de cómputo de datos (o ONTAP, según corresponda) a una versión compatible.
 
 
 
 
 == Agrega los nodos de cálculo de datos
 
-Agregas nodos DCN como parte de crear un nuevo clúster AIDE o de expandir un clúster existente.
+Agrega nodos de cómputo de datos al crear un nuevo clúster de AIDE o al expandir un clúster existente.
 
 .Pasos
 . En System Manager, selecciona *Dashboard* en el panel de navegación y luego la tarjeta *Health*.
 . Confirma que hay nodos para añadir y selecciona *Ver detalles* para mostrar la lista.
 +
-La lista contiene nodos descubiertos que aún no forman parte del AIDE cluster
+La lista contiene nodos descubiertos que aún no forman parte del clúster de AIDE.
 
 . O también puedes seleccionar *Cluster* y *Overview* y la pestaña *Data compute* para ver la lista.
 . En la parte inferior de la página de cálculo de datos, selecciona *Add* encima de la lista de nodos.
-. En el cuadro de diálogo *Add data compute nodes*, selecciona los nodos DCN que quieres añadir.
-+
-Opcionalmente, puedes renombrar nodos individuales antes de añadirlos.
-
+. En el cuadro de diálogo *Add nodes*, selecciona los nodos de cálculo de datos que quieres añadir.
 . Si es la primera vez que añades nodos y no existe ninguna subred de backend, selecciona *Add subnet* y proporciona:
 +
 ** Nombre de subred (para uso interno)
 ** Dirección de subred y máscara
-** Rango de direcciones IP para los nodos DCN y ONTAP en esta red backend
+** Intervalo de direcciones IP para los nodos de cómputo de datos y los nodos ONTAP en la red backend
 +
-System Manager valida que el rango incluye suficientes direcciones IP libres para todas las DCN que se están añadiendo, todos los nodos ONTAP del clúster y direcciones IP flotantes adicionales a nivel de clúster usadas para la comunicación de DCN a ONTAP.
+System Manager valida que el rango incluye suficientes direcciones IP libres para todos los nodos de computación de datos que se están añadiendo, todos los nodos ONTAP del clúster y las IP flotantes adicionales a nivel de clúster utilizadas para la comunicación entre los nodos de computación de datos y ONTAP.
 
 
 
-. Si añadiste la subred de backend o si ya existe:
+. Haz lo siguiente independientemente de si añadiste la subred backend o si ya existe:
 +
 .. Revisa las direcciones IP disponibles.
 .. Si es necesario, selecciona *Editar subred* y amplía el rango de direcciones IP.
 +
 *** Sólo puedes aumentar el rango. No se admite reducir ni cambiar la subred.
-*** Cambiar la subred o el rango de IP puede requerir recrear el clúster de Kubernetes subyacente en DCNs y puede tomar varios minutos.
+*** Cambiar la subred o el rango de IP puede requerir recrear el clúster Kubernetes subyacente en los nodos de computación de datos y puede tardar varios minutos.
 
 
 
@@ -96,23 +93,35 @@ System Manager valida que el rango incluye suficientes direcciones IP libres par
 ** Máscara de red
 ** Puerta de enlace (si es necesaria para tu entorno)
 +
-La IP única se equilibrará en carga en todas las DCN y se utilizará como dirección de frontend para AIDE Console y las API relacionadas.
+La IP única se equilibrará en carga en todos los nodos de computación de datos y se utilizará como dirección frontend para la AIDE Console y las APIs relacionadas.
 
 
 
 . Revisa los nodos seleccionados, la subred del backend y la configuración de la interfaz de servicio de Data Engine.
 . Selecciona *Add* y espera a que se complete la operación. System Manager realizará las siguientes acciones:
 +
-** Agrega los nodos seleccionados al clúster DCN
-** Aprovisiona la red backend y une los nodos al clúster DCN basado en Kubernetes
-** Actualiza los metadatos internos para el descubrimiento de DCN
+** Agrega los nodos seleccionados al clúster de cómputo de datos
+** Aprovisiona la red backend y une los nodos al clúster de computación de datos basado en Kubernetes
+** Actualiza los metadatos internos para el descubrimiento de nodos de cómputo de datos
 
 
 . Después de completar, selecciona *Cluster* y *Overview* y confirma:
 +
-.. En *Data compute* las nuevas DCN aparecen como parte del clúster
-.. Todos los nodos están *Healthy*
-.. Verifica que la tarjeta *Salud* del panel de control muestre el recuento de nodos actualizado
+** En *Data compute* los nuevos nodos de computación de datos aparecen online como parte del cluster
+** Todos los nodos están *Healthy*
+** La versión de AIDE se muestra correctamente para cada nodo
+** Verifica que la tarjeta *Salud* del panel de control muestre el recuento de nodos actualizado
+
+
+. (Opcional) Después de que todos los nodos se unan al clúster, verifica que todos los servicios se inicien correctamente.
++
+.. Verifica el estado del pod de Kubernetes:
++
+[source, bash]
+----
+kubectl get pods -n aide-system
+----
+.. Confirma que todos los pods muestran el estado *Running* o *Completed*.
 
 
 

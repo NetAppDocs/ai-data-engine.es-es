@@ -14,11 +14,11 @@ summary: 'Como administrador de un clúster ONTAP, puedes usar ONTAP System Mana
 Como administrador de un clúster ONTAP, puedes usar ONTAP System Manager para configurar la autenticación OpenID Connect (OIDC) para un clúster AI Data Engine (AIDE). Esto te da un inicio de sesión seguro y centralizado a través de un proveedor de identidades externo (IdP).
 
 
-CAUTION: Debes configurar OIDC para acceder a AIDE Console. Cuando está configurado, toda la autenticación pasa por OIDC. Si OIDC no está configurado, la consola no estará disponible para los administradores, los ingenieros de datos ni los científicos de datos. En este caso, iniciar sesión en System Manager vuelve a la autenticación local.
+CAUTION: Debes configurar OIDC para acceder a la AIDE Console. Cuando está configurado, toda la autenticación fluye a través de OIDC. Si OIDC no está configurado, la consola no estará disponible para ningún usuario (administradores, ingenieros de datos y científicos de datos). System Manager usará la autenticación local de ONTAP cuando OIDC no esté configurado.
 
 Ten en cuenta también lo siguiente sobre la configuración de OIDC para el acceso a AIDE:
 
-* A grandes rasgos, la configuración de OIDC consta de dos pasos principales. Primero necesitas realizar la configuración básica de OIDC usando System Manager. Luego puedes completar la configuración asignando roles externos con la CLI de ONTAP.
+* A grandes rasgos, la configuración de OIDC consta de dos pasos principales. Primero necesitas realizar la configuración básica usando System Manager. Luego puedes completar la configuración asignando roles externos mediante la CLI de ONTAP.
 * No puedes modificar una configuración OIDC existente. Si necesitas hacer un cambio, primero elimina la configuración y crea una nueva con los ajustes que quieras.
 * Si desactivas o eliminas OIDC, System Manager volverá a la autenticación local de usuarios de ONTAP.
 
@@ -35,7 +35,7 @@ Necesitas seleccionar y configurar un proveedor de identidad externo (IdP) compa
 
 == Configura proveedores de identidad de terceros
 
-Para autenticarte usando OIDC, primero necesitas configurar un IdP externo. La implementación de ONTAP de OIDC usa reclamos de rol en los tokens para aplicar RBAC. Cuando configures un IdP, asegúrate de que esté configurado para devolver reclamos de rol en el id token y el access token. ONTAP admite dos IdPs para la autenticación OIDC: Entra ID y Active Directory Federation Services (AD FS).
+Para autenticarse mediante OIDC, primero tienes que configurar un IdP externo. La implementación de ONTAP de OIDC utiliza reclamos de rol en los tokens para aplicar RBAC. Cuando configures un IdP, asegúrate de que esté configurado para devolver reclamos de rol en el id token y el access token. ONTAP admite dos IdPs para la autenticación de OIDC: Entra ID y Active Directory Federation Services (ADFS).
 
 
 

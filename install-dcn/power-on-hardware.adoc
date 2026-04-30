@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar 
-permalink: install-setup/power-on-hardware.html 
+permalink: install-dcn/power-on-hardware.html 
 keywords: aide, ai, data engine, ai data engine dcn, data compute node, afx, afx 1k, power on, 
 summary: Enciende cada estantería para asignar un ID de estantería único, enciende los nodos controladores AFX y asegura los cables de alimentación. 
 ---
@@ -11,14 +11,16 @@ summary: Enciende cada estantería para asignar un ID de estantería único, enc
 
 
 [role="lead"]
-Después de instalar el hardware del bastidor y cablear tus nodos de cálculo de datos, deberías encender tus DCN y tus nodos controladores para el sistema de almacenamiento AFX si aún no están encendidos.
+Después de instalar el rack y cablear tu hardware, deberías encender tus nodos de cómputo de datos y tus nodos controladores para el sistema de almacenamiento AFX si aún no están encendidos.
+
+Para encender los nodos de computación de datos proporcionados por NetApp, necesitas encender cada estante para asignar un ID de estante único, encender los nodos controladores AFX y asegurar los cables de alimentación de los nodos de computación de datos.
 
 .Antes de empezar
 * Asegúrate de que tus estanterías están encendidas y que cada una tiene asignado un ID de estantería único. Para información sobre cómo asignar IDs de estantería para el sistema de almacenamiento AFX, consulta el link:https://docs.netapp.com/us-en/ontap-afx/install-setup/power-on-hardware.html#step-1-power-on-the-shelf-and-assign-shelf-id["documentación sobre la asignación de identificadores únicos de estantería"^].
 
 
 .Pasos
-Después de que hayas encendido tus estanterías de almacenamiento y asignado los ID únicos, enciende tus DCN y los nodos controladores de almacenamiento si aún no están encendidos.
+Después de encender las estanterías de almacenamiento y asignar los ID exclusivos, enciende los nodos de cómputo de datos y enciende los nodos controladores de almacenamiento si aún no están encendidos.
 
 . Conecta tu portátil al puerto de consola serie. Esto te permite monitorear la secuencia de arranque cuando los controladores están encendidos.
 +

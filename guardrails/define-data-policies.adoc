@@ -19,7 +19,7 @@ Usa estos procedimientos para definir esas políticas en AI Data Engine Console 
 * Necesitas privilegios de _administrador de almacenamiento_ en AIDE Console (`\https://<cluster_management_ip>/console`) para crear y gestionar políticas globales.
 * Tienes un clúster AIDE con nodos de cómputo de datos desplegados y en buen estado.
 * link:../install-setup/configure-oidc.html["OpenID Connect (OIDC)"] está configurado, y tu rol de IdP está asignado a un rol de admin de AIDE que permite la gestión de políticas de datos.
-* La licencia de software para AIDE se instala para que las funciones de Data Guardrails e inferencia estén habilitadas.
+* La licencia de servicios premium de AIDE se instala para que las funciones de Data Guardrails e inferencia estén habilitadas para las capacidades de gobernanza de datos.
 * Existe al menos un espacio de trabajo, o has coordinado con el administrador para entender qué fuentes de datos (volúmenes) se usarán en los espacios de trabajo.
 
 

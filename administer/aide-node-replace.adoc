@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: administer/aide-node-replace.html 
 keywords: ai data engine, aide, data compute node, dcn, replace node, node replacement, cluster maintenance 
-summary: 'Necesitas reemplazar un nodo de cómputo de datos (DCN) en tu clúster de AI Data Engine (AIDE) si deja de funcionar o necesita ser cambiado por una falla de hardware, actualización o mantenimiento. Esto asegura que el clúster de AIDE se mantenga saludable y operativo. El procedimiento se puede realizar sin interrumpir los servicios en curso.' 
+summary: 'Necesitas reemplazar un nodo de cómputo de datos en tu clúster de AI Data Engine (AIDE) si deja de funcionar o si necesitas cambiarlo por una falla de hardware, actualización o mantenimiento.' 
 ---
 = Reemplaza un nodo en tu clúster AI Data Engine
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: 'Necesitas reemplazar un nodo de cómputo de datos (DCN) en tu clúster
 
 
 [role="lead"]
-Necesitas reemplazar un nodo de cómputo de datos (DCN) en tu clúster de AI Data Engine (AIDE) si deja de funcionar o necesita ser cambiado por una falla de hardware, actualización o mantenimiento. Esto asegura que el clúster de AIDE se mantenga saludable y operativo. El procedimiento se puede realizar sin interrumpir los servicios en curso.
+Necesitas reemplazar un nodo de cómputo de datos en tu clúster de AI Data Engine (AIDE) si deja de funcionar o necesita ser intercambiado debido a una falla de hardware, actualización o mantenimiento. Esto asegura que el clúster de AIDE se mantenga saludable y operativo. El procedimiento puede realizarse sin interrumpir los servicios en curso.
 
 
 
@@ -43,9 +43,9 @@ Debes tener en cuenta las siguientes restricciones cuando reemplaces un nodo en 
 
 
 
-== Reemplaza un nodo DCN en tu clúster AIDE
+== Reemplaza un nodo de cómputo de datos en tu clúster AIDE
 
-Puedes reemplazar un nodo DCN en tu clúster AIDE usando el siguiente procedimiento.
+Puedes reemplazar un nodo de computación de datos en tu clúster AIDE usando el siguiente procedimiento.
 
 .Pasos
 . Retira físicamente el nodo averiado

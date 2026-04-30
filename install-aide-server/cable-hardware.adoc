@@ -1,0 +1,122 @@
+---
+sidebar: sidebar 
+permalink: install-aide-server/cable-hardware.html 
+keywords: aide, ai, data engine, ai data engine, third-party server, afx, afx 1k, cable controllers, Cisco Nexus 9332D-GX2B, Cisco Nexus 9364D-GX2A, switches, switch, cable hardware, cable storage shelves, cable data compute nodes, cable network, cable cluster, cable host network 
+summary: Aprende cómo conectar los cables AIDE a tu red y cablear los servidores de terceros. 
+---
+= Conecta tus servidores de terceros para AI Data Engine
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Conecta tus servidores de terceros a la red del host y a los switches de red del clúster para permitir el procesamiento de cargas de trabajo de IA y la integración con tu sistema de almacenamiento AFX 1K. Este procedimiento utiliza conexiones tanto para el acceso a la red del host como para la comunicación del clúster, permitiendo que los nodos aprovechen la infraestructura de clúster existente sin apagar el sistema AFX.
+
+.Acerca de esta tarea
+Estos procedimientos muestran configuraciones comunes. El cableado específico depende de los componentes compatibles con tu sistema de almacenamiento. Para obtener información detallada sobre la configuración, consulta la documentación de tu servidor de terceros.
+
+.Antes de empezar
+* Ya tienes instalado un sistema de almacenamiento AFX 1K. Para información sobre cómo instalar el sistema de almacenamiento AFX 1K, consulta link:https://docs.netapp.com/us-en/ontap-afx/install-setup/install-setup-workflow.html["Documentación de instalación del sistema de almacenamiento AFX 1K"^].
+* Tienes instalados y configurados los switches de red necesarios. Habla con tu administrador de red para saber cómo conectar el sistema a tus switches de red.
+* Has revisado los requisitos de cableado de tus servidores de terceros. Para obtener información sobre la configuración del cableado, consulta la documentación de tu servidor de terceros.
+
+
+
+NOTE: Se necesitan tres servidores de terceros para las implementaciones del software AI Data Engine.
+
+
+
+== Paso 1: conecta los servidores de terceros a la red host
+
+Para servidores de terceros, conéctate a tu red host.
+
+.Pasos
+. Conecta los puertos de red 100GbE 'b' de los servidores de terceros al switch de red de datos Ethernet A usando los cables adecuados según las tarjetas de interfaz de red (NIC) de tu servidor y los tipos de puerto del switch.
++
+Por ejemplo:
+
++
+** Servidor de terceros 1, puerto 'e4b'
+** Servidor de terceros 2, puerto 'e4b'
++
+*cables 100GbE*
+
++
+image::../media/oie_cable100_gbe_qsfp28.png[cable Ethernet de 100 Gb]
+
++
+image::../media/drw_aide_server_host_a_ieops-2831.svg[Cable a red Ethernet]
+
+
+
+. Conecta los puertos de red 100GbE "b" de los servidores de terceros al switch de red de datos Ethernet B usando los cables adecuados según las tarjetas de interfaz de red (NIC) de tu servidor y los tipos de puerto del switch. Por ejemplo:
++
+** Servidor de terceros 1, puerto 'e5b'
+** Servidor de terceros 2, puerto 'e5b'
++
+*cables 100GbE*
+
++
+image::../media/oie_cable100_gbe_qsfp28.png[cable Ethernet de 100 Gb]
+
++
+image::../media/drw_aide_server_host_b_ieops-2832.svg[Cable a red Ethernet]
+
+
+
+
+
+
+NOTE: Consulta la documentación de tu servidor de terceros para ver las configuraciones específicas de los puertos y los tipos de cables.
+
+
+
+== Paso 2: Cablea las conexiones del clúster
+
+Para servidores de terceros, conecta los cables de las conexiones del clúster.
+
+.Pasos
+. Conecta los puertos de red de clúster 100GbE "a" de los servidores de terceros al switch de red de clúster A usando los cables adecuados según las tarjetas de interfaz de red (NIC) y los tipos de puerto del switch de tu servidor de terceros.
++
+Por ejemplo:
+
++
+** Servidor de terceros 1, puerto 'e4a'
+** Servidor de terceros 2, puerto 'e4a'
++
+*cables 100GbE*
+
++
+image::../media/oie_cable100_gbe_qsfp28.png[cable Ethernet de 100 Gb]
+
++
+image::../media/drw_aide_server_cluster_a_ieops-2833.svg[Cable a red Ethernet]
+
+
+
+. Conecta los puertos de red de clúster 100GbE 'a' en los servidores de terceros al switch de red de clúster B usando los cables adecuados según las tarjetas de interfaz de red (NIC) de tu servidor y los tipos de puerto del switch.
++
+Por ejemplo:
+
++
+** Servidor de terceros 1, puerto 'e5a'
+** Servidor de terceros 2, puerto 'e5a'
++
+*cables 100GbE*
+
++
+image::../media/oie_cable100_gbe_qsfp28.png[cable Ethernet de 100 Gb]
+
++
+image::../media/drw_aide_server_cluster_cabling_b_ieops-2834.svg[Cable a red Ethernet]
+
+
+
+
+
+
+NOTE: Consulta la documentación de tu servidor de terceros para ver las configuraciones específicas de los puertos y los tipos de cables.
+
+.¿Qué sigue?
+Después de que hayas cableado el hardware, link:power-on-hardware.html["enciende tus servidores de terceros"].
