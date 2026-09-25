@@ -1,0 +1,162 @@
+---
+sidebar: sidebar 
+permalink: investigate/take-actions.html 
+keywords: actions, tag, archive, delete, data lifecycle, storage optimization, breadcrumb 
+summary: Actúa sobre los archivos que hayas identificado como inactivos, sin actualizar u obsoletos archivándolos, etiquetando los elementos para su seguimiento o eliminando definitivamente aquellos que ya no necesites. 
+---
+= Aprovecha tus datos en AI Data Engine
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Después de identificar los archivos con los filtros que definiste, puedes tomar medidas directas para aplicar las políticas de ciclo de vida de los datos de tu organización. Por ejemplo, un administrador de almacenamiento que usa un filtro para encontrar terabytes de instantáneas de VM a las que no se ha accedido en más de un año puede archivarlas de forma masiva en un recurso compartido de almacenamiento en frío o eliminarlas, según los requisitos de retención y las políticas de la empresa.
+
+.Acerca de esta tarea
+Para realizar una acción, selecciona uno o varios elementos de la tabla de resultados de la investigación usando las casillas de verificación. La barra de herramientas de acciones se activa con cuatro opciones: *Eliminar*, *Archivar*, *Copiar* y *Etiquetar*.
+
+Las acciones disponibles para ti dependen del rol que tengas asignado:
+
+[cols="2,1,1"]
+|===
+| Acción | Administrador de AI Data Engine | Visor de AI Data Engine 
+
+
+| Etiqueta | Sí | Sí 
+
+
+| Archivo | Sí | - 
+
+
+| Copiar | Sí | - 
+
+
+| Borrar | Sí | - 
+|===
+Para obtener una descripción completa de las funciones, consulta link:../administer/manage-users-roles.html["Gestionar usuarios y roles"].
+
+
+
+[[decide-what-to-do]]
+== Decide qué hacer
+
+Elige una acción en función del grado de certeza que tengas sobre los datos:
+
+[cols="1,2"]
+|===
+| Acción | Cuándo utilizarlo 
+
+
+| Etiqueta | Necesitas más tiempo o tienes que coordinarte con otro equipo antes de decidir si archivar o eliminar. El etiquetado permite realizar un seguimiento de los archivos sin modificar su ubicación. 
+
+
+| Archivo | Es posible que los datos sigan teniendo valor, pero no deben almacenarse en el almacenamiento primario. El archivado los traslada a un destino más económico, al tiempo que mantiene su capacidad de recuperación. 
+
+
+| Copiar | Los datos deben existir en una segunda ubicación, por ejemplo, para fines de copia de seguridad o migración. La copia conserva el original en su lugar. 
+
+
+| Borrar | Los datos ya no son necesarios y no están sujetos a ningún requisito de conservación. La eliminación es permanente, así que úsala solo cuando estés seguro. 
+|===
+Cuando los datos aún puedan tener valor o requieran una revisión más detallada, opta por etiquetarlos, archivarlos o copiarlos en lugar de eliminarlos. Elimina los datos únicamente cuando estés seguro de que se pueden quitar de forma definitiva.
+
+
+
+[[archive-files]]
+== Archivar archivos
+
+El archivado mueve los archivos a un destino de almacenamiento en frío a través de NFS o SMB/CIFS. Si lo deseas, puedes dejar un archivo de seguimiento en la ubicación original.
+
+.Antes de empezar
+* Debes tener el rol de _administrador de AI Data Engine_.
+
+
+.Pasos
+. En la vista «Investigación», selecciona los archivos que quieras archivar.
+. Selecciona *Archive*.
+. En el cuadro de diálogo «Archivo», selecciona el protocolo del volumen de destino:
++
+** *NFS*: introduce la ruta de la carpeta de destino de NFS.
+** *CIFS*: introduce la ruta de la carpeta de destino de CIFS con el formato `\\Hostname\share_name`. Introduce las credenciales de Active Directory: escribe el nombre de usuario con el formato `domain\user` o  `user@domain` e introduce la contraseña.
+
+
+. Para crear un archivo de ruta de navegación en la ubicación original, activa *Leave breadcrumb*.
++
+Un archivo de historial de navegación ayuda a los usuarios a entender por qué se movió un archivo.
+
+. Selecciona *Archive*.
+
+
+
+
+[[copy-files]]
+== Copiar archivos
+
+Copiar archivos duplicados a un volumen de destino sin eliminarlos de la ubicación original.
+
+.Antes de empezar
+* Debes tener el rol de _administrador de AI Data Engine_.
+
+
+.Pasos
+. En la vista «Investigación», selecciona los archivos que quieras copiar.
+. Selecciona *Copiar*.
+. En el cuadro de diálogo «Copiar», selecciona el protocolo del volumen de destino:
++
+** *NFS*: introduce la ruta de la carpeta de destino de NFS.
+** *CIFS*: introduce la ruta de la carpeta de destino de CIFS con el formato `\\Hostname\share_name`. Introduce las credenciales de Active Directory: escribe el nombre de usuario con el formato `domain\user` o  `user@domain` e introduce la contraseña.
+
+
+. Selecciona *Copiar*.
+
+
+
+
+[[delete-files]]
+== Eliminar archivos
+
+Al eliminar un archivo, este se borra de forma definitiva del almacenamiento de archivos y la acción no se puede deshacer.
+
+
+CAUTION: La eliminación es definitiva y no se puede deshacer. Esta acción elimina los archivos de origen incluso si contienen datos activos.
+
+.Antes de empezar
+* Debes tener el rol de _administrador de AI Data Engine_.
+
+
+.Pasos
+. En la vista «Investigation», selecciona los archivos que quieras eliminar.
+. Selecciona *Borrar*.
+. En el cuadro de diálogo «Eliminar», escribe *eliminar definitivamente* en el campo de confirmación.
+. Selecciona *Borrar*.
+
+
+.Resultado
+Los archivos seleccionados se eliminan definitivamente del almacenamiento.
+
+
+
+[[tag-files]]
+== Archivos de etiquetas
+
+El etiquetado consiste en aplicar una etiqueta empresarial a los archivos para su clasificación y seguimiento.
+
+.Pasos
+. En la vista «Investigation», selecciona los archivos que quieras etiquetar.
+. Selecciona *Etiqueta*.
+. Introduce o selecciona las etiquetas que quieras aplicar (por ejemplo, «Candidato para archivo»).
+. Confirma para aplicar las etiquetas.
+
+
+
+
+[[related-information]]
+== Información relacionada
+
+* link:investigate-data.html["Analiza tus datos"]
+* link:investigate-unstructured.html["Analiza datos no estructurados"]
+* link:use-filters.html["Trabaja con filtros"]
+* link:../policies/create-policy.html["Crear una política"]
+* link:../administer/manage-users-roles.html["Gestionar usuarios y roles"]
+

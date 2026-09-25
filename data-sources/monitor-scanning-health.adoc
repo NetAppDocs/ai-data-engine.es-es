@@ -1,0 +1,49 @@
+---
+sidebar: sidebar 
+permalink: data-sources/monitor-scanning-health.html 
+keywords: scan health, scanning, health monitor, coverage, migration 
+summary: Comprueba que el escaneo funcione correctamente y que los resultados de tu investigación reflejen los datos actuales. 
+---
+= Controla el estado del escaneo en AI Data Engine
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de actuar en un panel o en un resultado de investigación, confirma que los datos subyacentes estén actualizados. Comprueba que el escaneo funcione correctamente y que tus resultados reflejen datos actualizados.
+
+
+
+[[verify-scan-status-and-coverage]]
+== Comprobar el estado y la cobertura del escaneo
+
+Comprueba que todos tus sistemas de almacenamiento estén conectados y se estén analizando.
+
+.Pasos
+. En la interfaz de usuario de AI Data Engine, selecciona *Configuración*.
+. En la pestaña *Sistemas analizados*, comprueba que todos los sistemas de almacenamiento que esperas ver aparezcan en la lista y estén habilitados para el análisis.
+. Selecciona *Ver detalles* en una fila del sistema para revisar el progreso del análisis y cualquier error. Consulta link:../data-sources/manage-data-sources.html["Gestionar fuentes de datos"] para obtener más información.
+
+
+
+
+[[validate-that-investigation-findings-reflect-current-data]]
+== Comprueba que los resultados de la investigación reflejen los datos actuales
+
+Si el panel de control muestra una gran cantidad de datos fríos o desactualizados, comprueba que las cifras estén actualizadas antes de tomar decisiones basadas en ellas.
+
+* Comprueba la hora del último análisis de cada sistema de almacenamiento que contribuye al resultado. Un sistema que no se ha analizado recientemente podría subestimar o sobreestimar los datos fríos y obsoletos.
+* Confirma que la cobertura del análisis de ese sistema esté completa. Un análisis parcial (en pausa, en curso o con errores) significa que algunos datos aún no se han evaluado.
+* Espera al siguiente ciclo de análisis o soluciona el error subyacente si la cobertura parece incompleta.
+
+
+
+
+[[related-information]]
+== Información relacionada
+
+* link:../data-sources/connect-data-source.html["Conecta una fuente de datos"]
+* link:../investigate/understand-dashboard.html["Evalúa el uso del almacenamiento desde el panel de control"]
+* link:../investigate/investigate-data.html["Analiza tus datos"]
+

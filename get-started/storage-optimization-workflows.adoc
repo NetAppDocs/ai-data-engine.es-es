@@ -1,0 +1,106 @@
+---
+sidebar: sidebar 
+permalink: get-started/storage-optimization-workflows.html 
+keywords: storage optimization, cold data, stale data, retention, workflow, dashboard, investigate, policy 
+summary: Utiliza flujos de principio a fin para llevar un hallazgo del panel de control a través de la investigación, la acción y el seguimiento continuo de las políticas. 
+---
+= Explora los flujos de trabajo de optimización del almacenamiento en AI Data Engine
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Estos flujos de trabajo de AI Data Engine te llevan desde la identificación de un problema de almacenamiento en el panel de control, pasando por la investigación y la acción, hasta una política de supervisión continua. Cada flujo de trabajo sigue el mismo recorrido: panel de control, investigar, actuar y guardar como una política.
+
+
+
+[[identify-and-act-on-cold-data]]
+== Identifica y actúa sobre los datos inactivos
+
+.Escenario
+En el panel de control observas que un recurso de almacenamiento tiene una gran cantidad de datos marcados como «inactivos». No se ha accedido a los archivos inactivos dentro del umbral de datos inactivos configurado, cuyo valor predeterminado es de un año y que se puede configurar en *Configuration* > *Settings*.
+
+.Pasos
+. En link:../investigate/understand-dashboard.html["el panel"], identifica el recurso con la mayor concentración de datos inactivos y selecciona *Investigar*.
+. En link:../investigate/investigate-unstructured.html["Investigación"], comprueba los recursos usando el filtro *Último acceso* configurado para que coincida con el umbral de datos inactivos que hayas establecido (por defecto: *1+ año*).
+. Revisa los resultados para decidir link:../investigate/take-actions.html["si etiquetarlo, archivarlo o eliminarlo"] qué archivos coinciden.
+. Si vale la pena supervisar estos recursos de forma continua, link:../policies/create-policy.html["guardar el conjunto de filtros como una política"] para que recibas notificaciones cuando los archivos nuevos se enfríen.
+
+
+
+
+[[identify-and-act-on-stale-data]]
+== Identifica los datos obsoletos y toma medidas al respecto
+
+.Escenario
+Los archivos a los que aún se accede de vez en cuando, pero que no se han modificado en años, se clasifican como obsoletos cuando quedan fuera del umbral de obsolescencia de tu organización (por defecto: tres años desde el último acceso o modificación).
+
+
+NOTE: Este umbral se puede configurar en *Configuración* > *Ajustes*.
+
+.Pasos
+. En link:../investigate/understand-dashboard.html["el panel"], identifica un recurso con datos muy desactualizados.
+. En link:../investigate/investigate-unstructured.html["Investigación"], aplica el filtro *Última modificación* configurado con tu umbral de antigüedad (por defecto, *3+ años*).
+. Revisa los resultados para decidir link:../investigate/take-actions.html["si etiquetarlo, archivarlo o eliminarlo"] qué archivos coinciden.
+. link:../policies/create-policy.html["Guardar el conjunto de filtros como una política"] para realizar un seguimiento de estos recursos en análisis posteriores.
+
+
+
+
+[[manage-data-retention-compliance]]
+== Gestionar el cumplimiento de la normativa sobre conservación de datos
+
+.Escenario
+Tu organización exige que se revisen los archivos que superen una antigüedad determinada para decidir su conservación. El umbral de conservación predeterminado en AI Data Engine es de siete o más años desde la creación del archivo. Puedes ajustar este umbral para que se adapte a las políticas de cumplimiento y retención de tu organización.
+
+
+NOTE: Este umbral se puede configurar en *Configuración* > *Ajustes*.
+
+.Pasos
+. En link:../investigate/investigate-unstructured.html["Investigación"], aplica el filtro *Última creación* ajustado a tu umbral de retención (predeterminado: *7+ años*).
+. Revisa los resultados con las partes interesadas pertinentes antes de actuar. Los archivos marcados para su conservación suelen supervisarse en lugar de eliminarse automáticamente.
+. link:../policies/create-policy.html["Crear una política"] con una acción de solo supervisión o de notificación por correo electrónico, para que se te avise cuando los archivos nuevos alcancen el umbral de retención, en lugar de actuar sobre estos recursos una sola vez.
+
+
+
+
+[[find-and-eliminate-duplicate-files]]
+== Busca y elimina archivos duplicados
+
+.Escenario
+Existen múltiples copias idénticas de los mismos archivos en distintos volúmenes o recursos compartidos, un problema habitual en entornos con tareas de copia de seguridad, migraciones de datos o carpetas de proyectos compartidas.
+
+.Pasos
+. En link:../investigate/investigate-unstructured.html["Investigación"], selecciona *Add filter* y, a continuación, selecciona *Duplicates*.
+. Revisa los resultados. Los archivos que aparecen en la lista tienen una o más copias idénticas en otras partes del catálogo.
+. Selecciona los archivos sobre los que quieres actuar y elige link:../investigate/take-actions.html["una acción"]. Archiva o elimina los duplicados confirmados que tengan una copia original en otra ubicación.
+. link:../policies/create-policy.html["Guardar el filtro como política"] para hacer un seguimiento de la acumulación de duplicados a lo largo del tiempo y recibir notificaciones cuando aumente el recuento.
+
+
+
+
+[[target-cleanup-by-data-owner]]
+== Limpieza del objetivo por parte del propietario de los datos
+
+.Escenario
+Los datos que cumplen los umbrales de datos fríos y obsoletos de tu organización se encuentran repartidos entre numerosos responsables. Identificar qué responsables de datos tienen el mayor número de archivos en estas categorías puede ayudarte a priorizar la limpieza.
+
+.Pasos
+. En link:../investigate/understand-dashboard.html["el panel"], busca la tabla _Top data owners by reclaimable storage_.
+. Selecciona una fila de propietario para abrir link:../investigate/investigate-unstructured.html["Investigación"] filtrado para los archivos de ese propietario.
+. Revisa los resultados y decide link:../investigate/take-actions.html["si etiquetarlo, archivarlo o eliminarlo"] archivos.
+. link:../policies/create-policy.html["Guardar el conjunto de filtros como una política"] para hacer un seguimiento de cómo cambian con el tiempo los datos potencialmente recuperables de ese propietario.
+
+
+
+
+[[related-information]]
+== Información relacionada
+
+* link:../investigate/understand-dashboard.html["Evalúa el uso del almacenamiento desde el panel de control"]
+* link:../investigate/investigate-data.html["Analiza tus datos"]
+* link:../investigate/investigate-unstructured.html["Analiza datos no estructurados"]
+* link:../investigate/take-actions.html["Actúa sobre tus datos"]
+* link:../policies/create-policy.html["Crear una política"]
+

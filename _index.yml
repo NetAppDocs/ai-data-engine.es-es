@@ -1,0 +1,62 @@
+---
+indexpage:
+  title: Documentación de AI Data Engine
+  summary: La documentación de AI Data Engine explica cómo implementarlo, conectar
+    fuentes de datos y usar AI Data Engine para la optimización del almacenamiento,
+    el análisis de metadatos y la gobernanza de datos.
+  keywords: ai data engine, aide, storage optimization, investigation, policies, data
+    governance, NetApp Console
+  lead: AI Data Engine te ofrece visibilidad sobre los datos no estructurados almacenados
+    en tus sistemas de NetApp. Úsalo para identificar oportunidades de optimización
+    del almacenamiento, analizar tus datos y aplicar políticas de ciclo de vida.
+  tiles:
+  - title: Empezar
+    links:
+    - title: Conoce AI Data Engine
+      url: "/get-started/learn-about.html"
+    - title: Arquitectura de AI Data Engine
+      url: "/get-started/architecture.html"
+    - title: Inicio rápido
+      url: "/get-started/quick-start.html"
+    - title: Explora los flujos de trabajo de optimización del almacenamiento
+      url: "/get-started/storage-optimization-workflows.html"
+  - title: Desplegar
+    links:
+    - title: Resumen de la implementación
+      url: "/deploy/deployment-overview.html"
+    - title: Requisitos AIDE
+      url: "/deploy/aide-requirements.html"
+    - title: Implementa AIDE Lite
+      url: "/deploy/deploy-aide-lite.html"
+    - title: Implementar AIDE Enterprise
+      url: "/deploy/deploy-enterprise.html"
+  - title: Explora tus datos
+    links:
+    - title: Conecta una fuente de datos
+      url: "/data-sources/connect-data-source.html"
+    - title: Gestionar fuentes de datos
+      url: "/data-sources/manage-data-sources.html"
+    - title: Evalúa el uso del almacenamiento desde el panel de control
+      url: "/investigate/understand-dashboard.html"
+    - title: Analiza tus datos
+      url: "/investigate/investigate-data.html"
+    - title: Usa filtros
+      url: "/investigate/use-filters.html"
+    - title: Toma medidas con los datos
+      url: "/investigate/take-actions.html"
+  - title: Políticas y acciones
+    links:
+    - title: Crear una política
+      url: "/policies/create-policy.html"
+    - title: Gestionar políticas
+      url: "/policies/manage-policies.html"
+  - title: Administrar
+    links:
+    - title: Gestionar usuarios y roles
+      url: "/administer/manage-users-roles.html"
+    - title: Configura los umbrales de datos
+      url: "/administer/configure-settings.html"
+    - title: Novedades
+      url: "/release-notes/whats-new.html"
+    - title: Limitaciones conocidas
+      url: "/release-notes/known-limitations.html"

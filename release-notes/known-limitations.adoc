@@ -1,0 +1,48 @@
+---
+sidebar: sidebar 
+permalink: release-notes/known-limitations.html 
+keywords: known limitations, limitations, restrictions, AI Data Engine 
+summary: Las limitaciones conocidas indican las funciones que no son compatibles con esta versión de AI Data Engine. 
+---
+= Limitaciones conocidas de AI Data Engine
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Las limitaciones conocidas identifican la funcionalidad que no es compatible con esta versión de AI Data Engine o la funcionalidad que no interopera correctamente. Revisa estas limitaciones antes de implementar o usar el producto.
+
+
+
+[[deployment]]
+== Despliegue
+
+Las implementaciones Lite y Enterprise son independientes:: AIDE Lite y AIDE Enterprise son modos de implementación distintos. No existe una ruta de migración compatible para mover una implementación existente de un modo a otro.
+
+
+
+
+[[policies-and-actions]]
+== Políticas y acciones
+
+Las acciones activadas por políticas son limitadas:: Al crear una política, las acciones automatizadas disponibles se limitan a la eliminación permanente y la notificación por correo electrónico. Las acciones automatizadas de archivado y etiquetado de las políticas no están disponibles en esta versión. Puedes crear una política sin ninguna acción para supervisar una condición de datos a lo largo del tiempo.
+
+
+
+
+[[tags]]
+== Etiquetas
+
+Las etiquetas no se pueden eliminar ni cambiar de nombre:: La gestión de etiquetas no está disponible en esta versión. Después de crear una etiqueta, sigue disponible en el sistema. Puedes aplicar una etiqueta a elementos y quitarla de ellos, pero no puedes eliminar la definición de la etiqueta en sí ni corregir el nombre de una etiqueta que contenga un error tipográfico.
+
+
+
+
+[[related-information]]
+== Información relacionada
+
+* link:whats-new.html["Novedades"]
+* link:../deploy/deployment-overview.html["Resumen de la implementación"]
+* link:../investigate/take-actions.html["Actúa sobre tus datos"]
+

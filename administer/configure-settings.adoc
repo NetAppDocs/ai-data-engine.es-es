@@ -1,0 +1,74 @@
+---
+sidebar: sidebar 
+permalink: administer/configure-settings.html 
+keywords: cold threshold, stale threshold, configuration, settings, data classification, cold data, stale data 
+summary: Configura los umbrales de tiempo que AI Data Engine utiliza para clasificar los datos como «inactivos» u «obsoletos» en todo tu entorno. 
+---
+= Configura los umbrales de datos inactivos y obsoletos en AI Data Engine
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+AI Data Engine clasifica los archivos como «inactivos» u «obsoletos» en función de los umbrales de tiempo que definas. Estos umbrales determinan qué datos aparecen en los resúmenes del panel de control, qué archivos se muestran al aplicar filtros de «inactivos» u «obsoletos» en Investigation y a qué archivos se aplican las políticas. Establece umbrales que se ajusten a las prácticas de clasificación y retención de datos de tu organización y que te ayuden a identificar los datos que consideras importantes supervisar.
+
+
+
+[[what-is-cold-and-stale-data]]
+== ¿Qué son los datos «fríos» y «obsoletos»?
+
+Datos inactivos:: Archivos a los que no se ha accedido dentro del umbral de datos inactivos configurado. Los datos inactivos son una métrica clave que tu organización puede utilizar para identificar el almacenamiento que podría optimizarse de acuerdo con tus políticas de retención y empresariales.
+Datos obsoletos:: Archivos a los que no se ha accedido ni se han modificado dentro del umbral de datos obsoletos configurado. Los datos obsoletos incluyen archivos a los que se accede ocasionalmente pero que no se han modificado recientemente, y que tu organización puede supervisar o gestionar de acuerdo con sus políticas.
+
+
+
+NOTE: Los valores de umbral predeterminados son los valores predeterminados del producto y sirven como punto de partida. No representan períodos de retención legales, de cumplimiento ni estándar del sector. Establece umbrales que reflejen las políticas y los requisitos específicos de tu organización.
+
+Los cambios en cualquiera de los dos umbrales entrarán en vigor una vez finalizado el siguiente ciclo de análisis.
+
+
+
+[[configure-the-cold-data-threshold]]
+== Configurar el umbral de datos inactivos
+
+.Antes de empezar
+* Debes tener el rol de _administrador de AI Data Engine_.
+
+
+.Pasos
+. En la interfaz de usuario de AI Data Engine, selecciona *Configuración*.
+. Selecciona *Configuración*.
+. Selecciona *Editar* para *Definición de datos en frío*.
+. Establece la propiedad del archivo en *Último acceso* o *Última modificación*.
+. Establece el umbral de tiempo. El valor predeterminado es un año.
+. Selecciona *Guardar*.
+
+
+
+
+[[configure-the-stale-data-threshold]]
+== Configurar el umbral de datos obsoletos
+
+.Antes de empezar
+* Debes tener el rol de _administrador de AI Data Engine_.
+
+
+.Pasos
+. En la interfaz de usuario de AI Data Engine, selecciona *Configuración*.
+. Selecciona *Configuración*.
+. Selecciona *Editar* para *Definición de datos obsoletos*.
+. Establece la propiedad del archivo en *Último acceso* o *Última modificación*.
+. Establece el umbral de tiempo. El valor predeterminado es de tres años.
+. Selecciona *Guardar*.
+
+
+
+
+[[related-information]]
+== Información relacionada
+
+* link:../investigate/understand-dashboard.html["Descubre el panel de control de AI Data Engine"]
+* link:../get-started/storage-optimization-workflows.html["Explora los flujos de trabajo de optimización del almacenamiento"]
+* link:manage-users-roles.html["Gestionar usuarios y roles"]
+

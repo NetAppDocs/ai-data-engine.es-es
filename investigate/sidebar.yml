@@ -1,0 +1,18 @@
+---
+section: investigate
+title: Investiga los datos
+entries:
+- title: Evalúa el estado del almacenamiento con el panel de control de AIDE
+  url: "/investigate/understand-dashboard.html"
+- title: Analiza tus datos
+  url: "/investigate/investigate-data.html"
+- title: Analiza datos no estructurados
+  url: "/investigate/investigate-unstructured.html"
+- title: Investiga los datos estructurados
+  url: "/investigate/investigate-structured.html"
+- title: Investigar directorios
+  url: "/investigate/investigate-directories.html"
+- title: Trabaja con filtros
+  url: "/investigate/use-filters.html"
+- title: Toma medidas con los datos
+  url: "/investigate/take-actions.html"

@@ -1,0 +1,69 @@
+---
+sidebar: sidebar 
+permalink: deploy/deployment-overview.html 
+keywords: deployment, aide lite, aide enterprise, kubernetes, vm, deployment modes, sizing 
+summary: Implementa AI Data Engine como AIDE Lite o como AIDE Enterprise si tu entorno requiere alta disponibilidad basada en Kubernetes. 
+---
+= Más información sobre la implementación de AI Data Engine
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Implementa AI Data Engine como AIDE Lite, una instalación en una sola máquina virtual. Si tu entorno requiere alta disponibilidad a gran escala basada en Kubernetes, puedes implementar AIDE Enterprise en su lugar.
+
+
+
+[[aide-lite]]
+== AIDE Lite
+
+AIDE Lite se instala en una única máquina virtual con Linux. No necesitas conocimientos de Kubernetes porque el instalador aprovisiona k3s automáticamente.
+
+AIDE Lite está disponible en tres tamaños — Small, Medium y Large — para entornos de hasta aproximadamente 200 millones, 1 billón y 3 billones de archivos, respectivamente. Para conocer el dimensionamiento completo de la VM y los requisitos del sistema operativo, consulta link:aide-requirements.html["Requisitos AIDE"]. Estos tamaños son valores de referencia recomendados, no límites estrictos; consulta link:aide-requirements.html#flexible-sizing-lite["directrices flexibles de dimensionamiento"] para saber qué factores determinan el dimensionamiento y cómo escalar aún más.
+
+
+
+[[aide-enterprise]]
+== AIDE Enterprise
+
+Implementa AIDE Enterprise si tu entorno requiere alta disponibilidad, tolerancia a fallos, actualizaciones graduales o escalado horizontal más allá del tamaño máximo de AIDE Lite. AIDE Enterprise se implementa como un clúster de Kubernetes de varios nodos en un clúster RKE2 aprovisionado y gestionado por el cliente.
+
+AIDE Enterprise está disponible en tres tamaños: Small, Medium y Large, para entornos de hasta aproximadamente 1.000 millones, 3.000 millones y 6.000 millones de archivos, respectivamente. Para conocer los requisitos completos de dimensionamiento de nodos y clústeres, consulta link:aide-requirements.html["Requisitos AIDE"]. Estos tamaños son valores de referencia recomendados, no límites estrictos: los entornos que superan los 6.000 millones de archivos son compatibles mediante escalado horizontal. Consulta link:aide-requirements.html#flexible-sizing-enterprise["directrices flexibles de dimensionamiento"] para obtener más detalles.
+
+
+
+[[deployment-process]]
+== Proceso de implementación
+
+NetApp Console no aprovisiona la infraestructura para AI Data Engine. Preparas una máquina o clúster Linux que cumple los requisitos y, a continuación, copias el comando de instalación pregenerado de NetApp Console y lo ejecutas en el host de destino. El comando inicia el entorno de ejecución e implementa automáticamente la pila de AI Data Engine. Durante la instalación, el instalador te pedirá que confirmes la dirección IP del host de destino y el ID de usuario antes de que continúe la instalación.
+
+Las instalaciones de AIDE Lite suelen completarse en 45 minutos. Las instalaciones de AIDE Enterprise suelen completarse en 30 minutos. El instalador incluye tiempos de espera y reintentos integrados para gestionar problemas transitorios mientras se inician los componentes.
+
+
+
+[[deployment-mode-reference]]
+== Referencia sobre los modos de implementación
+
+[cols="1h,2,2"]
+|===
+|  | AIDE Lite | AIDE Enterprise 
+
+
+| Modelo de implementación | Una VM de Linux | Clúster de Kubernetes multinodo (RKE2 aprovisionado por el cliente) 
+
+
+| Velocidad de escaneo | De 50 millones a 1.000 millones de archivos al día, varía según el tamaño | Entre 250 millones y 2.000 millones de archivos al día, varía en función del tamaño 
+
+
+| Archivos máx. (tamaño grande) | Aproximadamente 3 mil millones | Aproximadamente 6 mil millones 
+|===
+
+
+[[related-information]]
+== Información relacionada
+
+* link:aide-requirements.html["Requisitos AIDE"]
+* link:deploy-aide-lite.html["Implementa AI Data Engine — Lite"]
+* link:deploy-enterprise.html["Implementar AI Data Engine — Enterprise"]
+

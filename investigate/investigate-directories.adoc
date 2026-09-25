@@ -1,0 +1,76 @@
+---
+sidebar: sidebar 
+permalink: investigate/investigate-directories.html 
+keywords: investigate, directories, permissions, org-wide access, open access, directory owner, overly permissive, exposed directories 
+summary: Audita los permisos a nivel de directorio en todos tus sistemas de almacenamiento para identificar rutas de acceso amplio, revisar quién tiene acceso y guardar los resultados como una política reutilizable. 
+---
+= Investiga directorios en AI Data Engine
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cuando necesites identificar qué directorios están expuestos a más usuarios de los previstos, filtra por permisos para encontrar las carpetas abiertas a toda la organización. Por ejemplo, un administrador de seguridad que vea directorios expuestos marcados en el panel de control puede encontrar todos los directorios con acceso para toda la organización, revisar quién tiene permisos de lectura y escritura y crear una política para supervisar nuevas exposiciones después de cada análisis.
+
+.Antes de empezar
+* Debe haber al menos una fuente de datos conectada y en proceso de escaneo. Consulta link:../data-sources/connect-data-source.html["Conecta una fuente de datos"].
+
+
+
+
+[[find-broadly-accessible-directories]]
+== Busca directorios ampliamente accesibles
+
+Utiliza los filtros de permisos para identificar los directorios que están abiertos más allá del público al que van dirigidos.
+
+.Pasos
+. En la interfaz de usuario de AI Data Engine, selecciona *Investigación*.
+. Selecciona la pestaña *Directorios*.
++
+La tabla muestra el nombre del directorio (ruta completa), el contenedor de datos, el propietario del directorio, el tipo de directorio y el sistema.
+
+. Selecciona *Add filter* y, a continuación, selecciona *Open permissions*.
+. Configura el filtro en *Abierto para la organización* para mostrar los directorios accesibles en toda la organización.
++
+La tabla de resultados se actualiza para mostrar los directorios que coinciden con los criterios de permisos, incluida la fecha del último acceso y el estado de los permisos.
+
+
+
+Para consultar la lista completa de filtros disponibles, visita link:use-filters.html["Trabaja con filtros"].
+
+
+
+[[review-directory-permissions]]
+== Revisar los permisos del directorio
+
+Selecciona una fila del directorio para abrir el panel de detalles y comprobar quién tiene acceso.
+
+El panel de detalles muestra el tipo de directorio, el sistema, el propietario del directorio y un resumen de los permisos (por ejemplo, «Abierto para la organización»). Selecciona *Ver permisos* para ver un desglose del acceso de lectura y escritura de cada usuario o grupo con acceso al directorio.
+
+Utiliza esta información para confirmar si el nivel de acceso es intencional antes de crear una política o escalar al propietario del directorio.
+
+
+
+[[save-findings-as-a-policy]]
+== Guardar los hallazgos como una política
+
+Después de filtrar para identificar directorios de acceso amplio, guarda los criterios como una política para supervisar nuevas exposiciones después de cada ciclo de análisis.
+
+.Pasos
+. Con los filtros de permisos aplicados, selecciona *Crear política* en la barra de herramientas de filtros.
+. Rellena el formulario de la política. Consulta link:../policies/create-policy.html["Crear una política"].
+
+
+Para descargar los resultados filtrados de la pestaña «Directorios», selecciona image:icon_download_file.png["Descargar"].
+
+
+
+[[related-information]]
+== Información relacionada
+
+* link:use-filters.html["Trabaja con filtros"]
+* link:../policies/create-policy.html["Crear una política"]
+* link:../administer/manage-users-roles.html["Gestionar usuarios y roles"]
+* link:understand-dashboard.html["Evalúa el uso del almacenamiento desde el panel de control"]
+

@@ -1,0 +1,40 @@
+---
+sidebar: sidebar 
+permalink: release-notes/whats-new.html 
+keywords: 'what"s new, release notes, AI Data Engine, storage optimization' 
+summary: Descubre las nuevas funciones de AI Data Engine. 
+---
+= Novedades en AI Data Engine
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Descubre las nuevas funciones de AI Data Engine.
+
+
+
+[[ai-data-engine-1-1-0]]
+== AI Data Engine 1.1.0
+
+AI Data Engine es un servicio de inteligencia de metadatos, gestionado a través de NetApp Console, que escanea tus sistemas conectados, crea un catálogo de metadatos y te ofrece la visibilidad y las herramientas necesarias para optimizar el almacenamiento y gobernar los datos a escala. Puedes implementar AI Data Engine como link:../deploy/deployment-overview.html["AIDE Lite"] o como AIDE Enterprise si tu entorno requiere alta disponibilidad basada en Kubernetes a gran escala.
+
+Nuevas funciones:
+
+link:../investigate/understand-dashboard.html["Recuperar capacidad de almacenamiento"]:: Identifica los datos inactivos, obsoletos y duplicados en tus sistemas conectados según los umbrales que hayas configurado, y comprueba qué sistemas y responsables de datos albergan las mayores concentraciones de estos datos.
+link:../investigate/investigate-data.html["Reduce costes y riesgos"]:: Filtra en todos los sistemas conectados por tiempo de acceso, fecha de modificación, fecha de creación, tamaño del archivo, estado de duplicado y otros criterios para encontrar los archivos que cumplan los objetivos de gestión de datos de tu organización. Actúa directamente sobre los resultados o guarda los criterios como una política.
+link:../policies/create-policy.html["Gestiona los datos de forma continua"]:: Guarda los criterios de filtrado como políticas con nombre para realizar un seguimiento de las condiciones recurrentes de los datos a lo largo del tiempo, como los archivos fríos o de gran tamaño, y recibe notificaciones cuando cambie el número de archivos afectados.
+link:../investigate/take-actions.html["Reduce los costes de almacenamiento"]:: Aplica las políticas de ciclo de vida de los datos de tu organización copiando y archivando archivos en destinos NFS o SMB/CIFS, etiquetando elementos para su seguimiento o eliminando archivos de forma permanente según tus requisitos de retención.
+link:../administer/manage-users-roles.html["Asignar roles de administrador y visor"]:: Controla quién puede investigar los datos y realizar acciones asignando a los usuarios de tu organización el rol de administrador o visualizador de AI Data Engine.
+link:../investigate/use-filters.html["Elimina los datos duplicados"]:: Busca archivos que tengan copias duplicadas en tus sistemas conectados. Filtra por el atributo Duplicates o por el hash del archivo para revisar y actuar directamente sobre los grupos de duplicados.
+link:../investigate/understand-dashboard.html["Responsabiliza a los propietarios de los datos"]:: Identifica qué propietarios de datos tienen las mayores concentraciones de datos inactivos, obsoletos o duplicados desde el panel y, a continuación, filtra por propietario o grupo en la vista de investigación para revisar y gestionar los resultados de acuerdo con tus políticas.
+
+
+
+
+[[related-information]]
+== Información relacionada
+
+* link:known-limitations.html["Limitaciones conocidas"]
+

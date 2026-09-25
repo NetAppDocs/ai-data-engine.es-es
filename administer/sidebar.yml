@@ -1,0 +1,8 @@
+---
+section: administer
+title: Administrar
+entries:
+- title: Gestionar usuarios y roles
+  url: "/administer/manage-users-roles.html"
+- title: Configura los umbrales de datos
+  url: "/administer/configure-settings.html"

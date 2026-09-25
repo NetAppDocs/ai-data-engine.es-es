@@ -1,0 +1,86 @@
+---
+sidebar: sidebar 
+permalink: investigate/investigate-structured.html 
+keywords: investigate, structured, database, tables, schema, oversized, unused, DB server, table size, discovered time 
+summary: Busca tablas de base de datos demasiado grandes o sin usar en tus servidores de bases de datos conectados y, a continuación, guarda los resultados como una política de gobernanza reutilizable. 
+---
+= Analiza datos estructurados en AI Data Engine
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cuando el almacenamiento de la base de datos aumenta de forma inesperada, puedes filtrar por metadatos de la tabla para encontrar qué tablas tienen un tamaño excesivo o no han mostrado actividad desde que se descubrieron por primera vez. Por ejemplo, un administrador de almacenamiento puede identificar tablas grandes que no han cambiado desde un análisis inicial y luego coordinarse con el propietario de la base de datos para evaluar si siguen siendo necesarias.
+
+.Antes de empezar
+* Debe haber al menos una fuente de datos de base de datos conectada y en proceso de análisis. Consulta link:../data-sources/connect-data-source.html["Conecta una fuente de datos"].
+
+
+
+
+[[review-the-database-table-listing]]
+== Revisa la lista de tablas de la base de datos
+
+.Pasos
+. En la interfaz de usuario de AI Data Engine, selecciona *Investigación*.
+. Selecciona la pestaña *Structured*.
++
+La tabla muestra el nombre de la tabla de la base de datos, el esquema, el servidor de base de datos, la hora de detección, las dimensiones de la tabla (columnas × filas) y el tamaño de la tabla.
+
+
+
+
+
+[[identify-oversized-or-unused-tables]]
+== Identifica las tablas demasiado grandes o que no se usan
+
+Utiliza filtros para limitar la lista a las tablas con más probabilidades de ofrecer oportunidades de recuperación.
+
+.Pasos
+. Selecciona *Add filter* y, a continuación, selecciona *Discovered time*.
+. Establece el rango para mostrar las tablas que han estado presentes en varios ciclos de exploración, por ejemplo, las tablas detectadas por primera vez hace más de un año.
+. Para acotar aún más, vuelve a seleccionar *Add filter* y filtra por servidor de base de datos o esquema para centrarte en un sistema concreto.
++
+Los filtros aplicados aparecen como etiquetas debajo de la barra de filtros. Los resultados se actualizan a medida que añades cada filtro.
+
+
+
+Para consultar la lista completa de filtros disponibles, visita link:use-filters.html["Trabaja con filtros"].
+
+
+
+[[review-table-details]]
+== Revisar los detalles de la tabla
+
+Selecciona una fila de la tabla para abrir el panel de detalles y evaluar si la tabla es candidata para la recuperación.
+
+El panel de detalles muestra el servidor de la base de datos, el esquema, las dimensiones de la tabla, el tamaño de la tabla y la hora de detección. Utiliza esta información para determinar si la tabla ha crecido desde su detección o si permanece sin cambios.
+
+
+NOTE: Antes de actuar sobre las tablas de la base de datos, coordínate con el propietario de la base de datos para confirmar que la tabla ya no es necesaria.
+
+
+
+[[save-findings-as-a-policy]]
+== Guardar los hallazgos como una política
+
+Una vez aplicados los filtros que identifican las tablas de interés, guarda los criterios para el seguimiento continuo.
+
+.Pasos
+. Selecciona *Create policy* en la barra de herramientas de filtrado.
+. Rellena el formulario de la política. Consulta link:../policies/create-policy.html["Crear una política"].
+
+
+Para descargar los resultados filtrados de la pestaña «Estructurado», selecciona image:icon_download_file.png["Descargar"].
+
+
+
+[[related-information]]
+== Información relacionada
+
+* link:use-filters.html["Trabaja con filtros"]
+* link:../policies/create-policy.html["Crear una política"]
+* link:../data-sources/connect-data-source.html["Conecta una fuente de datos"]
+* link:understand-dashboard.html["Evalúa el uso del almacenamiento desde el panel de control"]
+

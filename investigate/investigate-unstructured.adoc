@@ -1,0 +1,89 @@
+---
+sidebar: sidebar 
+permalink: investigate/investigate-unstructured.html 
+keywords: investigate, unstructured, cold data, stale data, last accessed, file size, file owner, reclaimable storage, NFS, SMB, CIFS 
+summary: Busca y clasifica archivos como «inactivos», «obsoletos» o «de gran tamaño» en volúmenes NFS y SMB/CIFS mediante filtros de metadatos, y luego revisa los resultados, toma las medidas oportunas o guarda tus criterios de filtrado como una política reutilizable. 
+---
+= Analiza datos no estructurados en AI Data Engine
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cuando el almacenamiento basado en archivos crece de forma inesperada, filtra por hora del último acceso, tamaño del archivo y propietario para identificar qué archivos están ocupando capacidad. Por ejemplo, un administrador de almacenamiento puede identificar terabytes de instantáneas de VM a las que no se ha accedido desde hace más de un año y evaluar si conviene archivarlas, eliminarlas o conservarlas.
+
+.Antes de empezar
+* Debe haber al menos una fuente de datos conectada y en proceso de escaneo. Consulta link:../data-sources/connect-data-source.html["Conecta una fuente de datos"].
+
+
+
+
+[[find-cold-or-stale-files-by-last-access-time]]
+== Buscar archivos inactivos u obsoletos por tiempo de acceso
+
+Utiliza filtros basados en la fecha para identificar los archivos a los que no se ha accedido dentro de los umbrales de datos fríos o inactivos de tu organización. Los umbrales se pueden configurar en *Configuration* > *Settings*. Consulta link:../administer/configure-settings.html["Configura los umbrales de datos inactivos y obsoletos"].
+
+.Pasos
+. En la interfaz de usuario de AI Data Engine, selecciona *Investigación*.
++
+La pestaña «Sin estructurar» aparece seleccionada de forma predeterminada.
+
+. Selecciona *Add filter* y, a continuación, selecciona *Last accessed*.
+. Selecciona un intervalo de tiempo que se ajuste a tu umbral de datos inactivos, por ejemplo *1+ año*.
+. Para centrarte en los mayores consumidores, vuelve a seleccionar *Add filter*, luego selecciona *File size* y establece un valor mínimo, por ejemplo *>1 GiB*.
++
+Los filtros aplicados aparecen como etiquetas debajo de la barra de filtros. La tabla de resultados y el recuento de elementos se actualizan a medida que añades cada filtro.
+
+
+
+Para consultar la lista completa de filtros disponibles, visita link:use-filters.html["Trabaja con filtros"].
+
+
+
+[[group-results-by-owner]]
+== Agrupa los resultados por propietario
+
+Agrupar por propietario te ayuda a entender quién tiene la mayor cantidad de datos potencialmente recuperables antes de decidir dónde actuar.
+
+.Pasos
+. Una vez aplicados los filtros, selecciona el menú desplegable *Ver por*.
+. Selecciona *Owner*.
++
+Los resultados se reorganizan para mostrar el número total de archivos y el tamaño por propietario. Selecciona cualquier fila de propietario para expandirla y ver sus archivos individuales.
+
+
+
+
+
+[[review-file-details]]
+== Revisar los detalles del archivo
+
+Selecciona cualquier fila de archivo para abrir el panel de detalles y confirma que el archivo coincide con el alcance previsto antes de realizar ninguna acción.
+
+El panel de detalles muestra el sistema del archivo, el repositorio de almacenamiento, el propietario del archivo y las etiquetas o políticas aplicadas. Comprueba el sistema y el propietario antes de archivar o eliminar.
+
+
+
+[[act-on-results-or-save-as-a-policy]]
+== Actúa según los resultados o guárdalo como una política
+
+Una vez identificados los archivos que quieres abordar, selecciona uno o varios elementos con las casillas de selección de la tabla de resultados.
+
+* Para realizar una acción inmediata, consulta link:take-actions.html["Actúa sobre tus datos"].
+* Para guardar los criterios de filtrado para la supervisión continua, selecciona *Crear política* en la barra de herramientas de filtrado. Consulta link:../policies/create-policy.html["Crear una política"].
+
+
+Para descargar los resultados filtrados de la pestaña «Sin estructurar», selecciona image:icon_download_file.png["Descargar"].
+
+
+
+[[related-information]]
+== Información relacionada
+
+* link:use-filters.html["Trabaja con filtros"]
+* link:take-actions.html["Actúa sobre tus datos"]
+* link:../policies/create-policy.html["Crear una política"]
+* link:../get-started/storage-optimization-workflows.html["Explora los flujos de trabajo de optimización del almacenamiento"]
+* link:understand-dashboard.html["Evalúa el uso del almacenamiento desde el panel de control"]
+

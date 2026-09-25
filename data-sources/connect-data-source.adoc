@@ -1,0 +1,88 @@
+---
+sidebar: sidebar 
+permalink: data-sources/connect-data-source.html 
+keywords: connect, data source, storage system, scanned systems, configuration, scan, NFS, CIFS, StorageGRID, database, file shares, console agent, scope, content intelligence, activate 
+summary: Conecta los sistemas de almacenamiento a AI Data Engine completando el asistente de incorporación de fuentes de datos y, a continuación, activa el escaneo para iniciar la recopilación de metadatos. 
+---
+= Conecta una fuente de datos a AI Data Engine
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+AI Data Engine analiza tus sistemas de almacenamiento para recopilar y analizar metadatos. Para añadir una fuente de datos, completa el asistente de incorporación. El asistente recopila los datos de conexión, el alcance del análisis y la configuración de tu tipo de fuente. Después de añadir el sistema, activa el análisis para iniciar la recopilación de metadatos.
+
+.Antes de empezar
+* Debes tener privilegios de _administrador de AI Data Engine_ para conectarte y configurar fuentes de datos en AI Data Engine.
+* Descubre los sistemas de almacenamiento en NetApp Console usando un Console Agent antes de añadirlos a AI Data Engine. Esto se aplica a todos los tipos de almacenamiento compatibles, incluidos los clústeres de ONTAP locales, Cloud Volumes ONTAP, Amazon FSx for NetApp ONTAP, Google Cloud NetApp Volumes y Azure NetApp Files. Para los clústeres de ONTAP locales, consulta link:https://docs.netapp.com/us-en/storage-management-ontap-onprem/task-discovering-ontap.html["Descubre los clústeres ONTAP locales"] en la documentación de NetApp Console. La detección directa no activa servicios de datos como AI Data Engine.
+* Comprueba que las conexiones de red necesarias para que AI Data Engine pueda acceder a tus fuentes de datos estén abiertas. Consulta link:../deploy/aide-requirements.html["Requisitos de AI Data Engine"].
+
+
+
+
+[[add-a-data-source]]
+== Añadir un origen de datos
+
+.Pasos
+. En la interfaz de usuario de AI Data Engine, selecciona *Configuración*.
+. En la pestaña *Sistemas analizados*, selecciona *Add system*.
+. Selecciona un tipo de fuente:
++
+[cols="1,2"]
+|===
+| Tipo de fuente | Descripción 
+
+
+| *Grupo de recursos compartidos de archivos* | Añade recursos compartidos de archivos NFS o SMB/CIFS desde la nube o desde las instalaciones como un grupo con nombre. 
+
+
+| *Base de datos* | Añade un servidor de bases de datos para analizar los esquemas seleccionados. 
+
+
+| *StorageGRID* | Escanea datos de NetApp StorageGRID mediante el protocolo S3. 
+|===
+. Introduce los datos de conexión para tu tipo de fuente:
++
+[cols="1,3"]
+|===
+| Tipo de fuente | Datos obligatorios 
+
+
+| *Grupo de recursos compartidos de archivos* | Un nombre para el grupo de recursos compartidos y, a continuación, los detalles del host y de la ruta del recurso compartido. 
+
+
+| *Base de datos* | Tipo de base de datos, host, puerto y credenciales de autenticación. 
+
+
+| *StorageGRID* | Nombre del sistema, URL del endpoint de S3 y clave de acceso y clave secreta de S3. 
+|===
+. Revisa tus selecciones y selecciona *Confirm* para añadir la fuente de datos.
+
+
+
+
+[[activate-scanning]]
+== Activar el escaneo
+
+Después de configurar una fuente de datos, el análisis no se inicia automáticamente. Debes activar el análisis para cada sistema.
+
+.Pasos
+. En la interfaz de usuario de AI Data Engine, selecciona *Configuración*.
+. En la pestaña *Sistemas analizados*, busca el sistema que quieras analizar.
+. Selecciona *Activar análisis*.
+
+
+.Resultado
+El estado del sistema se actualiza en la pestaña «Sistemas escaneados» para indicar que el escaneo está en ejecución. Para supervisar el progreso del escaneo y comprobar que AI Data Engine está indexando los recursos de datos, consulta link:manage-data-sources.html["Gestionar fuentes de datos"] y link:monitor-scanning-health.html["Supervisa el estado del escaneo"].
+
+
+
+[[related-information]]
+== Información relacionada
+
+* link:manage-data-sources.html["Gestionar fuentes de datos"]
+* link:../deploy/aide-requirements.html["Requisitos de AI Data Engine"]
+* link:../investigate/understand-dashboard.html["Evalúa el uso del almacenamiento desde el panel de control"]
+* link:monitor-scanning-health.html["Supervisa el estado del escaneo"]
+

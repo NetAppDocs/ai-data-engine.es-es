@@ -1,0 +1,50 @@
+---
+sidebar: sidebar 
+permalink: investigate/investigate-data.html 
+keywords: investigate, metadata, unstructured, structured, directories, cold data, stale data, permissions, reclaimable storage 
+summary: Utiliza la vista Investigación para explorar el almacenamiento basado en archivos, las tablas de bases de datos y las estructuras de directorios en todos tus sistemas conectados. Elige la pestaña que corresponda con lo que estás buscando. 
+---
+= Analiza tus datos en AI Data Engine
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cuando necesites averiguar qué está consumiendo almacenamiento, identificar qué tablas de bases de datos están creciendo sin control o localizar directorios con permisos de acceso excesivamente amplios, utiliza filtros de metadatos para analizar tus datos en todos los sistemas conectados.
+
+
+
+[[choose-a-starting-point]]
+== Elige un punto de partida
+
+Selecciona *Investigation* en la navegación izquierda para abrir la vista. También puedes abrir la vista Investigation desde el dashboard seleccionando *Investigate* en la tabla _Top data resources by reclaimable storage_, lo que aplica automáticamente un filtro para ese recurso.
+
+La sección *Investigación* está organizada en tres pestañas. Selecciona la pestaña que corresponda al tipo de datos que estés investigando.
+
+[cols="1,2,1"]
+|===
+| Pestaña | Úsalo cuando quieras | Más información 
+
+
+| *Sin estructura* | Detecta datos basados en archivos inactivos, obsoletos o duplicados en volúmenes NFS y SMB/CIFS | link:investigate-unstructured.html["Analiza datos no estructurados"] 
+
+
+| *Estructurado* | Identifica las tablas de bases de datos de gran tamaño o en desuso que consumen espacio de almacenamiento | link:investigate-structured.html["Investiga los datos estructurados"] 
+
+
+| *Directorios* | Revisa los permisos a nivel de directorio y encuentra rutas ampliamente accesibles | link:investigate-directories.html["Investigar directorios"] 
+|===
+El recuento resumido y el tamaño total que aparecen en la parte superior de la página se actualizan para reflejar la pestaña activa (por ejemplo, «Unstructured (400M) | 5,7 PiB»).
+
+
+
+[[related-information]]
+== Información relacionada
+
+* link:investigate-unstructured.html["Analiza datos no estructurados"]
+* link:investigate-structured.html["Investiga los datos estructurados"]
+* link:investigate-directories.html["Investigar directorios"]
+* link:use-filters.html["Trabaja con filtros"]
+* link:take-actions.html["Actúa sobre tus datos"]
+
