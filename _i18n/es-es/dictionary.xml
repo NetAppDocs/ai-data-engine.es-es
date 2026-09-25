@@ -871,7 +871,6 @@
   <block id="7dbe065509bb17277c7b17f3766f97be" category="list-text">Identifica qué propietarios de datos tienen las mayores concentraciones de datos inactivos, obsoletos o duplicados desde el panel y, a continuación, filtra por propietario o grupo en la vista de investigación para revisar y gestionar los resultados de acuerdo con tus políticas.</block>
   <block id="482723983a4f2af954e36ff41e567451" category="inline-link-macro">Limitaciones conocidas</block>
   <block id="34e34c0debc388181c3934f84b977ddd" category="list-text"><block ref="34e34c0debc388181c3934f84b977ddd" category="inline-link-macro-rx"></block></block>
-  <block id="e72c60c273700856ad0eeb853a353e52" category="sidebar">AI Data Engine te ofrece visibilidad sobre los datos no estructurados almacenados en tus sistemas de NetApp. Úsalo para identificar oportunidades de optimización del almacenamiento, analizar tus datos y aplicar políticas de ciclo de vida.</block>
   <block id="ed67b8aec97dcec019f1b2972d70f5af" category="sidebar">Documentación de AI Data Engine</block>
   <block id="0416d02572f9d563fa4967178dc5c5fb" category="sidebar">La documentación de AI Data Engine explica cómo implementarlo, conectar fuentes de datos y usar AI Data Engine para la optimización del almacenamiento, el análisis de metadatos y la gobernanza de datos.</block>
   <block id="be11c74c1dd7f307bb80183a90dc2067" category="sidebar">Empezar</block>
@@ -892,4 +891,5 @@
   <block id="6b2443d2529b7b19a67154f7a04c9877" category="sidebar">Evalúa el estado del almacenamiento con el panel de control de AIDE</block>
   <block id="4bd61438e659088dded1d69964caccb1" category="sidebar">Gestionar políticas y acciones</block>
   <block id="7d0ee6fed10d3d4e5c9ee496729ab519" category="sidebar">Notas de publicación</block>
+  <block id="ac219e2fd9f167e916107df50eb88fad" category="sidebar">AI Data Engine es un servicio de inteligencia de metadatos, gestionado a través de NetApp Console, que escanea tus sistemas conectados, crea un catálogo de metadatos y te ofrece la visibilidad y las herramientas necesarias para optimizar el almacenamiento y gobernar los datos a escala.</block>
 </blocks>
