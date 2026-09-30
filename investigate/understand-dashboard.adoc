@@ -13,7 +13,7 @@ summary: Evalúa el estado del almacenamiento en todo tu entorno, identifica dó
 [role="lead"]
 Antes de decidir qué analizar, debes conocer el estado de tu almacenamiento. ¿Qué volumen de almacenamiento cumple los umbrales de clasificación de datos inactivos y obsoletos de tu organización, y qué sistemas o responsables albergan la mayor cantidad de datos en estas categorías? Por ejemplo, un administrador de almacenamiento que responde a una alerta de capacidad puede ver que una gran parte del almacenamiento analizado corresponde a datos inactivos y, a continuación, profundizar en el sistema de mayor impacto para empezar a investigar de inmediato.
 
-En NetApp Console, selecciona *Governance* > *AI Data Engine UI*. El panel se abre de forma predeterminada.
+Desde NetApp Console, selecciona *AI data hub* > *AI Data Engine UI*. El panel se abre de forma predeterminada.
 
 
 

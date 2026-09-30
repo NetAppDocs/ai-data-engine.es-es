@@ -14,6 +14,7 @@ summary: Despliega AIDE Lite desde NetApp Console usando el asistente de desplie
 Instala AIDE Lite desde NetApp Console con el asistente de implementación. El asistente te guiará para seleccionar la ubicación de instalación, elegir un tamaño de configuración y ejecutar el comando de instalación en el host de destino.
 
 .Antes de empezar
+* Tu organización tiene acceso a la versión preliminar privada de AI Data Engine en NetApp Console. Ponte en contacto con tu representante de NetApp para solicitar acceso y poder implementar AI Data Engine.
 * Tienes permisos de _administrador de la organización_ o superiores en NetApp Console.
 * Necesitas permisos de sudo (o de root) en el host de destino para ejecutar el comando de instalación.
 * Tu entorno cumple todos los requisitos previos, tal como se describe en link:aide-requirements.html["Requisitos AIDE"].
@@ -21,7 +22,7 @@ Instala AIDE Lite desde NetApp Console con el asistente de implementación. El a
 
 
 .Pasos
-. En NetApp Console, ve a *Gobernanza* > *AI Data Engine*.
+. En NetApp Console, ve a *AI data hub* > *AI Data Engine*.
 +
 Aparece la página de inicio de AI Data Engine.
 

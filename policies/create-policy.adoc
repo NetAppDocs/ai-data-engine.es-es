@@ -42,7 +42,7 @@ Una política es un conjunto de filtros guardado con una acción opcional asocia
 
 
 .Pasos
-. En NetApp Console, ve a *Governance* > *AI Data Engine* > *Investigation*.
+. En NetApp Console, ve a *AI data hub* > *AI Data Engine* > *Investigation*.
 . Aplica uno o varios filtros que identifiquen los archivos a los que quieres que se dirija la política.
 +
 Por ejemplo: *Tipo de archivo* = .vmdk Y *hora de último acceso* > 365 días.
