@@ -4,5 +4,15 @@ title: Administrar
 entries:
 - title: Gestionar usuarios y roles
   url: "/administer/manage-users-roles.html"
-- title: Configura los umbrales de datos
+- title: Configurar los umbrales de clasificación de datos y el análisis de acceso
   url: "/administer/configure-settings.html"
+- title: Kerberos para recursos compartidos SMB/CIFS
+  url: "/administer/configure-kerberos-smb.html"
+- title: Configurar Kerberos en un único nodo
+  url: "/administer/configure-kerberos-smb-single-node.html"
+- title: Configurar Kerberos en varios nodos
+  url: "/administer/configure-kerberos-smb-multi-node.html"
+- title: Configura la asignación de identidades de Active Directory para NFS
+  url: "/administer/configure-ad-nfs.html"
+- title: Supervisar el estado de la implementación
+  url: "/administer/monitor-deployment-health.html"

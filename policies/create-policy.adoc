@@ -56,9 +56,9 @@ Revisa la tabla de resultados para confirmar que el conjunto de filtros captura 
 . Revisa la expresión de los criterios de filtro (por ejemplo, `last_access_time <= 3 Years AND file_size >= 5GiB`) para confirmar que refleja tus selecciones.
 . Para adjuntar una acción, selecciona una de las siguientes opciones en *Action*:
 +
-** *Solo supervisión (sin acción)* (por defecto): la política se guarda como una condición de solo supervisión.
+** *Solo supervisión (sin acción)* (por defecto): guarda la política como una condición de solo supervisión.
 ** *Enviar notificación por correo electrónico*: envía una notificación por correo electrónico al destinatario que indiques.
-** *Eliminar definitivamente*: no es necesario introducir ningún dato adicional.
+** *Eliminar definitivamente*: no requiere ninguna acción adicional.
 +
 
 CAUTION: La acción «Eliminar definitivamente» elimina de forma automática e irreversible todos los archivos que coincidan con esta política después de cada ciclo de análisis. Comprueba tus criterios de filtrado y asegúrate de que estás autorizado a eliminar estos archivos antes de guardar.
@@ -69,14 +69,14 @@ CAUTION: La acción «Eliminar definitivamente» elimina de forma automática e 
 
 
 .Resultado
-La política se guarda y aparece en la página link:manage-policies.html["Políticas"]. Si has asociado una acción, AI Data Engine aplica esa acción a los archivos que cumplen los criterios de la política.
+AI Data Engine guarda la política y aparece en la página link:manage-policies.html["Políticas"]. Si has asociado una acción, AI Data Engine la aplica a los archivos que cumplen los criterios de la política.
 
 
 
 [[example-identify-cold-archive-files]]
 == Ejemplo: identificar archivos de archivado en frío
 
-En el siguiente ejemplo se crea una política para enviar una notificación por correo electrónico cuando se detectan archivos a los que no se ha accedido en más de un año.
+En el siguiente ejemplo se crea una política que envía una notificación por correo electrónico cuando AI Data Engine detecta archivos a los que nadie ha accedido en más de un año.
 
 . En Investigación, aplica estos filtros:
 +

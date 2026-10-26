@@ -5,8 +5,22 @@ entries:
 - title: Más información sobre la implementación de AIDE
   url: "/deploy/deployment-overview.html"
 - title: Requisitos AIDE
-  url: "/deploy/aide-requirements.html"
-- title: Implementa AIDE Lite
-  url: "/deploy/deploy-aide-lite.html"
-- title: Implementar AIDE Enterprise
-  url: "/deploy/deploy-enterprise.html"
+  entries:
+  - title: Requisitos de implementación de AIDE
+    url: "/deploy/aide-requirements.html"
+  - title: Requisitos previos para la implementación de AIDE en un único nodo
+    url: "/deploy/single-node-prerequisites.html"
+  - title: Requisitos previos para la implementación de AIDE en varios nodos
+    url: "/deploy/multi-node-prerequisites.html"
+- title: Implementar AIDE como una implementación de un solo nodo
+  url: "/deploy/deploy-aide-single-node.html"
+- title: Implementa AIDE como una implementación multinodo
+  url: "/deploy/deploy-aide-multi-node.html"
+- title: Implementa AIDE con un proxy
+  entries:
+  - title: Más información sobre los proxies para AIDE
+    url: "/deploy/configure-proxy.html"
+  - title: Implementa AIDE como un despliegue de un solo nodo con un proxy
+    url: "/deploy/deploy-aide-single-node-proxy.html"
+  - title: Implementar AIDE como una implementación multinodo con un proxy
+    url: "/deploy/deploy-aide-multi-node-proxy.html"

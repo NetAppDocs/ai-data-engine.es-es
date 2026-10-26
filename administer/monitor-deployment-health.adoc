@@ -1,0 +1,74 @@
+---
+sidebar: sidebar 
+permalink: administer/monitor-deployment-health.html 
+keywords: health monitor, deployment health, system stability, pods, unhealthy pod, OOMKilled, CrashLoopBackOff, evicted, memory, disk, CPU, utilization, eviction threshold, scans paused, node health, troubleshooting 
+summary: Supervisa la implementación de AI Data Engine para identificar cargas de trabajo con problemas y limitaciones de recursos que puedan interrumpir el análisis, y recopila información para la resolución de incidencias. 
+---
+= Supervisa el estado de la implementación e investiga problemas en AI Data Engine
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El control del estado de AI Data Engine (AIDE) te ayuda a identificar cargas de trabajo con problemas y limitaciones de recursos que podrían interrumpir el análisis. Usa los detalles del estado para evaluar el impacto de un problema y recopilar información para solucionar problemas.
+
+
+
+[[monitor-deployment-health-and-investigate-issues]]
+== Supervisa el estado de la implementación e investiga problemas
+
+.Pasos
+. En NetApp Console, ve a *AI data hub* > *AI Data Engine*.
+. Selecciona *Configuración* y luego selecciona *control del estado*.
+. Comprueba *System stability* en *Infrastructure Status* para ver si hay algún pod que no funcione correctamente.
++
+Un pod en mal estado no puede ejecutar su carga de trabajo como se espera. Los estados no saludables incluyen Pending, Failed, Evicted, Unknown, OOMKilled y CrashLoopBackOff.
+
+. Identifica las limitaciones de recursos que podrían afectar a tu implementación:
++
+--
+** Para una implementación de un solo nodo, consulta *Estado del nodo*. Si el nodo indica un problema de estado, comprueba las tarjetas de utilización de CPU, memoria y disco para detectar signos de presión sobre los recursos.
+** En una implementación de varios nodos, revisa *estado de los nodos* para identificar los nodos con estado «Crítico», «Advertencia» o «Sin conexión». Compara las métricas disponibles de utilización de recursos para detectar indicios de presión sobre los recursos. En el caso de los nodos sin conexión, comprueba su disponibilidad.
+
+
+--
+. En el caso de una implementación con varios nodos, selecciona *Ver detalles* en una ficha de utilización para analizar el recurso:
++
+--
+** *Utilización de CPU*: compara el uso actual con los umbrales de advertencia y críticos.
+** *Utilización de memoria*: revisa el uso actual, el riesgo de falta de memoria (OOM) y el umbral de expulsión.
+** *Uso del disco*: comprueba el espacio disponible, el riesgo y el umbral de parada.
+
+
+--
++
+Presta especial atención a las advertencias relacionadas con la memoria y el disco, ya que estas situaciones pueden interrumpir el análisis. Sigue cualquier acción recomendada que se muestre en los detalles.
+
+. Para identificar las cargas de trabajo afectadas, utiliza los filtros *Pod* y *Status* en *Pod health* para reducir la lista.
++
+Revisa la carga de trabajo, el estado y el uso de recursos de cada pod afectado. Utiliza esta información para distinguir la presión de recursos de los pods que fallan, se reinician repetidamente o están en espera de ejecutarse.
+
+. Revisa *cargas de trabajo problemáticas* para identificar las cargas de trabajo que se han detenido o que se reinician con frecuencia. Toma nota de las horas indicadas para poder relacionar estos eventos con el uso de los recursos.
+. Analiza las tendencias de utilización de recursos para ver si la presión sobre ellos es temporal o sostenida:
++
+--
+** En el caso de una implementación de un solo nodo, consulta la *distribución de la utilización de recursos* para el intervalo de tiempo correspondiente.
+** Para una implementación con varios nodos, consulta *Top 20 Nodes (Utilization)* para el intervalo de tiempo correspondiente. Compara la utilización entre nodos e inspecciona el uso de CPU, memoria y disco de los nodos afectados para identificar picos breves o una utilización alta sostenida.
+
+
+--
+. Si necesitas ayuda para resolver un problema, selecciona image:icon_download_file.png["Descargar"] en *Pod health* para descargar la información del pod. Recopila los datos pertinentes de *System information*, incluido el nombre del host, el sistema operativo, el kernel, la versión de Console, la versión de Kubernetes y el ID de la cuenta de Console, para compartirlos con tu administrador o con el equipo de soporte técnico.
+
+
+.Resultado
+Después de tomar medidas correctivas, vuelve a *control del estado* y revisa *estabilidad del sistema*, *estado de los pods*, *estado de los nodos* y la utilización de recursos para verificar que las condiciones notificadas se hayan resuelto. Si se interrumpió el escaneo, ve a *fuentes de datos* para verificar que se haya reanudado. Consulta link:../data-sources/manage-data-sources.html#view-scan-status-and-details["Ver el estado y los detalles del análisis"].
+
+
+
+[[related-information]]
+== Información relacionada
+
+* link:../data-sources/manage-data-sources.html["Gestionar fuentes de datos"]
+* link:../deploy/aide-requirements.html["Requisitos de AI Data Engine"]
+

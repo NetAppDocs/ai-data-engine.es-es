@@ -1,0 +1,172 @@
+---
+sidebar: sidebar 
+permalink: deploy/single-node-prerequisites.html 
+keywords: single-node, prerequisites, disk space, firewall, k3s, ports, host preparation, block storage 
+summary: Prepara una máquina virtual Linux para una implementación de AIDE de un solo nodo comprobando el acceso, el espacio en disco, las reglas del cortafuegos y los paquetes del sistema operativo. 
+---
+= Requisitos previos para la implementación de un solo nodo de AI Data Engine
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para una implementación de un solo nodo de AI Data Engine (AIDE), debes proporcionar una máquina virtual Linux. El instalador instala k3s, utiliza el almacenamiento local hostPath para el volumen de configuración de AIDE y configura los parámetros del kernel, los directorios del host y los recursos de Kubernetes. Prepara la máquina virtual comprobando el acceso y las herramientas, el espacio libre en disco, las reglas del cortafuegos y los paquetes del sistema operativo antes de ejecutar el comando de instalación.
+
+Tu máquina virtual debe cumplir los requisitos que se indican en las siguientes secciones antes de ejecutar el comando de instalación. Para obtener información sobre el dimensionamiento de la máquina virtual, los sistemas operativos compatibles y los puertos de red, consulta link:aide-requirements.html["Requisitos AIDE"].
+
+
+
+[[access-and-tools]]
+== Acceso y herramientas
+
+* Tienes acceso root o sudo en la VM de destino para ejecutar el instalador.
+* El host de destino tiene disponible bash 4.0 o posterior, curl y tar. macOS no es compatible porque incluye bash 3.2.
+* Si no tienes instalados curl o tar, instálalos con  `dnf install curl tar` en distribuciones basadas en RHEL o con  `apt-get install curl tar` en Ubuntu.
+* El instalador descarga e inicializa automáticamente `k3s`, `helm`, `kubectl` y `jq`. No necesitas instalar estas herramientas en la VM. El instalador siempre descarga su propia copia de `kubectl` en `/opt/netapp/aide/.aide-installer-tools` y no la añade a tu `PATH`.
+
+
+
+
+[[storage-type]]
+== Tipo de almacenamiento
+
+Utiliza almacenamiento en bloque, no NFS, para el volumen de datos de AIDE. El almacenamiento respaldado por NFS puede causar un rendimiento inferior. Se prefiere SSD NVMe u otro almacenamiento de estado sólido para todos los tamaños de implementación. El almacenamiento también debe cumplir los IOPS y el rendimiento para tu tamaño en link:aide-requirements.html#single-node-vm-sizes["Requisitos AIDE"].
+
+
+
+[[disk-space]]
+[[single-node-disk-space]]
+== Espacio en disco
+
+Se necesita espacio libre en cada sistema de archivos que aloje las rutas de la siguiente tabla. Las rutas que comparten un disco comparten una misma reserva de espacio libre, así que suma sus mínimos.
+
+Si todo se aloja en un único disco, el espacio libre mínimo es de 65 GB más el tamaño del volumen de datos de AIDE correspondiente a tu configuración. Los 65 GB fijos no incluyen `/var/run`, que suele ser `tmpfs` y no se suma a este total:
+
+[cols="1,1"]
+|===
+| Size | Espacio libre mínimo en un solo disco 
+
+
+| Pequeño | 565 GB 
+
+
+| Medio | 2.065 GB 
+
+
+| Grande | 6.065 GB 
+|===
+Si las rutas están en montajes distintos, cada montaje debe cumplir los requisitos mínimos de las rutas que aloja. Si mueves el directorio de datos de k3s con la opción `--k3s-data-dir` del instalador, el mínimo de k3s se aplica a la nueva ubicación.
+
+[cols="2,1,1,3"]
+|===
+| Ruta | Mínimo | Recomendado | Propósito 
+
+
+| `/var/lib/rancher/k3s` | 20 GB | 20 GB | Imágenes de contenedores, instantáneas de containerd y la base de datos integrada 
+
+
+| `/var/lib/kubelet` | 10 GB | 15 GB | Estado del Kubelet, almacenamiento efímero del pod y `emptyDir` volúmenes 
+
+
+| `/var/log` | 10 GB | 10 GB | Salida de los contenedores y registros del sistema de k3s 
+
+
+| `/` | 25 GB | 50 GB | Paquetes del sistema operativo, binarios de k3s y herramientas de instalación 
+
+
+| `/var/run` | 1 GB | 2 GB | Sockets e IDs de proceso (normalmente `tmpfs`, que no se suman al total de un solo disco) 
+
+
+| `/var/lib/netapp/aide` | Pequeño: 500 GB; Mediano: 2,000 GB; Grande: 6,000 GB | Igual que el mínimo | Volumen de datos de AIDE 
+|===
+No utilices un punto de montaje que esté por debajo de su tamaño mínimo. No se recomienda utilizar puntos de montaje que estén por debajo del tamaño recomendado o que estén llenos en más del 85 %, ya que el kubelet puede expulsar los pods cuando el espacio libre es escaso.
+
+Por ejemplo, si los datos de k3s, los registros y los datos de AIDE tienen cada uno un disco dedicado, proporciona al menos 20 GB, 10 GB y el mínimo de datos de AIDE para tu configuración en esos puntos de montaje, respectivamente. Además, proporciona al menos 25 GB de espacio libre en `/` para el sistema operativo y los binarios, y al menos 10 GB en el sistema de archivos de kubelet si no es `/`.
+
+
+
+[[firewall]]
+[[single-node-firewall]]
+== Cortafuegos
+
+* El instalador descarga k3s desde `\https://get.k3s.io` y Helm desde `\https://get.helm.sh`. Para ver todos los endpoints de salida necesarios, consulta la sección sobre acceso a Internet de salida en link:aide-requirements.html#outbound-internet-access["Requisitos AIDE"].
+* El host tiene una conexión de red mínima de 1 GbE (se recomiendan 10 GbE para implementaciones grandes).
+* Si tu entorno requiere un proxy de salida para acceder a los endpoints de AI Data Engine, consulta link:configure-proxy.html["Más información sobre los proxies para AI Data Engine"]. Para implementar con un proxy, sigue link:deploy-aide-single-node-proxy.html["Implementar AI Data Engine como una implementación de un solo nodo con proxy"].
+* El host de instalación debe tener acceso saliente al registro de contenedores de NetApp en `582244788873.dkr.ecr.us-west-2.amazonaws.com` para descargar imágenes de contenedor de AIDE y charts de Helm. Si restringes desde dónde se pueden descargar imágenes, permite también este registro. Consulta link:aide-requirements.html#outbound-internet-access["Requisitos AIDE"] para ver los endpoints del registro necesarios.
+
+
+Los puertos de k3s que figuran en la siguiente tabla deben estar libres en el host antes de que se inicie el instalador. Si el cortafuegos del host está activado, también debes permitir estos puertos y los CIDR de los pods y servicios antes de ejecutar el instalador. De lo contrario, la red de los pods no funcionará. Estos puertos son internos de k3s y son independientes de los puertos que figuran en link:aide-requirements.html#networking-requirements["Requisitos AIDE"].
+
+[cols="1,1,3"]
+|===
+| Puerto | Protocolo | Utilizado por 
+
+
+| 6443 | TCP | k3s / servidor de la API de Kubernetes y punto de conexión del plano de control para kubectl, el operador y los componentes del clúster 
+
+
+| 10250 | TCP | API de Kubelet que se usa para los registros de pods, exec/attach y metrics-server 
+
+
+| 8472 | UDP | Flannel VXLAN para la red de pod a pod 
+|===
+El CIDR predeterminado para los pods es `10.44.0.0/16` y el CIDR predeterminado para los servicios es `10.45.0.0/16`. Las reglas del firewall permiten estos CIDR para que el tráfico dentro del clúster, incluidos CoreDNS y otros servicios, no se descarte. Si anulas los valores predeterminados con las opciones de instalación  `--k3s-cluster-cidr` y  `--k3s-service-cidr`, usa tus propios valores en los siguientes comandos.
+
+.RHEL, Rocky Linux, AlmaLinux y CentOS (firewalld)
+[source, bash]
+----
+sudo firewall-cmd --permanent --add-port=6443/tcp
+sudo firewall-cmd --permanent --add-port=10250/tcp
+sudo firewall-cmd --permanent --add-port=8472/udp
+sudo firewall-cmd --permanent --zone=trusted --add-source=10.44.0.0/16
+sudo firewall-cmd --permanent --zone=trusted --add-source=10.45.0.0/16
+sudo firewall-cmd --reload
+----
+.Ubuntu (ufw)
+[source, bash]
+----
+sudo ufw allow 6443/tcp
+sudo ufw allow 10250/tcp
+sudo ufw allow 8472/udp
+sudo ufw allow from 10.44.0.0/16
+sudo ufw allow from 10.45.0.0/16
+sudo ufw reload
+----
+A diferencia de firewalld, ufw no tiene una zona de confianza. Utiliza `ufw allow from <cidr>` para permitir los CIDR de pods y servicios; no existe el argumento `--zone`.
+
+Para conocer los puertos de la aplicación que deben estar abiertos, consulta link:aide-requirements.html#networking-requirements["Requisitos AIDE"].
+
+
+
+[[operating-system-packages]]
+== Paquetes del sistema operativo
+
+El instalador instala los paquetes que se indican en la siguiente tabla. Asegúrate de que tus gestores de paquetes tengan la configuración de proxy adecuada si así lo requiere tu entorno.
+
+[cols="3,3,3,3"]
+|===
+| Paquete | Cuando sea necesario | De dónde viene | Tu responsabilidad 
+
+
+| `cifs-utils` | Todas las instalaciones conectadas, a menos que  `cifs.upcall` ya esté instalado. Imprescindible para el análisis de CIFS/SMB basado en Kerberos. | Los propios repositorios de la VM. | Haz que el paquete esté disponible en esos repositorios. 
+
+
+| `container-selinux`, `policycoreutils`, `libselinux-utils`, `selinux-policy-targeted` | RHEL, Rocky Linux o AlmaLinux 8 o 9 cuando hay archivos de SELinux en el host, aunque SELinux esté desactivado. Estas distribuciones incluyen SELinux de forma predeterminada. Estos paquetes no se usan en Ubuntu. | Los propios repositorios de la VM. | Haz que los paquetes estén disponibles desde esos repositorios. 
+
+
+| `k3s-selinux` | Los mismos hosts de la familia RHEL que en la fila anterior. | `rpm.rancher.io`, a través del proxy de AI Data Engine cuando utilizas un proxy. Si tus repositorios ya lo proporcionan, el instalador utiliza esa copia. | Permite `rpm.rancher.io` en el proxy. No es necesario que instales este paquete tú mismo. 
+|===
+
+NOTE: NetApp no ha validado AI Data Engine en hosts con SELinux. El instalador descarga los paquetes de SELinux de esta tabla siempre que haya archivos de SELinux en el host, incluso si SELinux está desactivado.
+
+
+
+[[related-information]]
+== Información relacionada
+
+* link:aide-requirements.html["Requisitos AIDE"]
+* link:deploy-aide-single-node.html["Implementa AI Data Engine como un despliegue de un solo nodo"]
+* link:configure-proxy.html["Más información sobre los proxies para AI Data Engine"]
+* link:deploy-aide-single-node-proxy.html["Implementar AI Data Engine como una implementación de un solo nodo con proxy"]
+

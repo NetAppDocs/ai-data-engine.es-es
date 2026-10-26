@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: administer/manage-users-roles.html 
-keywords: roles, users, permissions, AI data engine administrator, AI data engine viewer 
+keywords: roles, users, permissions, ai data engine administrator, ai data engine viewer 
 summary: Controla el acceso asignando a cada usuario un rol de administrador o de visor. Obtén más información sobre estos dos roles y sus permisos. 
 ---
 = Gestionar usuarios y roles en AI Data Engine
@@ -11,7 +11,7 @@ summary: Controla el acceso asignando a cada usuario un rol de administrador o d
 
 
 [role="lead"]
-Controla lo que cada usuario puede ver y hacer en AI Data Engine asignándole un rol de administrador o de visualizador. Antes de que tu equipo empiece a utilizar AI Data Engine, asigna a cada usuario el rol que se ajuste al nivel de acceso que necesite.
+Controla lo que cada usuario puede ver y hacer en AI Data Engine (AIDE) asignándole un rol de administrador o de visor. Antes de que tu equipo empiece a usar AI Data Engine, asigna a cada usuario el rol que se ajuste al nivel de acceso que necesite.
 
 Asignas funciones a través de la configuración de la organización de NetApp Console. AI Data Engine admite dos funciones.
 
@@ -74,8 +74,18 @@ El rol de visor de AI Data Engine ofrece acceso limitado a AI Data Engine. Los v
 | Acciones: archivar, copiar, eliminar | Sí | - 
 
 
+| Acciones: eliminar duplicados | Sí | - 
+
+
 | Gestionar etiquetas empresariales | Sí | Sí 
 |===
+
+
+[[roles-and-governed-ai-access]]
+== Roles y acceso controlado a la IA
+
+Los roles de NetApp Console controlan quién puede configurar el acceso gobernado a la IA en AI Data Engine. No controlan en qué colecciones puede buscar un usuario cliente de IA. Los ámbitos de Microsoft Entra ID que otorgas a cada colección controlan ese acceso. Para obtener más información, consulta link:../mcp/configure-entra-id-mcp.html["Configurar Microsoft Entra ID para el acceso controlado a la IA"].
+
 
 
 [[assign-a-role-to-a-user]]
@@ -92,7 +102,7 @@ Asignas roles en NetApp Console, no en el propio AI Data Engine.
 
 
 . Selecciona la organización, la carpeta o el proyecto y, a continuación, elige la categoría *Data Service*.
-. Asigna el rol de *administrador de AI Data Engine* o *visor de AI Data Engine*.
+. Asigna el rol de *administrador de AI Data Engine* o *usuario con acceso de lectura a AI Data Engine*.
 . Guarda tus cambios.
 
 
@@ -105,4 +115,5 @@ El usuario recibe una invitación por correo electrónico y puede acceder a AI D
 
 * link:../investigate/take-actions.html["Actúa sobre tus datos"]
 * link:../policies/create-policy.html["Crear una política"]
+* link:../mcp/manage-data-collections.html["Gestionar recopilaciones de datos"]
 

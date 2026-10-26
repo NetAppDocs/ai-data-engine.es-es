@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: release-notes/known-limitations.html 
 keywords: known limitations, limitations, restrictions, AI Data Engine 
-summary: Las limitaciones conocidas indican las funciones que no son compatibles con esta versión de AI Data Engine. 
+summary: Las limitaciones conocidas identifican la funcionalidad que no es compatible con AI Data Engine. 
 ---
 = Limitaciones conocidas de AI Data Engine
 :allow-uri-read: 
@@ -11,14 +11,30 @@ summary: Las limitaciones conocidas indican las funciones que no son compatibles
 
 
 [role="lead"]
-Las limitaciones conocidas identifican la funcionalidad que no es compatible con esta versión de AI Data Engine o la funcionalidad que no interopera correctamente. Revisa estas limitaciones antes de implementar o usar el producto.
+Las limitaciones conocidas identifican funciones que no son compatibles con AI Data Engine (AIDE) o funciones que no interoperan correctamente. Revisa estas limitaciones antes de desplegar o usar el producto.
 
 
 
 [[deployment]]
 == Despliegue
 
-Las implementaciones Lite y Enterprise son independientes:: AIDE Lite y AIDE Enterprise son modos de implementación distintos. No existe una ruta de migración compatible para mover una implementación existente de un modo a otro.
+Las implementaciones de un solo nodo y de varios nodos son independientes:: Una implementación de AIDE de un solo nodo y una implementación de AIDE de varios nodos son tipos de implementación distintos. No existe una ruta de migración compatible para pasar una implementación existente de un tipo a otro.
+La compatibilidad con servidores proxy es limitada:: Puedes implementar AI Data Engine con un proxy directo, pero las siguientes funciones del proxy no son compatibles:
++
+--
+* Proxies con inspección TLS, que descifran y vuelven a firmar el tráfico HTTPS con una autoridad de certificación personalizada.
+* Autenticación NTLM, Kerberos o mediante certificado de cliente para el proxy. No uses autenticación o usa autenticación básica.
+* Proxies SOCKS.
+* Configuración automática del proxy (archivo PAC o WPAD). Indica directamente al instalador el host y el puerto del proxy.
+* Un proxy distinto para cada destino. Un único proxy gestiona todo el tráfico de internet del AI Data Engine.
+* Una dirección IPv6 como dirección del proxy. Usa un nombre de host en su lugar; el nombre de host puede resolverse a IPv6.
+* Un proxy con una instalación aislada de la red. El instalador rechaza las opciones de proxy en una instalación aislada de la red.
++
+Para conocer las configuraciones de proxy compatibles, consulta link:../deploy/configure-proxy.html["Más información sobre los proxies para AI Data Engine"].
+
+
+
+--
 
 
 
@@ -26,7 +42,7 @@ Las implementaciones Lite y Enterprise son independientes:: AIDE Lite y AIDE Ent
 [[policies-and-actions]]
 == Políticas y acciones
 
-Las acciones activadas por políticas son limitadas:: Al crear una política, las acciones automatizadas disponibles se limitan a la eliminación permanente y la notificación por correo electrónico. Las acciones automatizadas de archivado y etiquetado de las políticas no están disponibles en esta versión. Puedes crear una política sin ninguna acción para supervisar una condición de datos a lo largo del tiempo.
+Las acciones activadas por políticas son limitadas:: Al crear una política, las acciones automatizadas disponibles se limitan a la eliminación permanente y la notificación por correo electrónico. Las acciones automatizadas de archivado y etiquetado de las políticas no están disponibles. Puedes crear una política sin ninguna acción para supervisar una condición de los datos a lo largo del tiempo.
 
 
 
@@ -34,7 +50,16 @@ Las acciones activadas por políticas son limitadas:: Al crear una política, la
 [[tags]]
 == Etiquetas
 
-Las etiquetas no se pueden eliminar ni cambiar de nombre:: La gestión de etiquetas no está disponible en esta versión. Después de crear una etiqueta, sigue disponible en el sistema. Puedes aplicar una etiqueta a elementos y quitarla de ellos, pero no puedes eliminar la definición de la etiqueta en sí ni corregir el nombre de una etiqueta que contenga un error tipográfico.
+Las etiquetas no se pueden eliminar ni cambiar de nombre:: Después de crear una etiqueta, sigue estando disponible en el sistema. Puedes aplicar una etiqueta a elementos y quitarla de ellos, pero no puedes eliminar la definición de la etiqueta en sí, cambiarle el nombre ni corregir un nombre de etiqueta que contenga un error tipográfico. Los nombres de las etiquetas distinguen entre mayúsculas y minúsculas, por lo que `Finance` y `finance` son etiquetas diferentes.
+
+
+
+
+[[governed-ai-access-mcp]]
+== Acceso controlado a la IA (MCP)
+
+Los filtros de búsqueda de MCP son limitados:: Los clientes de AI solo pueden buscar archivos por prefijo del nombre, tipo de archivo y propietario. Si pides archivos por tamaño, fecha o carpeta, el cliente de AI debe recorrer los resultados página por página y es posible que la respuesta esté incompleta.
+Las operaciones de etiquetas MCP tienen limitaciones:: Los clientes de AI no pueden listar los archivos que tienen una etiqueta, y solo pueden añadir o eliminar una etiqueta en un archivo cada vez.
 
 
 
@@ -45,4 +70,5 @@ Las etiquetas no se pueden eliminar ni cambiar de nombre:: La gestión de etique
 * link:whats-new.html["Novedades"]
 * link:../deploy/deployment-overview.html["Resumen de la implementación"]
 * link:../investigate/take-actions.html["Actúa sobre tus datos"]
+* link:../mcp/learn-about-mcp.html["Más información sobre el acceso controlado a la IA"]
 

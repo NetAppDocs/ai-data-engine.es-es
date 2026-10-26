@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: investigate/investigate-unstructured.html 
-keywords: investigate, unstructured, cold data, stale data, last accessed, file size, file owner, reclaimable storage, NFS, SMB, CIFS 
-summary: Busca y clasifica archivos como «inactivos», «obsoletos» o «de gran tamaño» en volúmenes NFS y SMB/CIFS mediante filtros de metadatos, y luego revisa los resultados, toma las medidas oportunas o guarda tus criterios de filtrado como una política reutilizable. 
+keywords: investigate, unstructured, cold data, stale data, last accessed, file size, file owner, reclaimable storage, NFS, SMB, CIFS, duplicates, duplicate files, file hash 
+summary: Busca y clasifica archivos como «inactivos», «obsoletos», «de gran tamaño» o «duplicados» en volúmenes NFS y SMB mediante filtros de metadatos, luego revisa los resultados, toma las medidas oportunas o guarda tus criterios de filtrado como una política reutilizable. 
 ---
 = Analiza datos no estructurados en AI Data Engine
 :allow-uri-read: 
@@ -13,8 +13,12 @@ summary: Busca y clasifica archivos como «inactivos», «obsoletos» o «de gra
 [role="lead"]
 Cuando el almacenamiento basado en archivos crece de forma inesperada, filtra por hora del último acceso, tamaño del archivo y propietario para identificar qué archivos están ocupando capacidad. Por ejemplo, un administrador de almacenamiento puede identificar terabytes de instantáneas de VM a las que no se ha accedido desde hace más de un año y evaluar si conviene archivarlas, eliminarlas o conservarlas.
 
-.Antes de empezar
-* Debe haber al menos una fuente de datos conectada y en proceso de escaneo. Consulta link:../data-sources/connect-data-source.html["Conecta una fuente de datos"].
+
+
+[[before-you-begin]]
+== Antes de empezar
+
+* Has conectado al menos una fuente de datos y se está escaneando. Consulta link:../data-sources/connect-data-source.html["Conecta una fuente de datos"].
 
 
 
@@ -22,7 +26,7 @@ Cuando el almacenamiento basado en archivos crece de forma inesperada, filtra po
 [[find-cold-or-stale-files-by-last-access-time]]
 == Buscar archivos inactivos u obsoletos por tiempo de acceso
 
-Utiliza filtros basados en la fecha para identificar los archivos a los que no se ha accedido dentro de los umbrales de datos fríos o inactivos de tu organización. Los umbrales se pueden configurar en *Configuration* > *Settings*. Consulta link:../administer/configure-settings.html["Configura los umbrales de datos inactivos y obsoletos"].
+Busca archivos a los que no se haya accedido según los umbrales de datos inactivos u obsoletos de tu organización mediante filtros basados en fechas. Defines estos umbrales, incluida la marca de tiempo que usa cada uno, en la configuración de clasificación de datos. Consulta link:../administer/configure-settings.html["Configurar los umbrales de clasificación de datos y el análisis de acceso"].
 
 .Pasos
 . En la interfaz de usuario de AI Data Engine, selecciona *Investigación*.
@@ -36,8 +40,6 @@ La pestaña «Sin estructurar» aparece seleccionada de forma predeterminada.
 Los filtros aplicados aparecen como etiquetas debajo de la barra de filtros. La tabla de resultados y el recuento de elementos se actualizan a medida que añades cada filtro.
 
 
-
-Para consultar la lista completa de filtros disponibles, visita link:use-filters.html["Trabaja con filtros"].
 
 
 
@@ -59,9 +61,30 @@ Los resultados se reorganizan para mostrar el número total de archivos y el tam
 [[review-file-details]]
 == Revisar los detalles del archivo
 
-Selecciona cualquier fila de archivo para abrir el panel de detalles y confirma que el archivo coincide con el alcance previsto antes de realizar ninguna acción.
+Comprueba que un archivo se ajuste al ámbito deseado antes de realizar ninguna acción. Selecciona cualquier fila de archivo para abrir el panel de detalles.
 
-El panel de detalles muestra el sistema del archivo, el repositorio de almacenamiento, el propietario del archivo y las etiquetas o políticas aplicadas. Comprueba el sistema y el propietario antes de archivar o eliminar.
+El panel de detalles muestra el sistema del archivo, el repositorio de almacenamiento, la ruta, el tamaño, las marcas de tiempo, el acceso, el propietario del archivo y cualquier etiqueta o política aplicada. El campo *Duplicados* muestra el número de copias duplicadas del archivo. Comprueba el sistema y el propietario antes de archivar o eliminar.
+
+
+
+[[find-duplicate-files]]
+== Busca archivos duplicados
+
+Mira hasta qué punto están extendidos los archivos duplicados antes de decidir dónde limpiar. El filtro *Duplicados* muestra todos los archivos que tienen una o más copias idénticas en otras partes del catálogo.
+
+.Pasos
+. En la interfaz de usuario de AI Data Engine, selecciona *Investigación*.
++
+La pestaña «Sin estructurar» aparece seleccionada de forma predeterminada.
+
+. Selecciona *Add filter* y después selecciona *Duplicates*.
++
+La tabla de resultados muestra los archivos que tienen copias duplicadas.
+
+. Para ver todas las copias de un archivo concreto y su ubicación, selecciona el nombre del archivo y, a continuación, selecciona *Ver detalles* junto a *Duplicados*.
+
+
+Para revisar las copias y limpiarlas, consulta link:take-actions.html["Investiga y limpia los archivos duplicados"].
 
 
 
@@ -81,9 +104,9 @@ Para descargar los resultados filtrados de la pestaña «Sin estructurar», sele
 [[related-information]]
 == Información relacionada
 
-* link:use-filters.html["Trabaja con filtros"]
 * link:take-actions.html["Actúa sobre tus datos"]
 * link:../policies/create-policy.html["Crear una política"]
+* link:../administer/configure-settings.html["Configurar los umbrales de clasificación de datos y el análisis de acceso"]
 * link:../get-started/storage-optimization-workflows.html["Explora los flujos de trabajo de optimización del almacenamiento"]
 * link:understand-dashboard.html["Evalúa el uso del almacenamiento desde el panel de control"]
 

@@ -1,0 +1,22 @@
+---
+section: mcp
+title: Acceso controlado a la IA (MCP)
+entries:
+- title: Más información sobre el acceso controlado a la IA
+  url: "/mcp/learn-about-mcp.html"
+- title: Inicio rápido
+  url: "/mcp/quick-start-mcp.html"
+- title: Preparar el host de MCP
+  url: "/mcp/prepare-mcp-host.html"
+- title: Configurar Microsoft Entra ID
+  url: "/mcp/configure-entra-id-mcp.html"
+- title: Conectar AIDE a Microsoft Entra ID
+  url: "/mcp/connect-entra-id-aide-mcp.html"
+- title: Gestionar recopilaciones de datos
+  url: "/mcp/manage-data-collections.html"
+- title: Conectar clientes AI
+  url: "/mcp/connect-ai-clients-mcp.html"
+- title: Herramientas de AIDE MCP
+  url: "/mcp/mcp-tools-reference.html"
+- title: Mantén tu configuración de MCP
+  url: "/mcp/maintain-mcp-setup.html"

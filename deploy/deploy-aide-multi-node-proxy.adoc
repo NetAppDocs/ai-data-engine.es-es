@@ -1,0 +1,325 @@
+---
+sidebar: sidebar 
+permalink: deploy/deploy-aide-multi-node-proxy.html 
+keywords: deploy, install, multi-node, multi node, proxy, outbound proxy, forward proxy, wizard, NetApp Console, kubernetes, RKE2, OpenShift, AKS, container runtime, installer download, proxy password file, proxy CA certificate 
+summary: Implementa AIDE como una implementación multinodo desde NetApp Console cuando tu clúster y el host de instalación solo accedan a Internet a través de un proxy de salida. 
+---
+= Implementar AI Data Engine como una implementación multinodo con un proxy
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Implementa AI Data Engine (AIDE) como una implementación de varios nodos desde NetApp Console cuando el clúster de Kubernetes y el host del instalador solo se conecten a Internet a través de un proxy de salida. Este procedimiento incluye cada paso de la implementación de varios nodos, junto con los pasos del proxy. Si el clúster y el host del instalador tienen acceso directo a Internet, usa link:deploy-aide-multi-node.html["Desplegar AI Data Engine como una implementación de varios nodos"] en su lugar.
+
+Para conocer los tipos de proxy compatibles y consultar la referencia completa de parámetros, visita link:configure-proxy.html["Más información sobre los proxies para AI Data Engine"]. Para conocer los endpoints que debes permitir en tu proxy, visita link:aide-requirements.html#outbound-internet-access["Acceso a Internet saliente"].
+
+
+
+[[before-you-begin]]
+== Antes de empezar
+
+.Permisos y acceso
+* Tienes permisos de _administrador de la organización_ o superiores en NetApp Console.
+* Tienes un kubeconfig con acceso cluster-admin al clúster de destino. Si `kubectl` no está en tu `PATH`, el instalador lo descarga al directorio tools.
+
+
+.Clúster de Kubernetes
+* Tu clúster de Kubernetes cumple los requisitos previos para clústeres de varios nodos descritos en link:multi-node-prerequisites.html["Requisitos previos para la implementación de AIDE en varios nodos"] y link:aide-requirements.html["Requisitos AIDE"].
+* El `aide` espacio de nombres existe en el clúster antes de ejecutar el comando de instalación.
+* Los nodos que programan las cargas de trabajo de AI Data Engine tienen las etiquetas de nodo descritas en link:multi-node-prerequisites.html#node-labels["Etiquetas de nodos"].
+* Hay un StorageClass configurado (nombre predeterminado: `aide-sc`) disponible en el clúster y se usa para los servicios de respaldo con estado de AIDE.
+
+
+.Almacenamiento y NetApp Console
+* Hay un servidor NFS con una ruta exportada disponible y accesible desde el clúster para el volumen de configuración de AIDE.
+* Un agente de NetApp Console https://docs.netapp.com/us-en/console-setup-admin/concept-agent-install-options.html#agent-console-deploy["está implementado"^] al que se pueda acceder desde los nodos del clúster. La dirección IP del agente de Console es necesaria para ejecutar el comando de instalación.
+
+
+.Proxy
+* Has configurado tu proxy para permitir los endpoints de link:aide-requirements.html#outbound-internet-access["Acceso a Internet saliente"].
+* Conoces el host del proxy, el puerto y el esquema ((`http` o `https`). Si el proxy requiere autenticación, también conoces el nombre de usuario y la contraseña.
+* Si utilizas un proxy HTTPS con un certificado firmado de forma privada, debes tener el certificado de la CA como archivo PEM o un directorio plano de `.crt` y `.pem` archivos en el host del instalador.
+
+
+
+NOTE: Utiliza el instalador únicamente para la primera instalación de AIDE. No lo utilices para actualizar AIDE. Tras la instalación, el operador de AIDE se encarga de las actualizaciones. Para obtener información sobre las actualizaciones, ponte en contacto con NetApp Support.
+
+
+
+[[how-the-proxy-applies-to-a-multi-node-deployment]]
+== Cómo se aplica el proxy a una implementación multinodo
+
+En una implementación multinodo, el clúster de Kubernetes es tuyo. El instalador configura las cargas de trabajo de AI Data Engine para el proxy y no cambia tus nodos. Debes configurar el entorno de ejecución de contenedores y la confianza de los certificados en cada nodo antes de ejecutar el instalador.
+
+El instalador comprueba el proxy solo desde el host del instalador. No comprueba tus nodos. Si el entorno de ejecución de contenedores de un nodo no está configurado, la instalación se completa y los pods de ese nodo luego muestran `ImagePullBackOff`.
+
+Además, el instalador no instala paquetes del sistema operativo en los nodos. Comprueba que los nodos dispongan de los paquetes que requiere tu entorno y que tus gestores de paquetes tengan la configuración de proxy adecuada, si así lo requiere tu entorno.
+
+
+
+[[configure-the-nodes-for-the-proxy]]
+[[configure-proxy-multi-node]]
+== Configurar los nodos para el proxy
+
+Antes de ejecutar el instalador, configura el entorno de ejecución de contenedores en todos los nodos, tanto del plano de control como de trabajo, para que descarguen las imágenes a través de tu proxy. Usa el mismo host de proxy, puerto y esquema que le indiques al instalador.
+
+* Los nodos deben poder acceder al host del registro de contenedores de NetApp y al bucket de capas de imágenes que figura en link:aide-requirements.html#outbound-internet-access["Acceso a Internet saliente"] a través del proxy.
+* No incluyas en el proxy las direcciones internas del clúster ni las direcciones de los nodos.
+* Si utilizas un proxy HTTPS con un certificado firmado de forma privada, los nodos también deben confiar en el certificado de la autoridad de certificación (CA) del proxy.
+
+
+Los pasos dependen de tu distribución de Kubernetes. Consulta la documentación de tu distribución.
+
+
+
+[[copy-the-install-command]]
+== Copia el comando de instalación
+
+. En NetApp Console, ve a *AI data hub* > *AI Data Engine*.
++
+Aparece la página de inicio de AI Data Engine.
+
+. Selecciona *Deploy AI Data Engine*.
+. Selecciona la opción de implementación *Multi-node* y selecciona *Next*.
+. Selecciona el tamaño de tu configuración:
++
+** *Pequeño*: recomendado para entornos con hasta aproximadamente 1.000 millones de archivos.
+** *Medio (predeterminado)*: recomendado para entornos con hasta aproximadamente 3 mil millones de archivos.
+** *Grande*: recomendado para entornos con hasta aproximadamente 6 mil millones de archivos.
++
+Estos tamaños son valores de referencia recomendados, no límites estrictos. Una implementación de AIDE con varios nodos requiere un dimensionamiento personalizado con NetApp para entornos con más de 6.000 millones de archivos; consulta link:aide-requirements.html#flexible-sizing-multi-node["directrices flexibles de dimensionamiento"] para obtener más detalles.
+
++
+El asistente genera el comando de instalación con el tamaño de configuración que selecciones. No es necesario modificar el comando para establecer el tamaño.
+
+
+
+. Copia el comando de instalación que aparece en el asistente en un editor.
+
+
+El comando «install» descarga el instalador desde `d13jb5dapseb36.cloudfront.net` y lo inicia en un solo paso. Esa descarga no utiliza el proxy.
+
+* Si el host del instalador puede acceder a `d13jb5dapseb36.cloudfront.net` directamente, omite la siguiente sección y continúa con <<create-password-file-multi-node,Crear un archivo de contraseñas de proxy>>. Ejecuta el comando de instalación tal como aparece copiado. El instalador te pedirá la configuración del proxy. Para proporcionarla en la línea de comandos, consulta <<command-line-flags-multi-node,Instalación no interactiva con opciones de línea de comandos>>.
+* Si el host de instalación solo llega a internet a través de un proxy, el comando se detiene en la descarga. Completa primero la siguiente sección. Solo el host de instalación necesita esto. Tus nodos no descargan el instalador.
+
+
+
+
+[[download-the-installer-through-the-proxy]]
+[[download-installer-multi-node]]
+== Descarga el instalador a través del proxy
+
+Descarga tú mismo el instalador y, a continuación, ejecuta el comando de instalación desde  `./install-enterprise.sh` en adelante.
+
+. Transfiere el instalador al host de instalación. Usa cualquier método que permita tu entorno y, a continuación, coloca el archivo en el host de instalación.
++
+Para descargar el instalador desde el host del instalador a través de tu proxy:
+
++
+[source, bash]
+----
+mkdir -p ~/aide && cd ~/aide
+curl -fsSL -x http://PROXY_HOST:PROXY_PORT \
+  https://d13jb5dapseb36.cloudfront.net/aide/latest/aide-installer.tar.gz -o aide-installer.tar.gz
+----
++
+Si el proxy requiere un nombre de usuario, añade `--proxy-user USER` al comando `curl`. Si omites la contraseña, `curl` te pedirá que la introduzcas, por lo que no quedará guardada en el historial de tu shell.
+
++
+** Utiliza `https://` en la dirección `-x` si tu proxy escucha en HTTPS.
+** Si tu proxy utiliza un certificado firmado de forma privada, añade `--proxy-cacert CA_FILE` o añade primero el certificado de la CA al almacén de confianza del host del instalador.
+** Si utilizas un proxy HTTPS y una `curl` versión anterior a la 8.3, la descarga puede pausarse durante aproximadamente un minuto. Ubuntu 22.04 incluye una versión de este tipo. Espera a que termine.
++
+Como alternativa, descarga `\https://d13jb5dapseb36.cloudfront.net/aide/latest/aide-installer.tar.gz` desde otro ordenador y, a continuación, cópialo al host de instalación con `scp` o tu método habitual de transferencia de archivos.
+
+
+
+. Extrae el instalador y cambia a la carpeta del instalador:
++
+[source, bash]
+----
+tar -xzf aide-installer.tar.gz
+cd installer
+----
++
+Ejecuta todos los comandos siguientes desde dentro de esta carpeta del instalador. El archivo `version.txt` de la carpeta muestra la versión de compilación del instalador.
+
+. Prepara el comando de instalación que has copiado de NetApp Console. Descarga el instalador y luego ejecuta `./install-enterprise.sh` con tus parámetros. Como ya has descargado el instalador:
++
+** Elimina todo lo que haya antes de `./install-enterprise.sh`, para que el comando empiece por `./install-enterprise.sh`.
+** Si el comando estaba entre comillas, por ejemplo `bash -c '...'`, elimina la comilla simple (`'`) al final.
+** Si el comando contiene `--no-proxy`, elimínalo.
++
+El comando restante tiene este aspecto:
+
++
+[source, bash]
+----
+./install-enterprise.sh --flavor <small|medium|large> --kubeconfig <kubeconfig-path> --nfs-server <nfs-server> --nfs-data-share <export-path> --registry <registry> --account-id <account-id> --organization-id <organization-id> --agent-id <agent-id> --cm-host <console-agent-ip>
+----
++
+Mantén exactamente tal y como aparecen en el comando que has copiado todos los parámetros que siguen a  `./install-enterprise.sh`. El instalador te pedirá la configuración del proxy. Consulta <<interactive-setup-multi-node,Configuración guiada interactiva>>.
+
+
+
+
+
+
+
+[[create-a-proxy-password-file]]
+[[create-password-file-multi-node]]
+== Crear un archivo de contraseñas de proxy
+
+Si tu proxy requiere autenticación y quieres proporcionar la contraseña sin que se te solicite, por ejemplo, en una implementación automatizada, crea un archivo de contraseña antes de ejecutar el instalador. De lo contrario, omite esta sección. El instalador te pedirá la contraseña con la entrada oculta.
+
+El archivo solo contiene la contraseña. Introduce la contraseña exactamente como aparece, sin aplicar codificación porcentual a los caracteres especiales.
+
+Crea el archivo con el mismo usuario que ejecuta `./install-enterprise.sh`, ya que el instalador lee el archivo como ese usuario.
+
+[source, bash]
+----
+umask 077
+read -rs -p 'Proxy password: ' P && printf '%s' "$P" > $HOME/.aide-proxy-password; unset P; echo
+chmod 600 $HOME/.aide-proxy-password
+----
+Elimina el archivo una vez finalizada la instalación.
+
+
+
+[[supply-the-proxy-settings]]
+== Introduce la configuración del proxy
+
+El instalador te pedirá la configuración del proxy. Ejecuta el comando de instalación tal como lo copiaste de NetApp Console y responde a las indicaciones. Para implementaciones automatizadas que deban ejecutarse sin indicaciones, consulta <<command-line-flags-multi-node,Instalación no interactiva con opciones de línea de comandos>>.
+
+Utiliza el mismo host de proxy, puerto, protocolo y certificado de CA que has configurado en los nodos.
+
+
+
+[[use-the-interactive-guided-setup]]
+[[interactive-setup-multi-node]]
+=== Utiliza la configuración guiada interactiva
+
+Cuando ejecutas el comando de instalación en un terminal sin `--proxy-host` o `--no-proxy`, el instalador te plantea las siguientes preguntas. Si pasas un valor como parámetro, el instalador no te lo volverá a pedir.
+
+[cols="2,3"]
+|===
+| Mensaje | Qué debes introducir 
+
+
+| `Configure outbound proxy? (y/N)` | Pulsa  `y`. 
+
+
+| Host o IP del proxy | Introduce el nombre de host o la dirección IPv4 del proxy, opcionalmente con un puerto (`host:port`). 
+
+
+| Esquema de proxy (`https` o `http`) | Introduce el protocolo en el que escucha tu proxy. El valor por defecto es `https`. 
+
+
+| Puerto del proxy | Introduce el puerto del proxy. El valor predeterminado es `443` para HTTPS y `80` para HTTP. 
+
+
+| Tipo de proxy | Pulsa Intro para aceptar la opción predeterminada. 
+
+
+| Certificado CA para el certificado propio del proxy (solo HTTPS, opcional) | Introduce la ruta de acceso al archivo o directorio de la CA. Pulsa Intro si una CA pública firmó el certificado de proxy. 
+
+
+| ¿El proxy requiere un nombre de usuario y una contraseña? (s/N) | Si es así, introduce el nombre de usuario y, a continuación, introduce la contraseña dos veces. El instalador no muestra la contraseña en pantalla. 
+|===
+Sin un terminal, el instalador nunca muestra ningún mensaje. Introduce `--proxy-host` para utilizar un proxy y `--proxy-password-file` si el proxy requiere una contraseña.
+
+
+
+[[use-command-line-flags-for-setup]]
+[[command-line-flags-multi-node]]
+=== Utiliza los parámetros de la línea de comandos para la configuración
+
+Utiliza las opciones de la línea de comandos para implementaciones automatizadas u otras implementaciones no interactivas que deban ejecutarse sin indicaciones. Las opciones son opcionales. El instalador te pedirá cualquier información de proxy que no proporciones.
+
+Añade los parámetros del proxy al final del comando de instalación, después del último parámetro existente.
+
+* Si ejecutas el comando de instalación tal como lo has copiado desde NetApp Console, añade los parámetros dentro de las comillas, antes de la comilla de cierre.
+* Si has descargado el instalador y has acortado el comando, añade los parámetros al final del comando acortado.
+
+
+Si el comando contiene `--no-proxy`, elimínalo. Mantén todos los demás parámetros del comando de instalación. Para consultar la descripción y el valor por defecto de cada parámetro, visita link:configure-proxy.html#proxy-parameters["Parámetros de configuración del proxy"]. Los siguientes ejemplos muestran únicamente los parámetros del proxy.
+
+.Proxy HTTP con nombre de usuario y contraseña
+[source, bash]
+----
+--proxy-host proxy.example.com \
+--proxy-port 3128 \
+--proxy-scheme http \
+--proxy-user svc-aide \
+--proxy-password-file $HOME/.aide-proxy-password
+----
+.Proxy HTTPS con un certificado firmado de forma privada y sin autenticación
+[source, bash]
+----
+--proxy-host proxy.example.com \
+--proxy-port 8443 \
+--proxy-scheme https \
+--proxy-ca-cert $HOME/proxy-ca.pem
+----
+* Si tu proxy no requiere autenticación, omite `--proxy-user` y `--proxy-password-file`.
+* Si especificas  `--proxy-user` sin  `--proxy-password-file`, el instalador te pedirá la contraseña cuando lo ejecutes desde un terminal.
+
+
+
+CAUTION: Con un proxy HTTP, el nombre de usuario y la contraseña del proxy se envían en texto sin cifrar. Utiliza un proxy HTTPS cuando el proxy requiere autenticación.
+
+
+
+[[run-the-installation]]
+== Ejecuta la instalación
+
+. Ejecuta el comando de instalación desde un host que pueda conectarse a tu clúster de Kubernetes. Si has descargado el instalador, ejecuta el comando desde la carpeta del instalador.
++
+Antes de que el instalador descargue nada, comprueba desde el host del instalador que el proxy responde, que el proxy acepta tus credenciales y que el certificado del proxy es válido para el protocolo que has elegido. Si la comprobación falla, el instalador se detiene e indica la causa. La comprobación no verifica si los nodos del clúster pueden conectarse al proxy.
+
++
+
+NOTE: La instalación tarda unos 30 minutos en completarse. Es posible que se produzcan tiempos de espera y reintentos, y esto es normal.
+
+. Si no has introducido todos los parámetros del proxy, responde a las preguntas que te plantee el proxy. Consulta <<interactive-setup-multi-node,Configuración guiada interactiva>>.
+. Responde a las solicitudes de confirmación del instalador para continuar con la instalación.
++
+** El instalador muestra el clúster de Kubernetes seleccionado por tu kubeconfig, incluido el contexto, el nombre del clúster y el servidor API. Responde «sí» solo si ese es el clúster que piensas usar. Si es el clúster equivocado, detén el instalador, selecciona el contexto de kubeconfig correcto y vuelve a ejecutar el instalador.
+** El instalador te pide que confirmes que los requisitos previos para una implementación de varios nodos están completos. Responde yes para continuar.
+** El instalador detecta la dirección IP del nodo que ejecuta AI Data Engine NGINX ingress y te pide que la confirmes. Pulsa Intro para mantener la dirección mostrada o escribe una dirección diferente. Usa una dirección a la que se pueda acceder desde fuera del clúster. Si la dirección detectada es una dirección interna del clúster, escribe en su lugar la dirección accesible. No introduzcas la dirección del agente de Console.
+
+
+. Vigila la pantalla de progreso hasta que aparezca la pantalla de éxito y confirme que la instalación de AIDE ha finalizado.
+
+
+.Resultado
+Tu implementación multínodo de AI Data Engine ya está desplegada y conectada a NetApp Console. Ahora puedes link:../data-sources/connect-data-source.html["conectar una fuente de datos"] para iniciar el análisis.
+
+
+
+[[check-the-proxy-after-installation]]
+[[check-proxy-multi-node]]
+== Comprueba el proxy tras la instalación
+
+El operador AI Data Engine registra el proxy que utiliza. El registro nunca incluye la contraseña. Para comprobar el proxy, ejecuta el siguiente comando desde un host que pueda acceder a tu clúster. Sustituye `<kubeconfig>` por la ruta a tu archivo kubeconfig:
+
+[source, bash]
+----
+kubectl --kubeconfig <kubeconfig> -n aide logs deploy/aide-operator -c chart-fetcher | grep -m1 'proxy enabled'
+----
+Si  `kubectl` no está en tu  `PATH`, el instalador lo descargó en el directorio tools. Ejecuta  `<tools-dir>/kubectl` en su lugar. El directorio predeterminado de tools es  `/opt/netapp/aide/.aide-installer-tools`.
+
+La línea muestra el endpoint del proxy, si la autenticación está activada y si hay un certificado de CA montado.
+
+
+
+[[related-information]]
+== Información relacionada
+
+* link:configure-proxy.html["Más información sobre los proxies para AI Data Engine"]
+* link:multi-node-prerequisites.html["Requisitos previos para la implementación de AIDE en varios nodos"]
+* link:aide-requirements.html["Requisitos AIDE"]
+* link:deploy-aide-multi-node.html["Desplegar AI Data Engine como una implementación de varios nodos"]
+

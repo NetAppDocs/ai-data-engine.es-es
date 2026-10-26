@@ -1,0 +1,179 @@
+---
+sidebar: sidebar 
+permalink: mcp/prepare-mcp-host.html 
+keywords: mcp, governed ai access, ingress script, kubernetes ingress rule, mcp host, aide cluster host name, host name, verified domain, certificate, dns, entra id, 401 
+summary: Ejecuta el script de ingress para configurar el nombre de host y el certificado del clúster de AIDE que usan los clientes de IA para llegar al servidor MCP de AI Data Engine, y asegúrate de que el nombre de host esté en un dominio verificado en tu tenant de Microsoft Entra ID. 
+---
+= Prepara el host de MCP para el acceso a la IA gobernado por AI Data Engine
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Configura el nombre de host y el certificado del clúster de AI Data Engine (AIDE) que usan los clientes de AI para llegar al servidor MCP de AI Data Engine. Completa esta tarea antes de configurar Microsoft Entra ID, porque el Application ID URI en Entra ID se crea a partir del nombre de host del clúster de AIDE.
+
+En esta tarea, ejecutas un script para configurar el dominio y el certificado, te aseguras de que las máquinas cliente puedan acceder al host y, a continuación, verificas el host.
+
+
+NOTE: Es posible que Microsoft modifique la interfaz de usuario de Microsoft Entra ID, por lo que los pasos y las rutas pueden diferir de lo que ves. Las configuraciones esenciales siguen siendo las mismas.
+
+
+
+[[before-you-begin]]
+== Antes de empezar
+
+* AI Data Engine está implementado. El servidor MCP se implementa junto con AI Data Engine, por lo que no lo instalas por separado.
+* Tienes acceso al clúster en el que se ejecuta AI Data Engine.
+* Dispones de un nombre de dominio DNS registrado y verificado en tu tenant de Microsoft Entra ID. El nombre de host del clúster AIDE debe estar en este dominio. Consulta <<verified-domain-requirement,Requisito de dominio verificado>>.
+
+
+
+
+[[verified-domain-requirement]]
+== Requisito de dominio verificado
+
+El nombre de host del clúster AIDE debe estar en un dominio DNS registrado que esté verificado en el tenant de Microsoft Entra ID de tu empresa. El nombre de host que configura el script de ingress se convierte en `<host>` en el URI del ID de la aplicación, por lo que el dominio debe estar verificado antes de registrar la aplicación.
+
+AI Data Engine utiliza `\https://<host>/mcp/tools` como URI de identificación de la aplicación que registras en Microsoft Entra ID. Microsoft Entra ID solo acepta un URI de identificación de la aplicación si pertenece a un dominio verificado. No se puede utilizar un host de un dominio no verificado, como un  `.cluster.local` nombre de host.
+
+Para comprobar qué dominios están verificados, en el centro de administración de Microsoft Entra, ve a *Entra ID* > *nombres de dominio*.
+
+
+
+[[run-the-ingress-script]]
+== Ejecuta el script de ingress
+
+El script de ingress configura los siguientes elementos para que los clientes de AI puedan acceder al servidor MCP desde fuera del clúster:
+
+* El certificado
+* El nombre de host del clúster
+* Una regla de ingress de Kubernetes que redirige el tráfico destinado al nombre de host del clúster al servidor MCP
+
+
+.Pasos
+. En el sistema en el que hayas descargado el instalador de AI Data Engine, abre la carpeta de scripts del instalador: `/tmp/installer/runbook/ingress-manager-scripts/scripts/`. El script ingress se descarga como parte del instalador. Si no encuentras la carpeta, consulta <<restore-the-ingress-script,Restaura el script de ingress>>.
+. Ejecuta el script de ingress:
++
+[source, bash]
+----
+./ingress-manager.sh
+----
+. Anota el nombre de host que configura el script. Usarás este nombre de host como `<host>` en el URI del ID de la aplicación, el ámbito y la configuración del cliente AI.
+
+
+
+NOTE: El nombre de host que configura el script es el nombre de host del clúster AIDE. Cuando el script termine, también podrás ver el nombre de host en la UI de AI Data Engine. Ve a *Configuration* > *MCP collections* > *MCP settings* y revisa *MCP hostname*.
+
+Si el script crea un certificado autofirmado, todos los equipos que ejecuten un cliente de AI deben considerar fiable dicho certificado. Consulta <<make-the-host-reachable,Haz que el host sea accesible desde los equipos cliente>>.
+
+
+
+[[restore-the-ingress-script]]
+=== Restaura el script de ingress
+
+La carpeta del instalador se encuentra por defecto en un directorio temporal. Es posible que tu sistema operativo elimine los directorios temporales cuando se reinicie el sistema. Si la carpeta de scripts ya no está en el sistema, descarga y descomprime de nuevo el instalador y luego ejecuta el script.
+
+.Pasos
+. En el sistema en el que ejecutes el script, descarga y descomprime el instalador:
++
+[source, bash]
+----
+curl -fsSL https://d13jb5dapseb36.cloudfront.net/aide/latest/aide-installer.tar.gz | tar -xzf - -C /tmp
+----
+. Abre la carpeta scripts y ejecuta el script ingress:
++
+[source, bash]
+----
+cd /tmp/installer/runbook/ingress-manager-scripts/scripts/
+./ingress-manager.sh
+----
+
+
+Para que el script se conserve tras un reinicio, extrae el instalador en un directorio que no se borre al reiniciar. Sustituye `/tmp` en el `tar` comando y en el `cd` comando por ese directorio.
+
+
+
+[[make-the-host-reachable-from-client-machines]]
+[[make-the-host-reachable]]
+== Haz que el host sea accesible desde los equipos cliente
+
+Cada equipo en el que se ejecute un cliente de IA debe poder realizar lo siguiente:
+
+* Resuelve el nombre de host mediante DNS.
+* Accede al host por el puerto 443 a través de HTTPS, desde tu red corporativa o mediante VPN.
+* Confía en el certificado que presenta el host. Si el certificado es autofirmado, instálalo como certificado de confianza en cada equipo cliente.
+* Accede al inicio de sesión de Microsoft Entra ID (`login.microsoftonline.com`).
+
+
+
+
+[[verify-the-host]]
+== Comprueba el host
+
+Comprueba que el servidor MCP responda en el nombre de host del clúster AIDE. El servidor MCP publica metadatos en un endpoint conocido. La respuesta confirma que el nombre de host, el dominio y el servidor MCP están configurados correctamente.
+
+.Pasos
+. Desde un equipo cliente, realiza una solicitud al endpoint conocido del servidor MCP. Sustituye `<host>` por el nombre de host del clúster AIDE:
++
+[source, bash]
+----
+curl -sk https://<host>/.well-known/oauth-protected-resource/mcp/tools
+----
+. Comprueba que la respuesta sea similar al siguiente ejemplo. El ejemplo muestra el comando y la respuesta para el nombre de host `aide-cluster.contoso.com`.
++
+[listing]
+----
+curl -sk https://aide-cluster.contoso.com/.well-known/oauth-protected-resource/mcp/tools | python3 -m json.tool
+{
+    "resource": "https://aide-cluster.contoso.com/mcp/tools",
+    "authorization_servers": [
+        "https://login.microsoftonline.com/7f3e2a91-4b6c-4d58-9a0e-2c81d5f6b347/v2.0"
+    ],
+    "scopes_supported": [
+        "https://aide-cluster.contoso.com/mcp/tools/power_users"
+    ],
+    "bearer_methods_supported": [
+        "header"
+    ],
+    "resource_name": "NetApp AI Data Engine MCP Server"
+}
+----
++
+En la respuesta, comprueba lo siguiente:
+
++
+** `resource` es `\https://<host>/mcp/tools`, como en `"resource": "https://aide-cluster.contoso.com/mcp/tools"`. Este es el URI del ID de la aplicación que debes registrar en Microsoft Entra ID.
+** `authorization_servers` apunta a tu tenant de Microsoft Entra ID, como en `https://login.microsoftonline.com/7f3e2a91-4b6c-4d58-9a0e-2c81d5f6b347/v2.0`.
+** `scopes_supported` incluye el `power_users` ámbito en tu nombre de host, como en `https://aide-cluster.contoso.com/mcp/tools/power_users`.
+** `resource_name` es `NetApp AI Data Engine MCP Server`.
+
+
+. Opcional: para realizar una comprobación adicional, solicita `\https://<host>/mcp/tools` sin token:
++
+[source, bash]
+----
+curl -i https://<host>/mcp/tools
+----
++
+Se espera una respuesta de `401 Unauthorized`. Como esta solicitud no omite la validación del certificado, también confirma que el equipo cliente confía en el certificado.
+
+
+
+
+IMPORTANT: Una respuesta A `401` por sí sola no demuestra que la configuración funcione. Si antes se configuró otro ingress, puede devolver `401` aunque el servidor MCP no responda. Utiliza la respuesta del endpoint bien conocido para verificar el host.
+
+.Qué sigue
+link:configure-entra-id-mcp.html["Configurar Microsoft Entra ID"].
+
+
+
+[[related-information]]
+== Información relacionada
+
+* link:quick-start-mcp.html["Guía de inicio rápido para el acceso gobernado a la IA con AI Data Engine"]
+* link:configure-entra-id-mcp.html["Configurar Microsoft Entra ID para el acceso controlado a la IA"]
+* link:connect-entra-id-aide-mcp.html["Conecta AI Data Engine a Microsoft Entra ID"]
+* link:maintain-mcp-setup.html#review-mcp-server-settings["Revisar la configuración del servidor MCP"]
+* link:../deploy/aide-requirements.html#networking-requirements["Requisitos de red"]
+

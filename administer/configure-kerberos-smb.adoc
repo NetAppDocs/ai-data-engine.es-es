@@ -1,0 +1,78 @@
+---
+sidebar: sidebar 
+permalink: administer/configure-kerberos-smb.html 
+keywords: kerberos, smb, cifs, keytab, krb5.conf, ktutil, kdc, realm, fqdn, dns, authentication, active directory, scan service account 
+summary: Descubre cómo AI Data Engine utiliza Kerberos para escanear recursos compartidos SMB/CIFS sin almacenar ninguna contraseña en la fuente de datos, y elige el procedimiento adecuado para tu implementación de un solo nodo o de varios nodos. 
+---
+= Autenticación Kerberos para recursos compartidos SMB/CIFS en AI Data Engine
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Escanea los recursos compartidos SMB/CIFS mediante autenticación Kerberos, para que no se almacene ninguna contraseña en la fuente de datos. AI Data Engine (AIDE) actúa como cliente de Kerberos. Utiliza un keytab para una cuenta de servicio de escaneo para obtener tickets de Kerberos desde tu controlador de dominio de Active Directory existente.
+
+La autenticación Kerberos se aplica a las fuentes de datos SMB/CIFS. Para asignar los ID de usuario y grupo de NFS a nombres de Active Directory, consulta link:configure-ad-nfs.html["Configura la asignación de identidades de Active Directory para NFS"].
+
+
+
+[[how-kerberos-scanning-works]]
+== Cómo funciona el análisis de Kerberos
+
+Una vez configurado, AI Data Engine obtiene y actualiza automáticamente los tickets de Kerberos, por lo que no tienes que gestionar las credenciales para cada análisis.
+
+. Creas tres archivos: un archivo de configuración de Kerberos, un keytab para la cuenta de servicio de análisis y un archivo de principal que nombra la cuenta.
+. AI Data Engine utiliza el keytab para obtener un ticket de Kerberos de tu controlador de dominio de Active Directory, que actúa como centro de distribución de claves de Kerberos (KDC). AI Data Engine actualiza el ticket cada tres horas.
+. Cuando añades un recurso compartido SMB/CIFS y seleccionas Kerberos como método de autenticación, AI Data Engine analiza el recurso compartido utilizando el ticket.
+
+
+AI Data Engine localiza tu controlador de dominio y tu servidor de archivos por nombre. El host o los nodos deben resolver ambos nombres utilizando un servidor DNS capaz de resolver los nombres de tu Active Directory. Si configuras el host o los nodos para que apunten a tu servidor DNS de Active Directory, dicho servidor también debe resolver nombres externos. En una implementación con varios nodos, debe ser el único servidor de nombres en cada nodo.
+
+Si sustituyes el archivo de configuración de Kerberos después de la configuración, AI Data Engine seguirá utilizando el archivo anterior hasta que reinicies los servicios afectados. Para ver los pasos, consulta link:configure-kerberos-smb-single-node.html#update-kerberos-configuration["Actualiza el archivo de configuración de Kerberos"] para un despliegue de un solo nodo o link:configure-kerberos-smb-multi-node.html#update-kerberos-configuration["Actualiza el archivo de configuración de Kerberos"] para un despliegue de varios nodos.
+
+
+
+[[choose-a-procedure]]
+== Elige un procedimiento
+
+Los archivos de Kerberos, los paquetes del host y los pasos de verificación dependen del tipo de implementación.
+
+[cols="1,2,2,2"]
+|===
+| Despliegue | Dónde están los archivos de Kerberos | Paquetes | Procedimiento 
+
+
+| Clúster de un solo nodo | En el host de AI Data Engine. El archivo de configuración de Kerberos es `/etc/krb5.conf`. | Instala las herramientas del cliente Kerberos en el host. El instalador instala `cifs-utils`. | link:configure-kerberos-smb-single-node.html["Configurar Kerberos para recursos compartidos SMB/CIFS en una implementación de AI Data Engine de un solo nodo"] 
+
+
+| Multinodo | En la exportación NFS compartida que contiene la configuración de AI Data Engine. Los nodos no utilizan `/etc/krb5.conf`. | Instala las herramientas del cliente Kerberos en un host de administración. Instala `cifs-utils` en cada nodo. | link:configure-kerberos-smb-multi-node.html["Configurar Kerberos para recursos compartidos SMB/CIFS en una implementación de AI Data Engine con varios nodos"] 
+|===
+
+
+[[what-you-need]]
+== Lo que necesitas
+
+Recopila estos datos para poder configurar el acceso mediante Kerberos a los recursos compartidos SMB/CIFS que desees analizar.
+
+* Una cuenta de servicio de análisis en Active Directory con acceso de lectura a los recursos compartidos SMB/CIFS que quieras analizar. La cuenta debe admitir el cifrado AES256.
+* La dirección IP y el nombre de dominio completo (FQDN) de un controlador de dominio que actúa como KDC.
+* Tu dominio de Active Directory y tu reino de Kerberos. El reino es el dominio escrito en mayúsculas.
+* El nombre de dominio completo (FQDN) y el nombre del recurso compartido de cada servidor de archivos que quieras analizar. La autenticación Kerberos no admite una dirección IP para el servidor de archivos.
+* Acceso a raíz al host de AI Data Engine para una implementación de un solo nodo. Para una implementación de varios nodos, acceso a raíz a cada nodo y al host de administración, y `kubectl` acceso con privilegios de administrador del clúster desde el host de administración.
+* En una implementación con varios nodos, acceso desde cada nodo al servidor NFS por el puerto TCP 2049.
+
+
+Comprueba también que tu entorno cumpla los requisitos de link:../deploy/aide-requirements.html#networking-requirements["requisitos de red"] y link:../deploy/aide-requirements.html#kerberos-ad-requirements["Requisitos de Kerberos y Active Directory"], incluida la sincronización horaria, DNS y los paquetes del host.
+
+
+
+[[related-information]]
+== Información relacionada
+
+* link:configure-kerberos-smb-single-node.html["Configurar Kerberos para recursos compartidos SMB/CIFS en una implementación de AI Data Engine de un solo nodo"]
+* link:configure-kerberos-smb-multi-node.html["Configurar Kerberos para recursos compartidos SMB/CIFS en una implementación de AI Data Engine con varios nodos"]
+* link:../deploy/aide-requirements.html#kerberos-ad-requirements["Requisitos de Kerberos y Active Directory"]
+* link:../data-sources/connect-data-source.html["Conecta una fuente de datos a AI Data Engine"]
+* link:configure-ad-nfs.html["Configura la asignación de identidades de Active Directory para NFS"]
+

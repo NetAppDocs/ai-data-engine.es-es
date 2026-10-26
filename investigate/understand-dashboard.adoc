@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: investigate/understand-dashboard.html 
-keywords: dashboard, overview, reclaimable storage, cold data, stale data, storage health, capacity risk, data owners, investigate 
-summary: Evalúa el estado del almacenamiento en todo tu entorno, identifica dónde se concentra el almacenamiento potencialmente recuperable y decide qué sistemas o responsables de los datos debes investigar primero. 
+keywords: dashboard, overview, reclaimable storage, cold data, stale data, storage health, capacity risk, data owners, investigate, access exposure, open permissions, structured data, duplicates, file types 
+summary: Evalúa el estado del almacenamiento en todo tu entorno, identifica dónde se concentra el almacenamiento que podría recuperarse, revisa los directorios con permisos abiertos y datos estructurados, y decide qué sistemas o propietarios de los datos debes investigar en primer lugar. 
 ---
 = Evalúa el estado del almacenamiento con el panel de AI Data Engine
 :allow-uri-read: 
@@ -13,49 +13,75 @@ summary: Evalúa el estado del almacenamiento en todo tu entorno, identifica dó
 [role="lead"]
 Antes de decidir qué analizar, debes conocer el estado de tu almacenamiento. ¿Qué volumen de almacenamiento cumple los umbrales de clasificación de datos inactivos y obsoletos de tu organización, y qué sistemas o responsables albergan la mayor cantidad de datos en estas categorías? Por ejemplo, un administrador de almacenamiento que responde a una alerta de capacidad puede ver que una gran parte del almacenamiento analizado corresponde a datos inactivos y, a continuación, profundizar en el sistema de mayor impacto para empezar a investigar de inmediato.
 
-Desde NetApp Console, selecciona *AI data hub* > *AI Data Engine UI*. El panel se abre de forma predeterminada.
+En NetApp Console, selecciona *AI data hub* > *AI Data Engine*. El panel se abre de forma predeterminada. El panel organiza la información en tres pestañas: *Storage optimization*, *Access exposure* y *Structured data*.
 
 
 
 [[understand-how-much-storage-is-affected]]
 == Averigua qué parte del almacenamiento se ve afectada
 
-El panel de resumen muestra la magnitud del problema en todo tu entorno analizado:
+Descubre qué parte de tu almacenamiento analizado está frío, obsoleto o expuesto. El panel de resumen muestra la magnitud del problema en todo tu entorno analizado:
 
-* *Datos inactivos*: almacenamiento al que no se ha accedido dentro del umbral de datos inactivos (por defecto: un año). Tu organización puede evaluar estos datos de acuerdo con tus políticas de retención y gobernanza.
-* *Datos obsoletos*: datos almacenados a los que no se ha accedido ni se han modificado dentro del umbral de datos obsoletos (por defecto: tres años). Los datos obsoletos podrían requerir una revisión de acuerdo con las políticas de ciclo de vida de los datos de tu organización antes de decidir sobre medidas como el archivado o la eliminación.
-* *Directorios expuestos*: directorios con una configuración de acceso excesivamente permisiva. Estos suponen un riesgo de gobernanza independiente del consumo de almacenamiento.
 * *Recursos de datos*: el recuento de volúmenes, recursos compartidos y buckets analizados actualmente.
-* *Total de archivos analizados*: el número total de archivos indexados en todos los recursos de datos analizados.
+* *Elementos escaneados*: el número total de elementos indexados en todos los recursos de datos escaneados.
+* *Datos inactivos*: almacenamiento al que no se ha accedido dentro del umbral de datos inactivos (por defecto: un año). Tu organización puede evaluar estos datos de acuerdo con tus políticas de retención y gobernanza.
+* *Datos obsoletos*: almacenamiento que no ha cambiado dentro del umbral de datos obsoletos (por defecto: tres años). Los datos obsoletos podrían justificar una revisión de acuerdo con las políticas del ciclo de vida de los datos de tu organización antes de decidir acciones como el archivado o la eliminación.
+* *Directorios expuestos*: el número de directorios con una configuración de acceso excesivamente permisiva y el número de archivos asociados. Estos suponen un riesgo de gobernanza independiente del consumo de almacenamiento.
 
 
-Los umbrales de «frío» y «obsoleto» reflejan la configuración que hayas establecido y pueden cambiarse en *Configuration* > *Settings*. Los valores predeterminados son los valores predeterminados del producto y no representan períodos de retención legales, de cumplimiento ni estándar del sector. Consulta link:../administer/configure-settings.html["Configura los umbrales de datos inactivos y obsoletos"].
-
-El gráfico «Almacenamiento activo frente a recuperable» muestra la proporción de datos activos en comparación con los datos inactivos y obsoletos en todos los recursos analizados. Una elevada proporción de datos inactivos, obsoletos o duplicados podría indicar una importante oportunidad de optimización del almacenamiento.
+Los umbrales de cold y stale reflejan la configuración que hayas establecido, incluidas la marca de tiempo y la antigüedad que elijas. Los valores predeterminados son los del producto y no representan períodos de retención legales, de cumplimiento normativo ni estándares del sector. Para cambiarlos, consulta link:../administer/configure-settings.html["Configurar los umbrales de clasificación de datos y el análisis de acceso"].
 
 Los filtros *System* y *System type* controlan el alcance del panel de control. Si un sistema de almacenamiento no aparece en la lista de filtros, consulta link:../data-sources/connect-data-source.html["Conecta una fuente de datos"].
+
+La marca de tiempo *Última actualización* indica cuándo se actualizaron por última vez los datos del panel de control. Selecciona *Actualizar* para actualizar el panel de control. Para confirmar que los datos subyacentes están actualizados, consulta link:../data-sources/manage-data-sources.html#view-scan-status-and-details["Ver el estado y los detalles del análisis"].
 
 
 
 [[identify-storage-optimization-opportunities]]
 == Identificar oportunidades de optimización del almacenamiento
 
-Utiliza el panel de resumen y el gráfico para identificar y priorizar oportunidades de optimización del almacenamiento:
+Descubre dónde puedes recuperar más espacio de almacenamiento. La pestaña *Optimización del almacenamiento* incluye los siguientes gráficos y tablas:
+
+* _Almacenamiento activo frente a recuperable_: muestra la proporción de datos activos en comparación con los datos fríos y obsoletos en todos los recursos analizados. Una proporción elevada de datos fríos, obsoletos o duplicados podría indicar una oportunidad significativa de optimización del almacenamiento.
+* _Principales recursos de datos por almacenamiento recuperable_: muestra los recursos de datos con mayor capacidad recuperable.
+* _Principales consumidores por almacenamiento recuperable_: muestra los propietarios de los datos, su almacenamiento recuperable y el número de archivos que tienen.
+* _Distribución del tamaño de los datos duplicados_: muestra cómo se distribuyen los datos duplicados entre los distintos rangos de tamaño.
+* _Antigüedad de los activos_: muestra los elementos por antigüedad. Utiliza el menú desplegable para seleccionar el criterio de marca de tiempo para el gráfico.
+* _Tipos de archivo más comunes_: muestra los tipos de archivo más habituales.
+
+
+Utiliza el panel de resumen y estos gráficos para identificar y priorizar las oportunidades de optimización del almacenamiento:
 
 * Céntrate en los recursos que tengan el mayor tamaño potencialmente recuperable, en lugar de en aquellos con el mayor tamaño total. Un sistema pequeño que contenga principalmente datos inactivos u obsoletos podría ser un mejor recurso inicial para evaluar que un sistema grande que contenga principalmente datos activos.
-* Busca grandes concentraciones de datos fríos u obsoletos en lugar de archivos aislados. Decenas de terabytes de datos que cumplen tu umbral de obsolescencia en un recurso justifican una evaluación; es posible que los archivos aislados no requieran ninguna acción.
+* Busca grandes concentraciones de datos fríos u obsoletos en lugar de archivos aislados. Las decenas de terabytes de datos que cumplen tu umbral de obsolescencia en un recurso justifican una evaluación. Es posible que los archivos aislados no requieran ninguna acción.
 
+
+
+
+[[review-access-exposure]]
+== Revisa la exposición del acceso
+
+Encuentra los directorios que debes priorizar para revisar los permisos. La pestaña *Exposición de acceso* muestra el gráfico _Directorios con permisos abiertos_, que enumera las rutas de los directorios y el número de archivos que contienen. Para ver estos directorios en detalle, consulta link:investigate-directories.html["Investigar directorios"]. Para controlar si AI Data Engine analiza los permisos, consulta link:../administer/configure-settings.html["Configurar los umbrales de clasificación de datos y el análisis de acceso"].
+
+
+
+[[explore-structured-data]]
+== Explora los datos estructurados
+
+Comprueba qué esquemas y tablas hay en tus datos escaneados y compara el número de filas. La pestaña *Structured data* muestra la tabla _Structured data summary_, que enumera el esquema, el nombre de la tabla de la base de datos y el número de filas. Para buscar y filtrar estos datos, consulta link:investigate-structured.html["Investiga los datos estructurados"].
 
 
 
 [[move-from-the-dashboard-to-investigation]]
 == Pasa del panel de control a la investigación
 
-Cuando hayas identificado un recurso o un propietario que merezca la pena investigar, utiliza las tablas de la parte inferior del panel para acceder directamente a los detalles.
+Cuando hayas identificado un recurso o un propietario que merezca la pena investigar, utiliza las tablas de la pestaña *Optimización del almacenamiento* para acceder directamente a los detalles.
 
 La tabla _Top data resources by reclaimable storage_ muestra tus recursos de almacenamiento analizados, clasificados por la proporción de datos duplicados o que cumplen los umbrales de datos inactivos y obsoletos de tu organización. Selecciona cualquier fila para abrir la vista Investigation filtrada para ese recurso. Desde ahí, usa la pestaña link:investigate-unstructured.html["No estructurado"] para identificar archivos inactivos u obsoletos, o la pestaña link:investigate-directories.html["Directorios"] para auditar la exposición de permisos.
 
-La tabla «_Principales propietarios de datos por almacenamiento recuperable_» muestra qué propietarios de datos poseen datos que son potencialmente recuperables. Selecciona cualquier fila para abrir la link:investigate-unstructured.html["Investigación"] vista filtrada según los archivos de ese propietario. Desde allí, puedes revisar los resultados, actuar sobre ellos o guardarlos como una política.
+La tabla _Principales consumidores por almacenamiento recuperable_ muestra qué propietarios de datos tienen datos potencialmente recuperables. Selecciona cualquier fila para abrir la vista link:investigate-unstructured.html["Investigación"] filtrada según los archivos de ese propietario. Desde allí, puedes revisar los resultados, actuar en consecuencia o guardarlos como una política.
+
+Revisar el panel de control no archiva ni elimina datos ni cambia los permisos de los directorios.
 
 
 
@@ -63,7 +89,8 @@ La tabla «_Principales propietarios de datos por almacenamiento recuperable_» 
 == Información relacionada
 
 * link:investigate-data.html["Analiza tus datos"]
-* link:investigate-unstructured.html["Analiza datos no estructurados"]
+* link:../data-sources/manage-data-sources.html["Gestionar fuentes de datos"]
+* link:../administer/monitor-deployment-health.html["Supervisa el estado de la implementación e investiga problemas"]
 * link:../data-sources/connect-data-source.html["Conecta una fuente de datos"]
-* link:../administer/configure-settings.html["Configura los umbrales de datos inactivos y obsoletos"]
+* link:../administer/configure-settings.html["Configurar los umbrales de clasificación de datos y el análisis de acceso"]
 

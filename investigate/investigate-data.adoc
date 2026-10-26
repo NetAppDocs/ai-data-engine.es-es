@@ -27,7 +27,7 @@ La sección *Investigación* está organizada en tres pestañas. Selecciona la p
 | Pestaña | Úsalo cuando quieras | Más información 
 
 
-| *Sin estructura* | Detecta datos basados en archivos inactivos, obsoletos o duplicados en volúmenes NFS y SMB/CIFS | link:investigate-unstructured.html["Analiza datos no estructurados"] 
+| *Sin estructura* | Detecta datos basados en archivos inactivos, obsoletos o duplicados en volúmenes NFS y SMB | link:investigate-unstructured.html["Analiza datos no estructurados"] 
 
 
 | *Estructurado* | Identifica las tablas de bases de datos de gran tamaño o en desuso que consumen espacio de almacenamiento | link:investigate-structured.html["Investiga los datos estructurados"] 
@@ -45,6 +45,5 @@ El recuento resumido y el tamaño total que aparecen en la parte superior de la 
 * link:investigate-unstructured.html["Analiza datos no estructurados"]
 * link:investigate-structured.html["Investiga los datos estructurados"]
 * link:investigate-directories.html["Investigar directorios"]
-* link:use-filters.html["Trabaja con filtros"]
 * link:take-actions.html["Actúa sobre tus datos"]
 

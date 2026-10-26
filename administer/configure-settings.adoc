@@ -1,67 +1,98 @@
 ---
 sidebar: sidebar 
 permalink: administer/configure-settings.html 
-keywords: cold threshold, stale threshold, configuration, settings, data classification, cold data, stale data 
-summary: Configura los umbrales de tiempo que AI Data Engine utiliza para clasificar los datos como «inactivos» u «obsoletos» en todo tu entorno. 
+keywords: general settings, cold data, stale data, data classification, thresholds, permission scanning, Active Directory, LDAP, NFS identity mapping, access risk, configuration 
+summary: Define qué archivos clasifica AI Data Engine como datos inactivos u obsoletos, activa el análisis de permisos y conecta Active Directory para identificar oportunidades de optimización del almacenamiento y riesgos de acceso. 
 ---
-= Configura los umbrales de datos inactivos y obsoletos en AI Data Engine
+= Configurar los umbrales de clasificación de datos y el análisis de acceso en AI Data Engine
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-AI Data Engine clasifica los archivos como «inactivos» u «obsoletos» en función de los umbrales de tiempo que definas. Estos umbrales determinan qué datos aparecen en los resúmenes del panel de control, qué archivos se muestran al aplicar filtros de «inactivos» u «obsoletos» en Investigation y a qué archivos se aplican las políticas. Establece umbrales que se ajusten a las prácticas de clasificación y retención de datos de tu organización y que te ayuden a identificar los datos que consideras importantes supervisar.
+Los umbrales de datos fríos y obsoletos te ayudan a identificar el almacenamiento que puedes optimizar mediante AI Data Engine (AIDE). El análisis de permisos y la integración con Active Directory te ayudan a detectar y comprender los riesgos de acceso. Configúralos para que se ajusten a las políticas de clasificación, retención y acceso de datos de tu organización.
+
+
+
+[[before-you-begin]]
+== Antes de empezar
+
+Debes tener el rol de _administrador de AI Data Engine_.
 
 
 
 [[what-is-cold-and-stale-data]]
 == ¿Qué son los datos «fríos» y «obsoletos»?
 
-Datos inactivos:: Archivos a los que no se ha accedido dentro del umbral de datos inactivos configurado. Los datos inactivos son una métrica clave que tu organización puede utilizar para identificar el almacenamiento que podría optimizarse de acuerdo con tus políticas de retención y empresariales.
-Datos obsoletos:: Archivos a los que no se ha accedido ni se han modificado dentro del umbral de datos obsoletos configurado. Los datos obsoletos incluyen archivos a los que se accede ocasionalmente pero que no se han modificado recientemente, y que tu organización puede supervisar o gestionar de acuerdo con sus políticas.
+Datos inactivos:: Archivos a los que no se ha accedido dentro del umbral de datos inactivos. Los datos inactivos son una métrica clave que tu organización puede usar para identificar qué almacenamiento puedes optimizar de acuerdo con tus políticas de retención y empresariales.
+Datos obsoletos:: Archivos que no se han modificado dentro del umbral de datos obsoletos. Los datos obsoletos ayudan a tu organización a identificar los archivos que no han cambiado recientemente, para que puedas supervisarlos o gestionarlos de acuerdo con tus políticas.
 
+
+Estos umbrales afectan a los resúmenes del panel, a los archivos que se muestran al aplicar filtros de datos fríos u obsoletos en Investigation y a los archivos a los que se dirigen las políticas. Elige umbrales que reflejen cuánto tiempo pueden pasar los datos sin usarse o sin cambiar antes de que tu organización los evalúe. Un umbral más corto clasifica más datos como fríos u obsoletos, mientras que un umbral más largo limita los resultados a los datos que llevan más tiempo inactivos.
 
 
 NOTE: Los valores de umbral predeterminados son los valores predeterminados del producto y sirven como punto de partida. No representan períodos de retención legales, de cumplimiento ni estándar del sector. Establece umbrales que reflejen las políticas y los requisitos específicos de tu organización.
 
-Los cambios en cualquiera de los dos umbrales entrarán en vigor una vez finalizado el siguiente ciclo de análisis.
+Los cambios en los umbrales de frío y obsolescencia surten efecto después de que se complete el siguiente ciclo de análisis.
 
 
 
-[[configure-the-cold-data-threshold]]
-== Configurar el umbral de datos inactivos
+[[set-the-cold-data-threshold]]
+== Establece el umbral de datos fríos
 
-.Antes de empezar
-* Debes tener el rol de _administrador de AI Data Engine_.
-
+Decide cuánto tiempo puede pasar sin que se acceda a los archivos antes de que tu organización los evalúe para su archivado, eliminación o supervisión. También puedes limitar la clasificación según el tamaño del archivo y excluir de ella determinados tipos de archivos o rutas.
 
 .Pasos
-. En la interfaz de usuario de AI Data Engine, selecciona *Configuración*.
-. Selecciona *Configuración*.
-. Selecciona *Editar* para *Definición de datos en frío*.
-. Establece la propiedad del archivo en *Último acceso* o *Última modificación*.
-. Establece el umbral de tiempo. El valor predeterminado es un año.
+. En la interfaz de usuario de AI Data Engine, selecciona *Configuración* > *Ajustes generales*.
+. Despliega la opción «*Definición de datos inactivos*» y activa la clasificación de datos inactivos si está desactivada.
+. En *en función de la antigüedad*, selecciona la marca de tiempo que determina la antigüedad: *último acceso* para identificar los archivos que no se han utilizado recientemente, o *última modificación* para identificar los archivos que no se han modificado recientemente.
+. Establece el *umbral de antigüedad en frío*. El valor predeterminado es de un año.
+. Establece el *tamaño mínimo de archivo (MiB)* y el *límite máximo de tamaño de archivo (MiB)* para centrarte en los archivos que te interesan.
+. Opcional: para excluir archivos concretos de esta clasificación, introduce *Excluir tipos de archivo* y *Excluir rutas*. Introduce los archivos y las rutas completas, y separa varias entradas con comas.
 . Selecciona *Guardar*.
 
 
 
 
-[[configure-the-stale-data-threshold]]
-== Configurar el umbral de datos obsoletos
+[[set-the-stale-data-threshold]]
+== Establece el umbral de datos obsoletos
 
-.Antes de empezar
-* Debes tener el rol de _administrador de AI Data Engine_.
-
+Decide cuánto tiempo pueden estar sin cambios los archivos antes de que tu organización los revise según sus políticas de ciclo de vida de los datos. También puedes limitar la clasificación según el tamaño del archivo y excluir de ella determinados tipos de archivos o rutas.
 
 .Pasos
-. En la interfaz de usuario de AI Data Engine, selecciona *Configuración*.
-. Selecciona *Configuración*.
-. Selecciona *Editar* para *Definición de datos obsoletos*.
-. Establece la propiedad del archivo en *Último acceso* o *Última modificación*.
-. Establece el umbral de tiempo. El valor predeterminado es de tres años.
+. En la interfaz de usuario de AI Data Engine, selecciona *Configuración* > *Ajustes generales*.
+. Expande *Stale data definition* y activa la clasificación de datos obsoletos si está desactivada.
+. En *Antigüedad basada en*, selecciona la marca de tiempo que determina la antigüedad: *última modificación* o *último acceso*.
+. Establece el *umbral de antigüedad*. El valor predeterminado es de tres años.
+. Establece el *tamaño mínimo de archivo (MiB)* y el *límite máximo de tamaño de archivo (MiB)* para centrarte en los archivos que te interesan.
+. Opcional: para excluir archivos concretos de esta clasificación, introduce *Excluir tipos de archivo* y *Excluir rutas*. Introduce los archivos y las rutas completas, y separa varias entradas con comas.
 . Selecciona *Guardar*.
 
+
+
+
+[[find-access-risks-with-permission-scanning]]
+== Detecta los riesgos de acceso mediante el análisis de permisos
+
+Activa el análisis de permisos cuando necesites localizar archivos y carpetas a los que tengan acceso más personas de las que permiten tus políticas. Para consultar los resultados, consulta link:../investigate/investigate-directories.html["Investigar directorios"].
+
+.Pasos
+. En la interfaz de usuario de AI Data Engine, selecciona *Configuración* > *Ajustes generales*.
+. Despliega *Análisis de permisos* y activa el interruptor.
++
+Para dejar de analizar los permisos, desactiva el interruptor.
+
+
+
+
+
+[[show-user-and-group-names-with-active-directory]]
+== Mostrar nombres de usuarios y grupos con Active Directory
+
+Conecta AI Data Engine a Active Directory cuando necesites ver los nombres de usuario y los permisos, en lugar de los identificadores numéricos, mientras revisas tus datos. Si tu entorno utiliza NFS, también puedes asignar los identificadores numéricos de usuario (UID) y de grupo (GID) a los usuarios y grupos del directorio.
+
+Para conocer los requisitos previos y los pasos a seguir, consulta link:configure-ad-nfs.html["Configura la asignación de identidades de Active Directory para NFS"].
 
 
 
@@ -69,6 +100,10 @@ Los cambios en cualquiera de los dos umbrales entrarán en vigor una vez finaliz
 == Información relacionada
 
 * link:../investigate/understand-dashboard.html["Descubre el panel de control de AI Data Engine"]
+* link:../investigate/investigate-directories.html["Investigar directorios"]
+* link:../investigate/investigate-unstructured.html["Analiza datos no estructurados"]
 * link:../get-started/storage-optimization-workflows.html["Explora los flujos de trabajo de optimización del almacenamiento"]
+* link:../deploy/aide-requirements.html["Requisitos AIDE"]
 * link:manage-users-roles.html["Gestionar usuarios y roles"]
+* link:configure-ad-nfs.html["Configura la asignación de identidades de Active Directory para NFS"]
 

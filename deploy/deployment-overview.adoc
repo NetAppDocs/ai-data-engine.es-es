@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: deploy/deployment-overview.html 
-keywords: deployment, aide lite, aide enterprise, kubernetes, vm, deployment modes, sizing 
-summary: Implementa AI Data Engine como AIDE Lite o como AIDE Enterprise si tu entorno requiere alta disponibilidad basada en Kubernetes. 
+keywords: deployment, aide single-node, aide multi-node, single node, multi node, kubernetes, vm, deployment types, sizing 
+summary: Implementa AI Data Engine como una implementación de AIDE de un solo nodo en una Linux VM que el instalador configura automáticamente, o como una implementación de AIDE de varios nodos en un clúster de Kubernetes que tú proporcionas. 
 ---
 = Más información sobre la implementación de AI Data Engine
 :allow-uri-read: 
@@ -11,62 +11,91 @@ summary: Implementa AI Data Engine como AIDE Lite o como AIDE Enterprise si tu e
 
 
 [role="lead"]
-Implementa AI Data Engine como AIDE Lite, una instalación en una sola máquina virtual. Si tu entorno requiere alta disponibilidad a gran escala basada en Kubernetes, puedes implementar AIDE Enterprise en su lugar.
+Implementa AI Data Engine (AIDE) como una implementación de AIDE de un solo nodo, en la que el instalador configura todo en una única VM de Linux que tú proporcionas. Si tu entorno requiere alta disponibilidad basada en Kubernetes a gran escala, puedes implementar una implementación de AIDE de varios nodos en un clúster de Kubernetes que tú proporcionas.
 
 
 
-[[aide-lite]]
-== AIDE Lite
+[[aide-single-node-deployment]]
+== Implementación de AIDE en un único nodo
 
-AIDE Lite se instala en una única máquina virtual con Linux. No necesitas conocimientos de Kubernetes porque el instalador aprovisiona k3s automáticamente.
+Una implementación de AIDE de un solo nodo se instala en una única máquina virtual Linux que tú proporcionas. El instalador configura todo lo demás automáticamente, incluidos k3s, el entorno de ejecución de Kubernetes y las herramientas de apoyo y la configuración del host que requiere AI Data Engine. No necesitas instalar ni gestionar Kubernetes, ni necesitas tener experiencia en Kubernetes.
 
-AIDE Lite está disponible en tres tamaños — Small, Medium y Large — para entornos de hasta aproximadamente 200 millones, 1 billón y 3 billones de archivos, respectivamente. Para conocer el dimensionamiento completo de la VM y los requisitos del sistema operativo, consulta link:aide-requirements.html["Requisitos AIDE"]. Estos tamaños son valores de referencia recomendados, no límites estrictos; consulta link:aide-requirements.html#flexible-sizing-lite["directrices flexibles de dimensionamiento"] para saber qué factores determinan el dimensionamiento y cómo escalar aún más.
+La implementación de AIDE de un solo nodo está disponible en tres tamaños —pequeño, mediano y grande— para entornos de hasta aproximadamente 200 millones, 1.000 millones y 3.000 millones de archivos, respectivamente. Para conocer todos los requisitos de dimensionamiento de VM y del sistema operativo, consulta link:aide-requirements.html["Requisitos AIDE"]. Estos tamaños son valores de referencia recomendados, no límites estrictos; consulta link:aide-requirements.html#flexible-sizing-single-node["directrices flexibles de dimensionamiento"] para saber qué determina el dimensionamiento y qué hacer si superas un tamaño.
 
 
 
-[[aide-enterprise]]
-== AIDE Enterprise
+[[aide-multi-node-deployment]]
+== Implementación multinodo de AIDE
 
-Implementa AIDE Enterprise si tu entorno requiere alta disponibilidad, tolerancia a fallos, actualizaciones graduales o escalado horizontal más allá del tamaño máximo de AIDE Lite. AIDE Enterprise se implementa como un clúster de Kubernetes de varios nodos en un clúster RKE2 aprovisionado y gestionado por el cliente.
+Implementa una implementación de AIDE con varios nodos si tu entorno requiere alta disponibilidad, tolerancia a fallos, actualizaciones graduales o una capacidad superior al tamaño máximo de una implementación de un solo nodo. Una implementación de AIDE con varios nodos se despliega en un clúster de Kubernetes ya existente. Debes aportar tu propio clúster de Kubernetes (RKE2, OpenShift, o AKS). Tú aprovisionas y gestionas el clúster, y puede compartirse con otras cargas de trabajo o dedicarse exclusivamente a AI Data Engine. El instalador no crea ni gestiona el clúster. La máquina desde la que ejecutas el instalador es un host de gestión ligero y no ejecuta cargas de trabajo de AI Data Engine.
 
-AIDE Enterprise está disponible en tres tamaños: Small, Medium y Large, para entornos de hasta aproximadamente 1.000 millones, 3.000 millones y 6.000 millones de archivos, respectivamente. Para conocer los requisitos completos de dimensionamiento de nodos y clústeres, consulta link:aide-requirements.html["Requisitos AIDE"]. Estos tamaños son valores de referencia recomendados, no límites estrictos: los entornos que superan los 6.000 millones de archivos son compatibles mediante escalado horizontal. Consulta link:aide-requirements.html#flexible-sizing-enterprise["directrices flexibles de dimensionamiento"] para obtener más detalles.
+La implementación multinodo de AIDE está disponible en tres tamaños: pequeño, mediano y grande, para entornos de hasta aproximadamente 1.000 millones, 3.000 millones y 6.000 millones de archivos, respectivamente. Para conocer los requisitos completos de dimensionamiento de nodos y clústeres, consulta link:aide-requirements.html["Requisitos AIDE"]. Estos tamaños son valores de referencia recomendados, no límites estrictos: los entornos que superan los 6.000 millones de archivos requieren un dimensionamiento personalizado con NetApp. Consulta link:aide-requirements.html#flexible-sizing-multi-node["directrices flexibles de dimensionamiento"] para obtener más detalles.
 
+
+
+[[compare-deployment-types]]
+== Compara los tipos de implementación
+
+[cols="1h,2,2"]
+|===
+|  | Implementación de AIDE en un único nodo | Implementación multinodo de AIDE 
+
+
+| Tipo de despliegue | Una sola VM de Linux que proporcionas tú. El instalador configura k3s automáticamente. | Clúster de Kubernetes con varios nodos. Puedes utilizar tu propio clúster de RKE2, OpenShift o AKS. 
+
+
+| Nodos | Una máquina virtual Linux | Tres a nueve nodos (de pequeño a grande) 
+
+
+| Velocidad de escaneo | Entre 50 millones y 1.000 millones de archivos al día, dependiendo del tamaño | Entre 250 millones y 2.000 millones de archivos al día, dependiendo del tamaño 
+
+
+| Archivos aproximados (de pequeños a grandes) | 200 millones a 3 mil millones | De 1.000 millones a 6.000 millones 
+
+
+| Cómputo | De 16 a 96 vCPU, de 64 a 192 GB de RAM | De 32 a 64 vCPU, de 128 a 256 GB de RAM por nodo 
+
+
+| Almacenamiento | Almacenamiento en bloques SSD de 500 GB a 6 TB, de 8.000 a 16.000 IOPS, con un rendimiento de 1.000 a 2.000 MB/s | Capacidad total del clúster de 4 a 24 TB, de 8.000 a 16.000 IOPS por nodo, rendimiento de 1.000 a 2.000 MB/s por nodo 
+
+
+| Red | 1 GbE (se recomienda 10 GbE para Large) | De 1 a 10 GbE 
+
+
+| Alta disponibilidad | No compatible | Compatible en todos los nodos 
+
+
+| Cuándo elegirlo | Tienes un único sitio, quieres empezar rápido y no necesitas alta disponibilidad | La escala de producción o HA es un requisito 
+|===
 
 
 [[deployment-process]]
 == Proceso de implementación
 
+Puedes implementar AI Data Engine directamente desde NetApp Console. Ve a *AI data hub > AI Data Engine* e implementa AI Data Engine. Usa el asistente para elegir un tipo de implementación y, a continuación, ejecuta el comando de instalación en un entorno que cumpla con link:aide-requirements.html["Requisitos AIDE"].
 
-NOTE: AI Data Engine está disponible en vista previa privada en NetApp Console. Ponte en contacto con tu representante de NetApp para solicitar acceso y poder implementar AI Data Engine.
+NetApp Console no aprovisiona la infraestructura para AI Data Engine. Para una implementación de un solo nodo, preparas una VM de Linux y el instalador configura el resto. Para una implementación de varios nodos, preparas un clúster de Kubernetes. En ambos casos, la infraestructura debe cumplir los requisitos. Luego copias el comando de instalación pregenerado desde NetApp Console y lo ejecutas en el host de destino. El comando inicializa el entorno de ejecución e implementa automáticamente la pila de AI Data Engine.
 
-NetApp Console no aprovisiona la infraestructura para AI Data Engine. Preparas una máquina o clúster Linux que cumple los requisitos y, a continuación, copias el comando de instalación pregenerado de NetApp Console y lo ejecutas en el host de destino. El comando inicia el entorno de ejecución e implementa automáticamente la pila de AI Data Engine. Durante la instalación, el instalador te pedirá que confirmes la dirección IP del host de destino y el ID de usuario antes de que continúe la instalación.
+Las implementaciones de un solo nodo suelen completarse en un plazo de 45 minutos. Las implementaciones de varios nodos suelen completarse en un plazo de 30 minutos. El instalador incluye tiempos de espera y reintentos integrados para gestionar problemas puntuales que puedan surgir durante el inicio de los componentes.
 
-Las instalaciones de AIDE Lite suelen completarse en 45 minutos. Las instalaciones de AIDE Enterprise suelen completarse en 30 minutos. El instalador incluye tiempos de espera y reintentos integrados para gestionar problemas transitorios mientras se inician los componentes.
-
-
-
-[[deployment-mode-reference]]
-== Referencia sobre los modos de implementación
-
-[cols="1h,2,2"]
-|===
-|  | AIDE Lite | AIDE Enterprise 
+Para ver los pasos completos, consulta link:deploy-aide-single-node.html["Implementa AI Data Engine como un despliegue de un solo nodo"] y link:deploy-aide-multi-node.html["Desplegar AI Data Engine como una implementación de varios nodos"].
 
 
-| Modelo de implementación | Una VM de Linux | Clúster de Kubernetes multinodo (RKE2 aprovisionado por el cliente) 
 
+[[deployment-with-a-proxy]]
+== Implementación con un proxy
 
-| Velocidad de escaneo | De 50 millones a 1.000 millones de archivos al día, varía según el tamaño | Entre 250 millones y 2.000 millones de archivos al día, varía en función del tamaño 
+Si tu host o clúster solo accede a internet a través de un proxy de salida, implementa AI Data Engine con un proxy. Los pasos del proxy varían según el tipo de implementación, por lo que cada tipo tiene su propio tema completo que sustituye al tema de implementación estándar.
 
+Para consultar los pasos completos, visita link:configure-proxy.html["Más información sobre los proxies para AI Data Engine"] para conocer los tipos de proxy compatibles, y link:aide-requirements.html#outbound-internet-access["Acceso a Internet saliente"] para ver los puntos de conexión que debes permitir en tu proxy.
 
-| Archivos máx. (tamaño grande) | Aproximadamente 3 mil millones | Aproximadamente 6 mil millones 
-|===
 
 
 [[related-information]]
 == Información relacionada
 
 * link:aide-requirements.html["Requisitos AIDE"]
-* link:deploy-aide-lite.html["Implementa AI Data Engine — Lite"]
-* link:deploy-enterprise.html["Implementar AI Data Engine — Enterprise"]
+* link:single-node-prerequisites.html["Requisitos previos para la implementación de AIDE en un único nodo"]
+* link:multi-node-prerequisites.html["Requisitos previos para la implementación de AIDE en varios nodos"]
+* link:configure-proxy.html["Más información sobre los proxies para AI Data Engine"]
 

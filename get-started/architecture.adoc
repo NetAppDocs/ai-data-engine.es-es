@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: get-started/architecture.html 
-keywords: architecture, components, metadata engine, policy, deployment, data flow 
-summary: Descubre cuáles son los componentes de AI Data Engine y cómo funcionan juntos para catalogar los metadatos de tus sistemas de almacenamiento. 
+keywords: architecture, components, metadata engine, console agent, mcp, governed ai access, deployment, data flow 
+summary: Descubre cuáles son los componentes de AI Data Engine y cómo funcionan conjuntamente para catalogar metadatos de tus sistemas de almacenamiento y proporcionar acceso gobernado a los clientes de IA. 
 ---
 = Arquitectura de AI Data Engine
 :allow-uri-read: 
@@ -11,44 +11,57 @@ summary: Descubre cuáles son los componentes de AI Data Engine y cómo funciona
 
 
 [role="lead"]
-AI Data Engine (AIDE) se compone de Metadata Engine y un marco de políticas. Estas funciones trabajan juntas para extraer metadatos de tus sistemas de almacenamiento, catalogarlos en un índice con capacidad de búsqueda y permitirte definir consultas guardadas para identificar y actuar sobre los archivos que cumplan criterios específicos.
+AI Data Engine (AIDE) se ejecuta en la infraestructura que proporcionas. Metadata Engine analiza tu almacenamiento y crea un catálogo en el que se pueden realizar búsquedas. NetApp Console gestiona tu despliegue a través de un agente de Console. La opción de servidor Model Context Protocol (MCP) permite a los clientes de IA buscar en el catálogo dentro de los límites que estableces.
 
 
 
 [[components]]
 == Componentes
 
-Interactúas principalmente con AI Data Engine a través de cuatro áreas funcionales: el panel de control, la investigación, las políticas y la configuración. Estas áreas funcionales se basan en los siguientes componentes subyacentes.
+El panel, la investigación y las políticas de AI Data Engine en NetApp Console funcionan a partir del catálogo de metadatos. Los siguientes componentes crean el catálogo, lo conectan a NetApp Console y proporcionan acceso controlado para clientes de IA.
 
 
 
 [[metadata-engine]]
 === Metadata Engine
 
-Metadata Engine es la función principal de AI Data Engine. Analiza los sistemas de almacenamiento conectados para extraer los metadatos del sistema de archivos y almacena esos metadatos en un catálogo con función de búsqueda. Metadata Engine actualiza el catálogo en cada ciclo de análisis, detectando incorporaciones, cambios y eliminaciones en todos tus sistemas de almacenamiento.
+Metadata Engine es la función principal de AI Data Engine. Escanea las fuentes de datos que conectas, extrae metadatos y los almacena en un catálogo con capacidad de búsqueda. No lee ni clasifica el contenido de los archivos. Metadata Engine actualiza el catálogo en cada ciclo de análisis, detectando incorporaciones, cambios y eliminaciones en todos tus sistemas de almacenamiento.
 
 
 
 [[netapp-console-agent]]
-=== NetApp Console Agent
+=== Agente de NetApp Console
 
-AI Data Engine requiere un Console Agent de NetApp implementado en tu entorno. El Console Agent es un componente de la plataforma NetApp de uso general que mantiene la conectividad entre tu entorno local y NetApp Console. Gestiona la autenticación y la comunicación entre tu sitio y el servicio AIDE.
-
-
-NOTE: El Console Agent no es específico de AI Data Engine. Si ya tienes un Console Agent implementado para otros servicios de NetApp, puedes usar el mismo agente. Para obtener instrucciones sobre la implementación del Console Agent, consulta link:https://docs.netapp.com/us-en/console-setup-admin/concept-agents.html["Documentación de NetApp Console Agent"].
+AI Data Engine requiere un agente de NetApp Console implementado en tu entorno. El agente de Console es un componente de plataforma de uso general de NetApp que mantiene la conectividad entre tu entorno y NetApp Console. Gestiona la autenticación y la comunicación entre NetApp Console y tu implementación de AI Data Engine. Los servicios de análisis y catalogación se ejecutan en tu implementación de AI Data Engine, no en el agente de Console.
 
 
-
-[[deployment-models]]
-== Modelos de implementación
-
-AI Data Engine admite dos modelos de implementación:
-
-AIDE Lite:: Una implementación con una sola máquina virtual adecuada para entornos más pequeños. Disponible en configuraciones Small, Medium y Large en función del número de archivos que se vayan a catalogar.
-AIDE Enterprise:: Una implementación de clúster multinodo basada en Kubernetes para entornos más grandes que requieren alta disponibilidad.
+NOTE: El agente Console no es específico de AI Data Engine. Si ya tienes un agente Console implementado para otros servicios de NetApp, puedes usar el mismo agente. Para obtener instrucciones sobre la implementación del agente Console, consulta link:https://docs.netapp.com/us-en/console-setup-admin/concept-agents.html["Documentación del agente de NetApp Console"].
 
 
-AIDE Enterprise pasa de una configuración de tres nodos compatible con hasta aproximadamente mil millones de archivos y 250 millones de archivos al día a una configuración de nueve nodos compatible con hasta aproximadamente seis mil millones de archivos y dos mil millones de archivos al día. Consulta link:../deploy/aide-requirements.html["Requisitos AIDE"] para ver los detalles del dimensionamiento de nodos. Los nodos adicionales pueden ampliar la capacidad más allá de los seis mil millones de archivos. Consulta link:../deploy/aide-requirements.html#flexible-sizing-enterprise["directrices flexibles de dimensionamiento"] para ver los detalles del escalado horizontal.
+
+[[governed-access-gateway]]
+=== Governed Access Gateway
+
+Governed Access Gateway es el servidor MCP de AI Data Engine. Permite que los clientes de AI busquen en el catálogo de metadatos. La puerta de enlace se ejecuta en tu implementación de AI Data Engine, y los clientes de AI se conectan a ella a través de HTTPS desde tu red corporativa o mediante VPN. El agente de Console no retransmite el tráfico MCP.
+
+Microsoft Entra ID autentica a los usuarios, y la pasarela limita a cada cliente de IA a las colecciones que el usuario está autorizado a buscar. La pasarela solo admite la búsqueda y el etiquetado de metadatos, y solo los usuarios avanzados pueden etiquetar archivos. No recupera el contenido de los archivos.
+
+link:../mcp/learn-about-mcp.html["Más información sobre el acceso gobernado a la IA"].
+
+
+
+[[deployment-types]]
+== Tipos de despliegue
+
+AI Data Engine admite dos tipos de implementación. En ambos casos, los servicios de AI Data Engine se ejecutan en Kubernetes.
+
+Implementación de AIDE en un único nodo:: Se ejecuta en una única máquina virtual Linux que proporcionas. El instalador configura k3s y los componentes necesarios de forma automática. Una implementación de un solo nodo no ofrece alta disponibilidad ni escalabilidad horizontal.
+Implementación multinodo de AIDE:: Se ejecuta en un clúster de Kubernetes que tú mismo proporcionas y está pensado para entornos de mayor tamaño que requieren alta disponibilidad.
+
+
+Para conocer las plataformas compatibles, el dimensionamiento y los requisitos de infraestructura, consulta link:../deploy/aide-requirements.html["Requisitos AIDE"].
+
+Cada tipo de implementación también tiene un procedimiento independiente para entornos que solo acceden a internet a través de un proxy de salida. Consulta link:../deploy/configure-proxy.html["Más información sobre los proxies para AI Data Engine"].
 
 link:../deploy/deployment-overview.html["Más información sobre las opciones de implementación"].
 
@@ -57,17 +70,33 @@ link:../deploy/deployment-overview.html["Más información sobre las opciones de
 [[data-flow]]
 == Flujo de datos
 
-. AI Data Engine se implementa en tu entorno local.
-. Añades los sistemas de almacenamiento que quieres que AIDE catalogue en *Configuración > Sistemas*. Los sistemas compatibles incluyen NetApp ONTAP, StorageGRID, sistemas de bases de datos y cualquier sistema NAS o de almacenamiento de objetos que exponga los protocolos NFS, SMB/CIFS o S3.
-. Metadata Engine monta recursos compartidos mediante los protocolos NFS y SMB/CIFS y analiza los sistemas de archivos para extraer los metadatos de los archivos.
-. Los metadatos se indexan en el catálogo.
-. El panel de control muestra información sobre el almacenamiento extraída del catálogo.
-. La función «Investigación» te permite consultar el catálogo directamente con filtros de metadatos.
-. Puedes guardar los criterios de búsqueda como políticas y volver a ejecutarlas para identificar los archivos coincidentes y actuar sobre ellos.
+AI Data Engine utiliza dos vías independientes: una que crea el catálogo y lo pone a disposición de NetApp Console, y otra que da servicio a los clientes de IA.
 
 
 
-NOTE: Una vez que Metadata Engine termina de analizar todos los volúmenes configurados, inicia inmediatamente una nueva ronda de análisis, en la que vuelve a analizar los sistemas de archivos para detectar adiciones, cambios y eliminaciones.
+[[metadata-scanning-and-netapp-console-access]]
+=== Escaneo de metadatos y acceso a NetApp Console
+
+. Implementas AI Data Engine en la infraestructura que gestionas y lo conectas a un agente de NetApp Console.
+. Debes conectar las fuentes de datos que quieres que AI Data Engine catalogue en *Fuentes de datos*. Para obtener más información, consulta link:../data-sources/connect-data-source.html["Conecta una fuente de datos"].
+. Metadata Engine analiza las fuentes de datos para extraer metadatos y los indexa en el catálogo.
+. En NetApp Console, el panel de control muestra información sobre el almacenamiento del catálogo, e Investigation te permite consultar directamente el catálogo con filtros de metadatos.
+. Puedes guardar los criterios de búsqueda como políticas y volver a ejecutarlos para identificar los archivos que coincidan, y puedes realizar acciones sobre los archivos desde Investigation.
+
+
+
+NOTE: El catálogo refleja los metadatos recopilados durante el escaneo. Los cambios en los archivos de origen aparecen en el catálogo una vez que se vuelven a escanear los archivos y directorios afectados y se indexan los resultados.
+
+
+
+[[governed-ai-access]]
+=== Acceso a la IA con gobernanza
+
+. Configuras Microsoft Entra ID, habilitas las colecciones para el acceso mediante IA y eliges qué usuarios pueden buscar en cada colección.
+. Un usuario conecta un cliente de IA al endpoint HTTPS de Governed Access Gateway e inicia sesión con Microsoft Entra ID.
+. La pasarela verifica el acceso del usuario y transmite las solicitudes autorizadas al Metadata Engine.
+. El cliente de IA busca en los metadatos de las colecciones a las que el usuario tiene acceso y sobre las que puede realizar acciones.
+
 
 
 
@@ -76,4 +105,5 @@ NOTE: Una vez que Metadata Engine termina de analizar todos los volúmenes confi
 
 * link:learn-about.html["Conoce AI Data Engine"]
 * link:../deploy/deployment-overview.html["Más información sobre la implementación de AIDE"]
+* link:../mcp/learn-about-mcp.html["Más información sobre el acceso controlado a la IA"]
 
