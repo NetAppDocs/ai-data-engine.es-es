@@ -433,7 +433,6 @@
   <block id="c0227cef6f07a8cd2ac72f2945b031aa" category="section-title">Código abierto</block>
   <block id="9b73989307c1975dfa4d5e1581e4afe8" category="paragraph">Los archivos de aviso proporcionan información sobre los derechos de autor y las licencias de terceros utilizadas en el software NetApp.</block>
   <block id="93d6496a69f6384320dab15ccadbc4e8" category="inline-link-macro">Aviso para AI Data Engine</block>
-  <block id="7ab36480d3c1a530e02ac892b3191e4a" category="paragraph"><block ref="7ab36480d3c1a530e02ac892b3191e4a" category="inline-link-macro-rx"></block></block>
   <block id="e7dc26f23cfcebf955f51e9ec20046b1" category="summary">Guarda los criterios de filtrado de la investigación como una política con nombre para que puedas realizar un seguimiento de la misma agrupación de datos a lo largo del tiempo y recibir notificaciones cuando cambien las condiciones.</block>
   <block id="0e276db5651852f12c3a3c7be8b2939e" category="doc">Crear una política en AI Data Engine</block>
   <block id="ede0a89e2e37ef9e8c3495af56db91eb" category="paragraph">Crea una política cuando quieras supervisar una condición de datos recurrente sin repetir manualmente la misma investigación. Por ejemplo, un responsable de gobernanza de datos puede guardar una política de «archivos grandes obsoletos» para hacer un seguimiento de esa agrupación a lo largo de los ciclos de análisis y recibir una actualización por correo electrónico cuando cambie el número de archivos afectados.</block>
@@ -2452,4 +2451,5 @@
   <block id="1f2989a2e9ce42f8b0db48acd9ed2e4e" category="sidebar">Implementar AIDE como una implementación multinodo con un proxy</block>
   <block id="d76d64858ff00ec6f65866ed6c6641f4" category="sidebar">Conectar AIDE a Microsoft Entra ID</block>
   <block id="156586dd7dceda9f103091b3c0beb1e6" category="sidebar">Herramientas de AIDE MCP</block>
+  <block id="7da93123cf77bf1f1d116b04b8d380c2" category="paragraph"><block ref="7da93123cf77bf1f1d116b04b8d380c2" category="inline-link-macro-rx"></block></block>
 </blocks>
