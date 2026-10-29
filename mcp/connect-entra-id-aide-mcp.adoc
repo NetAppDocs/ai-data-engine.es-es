@@ -127,6 +127,5 @@ link:manage-data-collections.html["Gestionar recopilaciones de datos"] y link:co
 * link:configure-entra-id-mcp.html["Configurar Microsoft Entra ID para el acceso controlado a la IA"]
 * link:manage-data-collections.html["Gestionar recopilaciones de datos"]
 * link:connect-ai-clients-mcp.html["Conecta los clientes de IA al servidor MCP de AI Data Engine"]
-* link:maintain-mcp-setup.html["Mantén tu configuración de MCP"]
 * link:../release-notes/known-limitations.html["Limitaciones conocidas"]
 

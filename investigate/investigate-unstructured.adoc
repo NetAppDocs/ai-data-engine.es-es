@@ -107,6 +107,6 @@ Para descargar los resultados filtrados de la pestaña «Sin estructurar», sele
 * link:take-actions.html["Actúa sobre tus datos"]
 * link:../policies/create-policy.html["Crear una política"]
 * link:../administer/configure-settings.html["Configurar los umbrales de clasificación de datos y el análisis de acceso"]
-* link:../get-started/storage-optimization-workflows.html["Explora los flujos de trabajo de optimización del almacenamiento"]
+* link:storage-optimization-workflows.html["Explora los flujos de trabajo de optimización del almacenamiento"]
 * link:understand-dashboard.html["Evalúa el uso del almacenamiento desde el panel de control"]
 

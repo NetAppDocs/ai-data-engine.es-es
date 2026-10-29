@@ -471,6 +471,4 @@ Para encontrar la versión activa de AI Data Engine y la información de contact
 * link:deployment-overview.html["Resumen del despliegue de AIDE"]
 * link:single-node-prerequisites.html["Requisitos previos para la implementación de AIDE en un único nodo"]
 * link:multi-node-prerequisites.html["Requisitos previos para la implementación de AIDE en varios nodos"]
-* link:deploy-aide-single-node.html["Implementa AI Data Engine como un despliegue de un solo nodo"]
-* link:deploy-aide-multi-node.html["Desplegar AI Data Engine como una implementación de varios nodos"]
 

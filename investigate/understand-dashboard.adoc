@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: investigate/understand-dashboard.html 
-keywords: dashboard, overview, reclaimable storage, cold data, stale data, storage health, capacity risk, data owners, investigate, access exposure, open permissions, structured data, duplicates, file types 
+keywords: dashboard, overview, reclaimable storage, cold data, stale data, storage health, capacity risk, data owners, investigate, permissions, open permissions, structured data, duplicates, file types 
 summary: Evalúa el estado del almacenamiento en todo tu entorno, identifica dónde se concentra el almacenamiento que podría recuperarse, revisa los directorios con permisos abiertos y datos estructurados, y decide qué sistemas o propietarios de los datos debes investigar en primer lugar. 
 ---
 = Evalúa el estado del almacenamiento con el panel de AI Data Engine
@@ -13,7 +13,9 @@ summary: Evalúa el estado del almacenamiento en todo tu entorno, identifica dó
 [role="lead"]
 Antes de decidir qué analizar, debes conocer el estado de tu almacenamiento. ¿Qué volumen de almacenamiento cumple los umbrales de clasificación de datos inactivos y obsoletos de tu organización, y qué sistemas o responsables albergan la mayor cantidad de datos en estas categorías? Por ejemplo, un administrador de almacenamiento que responde a una alerta de capacidad puede ver que una gran parte del almacenamiento analizado corresponde a datos inactivos y, a continuación, profundizar en el sistema de mayor impacto para empezar a investigar de inmediato.
 
-En NetApp Console, selecciona *AI data hub* > *AI Data Engine*. El panel se abre de forma predeterminada. El panel organiza la información en tres pestañas: *Storage optimization*, *Access exposure* y *Structured data*.
+Desde NetApp Console, selecciona *AI data hub* > *AI Data Engine*. El panel se abre de forma predeterminada. El panel organiza la información en tres pestañas: *optimización del almacenamiento*, *Permisos* y *Datos estructurados*.
+
+image::aide_mo_ga_overview_page.png[Descripción general del panel de control de AI Data Engine]
 
 
 
@@ -58,10 +60,10 @@ Utiliza el panel de resumen y estos gráficos para identificar y priorizar las o
 
 
 
-[[review-access-exposure]]
-== Revisa la exposición del acceso
+[[review-permissions]]
+== Revisa los permisos
 
-Encuentra los directorios que debes priorizar para revisar los permisos. La pestaña *Exposición de acceso* muestra el gráfico _Directorios con permisos abiertos_, que enumera las rutas de los directorios y el número de archivos que contienen. Para ver estos directorios en detalle, consulta link:investigate-directories.html["Investigar directorios"]. Para controlar si AI Data Engine analiza los permisos, consulta link:../administer/configure-settings.html["Configurar los umbrales de clasificación de datos y el análisis de acceso"].
+Identifica los directorios que debes priorizar para revisar los permisos. La pestaña *Permisos* muestra el gráfico «_Directorios con permisos abiertos_», que enumera las rutas de directorio y el número de archivos de cada uno. Para ver estos directorios en detalle, consulta link:investigate-directories.html["Investigar directorios"]. Para controlar si AI Data Engine analiza los permisos, consulta link:../administer/configure-settings.html["Configurar los umbrales de clasificación de datos y el análisis de acceso"].
 
 
 
@@ -77,9 +79,9 @@ Comprueba qué esquemas y tablas hay en tus datos escaneados y compara el númer
 
 Cuando hayas identificado un recurso o un propietario que merezca la pena investigar, utiliza las tablas de la pestaña *Optimización del almacenamiento* para acceder directamente a los detalles.
 
-La tabla _Top data resources by reclaimable storage_ muestra tus recursos de almacenamiento analizados, clasificados por la proporción de datos duplicados o que cumplen los umbrales de datos inactivos y obsoletos de tu organización. Selecciona cualquier fila para abrir la vista Investigation filtrada para ese recurso. Desde ahí, usa la pestaña link:investigate-unstructured.html["No estructurado"] para identificar archivos inactivos u obsoletos, o la pestaña link:investigate-directories.html["Directorios"] para auditar la exposición de permisos.
+La tabla _Principales recursos de datos por almacenamiento recuperable_ muestra tus recursos de almacenamiento analizados, ordenados según la proporción de datos duplicados o que cumplen los umbrales de datos fríos y obsoletos de tu organización. Utiliza la pestaña link:investigate-unstructured.html["No estructurado"] para identificar archivos fríos u obsoletos, o la pestaña link:investigate-directories.html["Directorios"] para auditar la exposición de permisos.
 
-La tabla _Principales consumidores por almacenamiento recuperable_ muestra qué propietarios de datos tienen datos potencialmente recuperables. Selecciona cualquier fila para abrir la vista link:investigate-unstructured.html["Investigación"] filtrada según los archivos de ese propietario. Desde allí, puedes revisar los resultados, actuar en consecuencia o guardarlos como una política.
+La tabla «_Principales consumidores por almacenamiento recuperable_» muestra qué propietarios de datos tienen datos potencialmente recuperables. Selecciona *Investigate* para abrir la vista link:investigate-unstructured.html["Investigación"] filtrada para mostrar los archivos de ese propietario. Desde allí, puedes revisar los resultados, actuar sobre ellos o guardarlos como una política.
 
 Revisar el panel de control no archiva ni elimina datos ni cambia los permisos de los directorios.
 

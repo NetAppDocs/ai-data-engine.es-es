@@ -11,14 +11,14 @@ summary: Conecta las fuentes de datos a AI Data Engine y configura los recursos 
 
 
 [role="lead"]
-Conecta las fuentes de datos que quieras que AI Data Engine (AIDE) analice y elige cuáles de sus recursos de datos quieres analizar. AI Data Engine analiza las fuentes de datos conectadas para recopilar metadatos y el procedimiento de conexión depende del tipo de fuente.
+Conecta las fuentes de datos que quieres que AI Data Engine (AIDE) analice y elige cuáles de sus recursos de datos quieres escanear. AI Data Engine analiza las fuentes de datos conectadas para recopilar metadatos, y el procedimiento de conexión depende del tipo de fuente. Realiza estas tareas en NetApp Console.
 
 
 
 [[before-you-begin]]
 == Antes de empezar
 
-* Debes disponer de privilegios de _administrador de AI Data Engine_ para conectarte y configurar fuentes de datos.
+* Debes tener el rol de _administrador de AI Data Engine_ en NetApp Console para conectarte y configurar fuentes de datos.
 * Para los sistemas conectados mediante la detección de NetApp Console, usa un agente de Console para detectar los sistemas de almacenamiento en NetApp Console antes de añadirlos a AI Data Engine. Esto se aplica a todos los tipos de almacenamiento compatibles, incluidos los clústeres ONTAP locales, Cloud Volumes ONTAP, Amazon FSx for NetApp ONTAP, Google Cloud NetApp Volumes y Azure NetApp Files. Para los clústeres ONTAP locales, consulta link:https://docs.netapp.com/us-en/storage-management-ontap-onprem/task-discovering-ontap.html["Descubre los clústeres ONTAP locales"] en la documentación de NetApp Console. La detección directa no habilita servicios de datos como AI Data Engine.
 * Comprueba que las conexiones de red necesarias para que AI Data Engine pueda acceder a tus fuentes de datos estén abiertas. Consulta link:../deploy/aide-requirements.html["Requisitos de AI Data Engine"].
 * Para escanear recursos compartidos SMB/CIFS con autenticación Kerberos, sigue primero el procedimiento correspondiente a tu tipo de implementación en link:../administer/configure-kerberos-smb.html["Autenticación Kerberos para recursos compartidos SMB/CIFS en AI Data Engine"].

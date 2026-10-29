@@ -15,7 +15,7 @@ Pon en marcha AI Data Engine (AIDE) implementando el servicio, conectando tus fu
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"] link:../deploy/aide-requirements.html["Revisa los requisitos y selecciona un tipo de implementación"]
 [role="quick-margin-para"]
-Revisa los requisitos y consulta link:../deploy/deployment-overview.html["conoce los tipos de implementación"] para decidir si instalar una implementación de AIDE de un solo nodo o de varios nodos.
+Consulta los requisitos y link:../deploy/deployment-overview.html["conoce los tipos de implementación"] para decidir si deseas instalar una implementación de AIDE de un solo nodo o de varios nodos.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dos"] link:../deploy/deployment-overview.html["Implementar AI Data Engine"]
 [role="quick-margin-para"]

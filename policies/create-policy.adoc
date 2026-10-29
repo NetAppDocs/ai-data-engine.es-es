@@ -57,7 +57,7 @@ Revisa la tabla de resultados para confirmar que el conjunto de filtros captura 
 . Para adjuntar una acción, selecciona una de las siguientes opciones en *Action*:
 +
 ** *Solo supervisión (sin acción)* (por defecto): guarda la política como una condición de solo supervisión.
-** *Enviar notificación por correo electrónico*: envía una notificación por correo electrónico al destinatario que indiques.
+** *Enviar notificación por correo electrónico*: envía una notificación por correo electrónico a los destinatarios que indiques y te permite configurar los intervalos de notificación.
 ** *Eliminar definitivamente*: no requiere ninguna acción adicional.
 +
 
@@ -65,7 +65,7 @@ CAUTION: La acción «Eliminar definitivamente» elimina de forma automática e 
 
 
 
-. Selecciona *Crear*.
+. Selecciona *Guardar*.
 
 
 .Resultado
@@ -85,8 +85,8 @@ En el siguiente ejemplo se crea una política que envía una notificación por c
 
 . Selecciona *Crear política*.
 . Introduce el nombre de la política: *Cold Files — Unaccessed 1 Year*.
-. Selecciona la acción *Enviar notificación por correo electrónico* e introduce la dirección de correo electrónico del destinatario.
-. Selecciona *Crear*.
+. Selecciona la acción *Enviar notificación por correo electrónico*, elige el intervalo de notificación e introduce la dirección de correo electrónico del destinatario.
+. Selecciona *Guardar*.
 
 
 

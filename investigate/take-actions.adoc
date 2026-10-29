@@ -14,7 +14,7 @@ summary: Actúa sobre los archivos que hayas identificado como inactivos, desact
 En AI Data Engine (AIDE), puedes aplicar las políticas de ciclo de vida de los datos de tu organización archivando, copiando, etiquetando o eliminando los archivos que hayas identificado con tus filtros. Por ejemplo, un administrador de almacenamiento que aplique un filtro para encontrar terabytes de snapshots de VM sin acceder en más de un año puede archivarlas de forma masiva en un recurso compartido de almacenamiento en frío o eliminarlas, en función de los requisitos de retención y las políticas de la empresa.
 
 .Acerca de esta tarea
-Para realizar una acción, selecciona uno o varios elementos de la tabla «Resultados de la investigación» mediante las casillas de selección. La barra de herramientas de acciones se activa con cuatro opciones: *eliminar*, *archivar*, *copiar* y *etiquetar*. Para eliminar copias duplicadas de un archivo, utiliza *Limpiar duplicados*. Consulta <<Investiga y limpia los archivos duplicados>>.
+Para realizar una acción, selecciona uno o varios elementos de la tabla «Resultados de la investigación» mediante las casillas de selección. La barra de herramientas de acciones se activa con cuatro opciones: *eliminar*, *copiar*, *archivar* y *etiquetar*. Para eliminar las copias duplicadas de un archivo, utiliza *Limpiar duplicados*. Consulta <<Investiga y limpia los archivos duplicados>>.
 
 Las acciones disponibles para ti dependen del rol que tengas asignado:
 
@@ -23,16 +23,16 @@ Las acciones disponibles para ti dependen del rol que tengas asignado:
 | Acción | Administrador de AI Data Engine | Visor de AI Data Engine 
 
 
-| Etiqueta | Sí | Sí 
-
-
-| Archivo | Sí | - 
+| Borrar | Sí | - 
 
 
 | Copiar | Sí | - 
 
 
-| Borrar | Sí | - 
+| Archivo | Sí | - 
+
+
+| Etiqueta | Sí | Sí 
 
 
 | Eliminar duplicados | Sí | - 
@@ -51,16 +51,16 @@ Elige una acción en función del grado de certeza que tengas sobre los datos:
 | Acción | Cuándo utilizarlo 
 
 
-| Etiqueta | Necesitas más tiempo o tienes que coordinarte con otro equipo antes de decidir si archivar o eliminar. El etiquetado permite realizar un seguimiento de los archivos sin modificar su ubicación. 
-
-
-| Archivo | Es posible que los datos sigan teniendo valor, pero no deben almacenarse en el almacenamiento primario. El archivado los traslada a un destino más económico, al tiempo que mantiene su capacidad de recuperación. 
+| Borrar | Los datos ya no son necesarios y no están sujetos a ningún requisito de conservación. La eliminación es permanente, así que úsala solo cuando estés seguro. 
 
 
 | Copiar | Los datos deberían existir en una segunda ubicación, por ejemplo para fines de copia de seguridad o migración. Al copiar, el original se conserva en su lugar. Puedes copiar a una carpeta NFS o SMB, crear un volumen FlexClone filtrado o transferir elementos con NetApp Copy and Sync. 
 
 
-| Borrar | Los datos ya no son necesarios y no están sujetos a ningún requisito de conservación. La eliminación es permanente, así que úsala solo cuando estés seguro. 
+| Archivo | Es posible que los datos sigan teniendo valor, pero no deben almacenarse en el almacenamiento primario. El archivado los traslada a un destino más económico, al tiempo que mantiene su capacidad de recuperación. 
+
+
+| Etiqueta | Necesitas más tiempo o tienes que coordinarte con otro equipo antes de decidir si archivar o eliminar. El etiquetado permite realizar un seguimiento de los archivos sin modificar su ubicación. 
 
 
 | Eliminar duplicados | Existen copias idénticas de un archivo en más de una ubicación y solo quieres conservar una. Puedes etiquetar, archivar o eliminar las copias redundantes, conservando solo una. Eliminar duplicados es definitivo. Consulta <<Investiga y limpia los archivos duplicados>>. 
@@ -69,36 +69,100 @@ Cuando los datos aún puedan tener valor o requieran una revisión más detallad
 
 
 
-[[archive-files]]
-== Archivar archivos
+[[delete-files]]
+== Eliminar archivos
 
-Mueve los archivos que no deben estar en el almacenamiento primario a un destino de almacenamiento en frío sin dejar de poder recuperarlos. Si lo deseas, puedes dejar un archivo de referencia en la ubicación original para que los usuarios sepan por qué se movió un archivo.
-
-
-CAUTION: Copiar o archivar archivos puede cambiar los permisos de destino, la propiedad, la información del grupo y las marcas de tiempo. Las transferencias entre protocolos pueden ampliar considerablemente el acceso. Revisa la configuración de seguridad del destino antes de transferir datos confidenciales y comprueba los permisos después.
+Elimina definitivamente los archivos que ya no necesites y que no estén sujetos a ningún requisito de conservación.
 
 
-NOTE: Las credenciales que facilites para un destino SMB son independientes de la integración con Active Directory. Para visualizar los nombres de usuario y los permisos en AI Data Engine, consulta link:../administer/configure-settings.html["Configurar los umbrales de clasificación de datos y el análisis de acceso"].
+CAUTION: La eliminación es definitiva y no se puede deshacer. Esta acción elimina los archivos de origen incluso si contienen datos activos.
 
 .Antes de empezar
 * Debes tener el rol de _administrador de AI Data Engine_.
 
 
 .Pasos
-. En la vista «Investigación», selecciona los archivos que quieras archivar.
-. Selecciona *Archive*.
-. En el cuadro de diálogo «Archivo», selecciona el protocolo del volumen de destino:
+. En la vista «Investigation», selecciona los archivos que quieras eliminar.
+. Selecciona *Borrar*.
+. En el cuadro de diálogo «Eliminar», escribe *eliminar definitivamente* en el campo de confirmación.
+. Selecciona *Borrar*.
+
+
+.Resultado
+Los archivos seleccionados se eliminan definitivamente del almacenamiento.
+
+
+
+[[investigate-and-clean-up-duplicate-files]]
+== Investiga y limpia los archivos duplicados
+
+Busca copias duplicadas de un archivo y elimina las redundantes. Revisa los metadatos y las ubicaciones de las copias, y marca los duplicados para revisarlos, archivarlos o eliminarlos definitivamente, conservando solo una copia.
+
+.Antes de empezar
+* Debes tener el rol de _administrador de AI Data Engine_.
+
+
+.Pasos
+. Selecciona *Investigación* > *No estructurada*.
 +
-** Para *NFS*, introduce la ruta de la carpeta de destino en el formato `hostname:/path/to/destination`.
-** Para *SMB*, introduce la ruta de la carpeta de destino SMB con el formato `\\Hostname\share_name`. Selecciona el método de autenticación. Para Kerberos, utiliza el FQDN del host y deja las credenciales en blanco. Consulta link:../administer/configure-kerberos-smb.html["Autenticación Kerberos para recursos compartidos SMB/CIFS en AI Data Engine"]. Para otros métodos, introduce las credenciales de Active Directory: escribe el nombre de usuario en formato `domain\user` o `user@domain` y escribe la contraseña.
+La tabla muestra los nombres de los archivos, sus tamaños, sus propietarios, los sistemas y las etiquetas.
 
-
-. Para crear un archivo de ruta de navegación en la ubicación original, activa *Leave breadcrumb*.
+. Opcional: selecciona *Add filter* para reducir la lista de archivos.
+. Selecciona el nombre de un archivo para abrir sus detalles.
 +
-Un archivo de historial de navegación ayuda a los usuarios a entender por qué se movió un archivo.
+Revisa el sistema del archivo, el repositorio de almacenamiento, la ruta, el tamaño, las marcas de tiempo, el acceso y el propietario. El campo *Duplicates* muestra el número de copias duplicadas.
 
-. Selecciona *Archivo de archivado*.
+. Junto a *Duplicados*, selecciona *Ver detalles*.
++
+La vista Investigación aplica un filtro *Duplicados* que incluye archivos con duplicados y un filtro *Hash de archivo* que coincide con el archivo seleccionado.
 
+. Revisa los archivos correspondientes y su ubicación.
+. Selecciona los archivos que quieras eliminar.
++
+Comprueba el número de *elementos seleccionados*.
+
+. Selecciona *Eliminar duplicados*.
+. Revisa el número estimado de archivos que coinciden con los filtros actuales y que tienen copias duplicadas.
++
+
+NOTE: El recuento es una estimación. Los duplicados exactos se vuelven a calcular cuando se ejecuta la acción, y solo afecta a los archivos confirmados como idénticos.
+
+. Decide cómo gestionar los duplicados:
++
+** Marca los duplicados para revisarlos:
++
+... En *Acción*, selecciona *Etiqueta*.
+... Selecciona *Add* y luego elige la etiqueta que quieras aplicar. Repite el proceso para añadir más etiquetas.
+... Selecciona *Submit*.
+
+
+** Archiva los duplicados en un volumen de destino:
++
+... En *Acción*, selecciona *Archivar*.
+... En *la ubicación original*, selecciona *Eliminar por completo* o *Dejar un rastro*.
+... Selecciona el protocolo del volumen de destino. Para *NFS*, introduce la ruta de la carpeta de destino con el formato `Hostname:/SHAREPATH`. Para *SMB*, introduce la ruta de la carpeta de destino y, a continuación, selecciona la autenticación *Kerberos* o *NTLM*. Para NTLM, introduce tu nombre de usuario y contraseña de Active Directory.
+... Selecciona *Submit*.
+
+
+** Elimina los duplicados y conserva una copia:
++
+
+CAUTION: La eliminación es definitiva y no se puede deshacer.
+
++
+... En *Acción*, selecciona *Eliminar*.
+... En *Guardar copia con el*, selecciona *Último acceso*, *Última modificación* o *Creado*.
+... En *la ubicación original*, selecciona *Eliminar por completo* o *Dejar un rastro*.
+... Selecciona *Submit*.
+... En el cuadro de diálogo *Eliminar las copias duplicadas*, comprueba el número de archivos que se van a eliminar y la información sobre cómo conservar una copia.
+... Introduce `permanently delete`, y luego selecciona *Eliminar*.
+
+
+
+
+
+
+Para salir sin enviar una acción, selecciona *Cancel*.
 
 
 
@@ -197,101 +261,36 @@ Comprueba que todos los elementos seleccionados pertenezcan al mismo repositorio
 
 
 
-[[delete-files]]
-== Eliminar archivos
+[[archive-files]]
+== Archivar archivos
 
-Elimina definitivamente los archivos que ya no necesites y que no estén sujetos a ningún requisito de conservación.
-
-
-CAUTION: La eliminación es definitiva y no se puede deshacer. Esta acción elimina los archivos de origen incluso si contienen datos activos.
-
-.Antes de empezar
-* Debes tener el rol de _administrador de AI Data Engine_.
+Mueve los archivos que no deben estar en el almacenamiento primario a un destino de almacenamiento en frío sin dejar de poder recuperarlos. Si lo deseas, puedes dejar un archivo de referencia en la ubicación original para que los usuarios sepan por qué se movió un archivo.
 
 
-.Pasos
-. En la vista «Investigation», selecciona los archivos que quieras eliminar.
-. Selecciona *Borrar*.
-. En el cuadro de diálogo «Eliminar», escribe *eliminar definitivamente* en el campo de confirmación.
-. Selecciona *Borrar*.
+CAUTION: Copiar o archivar archivos puede cambiar los permisos de destino, la propiedad, la información del grupo y las marcas de tiempo. Las transferencias entre protocolos pueden ampliar considerablemente el acceso. Revisa la configuración de seguridad del destino antes de transferir datos confidenciales y comprueba los permisos después.
 
 
-.Resultado
-Los archivos seleccionados se eliminan definitivamente del almacenamiento.
-
-
-
-[[investigate-and-clean-up-duplicate-files]]
-== Investiga y limpia los archivos duplicados
-
-Busca copias duplicadas de un archivo y elimina las redundantes. Revisa los metadatos y las ubicaciones de las copias, y marca los duplicados para revisarlos, archivarlos o eliminarlos definitivamente, conservando solo una copia.
+NOTE: Las credenciales que facilites para un destino SMB son independientes de la integración con Active Directory. Para visualizar los nombres de usuario y los permisos en AI Data Engine, consulta link:../administer/configure-settings.html["Configurar los umbrales de clasificación de datos y el análisis de acceso"].
 
 .Antes de empezar
 * Debes tener el rol de _administrador de AI Data Engine_.
 
 
 .Pasos
-. En NetApp Console, ve a *AI data hub* > *AI Data Engine*.
-. Selecciona *Investigación* > *No estructurada*.
+. En la vista «Investigación», selecciona los archivos que quieras archivar.
+. Selecciona *Archive*.
+. En el cuadro de diálogo «Archivo», selecciona el protocolo del volumen de destino:
 +
-La tabla muestra los nombres de los archivos, sus tamaños, sus propietarios, los sistemas y las etiquetas.
+** Para *NFS*, introduce la ruta de la carpeta de destino en el formato `hostname:/path/to/destination`.
+** Para *SMB*, introduce la ruta de la carpeta de destino SMB con el formato `\\Hostname\share_name`. Selecciona el método de autenticación. Para Kerberos, utiliza el FQDN del host y deja las credenciales en blanco. Consulta link:../administer/configure-kerberos-smb.html["Autenticación Kerberos para recursos compartidos SMB/CIFS en AI Data Engine"]. Para otros métodos, introduce las credenciales de Active Directory: escribe el nombre de usuario en formato `domain\user` o `user@domain` y escribe la contraseña.
 
-. Opcional: selecciona *Add filter* para reducir la lista de archivos.
-. Selecciona el nombre de un archivo para abrir sus detalles.
+
+. Para crear un archivo de ruta de navegación en la ubicación original, activa *Leave breadcrumb*.
 +
-Revisa el sistema del archivo, el repositorio de almacenamiento, la ruta, el tamaño, las marcas de tiempo, el acceso y el propietario. El campo *Duplicates* muestra el número de copias duplicadas.
+Un archivo de historial de navegación ayuda a los usuarios a entender por qué se movió un archivo.
 
-. Junto a *Duplicados*, selecciona *Ver detalles*.
-+
-La vista Investigación aplica un filtro *Duplicados* que incluye archivos con duplicados y un filtro *Hash de archivo* que coincide con el archivo seleccionado.
+. Selecciona *Archivo de archivado*.
 
-. Revisa los archivos correspondientes y su ubicación.
-. Selecciona los archivos que quieras eliminar.
-+
-Comprueba el número de *elementos seleccionados*.
-
-. Selecciona *Eliminar duplicados*.
-. Revisa el número estimado de archivos que coinciden con los filtros actuales y que tienen copias duplicadas.
-+
-
-NOTE: El recuento es una estimación. Los duplicados exactos se vuelven a calcular cuando se ejecuta la acción, y solo afecta a los archivos confirmados como idénticos.
-
-. Decide cómo gestionar los duplicados:
-+
-** Marca los duplicados para revisarlos:
-+
-... En *Acción*, selecciona *Etiqueta*.
-... Selecciona *Add* y luego elige la etiqueta que quieras aplicar. Repite el proceso para añadir más etiquetas.
-... Selecciona *Submit*.
-
-
-** Archiva los duplicados en un volumen de destino:
-+
-... En *Acción*, selecciona *Archivar*.
-... En *la ubicación original*, selecciona *Eliminar por completo* o *Dejar un rastro*.
-... Selecciona el protocolo del volumen de destino. Para *NFS*, introduce la ruta de la carpeta de destino con el formato `Hostname:/SHAREPATH`. Para *SMB*, introduce la ruta de la carpeta de destino y, a continuación, selecciona la autenticación *Kerberos* o *NTLM*. Para NTLM, introduce tu nombre de usuario y contraseña de Active Directory.
-... Selecciona *Submit*.
-
-
-** Elimina los duplicados y conserva una copia:
-+
-
-CAUTION: La eliminación es definitiva y no se puede deshacer.
-
-+
-... En *Acción*, selecciona *Eliminar*.
-... En *Guardar copia con el*, selecciona *Último acceso*, *Última modificación* o *Creado*.
-... En *la ubicación original*, selecciona *Eliminar por completo* o *Dejar un rastro*.
-... Selecciona *Submit*.
-... En el cuadro de diálogo *Eliminar las copias duplicadas*, comprueba el número de archivos que se van a eliminar y la información sobre cómo conservar una copia.
-... Introduce `permanently delete`, y luego selecciona *Eliminar*.
-
-
-
-
-
-
-Para salir sin enviar una acción, selecciona *Cancel*.
 
 
 

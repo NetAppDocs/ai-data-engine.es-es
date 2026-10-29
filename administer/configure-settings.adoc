@@ -13,6 +13,8 @@ summary: Define qué archivos clasifica AI Data Engine como datos inactivos u ob
 [role="lead"]
 Los umbrales de datos fríos y obsoletos te ayudan a identificar el almacenamiento que puedes optimizar mediante AI Data Engine (AIDE). El análisis de permisos y la integración con Active Directory te ayudan a detectar y comprender los riesgos de acceso. Configúralos para que se ajusten a las políticas de clasificación, retención y acceso de datos de tu organización.
 
+image::aide_mo_ga_configuration_page.png[Configuración general de AI Data Engine]
+
 
 
 [[before-you-begin]]
@@ -102,8 +104,7 @@ Para conocer los requisitos previos y los pasos a seguir, consulta link:configur
 * link:../investigate/understand-dashboard.html["Descubre el panel de control de AI Data Engine"]
 * link:../investigate/investigate-directories.html["Investigar directorios"]
 * link:../investigate/investigate-unstructured.html["Analiza datos no estructurados"]
-* link:../get-started/storage-optimization-workflows.html["Explora los flujos de trabajo de optimización del almacenamiento"]
-* link:../deploy/aide-requirements.html["Requisitos AIDE"]
+* link:../investigate/storage-optimization-workflows.html["Explora los flujos de trabajo de optimización del almacenamiento"]
 * link:manage-users-roles.html["Gestionar usuarios y roles"]
 * link:configure-ad-nfs.html["Configura la asignación de identidades de Active Directory para NFS"]
 

@@ -13,6 +13,8 @@ summary: Utiliza la vista Investigación para explorar el almacenamiento basado 
 [role="lead"]
 Cuando necesites averiguar qué está consumiendo almacenamiento, identificar qué tablas de bases de datos están creciendo sin control o localizar directorios con permisos de acceso excesivamente amplios, utiliza filtros de metadatos para analizar tus datos en todos los sistemas conectados.
 
+image::aide_mo_ga_investigation_page.png[Vista de investigación de AI Data Engine]
+
 
 
 [[choose-a-starting-point]]
@@ -20,7 +22,7 @@ Cuando necesites averiguar qué está consumiendo almacenamiento, identificar qu
 
 Selecciona *Investigation* en la navegación izquierda para abrir la vista. También puedes abrir la vista Investigation desde el dashboard seleccionando *Investigate* en la tabla _Top data resources by reclaimable storage_, lo que aplica automáticamente un filtro para ese recurso.
 
-La sección *Investigación* está organizada en tres pestañas. Selecciona la pestaña que corresponda al tipo de datos que estés investigando.
+La sección *Investigation* se organiza en tres pestañas: *Unstructured*, *Directories* y *Structured*. Selecciona la pestaña que coincida con el tipo de datos que estás investigando.
 
 [cols="1,2,1"]
 |===
@@ -30,12 +32,12 @@ La sección *Investigación* está organizada en tres pestañas. Selecciona la p
 | *Sin estructura* | Detecta datos basados en archivos inactivos, obsoletos o duplicados en volúmenes NFS y SMB | link:investigate-unstructured.html["Analiza datos no estructurados"] 
 
 
-| *Estructurado* | Identifica las tablas de bases de datos de gran tamaño o en desuso que consumen espacio de almacenamiento | link:investigate-structured.html["Investiga los datos estructurados"] 
-
-
 | *Directorios* | Revisa los permisos a nivel de directorio y encuentra rutas ampliamente accesibles | link:investigate-directories.html["Investigar directorios"] 
+
+
+| *Estructurado* | Identifica las tablas de bases de datos de gran tamaño o en desuso que consumen espacio de almacenamiento | link:investigate-structured.html["Investiga los datos estructurados"] 
 |===
-El recuento resumido y el tamaño total que aparecen en la parte superior de la página se actualizan para reflejar la pestaña activa (por ejemplo, «Unstructured (400M) | 5,7 PiB»).
+La etiqueta de cada pestaña muestra un resumen de los elementos de ese tipo (por ejemplo, "No estructurados (30.4M)").
 
 
 

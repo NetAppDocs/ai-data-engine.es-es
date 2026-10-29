@@ -20,12 +20,14 @@ Asegúrate de que la cobertura del análisis se ajuste a los datos que necesitas
 
 Comprueba el estado del análisis para ver cómo avanza y para identificar los recursos que requieren atención. Revisa el progreso a nivel del sistema y los detalles a nivel de los recursos para distinguir los análisis que aún se están ejecutando de aquellos que están en pausa o presentan errores.
 
+image::aide_mo_ga_data_sources_page.png[Fuentes de datos y estado del análisis de AI Data Engine]
+
 Si los escaneos se detienen o se interrumpen de forma inesperada, comprueba el estado de la implementación. Consulta link:../administer/monitor-deployment-health.html["Supervisa el estado de la implementación e investiga problemas"].
 
 .Pasos
 . En la interfaz de usuario de AI Data Engine, selecciona *Fuentes de datos*.
 . Busca el sistema que quieras revisar.
-. Selecciona la fila del sistema y abre la vista detallada.
+. Selecciona *Ver detalles* en la fila del sistema.
 +
 La vista detallada muestra:
 
@@ -50,7 +52,8 @@ Detén temporalmente el análisis de un sistema cuando no quieras que AI Data En
 .Pasos
 . En la interfaz de usuario de AI Data Engine, selecciona *Fuentes de datos*.
 . Busca el sistema que quieras poner en pausa.
-. Selecciona la fila del sistema para abrir la vista detallada.
+. Selecciona *Ver detalles* en la fila del sistema.
+. Selecciona el menú de acciones junto al recurso de datos.
 . Selecciona *Pausa*.
 
 
@@ -64,7 +67,8 @@ Reanuda el escaneo cuando estés listo para que AI Data Engine vuelva a escanear
 .Pasos
 . En la interfaz de usuario de AI Data Engine, selecciona *Fuentes de datos*.
 . Localiza el sistema en pausa.
-. Selecciona la fila del sistema para abrir la vista detallada.
+. Selecciona *Ver detalles* en la fila del sistema.
+. Selecciona el menú de acciones junto al recurso de datos.
 . Selecciona *Resume*.
 
 
@@ -79,7 +83,7 @@ Actualiza los metadatos en todo el sistema tras cambios significativos en los da
 . En la interfaz de usuario de AI Data Engine, selecciona *Fuentes de datos*.
 . Busca el sistema que deseas analizar.
 . Selecciona el menú de acciones junto al sistema.
-. Selecciona *Scan all volumes* (hay una opción equivalente en el menú de acciones para recursos compartidos y buckets).
+. Selecciona *Escanear todos los volúmenes* (hay una opción equivalente en el menú de acciones para recursos compartidos, buckets o esquemas).
 
 
 
@@ -109,7 +113,7 @@ NOTE: Si el recurso compartido utiliza autenticación Kerberos, AI Data Engine s
 .Pasos
 . En la interfaz de usuario de AI Data Engine, selecciona *Fuentes de datos*.
 . Localiza el sistema SMB.
-. Selecciona la fila del sistema para abrir la vista detallada.
+. Selecciona *Ver detalles* en la fila del sistema.
 . Selecciona *Editar credenciales CIFS*.
 . Introduce el nombre de usuario y la contraseña actualizados y, a continuación, selecciona *Guardar*.
 
@@ -124,7 +128,7 @@ Incluye o excluye los datos replicados de la cobertura del análisis activando o
 .Pasos
 . En la interfaz de usuario de AI Data Engine, selecciona *Fuentes de datos*.
 . Localiza el sistema.
-. Selecciona la fila del sistema para abrir la vista detallada.
+. Selecciona *Ver detalles* en la fila del sistema.
 . Selecciona *Habilitar acceso a volúmenes DP* o *Deshabilitar acceso a volúmenes DP*.
 
 
@@ -145,16 +149,16 @@ Centra la cobertura del escaneo en los recursos de datos que necesitas analizar 
 
 
 
-[[deactivate-ai-data-engine-for-a-system]]
-== Desactivar AI Data Engine para un sistema
+[[remove-ai-data-engine-for-a-system]]
+== Eliminar AI Data Engine de un sistema
 
-Elimina un sistema de la cobertura de escaneo activo cuando ya no necesites que AI Data Engine lo escanee. Desactivar un sistema detiene todos los escaneos y conserva su configuración. Para volver a incluir el sistema, selecciona *Activate scans* en la fila del sistema.
+Elimina un sistema de la cobertura de análisis activa cuando ya no necesites que AI Data Engine lo analice. Al desactivar un sistema, se detienen todos los análisis y se conserva su configuración. Para volver a añadir el sistema, selecciona *Activate scans* en la fila del sistema.
 
 .Pasos
 . En la interfaz de usuario de AI Data Engine, selecciona *Fuentes de datos*.
 . Busca el sistema que deseas desactivar.
 . Selecciona el menú de acciones junto al sistema.
-. Selecciona *Deactivate AI Data Engine*.
+. Selecciona *Eliminar sistema*.
 
 
 
