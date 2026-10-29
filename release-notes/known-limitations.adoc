@@ -67,7 +67,7 @@ Las operaciones de etiquetas MCP tienen limitaciones:: Los clientes de AI no pue
 [[related-information]]
 == Información relacionada
 
-* link:whats-new.html["Novedades"]
+* link:../whats-new.html["Novedades"]
 * link:../deploy/deployment-overview.html["Resumen de la implementación"]
 * link:../investigate/take-actions.html["Actúa sobre tus datos"]
 * link:../mcp/learn-about-mcp.html["Más información sobre el acceso controlado a la IA"]

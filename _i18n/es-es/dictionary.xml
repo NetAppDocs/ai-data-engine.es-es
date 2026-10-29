@@ -487,26 +487,20 @@
   <block id="22d58514041f9d266de2982f62b704e1" category="list-text">Las acciones activadas por políticas son limitadas</block>
   <block id="5e5599b4ab847835c7ed2699cdee9711" category="list-text">Las etiquetas no se pueden eliminar ni cambiar de nombre</block>
   <block id="33871b6190a8d5adbe8b15282054766c" category="inline-link-macro">Novedades</block>
-  <block id="d2cf1d75a14c1b649ad24af4f7cc016a" category="list-text"><block ref="d2cf1d75a14c1b649ad24af4f7cc016a" category="inline-link-macro-rx"></block></block>
   <block id="42f8643eb52a942747937327c72c8361" category="inline-link-macro">Resumen de la implementación</block>
   <block id="cd987b27c3ccd639db6b361c502cc401" category="list-text"><block ref="cd987b27c3ccd639db6b361c502cc401" category="inline-link-macro-rx"></block></block>
   <block id="f83adadb9550a879c846995e2192c210" category="summary">Descubre las nuevas funciones de AI Data Engine.</block>
   <block id="44b91c30c9b87c702f04abec51577e90" category="doc">Novedades en AI Data Engine</block>
   <block id="5985e93b91139d269803898603d579a6" category="inline-link-macro">Recuperar capacidad de almacenamiento</block>
-  <block id="b86b47941c4c25cee43b3c71138fd185" category="list-text"><block ref="b86b47941c4c25cee43b3c71138fd185" category="inline-link-macro-rx"></block></block>
   <block id="28ee8cd4b89e717d7369cec556fc8ecb" category="list-text">Identifica los datos inactivos, obsoletos y duplicados en tus sistemas conectados según los umbrales que hayas configurado, y comprueba qué sistemas y responsables de datos albergan las mayores concentraciones de estos datos.</block>
   <block id="48f8775f839e036416f7dc0d633d5f90" category="inline-link-macro">Reduce costes y riesgos</block>
-  <block id="e52b3bfa6b31678effcc50ac056804c0" category="list-text"><block ref="e52b3bfa6b31678effcc50ac056804c0" category="inline-link-macro-rx"></block></block>
   <block id="847b10ef72a08afa0a7a2bccfc9f722a" category="list-text">Filtra en todos los sistemas conectados por tiempo de acceso, fecha de modificación, fecha de creación, tamaño del archivo, estado de duplicado y otros criterios para encontrar los archivos que cumplan los objetivos de gestión de datos de tu organización. Actúa directamente sobre los resultados o guarda los criterios como una política.</block>
   <block id="324524f3e5ca24846ad76aa3a39d085c" category="list-text">Guarda los criterios de filtrado como políticas con nombre para realizar un seguimiento de las condiciones recurrentes de los datos a lo largo del tiempo, como los archivos fríos o de gran tamaño, y recibe notificaciones cuando cambie el número de archivos afectados.</block>
   <block id="a82c68dd721dede489a3f3b8e95372d3" category="inline-link-macro">Reduce los costes de almacenamiento</block>
-  <block id="3cdd5ec3a4c7cb1197214bf213ebc152" category="list-text"><block ref="3cdd5ec3a4c7cb1197214bf213ebc152" category="inline-link-macro-rx"></block></block>
   <block id="a39bf4bdcac229739d4368182e65aa6a" category="inline-link-macro">Asignar roles de administrador y visor</block>
-  <block id="c0d075a2db1d36d19fe844351b6f646e" category="list-text"><block ref="c0d075a2db1d36d19fe844351b6f646e" category="inline-link-macro-rx"></block></block>
   <block id="05cd97f29840d5823c5d103c71b26a1a" category="list-text">Controla quién puede investigar los datos y realizar acciones asignando a los usuarios de tu organización el rol de administrador o visualizador de AI Data Engine.</block>
   <block id="aa06fbb4900808cad7e234eac413020c" category="inline-link-macro">Elimina los datos duplicados</block>
   <block id="482723983a4f2af954e36ff41e567451" category="inline-link-macro">Limitaciones conocidas</block>
-  <block id="34e34c0debc388181c3934f84b977ddd" category="list-text"><block ref="34e34c0debc388181c3934f84b977ddd" category="inline-link-macro-rx"></block></block>
   <block id="ed67b8aec97dcec019f1b2972d70f5af" category="sidebar">Documentación de AI Data Engine</block>
   <block id="be11c74c1dd7f307bb80183a90dc2067" category="sidebar">Empezar</block>
   <block id="507a3a88cebc46603ce2be8eaa924eee" category="sidebar">Desplegar</block>
@@ -2399,40 +2393,27 @@
   <block id="5a76487c3e4c863c44db98088c0ac95c" category="list-text">Los clientes de AI no pueden listar los archivos que tienen una etiqueta, y solo pueden añadir o eliminar una etiqueta en un archivo cada vez.</block>
   <block id="bc471c7e22b40565a8ad992f37545406" category="paragraph">Descubre las nuevas funcionalidades de AI Data Engine (AIDE).</block>
   <block id="b0609734250ba6ba4d0839963ce55146" category="section-title">26 de octubre de 2026</block>
-  <block id="57f4a409c9972d858bd7c6956b385c33" category="paragraph">*Versión 1.3*</block>
-  <block id="d005a010adff2a46762288141702428d" category="paragraph">AI Data Engine es un servicio de inteligencia de metadatos, gestionado a través de NetApp Console, que analiza tus sistemas conectados, crea un catálogo de metadatos y te ofrece la visibilidad y las herramientas necesarias para optimizar el almacenamiento y gestionar los datos a gran escala. Puedes implementar AI Data Engine como <block ref="6fbf585bfc30b5dbe7ec8f6c5c37ae76" category="inline-link-macro-rx"></block>, o como una implementación multinodo de AIDE si tu entorno requiere alta disponibilidad basada en Kubernetes a gran escala.</block>
   <block id="b47d2c6bc36912f9c4906cd956ab8801" category="paragraph">AI Data Engine 1.3 es la primera versión de disponibilidad general (GA).</block>
   <block id="b6fbdf8ef74b308af14cc26bb5cf3d57" category="section-title">Implementa y conecta tus datos</block>
   <block id="6efb2debacc503f80d4da744eff0cf0e" category="inline-link-macro">Implementa a la escala que tu entorno requiera</block>
-  <block id="ff28f802c291435ffc4261685aa2b380" category="list-text"><block ref="ff28f802c291435ffc4261685aa2b380" category="inline-link-macro-rx"></block></block>
   <block id="54d59647b1d587275188225d397c3a90" category="inline-link-macro">Infórmate sobre los proxies para AIDE</block>
-  <block id="38d6dcd25e046c917e205510fb384b40" category="list-text">Elige una implementación de AIDE de un solo nodo para empezar rápidamente en una única máquina virtual, o una implementación de AIDE de varios nodos en tu propio clúster de Kubernetes para obtener alta disponibilidad y una mayor escala. Si tu entorno requiere un proxy para acceder a internet, <block ref="5e07896df6543d573212a91b9d17ac97" category="inline-link-macro-rx"></block> e implementa con un proxy.</block>
   <block id="5d4ef326714efe60337e85390babd329" category="inline-link-macro">Incorpora tus datos al alcance</block>
-  <block id="d9e005c68007f2994b6ffc546f13f9a6" category="list-text"><block ref="d9e005c68007f2994b6ffc546f13f9a6" category="inline-link-macro-rx"></block></block>
   <block id="d230737bea58a8428adf7af15944f95e" category="list-text">Conecta recursos compartidos de archivos, servidores de bases de datos y sistemas StorageGRID, y selecciona qué recursos de datos deseas analizar.</block>
   <block id="dc3afd3f5177091595345a8d4549347f" category="inline-link-macro">Mantén tus escaneos en buen estado</block>
-  <block id="d8fb84c91bbe826ae43aff1c1b483f44" category="list-text"><block ref="d8fb84c91bbe826ae43aff1c1b483f44" category="inline-link-macro-rx"></block></block>
   <block id="2ee195a4ed58f4d222297b70a61432fb" category="list-text">Supervisa el estado de tu implementación para identificar los problemas que podrían interrumpir el análisis y recopila la información que necesitas para resolverlos.</block>
   <block id="503e5b39e3523e3f785dc860a90339b7" category="section-title">Optimiza el almacenamiento e investiga tus datos</block>
   <block id="768437ba03b276a3ec10fbbe8b81a73b" category="inline-link-macro">Define qué se entiende por «datos inactivos» y «datos obsoletos» en tu organización</block>
-  <block id="aac5ed1f43d24fb2bc038ef8bb7b629a" category="list-text"><block ref="aac5ed1f43d24fb2bc038ef8bb7b629a" category="inline-link-macro-rx"></block></block>
   <block id="c7f53c208d84a3ef5f51bc7df079759c" category="list-text">Establece los umbrales que determinan qué datos se clasifican como fríos u obsoletos para que se ajusten a tus políticas de retención.</block>
   <block id="b1a6eb35f4a110688914b03b871eaf51" category="inline-link-macro">Averigua a quién debes dirigirte en relación con los datos</block>
-  <block id="725669bbe2bf03266f23befe6473c5f5" category="list-text"><block ref="725669bbe2bf03266f23befe6473c5f5" category="inline-link-macro-rx"></block></block>
   <block id="7a1cad1c9f215254d948360e464d76ff" category="list-text">Identifica qué propietarios de datos tienen las mayores concentraciones de datos inactivos, obsoletos o duplicados desde el dashboard. Luego, filtra por propietario o grupo en la vista de investigación para revisar los resultados y averiguar con quién debes ponerte en contacto.</block>
-  <block id="92b6e473ad1c3cbbaed667d7c2a3b987" category="list-text"><block ref="92b6e473ad1c3cbbaed667d7c2a3b987" category="inline-link-macro-rx"></block></block>
   <block id="b88b83fb304e42378e6634bd65125bc0" category="list-text">Busca archivos que tengan copias duplicadas en tus sistemas conectados. Filtra por el atributo Duplicados o por el hash del archivo para revisar los grupos de duplicados y luego elimina las copias duplicadas.</block>
   <block id="6a0ea53ac4eb792afc1b4f47bebce855" category="inline-link-macro">Detectar riesgos de acceso</block>
-  <block id="5e6a1fc8bb732cc04678f2edae2d2d6d" category="list-text"><block ref="5e6a1fc8bb732cc04678f2edae2d2d6d" category="inline-link-macro-rx"></block></block>
   <block id="c29b4022a785fd3edc8eacb408d318ae" category="list-text">Identifica los directorios con permisos abiertos para poder darles prioridad a la hora de revisar los permisos.</block>
-  <block id="551218f37120121fcd6d3be555623704" category="list-text"><block ref="551218f37120121fcd6d3be555623704" category="inline-link-macro-rx"></block></block>
   <block id="ed29587aa611eb50b7cd9e6c7532cd6b" category="list-text">Busca tablas de base de datos de gran tamaño o que no se utilicen en tus servidores de bases de datos conectados.</block>
   <block id="a96561a39a488fd7ab3a0429b8037b51" category="section-title">Actúa en función de los datos y haz un seguimiento a lo largo del tiempo</block>
   <block id="e21cfecd675bc598f5df1e37e056a8ec" category="list-text">Aplica las políticas de ciclo de vida de los datos de tu organización copiando y archivando archivos en destinos NFS o SMB, etiquetando elementos para hacer seguimiento o eliminando archivos de forma permanente según tus requisitos de retención.</block>
   <block id="d0cec28746f2b1c070ddbca66abadb26" category="inline-link-macro">Supervisa las condiciones de los datos de forma continua</block>
-  <block id="c3317a4378cb71832595d5809a4cec30" category="list-text"><block ref="c3317a4378cb71832595d5809a4cec30" category="inline-link-macro-rx"></block></block>
   <block id="7ddef8d1014170776e5690b23704bda9" category="inline-link-macro">Ofrece a los clientes de IA un acceso controlado a tus metadatos</block>
-  <block id="45d51fbf39482cd3f82a723b3fee4855" category="list-text"><block ref="45d51fbf39482cd3f82a723b3fee4855" category="inline-link-macro-rx"></block></block>
   <block id="e92a557f1e1e53dd1526a17543191ac9" category="list-text">Conecta Claude Code, Claude Desktop, Cursor o OpenCode con AI Data Engine a través de Model Context Protocol (MCP). Habilita las colecciones que los clientes de AI pueden buscar y usa los ámbitos de Microsoft Entra ID para controlar quién puede buscar en cada colección. Los clientes de AI pueden buscar metadatos y archivos con etiquetas.</block>
   <block id="7258e7251413465e0a3eb58094430bde" category="section-title">Administración</block>
   <block id="2d6e048add1f2529435dc2ecc3d32124" category="sidebar">AI Data Engine es un servicio de inteligencia de metadatos, gestionado a través de NetApp Console, que escanea tus sistemas conectados, crea un catálogo de metadatos y te ofrece la visibilidad y las herramientas necesarias para optimizar el almacenamiento y gobernar los datos a gran escala. Con acceso gobernado a la IA, los clientes de IA pueden buscar esos metadatos a través de Model Context Protocol (MCP).</block>
@@ -2453,10 +2434,22 @@
   <block id="156586dd7dceda9f103091b3c0beb1e6" category="sidebar">Herramientas de AIDE MCP</block>
   <block id="7da93123cf77bf1f1d116b04b8d380c2" category="paragraph"><block ref="7da93123cf77bf1f1d116b04b8d380c2" category="inline-link-macro-rx"></block></block>
   <block id="702209553c340514b23674486ae4fd31" category="doc">AI Data Engine 1.3</block>
-  <block id="10c8a7570aaedaffab9ef063fe9b43c3" category="paragraph">AI Data Engine 1.3 es la primera versión de disponibilidad general (GA) de AI Data Engine (AIDE), un servicio de inteligencia de metadatos gestionado a través de NetApp Console. AIDE analiza tus sistemas conectados, crea un catálogo de metadatos y te da la visibilidad y las herramientas para optimizar el almacenamiento y gobernar los datos a escala. Para obtener más información, consulta<block ref="c8f75516a94493ffe7fe6bb96c5067bf" category="inline-link-rx"></block>.</block>
-  <block id="b678323232cf97a3768c22969e93b6bc" category="inline-link">Novedades en AI Data Engine</block>
-  <block id="e0a0ca8d3c0ba674ddda1dadea6576a3" category="paragraph">Puedes identificar datos fríos, obsoletos y duplicados en todos tus sistemas conectados, localizar directorios con permisos abiertos e investigar tablas de bases de datos de tamaño excesivo o en desuso. Puedes actuar directamente sobre los resultados o guardar los criterios de filtrado como políticas que supervisen el estado de los datos a lo largo del tiempo. Para obtener más información, consulta<block ref="c9aabe1555970ff471e651fab11a16f7" category="inline-link-rx"></block>.</block>
-  <block id="5bb02905e466f0b51d8900b860f2d83c" category="section-title">Controla el acceso de la IA a tus metadatos</block>
-  <block id="9499e52a968a6337905b279c7aa8beb4" category="inline-link">Conoce MCP en AI Data Engine</block>
-  <block id="4edb79b33148e0f3f7c2ed02c6ba39c5" category="paragraph">Puedes conectar clientes de IA a AI Data Engine a través de Model Context Protocol (MCP) y usar los ámbitos de Microsoft Entra ID para controlar quién puede buscar en cada colección. Para obtener más información, consulta<block ref="705649344f29bd334d650738c1e5f0f1" category="inline-link-rx"></block>.</block>
+  <block id="bef20353ec71f208058a441ac3075e32" category="paragraph">AI Data Engine es un servicio de inteligencia de metadatos, gestionado a través de NetApp Console, que analiza tus sistemas conectados, crea un catálogo de metadatos y te ofrece la visibilidad y las herramientas necesarias para optimizar el almacenamiento y gobernar los datos a gran escala. Puedes implementar AI Data Engine como <block ref="142c34bc944087f6618b21ea2656150e" category="inline-link-rx"></block>, o como una implementación multinodo de AIDE si tu entorno requiere alta disponibilidad basada en Kubernetes a gran escala.</block>
+  <block id="240f9f6dce8959d1579bafbec08d0a07" category="list-text"><block ref="240f9f6dce8959d1579bafbec08d0a07" category="inline-link-rx"></block></block>
+  <block id="dc5d043b5e605fee0d9932e6221d1341" category="list-text">Elige una implementación de AIDE de un solo nodo para empezar rápido en una sola VM, o una implementación de AIDE de varios nodos en tu propio clúster de Kubernetes para lograr alta disponibilidad y mayor escala. Si tu entorno requiere un proxy para conectarse a internet,<block ref="1fba41490412204ba3e209df7e3a5b18" category="inline-link-rx"></block> despliega con un proxy.</block>
+  <block id="cbb5a5204dc3d123ef3e9d16f2e82c40" category="list-text"><block ref="cbb5a5204dc3d123ef3e9d16f2e82c40" category="inline-link-rx"></block></block>
+  <block id="7b788817aa65d1a00c5998f98ef08cfb" category="list-text"><block ref="7b788817aa65d1a00c5998f98ef08cfb" category="inline-link-rx"></block></block>
+  <block id="78d40fa188b264432d9acc14b6e6b1a6" category="list-text"><block ref="78d40fa188b264432d9acc14b6e6b1a6" category="inline-link-rx"></block></block>
+  <block id="cf33f4d67208331a1884a855217b6910" category="list-text"><block ref="cf33f4d67208331a1884a855217b6910" category="inline-link-rx"></block></block>
+  <block id="05ea9642a4f5b9ce56f13fe067b453b2" category="list-text"><block ref="05ea9642a4f5b9ce56f13fe067b453b2" category="inline-link-rx"></block></block>
+  <block id="862a75ec1e9a5a65a297360dc22b2bc2" category="list-text"><block ref="862a75ec1e9a5a65a297360dc22b2bc2" category="inline-link-rx"></block></block>
+  <block id="b61b383822e3f75988a3bc5303d64e36" category="list-text"><block ref="b61b383822e3f75988a3bc5303d64e36" category="inline-link-rx"></block></block>
+  <block id="9ee8d4cfc51103c18fc1a2ae913d5f55" category="list-text"><block ref="9ee8d4cfc51103c18fc1a2ae913d5f55" category="inline-link-rx"></block></block>
+  <block id="13bf9647191c08a44d253d11925f720f" category="list-text"><block ref="13bf9647191c08a44d253d11925f720f" category="inline-link-rx"></block></block>
+  <block id="3364b0befdd009cf3911e421130619e8" category="list-text"><block ref="3364b0befdd009cf3911e421130619e8" category="inline-link-rx"></block></block>
+  <block id="bb9cf8ec15fcf3324f1ac0beae0e6103" category="list-text"><block ref="bb9cf8ec15fcf3324f1ac0beae0e6103" category="inline-link-rx"></block></block>
+  <block id="ce4014ce8d04d1a09fa16018842bd557" category="list-text"><block ref="ce4014ce8d04d1a09fa16018842bd557" category="inline-link-rx"></block></block>
+  <block id="1a193b347680542aaf42ddc6f7cb9d44" category="list-text"><block ref="1a193b347680542aaf42ddc6f7cb9d44" category="inline-link-rx"></block></block>
+  <block id="57a074a888c70d7dd5cd6f7cced9283a" category="list-text"><block ref="57a074a888c70d7dd5cd6f7cced9283a" category="inline-link-macro-rx"></block></block>
+  <block id="6d047e4cc60ee10d6f14b5f8a12ab25a" category="list-text"><block ref="6d047e4cc60ee10d6f14b5f8a12ab25a" category="inline-link-macro-rx"></block></block>
 </blocks>
