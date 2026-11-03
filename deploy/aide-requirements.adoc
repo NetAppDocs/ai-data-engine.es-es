@@ -228,19 +228,18 @@ Estos tamaños son configuraciones de referencia recomendadas optimizadas para u
 | Size | vCPU | RAM | Disco | IOPS de almacenamiento | Rendimiento de almacenamiento | Red | Archivos aproximados 
 
 
-| Pequeño | 16 | 64 GB | 500 GB | 8.000 | 1.000 MB/s | 1 GbE | 200 millones 
+| Pequeño | 16 | 64 GB | 565 GB ^1^ | 8.000 | 1.000 MB/s | 1 GbE | 200 millones 
 
 
-| Medio | 32 | 128 GB | 2 TB | 12.000 | 1.500 MB/s | 1 GbE | 1.000 millones 
+| Medio | 32 | 128 GB | 2.065 GB ^1^ | 12.000 | 1.500 MB/s | 1 GbE | 1.000 millones 
 
 
-| Grande | 96 | 192 GB | 6 TB | 16.000 | 2.000 MB/s | 10 GbE | 3 mil millones 
+| Grande | 96 | 192 GB | 6.065 GB ^1^ | 16.000 | 2.000 MB/s | 10 GbE | 3 mil millones 
 |===
+^1^ El valor del disco es el espacio libre mínimo necesario cuando el OS, el runtime de k3s y los datos de AIDE comparten un único disco. Incluye 65 GB para el OS, k3s, kubelet y los logs, además del volumen de datos de AIDE (500 GB para Small, 2,000 GB para Medium y 6,000 GB para Large). Si estos componentes están en discos separados, consulta link:single-node-prerequisites.html#single-node-disk-space["espacio en disco en los requisitos previos para un nodo único"].
 
-NOTE: Se recomienda utilizar un SSD NVMe u otro tipo de almacenamiento de estado sólido para todos los tamaños de implementación. Los valores de disco de esta tabla reflejan únicamente el almacenamiento del volumen de datos de AIDE. Si el sistema operativo, el entorno de ejecución de k3s y los datos de AIDE comparten un único disco, añade aproximadamente 65 GB al valor de disco del tamaño que elijas. Por ejemplo, una implementación Small en un único disco requiere aproximadamente 565 GB en total.
 
-
-NOTE: Utiliza almacenamiento en bloque, en lugar de NFS, para el volumen de datos AIDE en una implementación de un solo nodo. El almacenamiento basado en NFS puede provocar un bajo rendimiento.
+NOTE: Se recomienda utilizar un SSD NVMe u otro tipo de almacenamiento de estado sólido para todos los tamaños de implementación. Utiliza almacenamiento en bloque, en lugar de NFS, para el volumen de datos AIDE en una implementación de un solo nodo. El almacenamiento respaldado por NFS puede causar un rendimiento inferior.
 
 
 

@@ -148,7 +148,6 @@
   <block id="2660064e68655415da2628c2ae2f7592" category="cell">Pequeño</block>
   <block id="c74d97b01eae257e44aa9d5bade97baf" category="cell">16</block>
   <block id="7fffe4f81cc10365684f8c3ef5dfc752" category="cell">64 GB</block>
-  <block id="47a5e6e39f64ff5d5dfb25da1aa3f3f2" category="cell">500 GB</block>
   <block id="b7bc1c544eac128f494cbef4dde51844" category="cell">8.000</block>
   <block id="253904cf11e154c1467da791e2916dff" category="cell">1.000 MB/s</block>
   <block id="542a51a19678b099661225e50ca14113" category="cell">1 GbE</block>
@@ -156,19 +155,16 @@
   <block id="87f8a6ab85c9ced3702b4ea641ad4bb5" category="cell">Medio</block>
   <block id="6364d3f0f495b6ab9dcf8d3b5c6e0b01" category="cell">32</block>
   <block id="da41e52384d87f5c6c3e5e945da60a14" category="cell">128 GB</block>
-  <block id="4399cdb8f35c7f54994fbd6ad16ae51d" category="cell">2 TB</block>
   <block id="29ca150c07f43a7c676ecb487e3b8100" category="cell">12.000</block>
   <block id="37b2db17d6593a3788376bf9bb6c1535" category="cell">1.500 MB/s</block>
   <block id="8452946a913c5da5d0753b575bc8e7b6" category="cell">1.000 millones</block>
   <block id="3a69b34ce86dacb205936a8094f6c743" category="cell">Grande</block>
   <block id="26657d5ff9020d2abefe558796b99584" category="cell">96</block>
   <block id="a10c56d6d6012a90b60e77f2248ee70f" category="cell">192 GB</block>
-  <block id="ab4bf7c1be6270d2b6e2a29d2048d9ba" category="cell">6 TB</block>
   <block id="5fd87da18bd5a2e29a0cc852c332a1ba" category="cell">16.000</block>
   <block id="97fcefbae965abf290381c16b678b7ec" category="cell">2.000 MB/s</block>
   <block id="f813d4c41b3987dfffdcc0cea30c64cf" category="cell">10 GbE</block>
   <block id="68c08a4d5037c95bc8fba88bfb68be34" category="cell">3 mil millones</block>
-  <block id="8d13605af92cc217c85c4ad45d6f7c6e" category="admonition">Se recomienda utilizar un SSD NVMe u otro tipo de almacenamiento de estado sólido para todos los tamaños de implementación. Los valores de disco de esta tabla reflejan únicamente el almacenamiento del volumen de datos de AIDE. Si el sistema operativo, el entorno de ejecución de k3s y los datos de AIDE comparten un único disco, añade aproximadamente 65 GB al valor de disco del tamaño que elijas. Por ejemplo, una implementación Small en un único disco requiere aproximadamente 565 GB en total.</block>
   <block id="f8a25fbf01ad745086d3090cb86949e9" category="inline-xref">Configuraciones pequeñas, medianas y grandes</block>
   <block id="5616873f83786e41d208235efcb21dfa" category="list-text">Qué impulsa las recomendaciones de dimensionamiento</block>
   <block id="b3175af68c1f955a338904f52f52c31b" category="list-text">*Número total de archivos y directorios*: el número total de objetos que hay que catalogar es el factor determinante de los requisitos de potencia de cálculo y almacenamiento. Un mayor número de objetos requiere proporcionalmente más memoria, CPU y almacenamiento.</block>
@@ -1085,7 +1081,6 @@
   <block id="62fb94264e63c99b6666c69cf2336fee" category="inline-link-macro">Requisitos previos para la implementación de AIDE en un único nodo</block>
   <block id="a6dbd43ac79f857e6acf2b98ffe1bdb5" category="paragraph">Proporcionas una VM de Linux, y AI Data Engine aprovisiona todo lo demás automáticamente, incluido k3s. No necesitas configurar ni gestionar Kubernetes. Para conocer los requisitos de preparación del host, espacio en disco y firewall, consulta <block ref="30378152137780b1343abd950399cc99" category="inline-link-macro-rx"></block>.</block>
   <block id="082e9f9f9eac49431c9dd52aa65a3016" category="paragraph">Estos tamaños son configuraciones de referencia recomendadas optimizadas para un periodo de análisis inicial de tres a cuatro días, no límites estrictos. Consulta <block ref="d9273ec958faaa17b85637984eec7c24" category="inline-xref-macro-rx"></block> para saber qué determina estas cifras y cómo escalar más allá de ellas.</block>
-  <block id="2ef570b365e646b9e4e14ea0f70de151" category="admonition">Utiliza almacenamiento en bloque, en lugar de NFS, para el volumen de datos AIDE en una implementación de un solo nodo. El almacenamiento basado en NFS puede provocar un bajo rendimiento.</block>
   <block id="8e03e3677d8c961349ada429230ab481" category="paragraph"><block ref="cbc71e6481fe1bee8d9b47676272cf81" category="inline-xref-macro-rx"></block> son valores de referencia recomendados para un intervalo inicial de análisis de entre tres y cuatro días, no límites estrictos impuestos por el software.</block>
   <block id="d87d6d74f181d103fcb7638f69d559ab" category="list-text">¿Qué ocurre si eliges un tamaño demasiado pequeño o si se te queda pequeño el tamaño implementado?</block>
   <block id="fec4f790c8dff202a3bad5623025c173" category="paragraph">Cada configuración está optimizada para un número concreto de archivos y una velocidad de análisis específicas. Si tu entorno supera los límites que admite la configuración, puedes esperar lo siguiente:</block>
@@ -1390,7 +1385,6 @@
   <block id="3a28817f02c31eee865bf9435ed27b5b" category="cell">De 16 a 96 vCPU, de 64 a 192 GB de RAM</block>
   <block id="e2b4c11471f615af6e4bd33fc57291a3" category="cell">De 32 a 64 vCPU, de 128 a 256 GB de RAM por nodo</block>
   <block id="8c4aa541ee911e8d80451ef8cc304806" category="cell">Almacenamiento</block>
-  <block id="a4e62e78fb44c7bcc4cab6197e7df01e" category="cell">Almacenamiento en bloques SSD de 500 GB a 6 TB, de 8.000 a 16.000 IOPS, con un rendimiento de 1.000 a 2.000 MB/s</block>
   <block id="70ff3d7c57709db6606f29447ca330d4" category="cell">Capacidad total del clúster de 4 a 24 TB, de 8.000 a 16.000 IOPS por nodo, rendimiento de 1.000 a 2.000 MB/s por nodo</block>
   <block id="23316bfbb81577bbaa968ba437e38525" category="cell">1 GbE (se recomienda 10 GbE para Large)</block>
   <block id="f89a3dbc6da2210d010dec2e800d1634" category="cell">De 1 a 10 GbE</block>
@@ -2455,4 +2449,11 @@
   <block id="ce1ff4929e931e0a9e296c5119ebe35f" category="paragraph">Model Context Protocol (MCP) es un estándar abierto que permite a los clientes de IA conectarse a fuentes de datos y herramientas externas. AI Data Engine proporciona un servidor MCP llamado Governed Access Gateway para que los clientes de IA puedan consultar el catálogo de metadatos de AI Data Engine en lugar de acceder directamente a tus sistemas de almacenamiento.</block>
   <block id="b3f8a213ee90b07430fa6544a953258e" category="list-text">*Enviar notificación por correo electrónico*: envía una notificación por correo electrónico a los destinatarios que indiques y te permite configurar los intervalos de notificación.</block>
   <block id="0fc062c582fefae15df8a053a39add04" category="list-text">Selecciona la acción *Enviar notificación por correo electrónico*, elige el intervalo de notificación e introduce la dirección de correo electrónico del destinatario.</block>
+  <block id="93350292e2f2688c52973eee60d86c4d" category="cell">565 GB ^1^</block>
+  <block id="911b65193cfad86c49e96387ab377b25" category="cell">2.065 GB ^1^</block>
+  <block id="cc4e0bff936f020bbb53095ddd630797" category="cell">6.065 GB ^1^</block>
+  <block id="d69ec7ac138731ff864db968b49d9267" category="inline-link-macro">espacio en disco en los requisitos previos para un nodo único</block>
+  <block id="98671823854fbaa022d36d4b45c170b1" category="paragraph">^1^ El valor del disco es el espacio libre mínimo necesario cuando el OS, el runtime de k3s y los datos de AIDE comparten un único disco. Incluye 65 GB para el OS, k3s, kubelet y los logs, además del volumen de datos de AIDE (500 GB para Small, 2,000 GB para Medium y 6,000 GB para Large). Si estos componentes están en discos separados, consulta <block ref="c8a768aed5d15586e7b257318c3f6542" category="inline-link-macro-rx"></block>.</block>
+  <block id="1d35cbf08d110ca820c6fb072aa6eaad" category="admonition">Se recomienda utilizar un SSD NVMe u otro tipo de almacenamiento de estado sólido para todos los tamaños de implementación. Utiliza almacenamiento en bloque, en lugar de NFS, para el volumen de datos AIDE en una implementación de un solo nodo. El almacenamiento respaldado por NFS puede causar un rendimiento inferior.</block>
+  <block id="3921920d773e0773220648a61f30aadd" category="cell">Almacenamiento en bloques SSD de 565 GB a 6.065 GB, de 8.000 a 16.000 IOPS, con un rendimiento de 1.000 a 2.000 MB/s</block>
 </blocks>

@@ -56,7 +56,7 @@ La implementación multinodo de AIDE está disponible en tres tamaños: pequeño
 | Cómputo | De 16 a 96 vCPU, de 64 a 192 GB de RAM | De 32 a 64 vCPU, de 128 a 256 GB de RAM por nodo 
 
 
-| Almacenamiento | Almacenamiento en bloques SSD de 500 GB a 6 TB, de 8.000 a 16.000 IOPS, con un rendimiento de 1.000 a 2.000 MB/s | Capacidad total del clúster de 4 a 24 TB, de 8.000 a 16.000 IOPS por nodo, rendimiento de 1.000 a 2.000 MB/s por nodo 
+| Almacenamiento | Almacenamiento en bloques SSD de 565 GB a 6.065 GB, de 8.000 a 16.000 IOPS, con un rendimiento de 1.000 a 2.000 MB/s | Capacidad total del clúster de 4 a 24 TB, de 8.000 a 16.000 IOPS por nodo, rendimiento de 1.000 a 2.000 MB/s por nodo 
 
 
 | Red | 1 GbE (se recomienda 10 GbE para Large) | De 1 a 10 GbE 
