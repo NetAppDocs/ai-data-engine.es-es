@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: deploy/configure-proxy.html 
-keywords: proxy, outbound proxy, forward proxy, HTTPS proxy, proxy certificate, proxy authentication, install, proxy host, proxy port, allowlist, CONNECT, installer download, container runtime 
+keywords: proxy, outbound proxy, forward proxy, HTTPS proxy, TLS inspection, TLS-inspecting proxy, proxy certificate, proxy authentication, install, proxy host, proxy port, allowlist, CONNECT, installer download, container runtime 
 summary: Descubre cómo funciona AI Data Engine con un proxy directo y qué tipos de proxy y parámetros admite. 
 ---
 = Más información sobre los proxies para AI Data Engine
@@ -13,7 +13,7 @@ summary: Descubre cómo funciona AI Data Engine con un proxy directo y qué tipo
 [role="lead"]
 Si tu host o clúster de AI Data Engine (AIDE) no puede conectarse directamente a internet, configura un proxy directo para que el instalador y AI Data Engine puedan descargar componentes, extraer imágenes de contenedores y registrarse en NetApp Console. Las opciones de proxy son las mismas tanto para implementaciones de un solo nodo como para implementaciones de varios nodos. Los pasos para preparar y ejecutar la instalación son distintos, por lo que cada tipo de implementación tiene su propio flujo de trabajo.
 
-La configuración del proxy solo se aplica al entorno de ejecución de k3s y a AI Data Engine, no al sistema host.
+El instalador no configura el proxy para otro software del host, como el gestor de paquetes. En una implementación de un solo nodo, el instalador configura el proxy para k3s y AI Data Engine, y añade al almacén de confianza del host el certificado de CA que proporcionas con `--proxy-ca-cert`. En una implementación de varios nodos, el instalador configura únicamente las cargas de trabajo de AI Data Engine. Debes configurar el proxy del entorno de ejecución de contenedores y la confianza de los certificados en cada nodo.
 
 
 
@@ -22,7 +22,7 @@ La configuración del proxy solo se aplica al entorno de ejecución de k3s y a A
 
 Cada tipo de implementación tiene su propio tema, con el procedimiento completo, desde la preparación del entorno hasta la ejecución del instalador.
 
-* link:deploy-aide-single-node-proxy.html["Implementar AI Data Engine como una implementación de un solo nodo con proxy"]: el instalador configura el proxy para el entorno de ejecución de k3s y para AI Data Engine, incluido su almacén de certificados.
+* link:deploy-aide-single-node-proxy.html["Implementar AI Data Engine como una implementación de un solo nodo con proxy"]: el instalador configura el proxy para el entorno de ejecución de k3s y para AI Data Engine, y añade el certificado de la autoridad de certificación (CA) que proporciones a los almacenes de confianza.
 * link:deploy-aide-multi-node-proxy.html["Implementar AI Data Engine como una implementación multinodo con un proxy"]: debes configurar el proxy del entorno de ejecución del contenedor y la confianza en el certificado de la autoridad de certificación en cada nodo antes de ejecutar el instalador.
 
 
@@ -58,11 +58,35 @@ El tráfico de tu red se conecta directamente y debe seguir siendo accesible sin
 
 
 | Proxy directo HTTPS | AI Data Engine se conecta al proxy a través de TLS. Si una autoridad de certificación (CA) privada firmó el certificado del proxy, debes proporcionar el certificado de la CA. | Ninguna, o autenticación básica HTTP (nombre de usuario y contraseña) 
+
+
+| Proxy con inspección TLS | El proxy descifra el tráfico HTTPS y vuelve a firmar el certificado de cada destino con su propia CA de inspección. Configura `--proxy-type t` y proporciona el certificado de la CA de inspección con `--proxy-ca-cert`. El proxy puede escuchar en HTTP o HTTPS. | Ninguna, o autenticación básica HTTP (nombre de usuario y contraseña) 
 |===
 Puedes acceder al proxy mediante su nombre de host o su dirección IPv4.
 
 
-IMPORTANT: AI Data Engine es compatible con proxies directos estándar que canalizan las conexiones mediante HTTP `CONNECT`, incluidos los destinos HTTPS. Si tu proxy inspecciona el tráfico TLS, excluye de la inspección los endpoints que figuran en link:aide-requirements.html#outbound-internet-access["Acceso a Internet saliente"], incluido el host de descarga del instalador. Los proxies que inspeccionan el tráfico TLS y algunas otras funciones de proxy no son compatibles. Consulta link:../release-notes/known-limitations.html["Limitaciones conocidas"].
+
+[[supported-proxy-types]]
+== Tipos de proxy compatibles
+
+AI Data Engine admite dos tipos de proxy. Configura el tipo mediante `--proxy-type`.
+
+[cols="2,3,3"]
+|===
+|  | Proxy directo estándar (`r`) | Proxy con inspección TLS (`t`) 
+
+
+| Cómo gestiona el tráfico HTTPS | Establece conexiones a través de túneles con HTTP `CONNECT` y no modifica los certificados de destino. | Descifra el tráfico HTTPS y vuelve a firmar el certificado de cada destino con la CA de inspección del proxy. 
+
+
+| `--proxy-ca-cert` | Solo es necesario si el propio proxy utiliza HTTPS y su certificado está firmado por una CA privada. | Obligatorio. Proporciona el certificado de la autoridad de certificación (CA) que usa el proxy para la inspección. Si lo omites, el instalador rechaza el comando antes de establecer ninguna conexión de red. 
+
+
+| `--proxy-type` | `r` (predeterminado) | `t` 
+|===
+Un proxy con inspección de TLS es diferente de un proxy HTTPS. Un proxy HTTPS es un proxy al que te conectas a través de TLS (`--proxy-scheme https`). Un proxy con inspección de TLS es un proxy que vuelve a firmar los certificados de los destinos a los que accedes a través de él. Un proxy con inspección de TLS puede usar cualquiera de los dos esquemas.
+
+Otras funciones de proxy no son compatibles. Consulta link:../release-notes/known-limitations.html["Limitaciones conocidas"].
 
 El instalador usa un proxy para cada destino de internet y cada componente de AI Data Engine. La configuración del proxy se define durante la instalación.
 
@@ -86,7 +110,17 @@ El instalador usa un proxy para cada destino de internet y cada componente de AI
 | `--proxy-scheme <http|https>` | `https` | Protocolo utilizado para conectarte al propio servidor proxy. No se trata del esquema de los destinos a los que llega el proxy. La mayoría de los proxies directos escuchan en HTTP sin cifrar, así que para esos indica `--proxy-scheme http`. 
 
 
-| `--proxy-ca-cert <path>` | Ninguno | Ruta a un archivo PEM o a un directorio plano de archivos `.crt` e `.pem`, que contiene el certificado de CA que firmó el certificado del proxy. El instalador lee un directorio sin entrar en los subdirectorios y fusiona los archivos en un único paquete. Requerido para un proxy HTTPS cuyo certificado está firmado por una CA privada. No se utiliza con un proxy HTTP. 
+| `--proxy-ca-cert <path>` | Ninguno  a| 
+Ruta a un archivo PEM o a un directorio plano de archivos `.crt` y `.pem` que contiene el certificado de CA para el proxy. El instalador lee un directorio sin recorrer los subdirectorios y fusiona los archivos en un único paquete.
+
+Esto es necesario cuando:
+
+* Utilizas un proxy HTTPS cuyo certificado está firmado por una CA privada. Proporciona el certificado de la CA que firmó el certificado del proxy.
+* Utilizas un proxy con inspección TLS (`--proxy-type t`). Proporciona el certificado de la autoridad de certificación (CA) que utiliza el proxy para la inspección.
+
+
+No lo especifiques para un proxy normal (`--proxy-type r`) al que te conectes por HTTP (`--proxy-scheme http`). No hay ningún certificado de proxy que verificar, por lo que el instalador no usa el certificado de la CA.
+
 
 
 | `--proxy-user <user>` | Ninguno | Nombre de usuario para la autenticación básica. Si se utiliza un proxy HTTP, el instalador advierte de que las credenciales se transmiten al proxy sin cifrar. Requiere una contraseña, que se proporciona con `--proxy-password-file` o se introduce cuando se solicita. 
@@ -95,7 +129,7 @@ El instalador usa un proxy para cada destino de internet y cada componente de AI
 | `--proxy-password-file <path>` | Ninguno | Ruta a un archivo local que contiene solo la contraseña del proxy, con permisos configurados como `0600` o `0400`. Si lo omites, el instalador te pedirá la contraseña con la entrada oculta. 
 
 
-| `--proxy-type <r>` | `r` | Tipo de proxy. `r` es un proxy directo estándar y es el predeterminado. No lo modifiques. No se admiten proxies con inspección de TLS. 
+| `--proxy-type <r|t>` | `r` | Tipo de proxy. `r` es un proxy directo normal y es el valor predeterminado. `t` es un proxy con inspección TLS, que vuelve a firmar el certificado de cada destino. Con `t`, también debes especificar `--proxy-ca-cert`. 
 
 
 | `--no-proxy` | — | Desactiva explícitamente la configuración del proxy y omite las solicitudes del proxy. Úsalo solo cuando el host tenga acceso directo a internet. 

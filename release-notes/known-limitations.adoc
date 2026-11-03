@@ -22,7 +22,6 @@ Las implementaciones de un solo nodo y de varios nodos son independientes:: Una 
 La compatibilidad con servidores proxy es limitada:: Puedes implementar AI Data Engine con un proxy directo, pero las siguientes funciones del proxy no son compatibles:
 +
 --
-* Proxies con inspección TLS, que descifran y vuelven a firmar el tráfico HTTPS con una autoridad de certificación personalizada.
 * Autenticación NTLM, Kerberos o mediante certificado de cliente para el proxy. No uses autenticación o usa autenticación básica.
 * Proxies SOCKS.
 * Configuración automática del proxy (archivo PAC o WPAD). Indica directamente al instalador el host y el puerto del proxy.

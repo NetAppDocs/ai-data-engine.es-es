@@ -38,6 +38,7 @@ Para conocer los tipos de proxy compatibles y consultar la referencia completa d
 * Has configurado tu proxy para permitir los endpoints de link:aide-requirements.html#outbound-internet-access["Acceso a Internet saliente"].
 * Conoces el host del proxy, el puerto y el esquema ((`http` o `https`). Si el proxy requiere autenticación, también conoces el nombre de usuario y la contraseña.
 * Si utilizas un proxy HTTPS con un certificado firmado de forma privada, debes tener el certificado de CA como archivo PEM, o un directorio plano de `.crt` y `.pem` archivos, en el host de destino.
+* Si utilizas un proxy con inspección TLS, debes tener el certificado de la CA de inspección en el mismo formato en el host de destino. El instalador lo requiere.
 
 
 
@@ -48,14 +49,14 @@ NOTE: Utiliza el instalador únicamente para la primera instalación de AIDE. No
 [[what-the-installer-configures]]
 == Lo que configura el instalador
 
-En una implementación de un solo nodo, AI Data Engine es el propietario de la máquina virtual en la que se instala. El instalador configura el entorno de ejecución de k3s y AI Data Engine para el proxy. No cambia la configuración del proxy del host, como la de los gestores de paquetes del sistema operativo. El instalador hace lo siguiente:
+En una implementación de un solo nodo, AI Data Engine es el propietario de la VM en la que se instala. El instalador configura el entorno de ejecución de k3s y AI Data Engine para el proxy. No modifica la configuración del proxy de otro software en el host, como los gestores de paquetes del sistema operativo. El instalador hace lo siguiente:
 
 * Descarga el script de instalación y el binario de k3s a través del proxy. No proporciona a k3s ni al kubelet un proxy de todo el sistema.
 * Configura el entorno de ejecución de contenedores k3s para que descargue imágenes a través del proxy.
-* Añade al almacén de confianza de AI Data Engine el certificado de CA que proporcionas con `--proxy-ca-cert`.
+* Añade el certificado de CA que proporcionas con `--proxy-ca-cert` al almacén de confianza del host y al almacén de confianza de AI Data Engine.
 
 
-No configuras el entorno de ejecución de contenedores de k3s ni el almacén de confianza.
+No es necesario configurar el entorno de ejecución de contenedores de k3s. Solo tienes que proporcionar el certificado de CA, y el instalador lo añadirá a los almacenes de confianza.
 
 
 
@@ -206,10 +207,10 @@ Cuando ejecutas el comando de instalación en un terminal sin `--proxy-host` o `
 | Puerto del proxy | Introduce el puerto del proxy. El valor predeterminado es `443` para HTTPS y `80` para HTTP. 
 
 
-| Tipo de proxy | Pulsa Intro para aceptar la opción predeterminada. 
+| Tipo de proxy | Introduce `r` para un proxy directo normal, o `t` para un proxy que inspecciona TLS. Pulsa Enter para aceptar el valor predeterminado, `r`. 
 
 
-| Certificado CA para el certificado propio del proxy (solo HTTPS, opcional) | Introduce la ruta de acceso al archivo o directorio de la CA. Pulsa Intro si una CA pública firmó el certificado de proxy. 
+| Certificado CA para el certificado propio del proxy (solo HTTPS, opcional) | Introduce la ruta al archivo o directorio de la CA. Pulsa Intro si una CA pública firmó el certificado del proxy. En el caso de un proxy con inspección TLS, introduce la ruta al certificado de la CA de inspección necesario. 
 
 
 | ¿El proxy requiere un nombre de usuario y una contraseña? (s/N) | Si es así, introduce el nombre de usuario y, a continuación, introduce la contraseña dos veces. El instalador no muestra la contraseña en pantalla. 
@@ -248,6 +249,15 @@ Si el comando contiene `--no-proxy`, elimínalo. Mantén todos los demás parám
 --proxy-port 8443 \
 --proxy-scheme https \
 --proxy-ca-cert /root/proxy-ca.pem
+----
+.Proxy con inspección TLS
+[source, bash]
+----
+--proxy-host proxy.example.com \
+--proxy-port 3128 \
+--proxy-scheme http \
+--proxy-type t \
+--proxy-ca-cert /root/inspection-ca.pem
 ----
 * Si tu proxy no requiere autenticación, omite `--proxy-user` y `--proxy-password-file`.
 * Si especificas  `--proxy-user` sin  `--proxy-password-file`, el instalador te pedirá la contraseña cuando lo ejecutes desde un terminal.
